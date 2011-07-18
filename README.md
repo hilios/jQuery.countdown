@@ -4,16 +4,16 @@ The Final Countdown
 
 jQuery plugins should solve our code needs without any layout dependency, simply because you really don't know until the time the HTML file is ready the tags that will be used to make the layout sweet.
 
-[The Final Countdown](http://www.youtube.com/watch?v=9jK-NcRmVcw) is plugin that let's you in control where and how you will display the countdown, this mean that the plugin doesn't make any assumption on how the html will be displayed and it's up to you to do it, with the help of your beloved jQuery selectors.
+[The Final Countdown](http://www.youtube.com/watch?v=9jK-NcRmVcw) is plugin that let's you in control where and how you will display the countdown, this mean that the plugin doesn't make any assumption on how the html will be displayed and it's up to you to do it, with the help of our beloved jQuery selectors.
 
 Usage
 -----
 
-Just attach the *countdown* function in the selector chain:
+Just call the *countdown* function in the selector chain:
 
 	$('div#clock').countdown(toDate, callback);
 
-Bellow we have some samples for the plugin arguments.
+Bellow we have some samples and the complete documentation of the functions arguments.
 
 ### Sample script
 
@@ -48,13 +48,16 @@ Bellow we have some samples for the plugin arguments.
     </div>
 ```
 
+[See this example](http://edson.hilios/jquery.countdown/examples/basic.html)
+
 Documentation
 -------------
 
-This script it's a basic interval called every second that execute a callback function.
+This script it's wrapper on an interval that calculates the time left, and execute a callback function every time something changes (this means every second).
 
 **toDate**  
 The target date that you are seeking to countdown. This attribute can be:  
+
 *   Date object
 *   Milliseconds
 *   String formatted as following:
@@ -70,7 +73,8 @@ A function that will be the event handler, called every time any value on the co
   
 The event has the following properties:
 
-*event.type*
+*event.type*  
+A string with the name of the updated value, these are:
 
 *   **seconds**  
     Called whenever the seconds changes.
@@ -89,7 +93,7 @@ The event has the following properties:
     Called whenever the countdown finishs.
 
 *event.value*  
-An string with the number of the propertie that is left with two digits format for hours, minutes and seconds.
+A string with the number of the propertie that is left with two digits format for hours, minutes and seconds.
 
 *event.date*  
 A date object with the current date countdown.
@@ -105,11 +109,12 @@ An object that contains all the offset calculations until the final date as numb
 Advanced usage
 --------------
 
-A sample how adapt the countdown plugin for the popular coupons sites:
-  
+Below we build a sample how to adapt the countdown plugin for the coupons sites countdown format:
+
+    // Javascript
     $(function() {
         $('div#clock').countdown(new Date(2015, 6, 28), function(event) {
-            // Update every second one time only
+            // Update every second
             if(event.type != "seconds") return;
             // Calculate the time left
             var timeLeft = [
@@ -117,23 +122,26 @@ A sample how adapt the countdown plugin for the popular coupons sites:
                 event.lasting.minutes,
                 event.lasting.seconds
             ];
-            // Convert the number to two digits strings
+            // Convert the values to two digits strings
             for(var i = 0; i < timeLeft.length; ++i) {
                 timeLeft[i] = (timeLeft[i] < 10 ? '0' + '') + timeLeft[i].toString();
             }
-            // Concatenate the strings with : and update the html
+            // Concatenate the array and display at the tag
             $(this).html(timeLeft.join(':'));
         });
     });
 
+    <!-- HTML -->
     <div id="clock"></div>
+
+[See this example](http://edson.hilios/jquery.countdown/examples/coupons.html)
 
 Testing
 -------
 
-This plugin is tested with [Jasmine BDD Framework](http://pivotal.github.com/jasmine/).
+This plugin was tested with [Jasmine BDD Framework](http://pivotal.github.com/jasmine/). To test yourself just open the spec/SpecRuner.html on your favorite browser.
 
-Currently was tested against:
+The script was tested against:
 
 *   Chrome 12.0.742.122
 *   Safari 5.0.5
