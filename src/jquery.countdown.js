@@ -50,10 +50,6 @@
         interval = $this.data('countdownInterval'),
         currentDate = new Date(),
         secondsLeft = Math.floor((toDate.valueOf() - currentDate.valueOf()) / 1000);
-        
-    
-    
-    $this.bind('finish', $.fn.complete)
     
     function triggerEvents() {
       secondsLeft--;
@@ -104,7 +100,7 @@
           }
           break;
       }
-      callback.call(this, event);
+      callback.call($this, event);
     }
     
     function stop() {
@@ -112,7 +108,8 @@
     }
     
     function start() {
-      interval = setInterval(delegate(this, triggerEvents), 1000);
+      $this.data('countdownInterval', setInterval(delegate($this, triggerEvents), 1000))
+      interval = $this.data('countdownInterval');
     }
     
     if(interval) stop();

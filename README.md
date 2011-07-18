@@ -54,8 +54,7 @@ Documentation
 This script it's a basic interval called every second that execute a callback function.
 
 **toDate**  
-The target date that you are seeking to countdown. This attribute can be:
-
+The target date that you are seeking to countdown. This attribute can be:  
 *   Date object
 *   Milliseconds
 *   String formatted as following:
@@ -71,8 +70,7 @@ A function that will be the event handler, called every time any value on the co
   
 The event has the following properties:
 
-*event.type*
-
+*event.type*  
 *   **seconds**  
     Called whenever the seconds changes.
 *   **minutes**  
@@ -84,7 +82,8 @@ The event has the following properties:
 *   **weeks**  
     Called whenever the week changes.
 *   **daysLeft**   
-    Called whenever the week changes, this propertie is the how much days are left beside the weeks. Mathematically speaking: *daysLeft = days - weeks * 7*.
+    Called whenever the week changes, this propertie is the how much days are left beside the weeks.  
+    Mathematically speaking: *daysLeft = days - weeks * 7*.
 *   **finished**  
     Called whenever the countdown finishs.
 
@@ -119,7 +118,7 @@ A sample how adapt the countdown plugin for the popular coupons sites:
             ];
             // Convert the number to two digits strings
             for(var i = 0; i < timeLeft.length; ++i) {
-                timeLeft[i] = (timeLeft[i] < 10 ? '0' + : '') + timeLeft[i].toString();
+                timeLeft[i] = (timeLeft[i] < 10 ? '0' + '') + timeLeft[i].toString();
             }
             // Concatenate the strings with : and update the html
             $(this).html(timeLeft.join(':'));
