@@ -11,39 +11,41 @@ Usage
 
 Just attach the *countdown* function in the selector chain:
 
-`$('div#clock').countdown(toDate, callback);`
+	$('div#clock').countdown(toDate, callback);
 
 Bellow we have some samples for the plugin arguments.
 
 ### Sample script
-
-  $(function() {
-    $('div#clock').countdown("2015/06/28", function(event) {
-      var $this = $(this);
-      switch(event.type) {
-        case "seconds":
-        case "minutes":
-        case "hours":
-        case "days":
-        case "weeks":
-        case "daysLeft":
-          $this.find('span#'+event.type).html(event.value);
-          break;
-        case "finished":
-          $this.hide();
-          break;
-      }
-    });
-  });
-  
+```javascript
+	$(function() {
+		$('div#clock').countdown("2015/06/28", function(event) {
+			var $this = $(this);
+			switch(event.type) {
+				case "seconds":
+				case "minutes":
+				case "hours":
+				case "days":
+				case "weeks":
+				case "daysLeft":
+					$this.find('span#'+event.type).html(event.value);
+					break;
+				case "finished":
+					$this.hide();
+					break;
+			}
+		});
+	});
+```
 ### HTML Sample
-`<div id="clock">
-  <span id="weeks"></span>      Weeks
-  <span id="daysLeft"></span>   Days
-  <span id="hours"></span>      Hours
-  <span id="minutes"></span>    Minutes
-  <span id="seconds"></span>    Seconds
-</div>`
+```html
+    <div id="clock">
+        <span id="weeks"></span>      Weeks
+        <span id="daysLeft"></span>   Days
+        <span id="hours"></span>      Hours
+        <span id="minutes"></span>    Minutes
+        <span id="seconds"></span>    Seconds
+    </div>
+```
 
 Documentation
 -------------
@@ -52,30 +54,30 @@ This script it's a basic interval called every second that execute a callback fu
 
 **toDate**
 The target date that you are seeking to countdown. This attribute can be:
-* Date object
-* Milliseconds
-* String formatted as following:
-** *"YYYY-MM-DD"*
-** *"YYYY/MM/DD"*
-** *"MM/DD/YYYY"*
-** *"YYYY-MM-DD hh:mm:ss"*
-** *"YYYY/MM/DD hh:mm:ss"*
-** *"MM/DD/YYYY hh:mm:ss"*
+*   Date object
+*   Milliseconds
+*   String formatted as following:
+    *  *"YYYY-MM-DD"*
+    *  *"YYYY/MM/DD"*
+    *  *"MM/DD/YYYY"*
+    *  *"YYYY-MM-DD hh:mm:ss"*
+    *  *"YYYY/MM/DD hh:mm:ss"*
+    *  *"MM/DD/YYYY hh:mm:ss"*
 
 **callback**
 A function that will be the event handler, called every time any value on the countdown changes, sends an event object as argument.
 
-  function(event) { ... }
+    function(event) { ... }
   
 The event has the following properties:
 *event.type*
-** **seconds:** Called whenever the seconds changes.
-** **minutes:** Called whenever the minutes changes.
-** **hours:** Called whenever the hour changes.
-** **days:** Called whenever the day changes.
-** **weeks:** Called whenever the week changes.
-** **daysLeft:** Called whenever the week changes, this propertie is the how much days are left beside the weeks. Mathematically speaking: *daysLeft = days - weeks * 7*.
-** **finished:** Called whenever the countdown finishs.
+*   **seconds:** Called whenever the seconds changes.
+*   **minutes:** Called whenever the minutes changes.
+*   **hours:** Called whenever the hour changes.
+*   **days:** Called whenever the day changes.
+*   **weeks:** Called whenever the week changes.
+*   **daysLeft:** Called whenever the week changes, this propertie is the how much days are left beside the weeks. Mathematically speaking: *daysLeft = days - weeks * 7*.
+*   **finished:** Called whenever the countdown finishs.
 
 *event.value*
 An string with the number of the propertie that is left with two digits format for hours, minutes and seconds.
@@ -89,33 +91,33 @@ A Date object created by the first argument sent do the callback plugin.
 *event.lasting*
 An object that contains all the offset calculations until the final date as numbers. This object has the same properties name has the event types: 
 
-  {seconds, minutes, hours, days, weeks, daysLeft}
+    {seconds, minutes, hours, days, weeks, daysLeft}
 
 Advanced usage
 --------------
 
-  A sample how adapt the countdown plugin for the popular coupons sites:
+A sample how adapt the countdown plugin for the popular coupons sites:
   
-  $(function() {
-    $('div#clock').countdown(new Date(2015, 6, 28), function(event) {
-      // Update every second one time only
-      if(event.type != "seconds") return;
-      // Calculate the time left
-      var timeLeft = [
-        event.lasting.hours + event.lasting.days * 24,
-        event.lasting.minutes,
-        event.lasting.seconds
-      ];
-      // Convert the number to two digits strings
-      for(var i = 0; i < timeLeft.length; ++i) {
-        timeLeft[i] = (timeLeft[i] < 10 ? '0' + : '') + timeLeft[i].toString();
-      }
-      // Concatenate the strings with : and update the html
-      $(this).html(timeLeft.join(':'));
+    $(function() {
+        $('div#clock').countdown(new Date(2015, 6, 28), function(event) {
+            // Update every second one time only
+            if(event.type != "seconds") return;
+            // Calculate the time left
+            var timeLeft = [
+                event.lasting.hours + event.lasting.days * 24,
+                event.lasting.minutes,
+                event.lasting.seconds
+            ];
+            // Convert the number to two digits strings
+            for(var i = 0; i < timeLeft.length; ++i) {
+                timeLeft[i] = (timeLeft[i] < 10 ? '0' + : '') + timeLeft[i].toString();
+            }
+            // Concatenate the strings with : and update the html
+            $(this).html(timeLeft.join(':'));
+        });
     });
-  });
-  
-  <div id="clock"></div>
+
+    <div id="clock"></div>
 
 Testing
 -------
