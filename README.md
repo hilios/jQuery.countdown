@@ -17,7 +17,6 @@ Bellow we have some samples for the plugin arguments.
 
 ### Sample script
 
-```
 	$(function() {
 		$('div#clock').countdown("2015/06/28", function(event) {
 			var $this = $(this);
@@ -36,7 +35,6 @@ Bellow we have some samples for the plugin arguments.
 			}
 		});
 	});
-```
 
 ### HTML Sample
 
@@ -56,25 +54,29 @@ Documentation
 This script it's a basic interval called every second that execute a callback function.
 
 **toDate**
+
 The target date that you are seeking to countdown. This attribute can be:
 
 *   Date object
 *   Milliseconds
 *   String formatted as following:
-    *  *"YYYY-MM-DD"*
-    *  *"YYYY/MM/DD"*
-    *  *"MM/DD/YYYY"*
-    *  *"YYYY-MM-DD hh:mm:ss"*
-    *  *"YYYY/MM/DD hh:mm:ss"*
-    *  *"MM/DD/YYYY hh:mm:ss"*
+    -  *"YYYY-MM-DD"*
+    -  *"YYYY/MM/DD"*
+    -  *"MM/DD/YYYY"*
+    -  *"YYYY-MM-DD hh:mm:ss"*
+    -  *"YYYY/MM/DD hh:mm:ss"*
+    -  *"MM/DD/YYYY hh:mm:ss"*
 
 **callback**
+
 A function that will be the event handler, called every time any value on the countdown changes, sends an event object as argument.
 
     function(event) { ... }
   
 The event has the following properties:
+
 *event.type*
+
 *   **seconds:** Called whenever the seconds changes.
 *   **minutes:** Called whenever the minutes changes.
 *   **hours:** Called whenever the hour changes.
@@ -84,15 +86,19 @@ The event has the following properties:
 *   **finished:** Called whenever the countdown finishs.
 
 *event.value*
+
 An string with the number of the propertie that is left with two digits format for hours, minutes and seconds.
 
 *event.date*
+
 A date object with the current date countdown.
 
 *event.toDate*
+
 A Date object created by the first argument sent do the callback plugin.
 
 *event.lasting*
+
 An object that contains all the offset calculations until the final date as numbers. This object has the same properties name has the event types: 
 
     {seconds, minutes, hours, days, weeks, daysLeft}
@@ -129,6 +135,7 @@ Testing
 This plugin is tested with [Jasmine BDD Framework](http://pivotal.github.com/jasmine/).
 
 Currently was tested against:
+
 *   Chrome 12.0.742.122
 *   Safari 5.0.5
 *   Firefox 5.0
