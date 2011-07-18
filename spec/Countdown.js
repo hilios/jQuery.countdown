@@ -31,6 +31,7 @@ describe("jquery.countdown", function() {
     spyOn($.fn, "countdown")
   });
   
+  describe('toDate conversion', function() {
     it('should accept `YYYY/MM/DD`', function() {
       setCountdown("2015/10/20");
       
@@ -45,7 +46,7 @@ describe("jquery.countdown", function() {
     });
     
     it('should accept `MM/DD/YYYY`', function() {
-      setCountdown("10-20-2015");
+      setCountdown("10/20/2015");
       
       waitsFor(function() {
         return callback.callCount > 0;
@@ -179,7 +180,6 @@ describe("jquery.countdown", function() {
       });
     });
   });
-  
   describe('events handlers', function() {
     // Takes too long to execute!!!
     xit('should call the `seconds` and `minutes` events', function() {
@@ -214,7 +214,7 @@ describe("jquery.countdown", function() {
       waitsFor(function() {
         return callback.callCount > 0;
       });
-        
+      
       runs(function() {
         expect(callback.mostRecentCall.args[0]["type"]).toBe("finished");
       });
