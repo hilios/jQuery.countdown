@@ -1,0 +1,10 @@
+div#container {margin: 0 auto; padding: 20px; width: 800px;}
+
+div#clock { color: white; margin: 20px auto; width: 600px; overflow: hidden; text-align: center; }
+div#clock p { background: #333; float: left; height: 88px; width: 88px; }
+div#clock p span { display: block; font-size: 50px; font-weight: bold; padding: 5px 0 0; }
+div#clock div.space { color: #ccc; display: block; line-height: 1.7em; font-size: 50px; float: left; height: 88px; width: 30px; }
+
+div.coupon{ color: #333 !important; font-size: 50px; font-weight: bold; }
+
+pre{background-color: #eee; border: 1px solid #ccc; line-height: 1.4em; padding: 10px; margin: 0;}

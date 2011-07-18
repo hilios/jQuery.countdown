@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+  <title>Basic Example - jQuery The Final Countdown plugin</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/examples.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../src/jquery.countdown.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      var currentDate = new Date(),
+          finished = false,
+          availiableExamples = {
+            set15daysFromNow: 15 * 24 * 60 * 60 * 1000,
+            set5minFromNow  : 5 * 60 * 1000,
+            set1minFromNow  : 1 * 60 * 1000
+          };
+      
+      function callback(event) {
+  		  $this = $(this);
+  			switch(event.type) {
+  				case "seconds":
+  				case "minutes":
+  				case "hours":
+  				case "days":
+  				case "weeks":
+  				case "daysLeft":
+  				  $this.find('span#'+event.type).html(event.value);
+  				  if(finished) {
+  				    $this.fadeTo(1);
+  				    finished = false;
+  				  }
+  					break;
+  				case "finished":
+            $this.fadeTo(.5);
+            finished = true;
+  					break;
+  			}
+      }
+      
+  		$('div#clock').countdown(availiableExamples.set15daysFromNow + currentDate.valueOf(), callback);
+  		
+  		$('select#exampleDate').change(function() {
+  		  try {
+    		  var $this = $(this),
+    		      value;
+  		    currentDate = new Date();
+    		  switch($this.attr('value')) {
+    		    case "other":
+    		      value = prompt('Set the date to countdown:\nThe hh:mm:ss parameters are opitionals', 'YYYY/MM/DD hh:mm:ss');
+    		      break;
+    		    case "daysFromNow":
+    		      value = prompt('How many days from now?', '');
+    		      value = new Number(value) * 24 * 60 * 60 * 1000 + currentDate.valueOf();
+    		      break;
+    		    case "minutesFromNow":
+    		      value = prompt('How many minutes from now?', '');
+    		      value = new Number(value) * 60 * 1000 + currentDate.valueOf();
+    		      break;
+    		    default:
+    		      value = availiableExamples[$this.attr('value')] + currentDate.valueOf();
+    		  }
+    		  $('div#clock').countdown(value, callback);
+    		  $this.find('option:first').attr('selected', true);
+    		} catch(e) { alert(e); }
+  		});
+  	});
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Basic usage of jQuery The Final countdown</h1>
+    <p>
+      You can use this sample for under construction sites, or maintenance period. Try yourself bellow:<br/>
+      Reset countdown to
+      <select id="exampleDate">
+        <option>choose some date and time</option>
+        <option value="set15daysFromNow">15 days from now</option>
+        <option value="set5minFromNow">5 minutes from now</option>
+        <option value="set1minFromNow">1 minute from now</option>
+        <option value="daysFromNow">Input days from now</option>
+        <option value="minutesFromNow">Input minutes from now</option>
+        <option value="other">Other value</option>
+      </select>
+      .
+    </p>
+    <div id="clock">
+      <p>
+        <span id="weeks"></span>
+        Weeks
+      </p>
+      <div class="space">:</div>
+      <p>
+        <span id="daysLeft"></span>
+        Days
+      </p>
+      <div class="space">:</div>
+      <p>
+        <span id="hours"></span>
+        Hours
+      </p>
+      <div class="space">:</div>
+      <p>
+        <span id="minutes"></span>
+        Minutes
+      </p>
+      <div class="space">:</div>
+      <p>
+        <span id="seconds"></span>
+        Seconds
+      </p>
+    </div>
+
+    <h3>Source code:</h3>
+    <pre>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+// Javascript
+$(function() {
+  var currentDate = new Date();
+  $('div#clock').countdown(15 * 24 * 60 * 60 * 1000 + currentDate.valueOf(), function(event) {
+    $this = $(this);
+    switch(event.type) {
+      case "seconds":
+      case "minutes":
+      case "hours":
+      case "days":
+      case "weeks":
+      case "daysLeft":
+        $this.find('span#'+event.type).html(event.value);
+        break;
+      case "finished":
+        $this.fadeTo(.5);
+        break;
+    }
+  });
+});
+&lt;/script&gt;
+
+&lt;!-- HTML --&gt;
+&lt;div id=&quot;clock&quot;&gt;
+  &lt;p&gt;
+    &lt;span id=&quot;weeks&quot;&gt;&lt;/span&gt;
+    Weeks
+  &lt;/p&gt;
+  &lt;div class=&quot;space&quot;&gt;:&lt;/div&gt;
+  &lt;p&gt;
+    &lt;span id=&quot;daysLeft&quot;&gt;&lt;/span&gt;
+    Days
+  &lt;/p&gt;
+  &lt;div class=&quot;space&quot;&gt;:&lt;/div&gt;
+  &lt;p&gt;
+    &lt;span id=&quot;hours&quot;&gt;&lt;/span&gt;
+    Hours
+  &lt;/p&gt;
+  &lt;div class=&quot;space&quot;&gt;:&lt;/div&gt;
+  &lt;p&gt;
+    &lt;span id=&quot;minutes&quot;&gt;&lt;/span&gt;
+    Minutes
+  &lt;/p&gt;
+  &lt;div class=&quot;space&quot;&gt;:&lt;/div&gt;
+  &lt;p&gt;
+    &lt;span id=&quot;seconds&quot;&gt;&lt;/span&gt;
+    Seconds
+  &lt;/p&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+</body>
+</html>
