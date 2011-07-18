@@ -16,7 +16,8 @@ Just attach the *countdown* function in the selector chain:
 Bellow we have some samples for the plugin arguments.
 
 ### Sample script
-```javascript
+
+```
 	$(function() {
 		$('div#clock').countdown("2015/06/28", function(event) {
 			var $this = $(this);
@@ -36,8 +37,10 @@ Bellow we have some samples for the plugin arguments.
 		});
 	});
 ```
+
 ### HTML Sample
-```html
+
+```
     <div id="clock">
         <span id="weeks"></span>      Weeks
         <span id="daysLeft"></span>   Days
@@ -54,6 +57,7 @@ This script it's a basic interval called every second that execute a callback fu
 
 **toDate**
 The target date that you are seeking to countdown. This attribute can be:
+
 *   Date object
 *   Milliseconds
 *   String formatted as following:
@@ -125,14 +129,14 @@ Testing
 This plugin is tested with [Jasmine BDD Framework](http://pivotal.github.com/jasmine/).
 
 Currently was tested against:
-* Chrome 12.0.742.122
-* Safari 5.0.5
-* Firefox 5.0
+*   Chrome 12.0.742.122
+*   Safari 5.0.5
+*   Firefox 5.0
 
 Credits
 -------
 
-* [Edson Hilios](http://edson.hilios.com.br) edson (at) hilios (dot) com
+*   [Edson Hilios](http://edson.hilios.com.br) edson (at) hilios (dot) com
 
 License
 -------

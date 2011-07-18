@@ -31,20 +31,6 @@ describe("jquery.countdown", function() {
     spyOn($.fn, "countdown")
   });
   
-  describe('toDate conversion', function() {
-    it('should accept `YYYY-DD-MM`', function() {
-      setCountdown("2015-10-20");
-      
-      waitsFor(function() {
-        return callback.callCount > 0;
-      });
-      
-      runs(function() {
-        expect(callback.mostRecentCall.args[0]["toDate"] instanceof Date).toBeTruthy();
-        expect(callback.mostRecentCall.args[0]["toDate"].valueOf()).toBe(new Date(2015, 9, 20).valueOf());
-      });
-    });
-    
     it('should accept `YYYY/MM/DD`', function() {
       setCountdown("2015/10/20");
       
@@ -68,19 +54,6 @@ describe("jquery.countdown", function() {
       runs(function() {
         expect(callback.mostRecentCall.args[0]["toDate"] instanceof Date).toBeTruthy();
         expect(callback.mostRecentCall.args[0]["toDate"].valueOf()).toBe(new Date(2015, 9, 20).valueOf());
-      });
-    });
-    
-    it('should accept `YYYY-MM-DD hh:mm:ss`', function() {
-      setCountdown("2015-10-20 11:22:33");
-      
-      waitsFor(function() {
-        return callback.callCount > 0;
-      });
-      
-      runs(function() {
-        expect(callback.mostRecentCall.args[0]["toDate"] instanceof Date).toBeTruthy();
-        expect(callback.mostRecentCall.args[0]["toDate"].valueOf()).toBe(new Date(2015, 9, 20, 11, 22, 33).valueOf());
       });
     });
     
