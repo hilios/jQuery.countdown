@@ -53,8 +53,8 @@ Documentation
 
 This script it's a basic interval called every second that execute a callback function.
 
-**toDate**
-    The target date that you are seeking to countdown. This attribute can be:
+**toDate**  
+The target date that you are seeking to countdown. This attribute can be:
 
 *   Date object
 *   Milliseconds
@@ -64,8 +64,8 @@ This script it's a basic interval called every second that execute a callback fu
     -  *"YYYY/MM/DD hh:mm:ss"*
     -  *"MM/DD/YYYY hh:mm:ss"*
 
-**callback**
-    A function that will be the event handler, called every time any value on the countdown changes, sends an event object as argument.
+**callback**  
+A function that will be the event handler, called every time any value on the countdown changes, sends an event object as argument.
 
     function(event) { ... }
   
@@ -73,32 +73,32 @@ The event has the following properties:
 
 *event.type*
 
-*   **seconds**
+*   **seconds**  
     Called whenever the seconds changes.
-*   **minutes**
+*   **minutes**  
     Called whenever the minutes changes.
-*   **hours**
+*   **hours**  
     Called whenever the hour changes.
-*   **days**
+*   **days**  
     Called whenever the day changes.
-*   **weeks**
+*   **weeks**  
     Called whenever the week changes.
-*   **daysLeft** 
+*   **daysLeft**   
     Called whenever the week changes, this propertie is the how much days are left beside the weeks. Mathematically speaking: *daysLeft = days - weeks * 7*.
-*   **finished**
+*   **finished**  
     Called whenever the countdown finishs.
 
-*event.value*
-    An string with the number of the propertie that is left with two digits format for hours, minutes and seconds.
+*event.value*  
+An string with the number of the propertie that is left with two digits format for hours, minutes and seconds.
 
-*event.date*
-    A date object with the current date countdown.
+*event.date*  
+A date object with the current date countdown.
 
-*event.toDate*
-    A Date object created by the first argument sent do the callback plugin.
+*event.toDate*  
+A Date object created by the first argument sent do the callback plugin.
 
-*event.lasting*
-    An object that contains all the offset calculations until the final date as numbers. This object has the same properties name has the event types: 
+*event.lasting*  
+An object that contains all the offset calculations until the final date as numbers. This object has the same properties name has the event types: 
 
     {seconds, minutes, hours, days, weeks, daysLeft}
 
