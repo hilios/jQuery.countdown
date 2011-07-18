@@ -16,6 +16,7 @@ Just attach the *countdown* function in the selector chain:
 Bellow we have some samples for the plugin arguments.
 
 ### Sample script
+
   $(function() {
     $('div#clock').countdown("2015/06/28", function(event) {
       var $this = $(this);
@@ -36,13 +37,13 @@ Bellow we have some samples for the plugin arguments.
   });
   
 ### HTML Sample
-  <div id="clock">
-    <span id="weeks"></span>      Weeks
-    <span id="daysLeft"></span>   Days
-    <span id="hours"></span>      Hours
-    <span id="minutes"></span>    Minutes
-    <span id="seconds"></span>    Seconds
-  </div>
+`<div id="clock">
+  <span id="weeks"></span>      Weeks
+  <span id="daysLeft"></span>   Days
+  <span id="hours"></span>      Hours
+  <span id="minutes"></span>    Minutes
+  <span id="seconds"></span>    Seconds
+</div>`
 
 Documentation
 -------------
