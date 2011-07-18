@@ -70,7 +70,8 @@ A function that will be the event handler, called every time any value on the co
   
 The event has the following properties:
 
-*event.type*  
+*event.type*
+
 *   **seconds**  
     Called whenever the seconds changes.
 *   **minutes**  
