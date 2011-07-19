@@ -48,7 +48,7 @@ Bellow we have some samples and the complete documentation of the functions argu
     </div>
 ```
 
-[See this example](http://edson.hilios/jquery.countdown/examples/basic.html)
+[See this example](http://edson.hilios.com.br/jquery.countdown/examples/basic.html)
 
 Documentation
 -------------
@@ -134,7 +134,7 @@ Below we build a sample how to adapt the countdown plugin for the coupons sites 
     <!-- HTML -->
     <div id="clock"></div>
 
-[See this example](http://edson.hilios/jquery.countdown/examples/coupons.html)
+[See this example](http://edson.hilios.com.br/jquery.countdown/examples/coupons.html)
 
 Testing
 -------
@@ -150,7 +150,7 @@ The script was tested against:
 Credits
 -------
 
-*   [Edson Hilios](http://edson.hilios.com.br) edson (at) hilios (dot) com
+*   [Edson Hilios] Mail me: (http://edson.hilios.com.br) edson (at) hilios (dot) com
 
 License
 -------
