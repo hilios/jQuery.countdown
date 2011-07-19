@@ -48,7 +48,7 @@ Bellow we have some samples and the complete documentation of the functions argu
     </div>
 ```
 
-[See this example](http://edson.hilios.com.br/jquery.countdown/examples/basic.html)
+[Run this example](http://edson.hilios.com.br/jquery.countdown/examples/basic.html)
 
 Documentation
 -------------
@@ -109,32 +109,75 @@ An object that contains all the offset calculations until the final date as numb
 Advanced usage
 --------------
 
-Below we build a sample how to adapt the countdown plugin for the coupons sites countdown format:
+Below we build a sample how to adapt the countdown plugin for the coupons sites countdown format (h:m:s):
 
-    // Javascript
-    $(function() {
-        $('div#clock').countdown(new Date(2015, 6, 28), function(event) {
-            // Update every second
-            if(event.type != "seconds") return;
-            // Calculate the time left
-            var timeLeft = [
-                event.lasting.hours + event.lasting.days * 24,
-                event.lasting.minutes,
-                event.lasting.seconds
-            ];
-            // Convert the values to two digits strings
-            for(var i = 0; i < timeLeft.length; ++i) {
-                timeLeft[i] = (timeLeft[i] < 10 ? '0' + '') + timeLeft[i].toString();
-            }
-            // Concatenate the array and display at the tag
-            $(this).html(timeLeft.join(':'));
+    <script type="text/javascript" charset="utf-8">
+        // Javascript
+        $(function() {
+            $('div#clock').countdown(new Date(2015, 6, 28), function(event) {
+                // Update every second
+                if(event.type != "seconds") return;
+                // Calculate the time left
+                var timeLeft = [
+                    event.lasting.hours + event.lasting.days * 24,
+                    event.lasting.minutes,
+                    event.lasting.seconds
+                ];
+                // Convert the values to two digits strings
+                for(var i = 0; i < timeLeft.length; ++i) {
+                    timeLeft[i] = (timeLeft[i] < 10 ? '0' + '') + timeLeft[i].toString();
+                }
+                // Concatenate the array and display at the tag
+                $(this).html(timeLeft.join(':'));
+            });
         });
-    });
-
+    </script>
     <!-- HTML -->
     <div id="clock"></div>
 
-[See this example](http://edson.hilios.com.br/jquery.countdown/examples/coupons.html)
+[Run this example](http://edson.hilios.com.br/jquery.countdown/examples/coupons.html)
+
+Now an example how [Groupon Getaways](http://www.groupon.com/getaways) does the countdown on his site (N days h:m:s):
+
+    <script type="text/javascript" charset="utf-8">
+        // Javascript
+        $(function() {
+          var d, h, m, s;
+          $('div#clock').countdown(new Date(2015, 6, 28), function(event) {
+            var formatTime = "%d day(s) %h:%m:%s"
+                $this = $(this);
+            switch(event.type) {
+              case "days":
+                d = event.value;
+                break;
+              case "hours":
+                h = event.value;
+                break;
+              case "minutes":
+                m = event.value;
+                break;
+              case "seconds":
+                s = event.value;
+                break;
+              case "finished":
+                $this.fadeTo('slow', 0.5);
+                break;
+            }
+            // Assemble time format
+            formatTime = formatTime.replace(/\%d/, d);
+            formatTime = formatTime.replace(/\(s\)/, Number(d) == 1 ? '' : 's');
+            formatTime = formatTime.replace(/\%h/, h);
+            formatTime = formatTime.replace(/\%m/, m);
+            formatTime = formatTime.replace(/\%s/, s);
+            // Display
+            $this.html(formatTime);
+          });
+        });
+    </script>
+    <!-- HTML -->
+    <div id="clock"></div>
+
+[Run this example](http://edson.hilios.com.br/jquery.countdown/examples/groupon.html)
 
 Testing
 -------

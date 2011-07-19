@@ -30,12 +30,12 @@
   				case "daysLeft":
   				  $this.find('span#'+event.type).html(event.value);
   				  if(finished) {
-  				    $this.fadeTo(1);
+  				    $this.fadeTo(0, 1);
   				    finished = false;
   				  }
   					break;
   				case "finished":
-            $this.fadeTo(.5);
+            $this.fadeTo('slow', .5);
             finished = true;
   					break;
   			}
@@ -132,7 +132,7 @@ $(function() {
         $this.find('span#'+event.type).html(event.value);
         break;
       case "finished":
-        $this.fadeTo(.5);
+        $this.fadeTo('slow', .5);
         break;
     }
   });

@@ -182,7 +182,7 @@ describe("jquery.countdown", function() {
   });
   describe('events handlers', function() {
     // Takes too long to execute!!!
-    xit('should call the `seconds` and `minutes` events', function() {
+    it('should call the `seconds` and `minutes` events', function() {
       var secondsOffset = 65;
       setCountdown(new Date(new Date().valueOf() + secondsOffset * 1000));
       
