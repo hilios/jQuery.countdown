@@ -164,8 +164,12 @@ Now an example how [Groupon Getaways](http://www.groupon.com/getaways) does the 
                 break;
             }
             // Assemble time format
-            timeFormat = timeFormat.replace(/\%d/, d);
-            timeFormat = timeFormat.replace(/\(s\)/, Number(d) == 1 ? '' : 's');
+            if(d > 0) {
+                timeFormat = timeFormat.replace(/\%d/, d);
+                timeFormat = timeFormat.replace(/\(s\)/, Number(d) == 1 ? '' : 's');
+            } else {
+                timeFormat = timeFormat.replace(/\%d day\(s\)/, '');
+            }
             timeFormat = timeFormat.replace(/\%h/, h);
             timeFormat = timeFormat.replace(/\%m/, m);
             timeFormat = timeFormat.replace(/\%s/, s);
