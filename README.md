@@ -61,10 +61,10 @@ The target date that you are seeking to countdown. This attribute can be:
 *   Date object
 *   Milliseconds
 *   String formatted as following:
-    -  *"YYYY/MM/DD"*
-    -  *"MM/DD/YYYY"*
-    -  *"YYYY/MM/DD hh:mm:ss"*
-    -  *"MM/DD/YYYY hh:mm:ss"*
+    -  *YYYY/MM/DD*
+    -  *MM/DD/YYYY*
+    -  *YYYY/MM/DD hh:mm:ss*
+    -  *MM/DD/YYYY hh:mm:ss*
 
 **callback**  
 A function that will be the event handler, called every time any value on the countdown changes, sends an event object as argument.
