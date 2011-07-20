@@ -196,7 +196,7 @@ The script was tested against:
 Credits
 -------
 
-*   [Edson Hilios] Mail me: (http://edson.hilios.com.br) edson (at) hilios (dot) com
+*   [Edson Hilios](http://edson.hilios.com.br) Mail me: edson (at) hilios (dot) com
 
 License
 -------
