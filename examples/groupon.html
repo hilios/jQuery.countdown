@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+  <title>Groupon Example - jQuery The Final Countdown plugin</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/examples.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../src/jquery.countdown.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      var currentDate = new Date(),
+          finished = false,
+          availiableExamples = {
+            set3daysFromNow : 3 * 24 * 60 * 60 * 1000,
+            set2daysFromNow : 2 * 24 * 60 * 60 * 1000,
+            set5minFromNow  : 5 * 60 * 1000,
+            set1minFromNow  : 1 * 60 * 1000
+          };
+      var d, h, m, s;
+      
+      function callback(event) {
+        var timeFormat = "%d day(s) %h:%m:%s"
+            $this = $(this);
+        if(finished) {
+          $this.fadeTo(0, 1);
+          finished = false;
+        }
+        switch(event.type) {
+          case "days":
+            d = event.value;
+            break;
+          case "hours":
+            h = event.value;
+            break;
+          case "minutes":
+            m = event.value;
+            break;
+          case "seconds":
+            s = event.value;
+            break;
+          case "finished":
+            $this.fadeTo('slow', 0.5);
+            finished = true;
+            break;
+        }
+        // Assemble time format
+        timeFormat = timeFormat.replace(/\%d/, d);
+        timeFormat = timeFormat.replace(/\(s\)/, Number(d) == 1 ? '' : 's');
+        timeFormat = timeFormat.replace(/\%h/, h);
+        timeFormat = timeFormat.replace(/\%m/, m);
+        timeFormat = timeFormat.replace(/\%s/, s);
+        // Display
+        $this.html(timeFormat);
+      }
+      
+  		$('div#clock').countdown(availiableExamples.set3daysFromNow + currentDate.valueOf(), callback);
+  		
+  		$('select#exampleDate').change(function() {
+  		  try {
+    		  var $this = $(this),
+    		      value;
+  		    currentDate = new Date();
+    		  switch($this.attr('value')) {
+    		    case "other":
+    		      value = prompt('Set the date to countdown:\nThe hh:mm:ss parameters are opitionals', 'YYYY/MM/DD hh:mm:ss');
+    		      break;
+    		    case "daysFromNow":
+    		      value = prompt('How many days from now?', '');
+    		      value = new Number(value) * 24 * 60 * 60 * 1000 + currentDate.valueOf();
+    		      break;
+    		    case "minutesFromNow":
+    		      value = prompt('How many minutes from now?', '');
+    		      value = new Number(value) * 60 * 1000 + currentDate.valueOf();
+    		      break;
+    		    default:
+    		      value = availiableExamples[$this.attr('value')] + currentDate.valueOf();
+    		  }
+    		  $('div#clock').countdown(value, callback);
+    		  $this.find('option:first').attr('selected', true);
+    		} catch(e) { alert(e); }
+  		});
+  	});
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Groupon style in jQuery The Final countdown</h1>
+    <p>
+      You can use this sample for under construction sites, or maintenance period. Try yourself bellow:<br/>
+      Reset countdown to
+      <select id="exampleDate">
+        <option>choose some date and time</option>
+        <option value="set3daysFromNow">3 days from now</option>
+        <option value="set2daysFromNow">2 days from now</option>
+        <option value="set5minFromNow">5 minutes from now</option>
+        <option value="set1minFromNow">1 minute from now</option>
+        <option value="daysFromNow">Input days from now</option>
+        <option value="minutesFromNow">Input minutes from now</option>
+        <option value="other">Other value</option>
+      </select>
+      .
+    </p>
+    <div id="clock" class="coupon"></div>
+
+    <h3>Source code:</h3>
+    <pre>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+// Javascript
+$(function() {
+  var d, h, m, s;
+  $(&#x27;div#clock&#x27;).countdown(new Date(2015, 6, 28), function(event) {
+    var timeFormat = &quot;%d day(s) %h:%m:%s&quot;
+        $this = $(this);
+    switch(event.type) {
+      case &quot;days&quot;:
+        d = event.value;
+        break;
+      case &quot;hours&quot;:
+        h = event.value;
+        break;
+      case &quot;minutes&quot;:
+        m = event.value;
+        break;
+      case &quot;seconds&quot;:
+        s = event.value;
+        break;
+      case &quot;finished&quot;:
+        $this.fadeTo(&#x27;slow&#x27;, 0.5);
+        break;
+    }
+    // Assemble time format
+    timeFormat = timeFormat.replace(/\%d/, d);
+    timeFormat = timeFormat.replace(/\(s\)/, Number(d) == 1 ? &#x27;&#x27; : &#x27;s&#x27;);
+    timeFormat = timeFormat.replace(/\%h/, h);
+    timeFormat = timeFormat.replace(/\%m/, m);
+    timeFormat = timeFormat.replace(/\%s/, s);
+    // Display
+    $this.html(timeFormat);
+  });
+});
+&lt;/script&gt;
+
+&lt;!-- HTML --&gt;
+&lt;div id=&quot;clock&quot;&gt;&lt;/div&gt;
+</pre>
+  </div>
+</body>
+</html>

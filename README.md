@@ -144,7 +144,7 @@ Now an example how [Groupon Getaways](http://www.groupon.com/getaways) does the 
         $(function() {
           var d, h, m, s;
           $('div#clock').countdown(new Date(2015, 6, 28), function(event) {
-            var formatTime = "%d day(s) %h:%m:%s"
+            var timeFormat = "%d day(s) %h:%m:%s"
                 $this = $(this);
             switch(event.type) {
               case "days":
@@ -164,13 +164,13 @@ Now an example how [Groupon Getaways](http://www.groupon.com/getaways) does the 
                 break;
             }
             // Assemble time format
-            formatTime = formatTime.replace(/\%d/, d);
-            formatTime = formatTime.replace(/\(s\)/, Number(d) == 1 ? '' : 's');
-            formatTime = formatTime.replace(/\%h/, h);
-            formatTime = formatTime.replace(/\%m/, m);
-            formatTime = formatTime.replace(/\%s/, s);
+            timeFormat = timeFormat.replace(/\%d/, d);
+            timeFormat = timeFormat.replace(/\(s\)/, Number(d) == 1 ? '' : 's');
+            timeFormat = timeFormat.replace(/\%h/, h);
+            timeFormat = timeFormat.replace(/\%m/, m);
+            timeFormat = timeFormat.replace(/\%s/, s);
             // Display
-            $this.html(formatTime);
+            $this.html(timeFormat);
           });
         });
     </script>
@@ -179,10 +179,13 @@ Now an example how [Groupon Getaways](http://www.groupon.com/getaways) does the 
 
 [Run this example](http://edson.hilios.com.br/jquery.countdown/examples/groupon.html)
 
+**Need multiple countdowns on the same page?**   
+No problem at all [run this example](http://edson.hilios.com.br/jquery.countdown/examples/multiple_clocks.html) and see at work.
+
 Testing
 -------
 
-This plugin was tested with [Jasmine BDD Framework](http://pivotal.github.com/jasmine/). To test yourself just open the spec/SpecRuner.html on your favorite browser.
+This plugin was tested with [Jasmine BDD Framework](http://pivotal.github.com/jasmine/). To test yourself just open the spec/SpecRuner.html on your favorite web browser, it take ~71.03s.
 
 The script was tested against:
 

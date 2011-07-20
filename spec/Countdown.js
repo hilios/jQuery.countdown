@@ -180,6 +180,7 @@ describe("jquery.countdown", function() {
       });
     });
   });
+  
   describe('events handlers', function() {
     // Takes too long to execute!!!
     it('should call the `seconds` and `minutes` events', function() {
@@ -217,6 +218,27 @@ describe("jquery.countdown", function() {
       
       runs(function() {
         expect(callback.mostRecentCall.args[0]["type"]).toBe("finished");
+      });
+    });
+    
+    describe('to prevent memory leak', function() {
+      it('should remove the countdown when selector is removed and dispatch an `removed` event', function() {
+        var twoSecondsFromNow = new Date().valueOf() + 2 * 1000;
+
+        setCountdown(twoSecondsFromNow);
+        $selector.remove();
+
+        waits(3 * 1000);
+
+        runs(function() {
+          var removedEvent = 0;
+          for(var i = 0; i < callback.argsForCall.length; ++i) {
+            if(callback.argsForCall[i][0]["type"] == "removed") {
+              ++removedEvent;
+            }
+          }
+          expect(removedEvent).toBe(1);
+        });
       });
     });
   });

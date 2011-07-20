@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+  <title>Multiple Clock Example - jQuery The Final Countdown plugin</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/examples.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../src/jquery.countdown.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      function reset() {
+        var currentDate = new Date();
+        $('div.multi_clock').each(function(i) {
+          var toDate = (i + .1) * 24 * 60 * 60 * 1000 + currentDate.valueOf(),
+              d, h, m, s;
+          
+          $(this).countdown(toDate, function(event) {
+            var timeFormat = "%d day(s) %h:%m:%s";
+      		  switch(event.type) {
+              case "days":
+                d = event.value;
+                break;
+              case "hours":
+                h = event.value;
+                break;
+              case "minutes":
+                m = event.value;
+                break;
+              case "seconds":
+                s = event.value;
+                break;
+            }
+            // Assemble time format
+            timeFormat = timeFormat.replace(/\%d/, d);
+            timeFormat = timeFormat.replace(/\(s\)/, Number(d) == 1 ? '' : 's');
+            timeFormat = timeFormat.replace(/\%h/, h);
+            timeFormat = timeFormat.replace(/\%m/, m);
+            timeFormat = timeFormat.replace(/\%s/, s);
+            // Display
+            $(this).html(timeFormat);
+      		});
+        });
+      }
+      reset();
+      
+      $('input#reset[type="submit"]').click(reset);
+  	});
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Coupon style in jQuery The Final countdown</h1>
+    <p>
+      Need multiple instaces of the countdown in the same page? No problems.<br/>
+      To reset the countdowns <input id="reset" type="submit" value="Click here" />.
+    </p>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    <div class="multi_clock"></div>
+    
+    <div data-countdown="12/05/2011"></div>
+
+    <h3>Source code:</h3>
+    <pre>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+// Javascript
+$(function() {
+  $(&#x27;div[data-countdown]&#x27;).each(function(i) {
+    var d, h, m, s,
+        toDate = $(this).data(&#x27;until&#x27;);
+    $(this).countdown(toDate, function(event) {
+      var timeFormat = &quot;%d day(s) %h:%m:%s&quot;;
+		  switch(event.type) {
+        case &quot;days&quot;:
+          d = event.value;
+          break;
+        case &quot;hours&quot;:
+          h = event.value;
+          break;
+        case &quot;minutes&quot;:
+          m = event.value;
+          break;
+        case &quot;seconds&quot;:
+          s = event.value;
+          break;
+      }
+      // Assemble time format
+      timeFormat = timeFormat.replace(/\%d/, d);
+      timeFormat = timeFormat.replace(/\(s\)/, Number(d) == 1 ? &#x27;&#x27; : &#x27;s&#x27;);
+      timeFormat = timeFormat.replace(/\%h/, h);
+      timeFormat = timeFormat.replace(/\%m/, m);
+      timeFormat = timeFormat.replace(/\%s/, s);
+      // Display
+      $(this).html(timeFormat);
+		});
+  });
+});
+&lt;/script&gt;
+
+&lt;!-- HTML --&gt;
+&lt;div data-countdown=&quot;12/05/2011&quot;&gt;&lt;/div&gt;
+&lt;div data-countdown=&quot;15/06/2011&quot;&gt;&lt;/div&gt;
+&lt;div data-countdown=&quot;20/07/2011&quot;&gt;&lt;/div&gt;
+</pre>
+  </div>
+</body>
+</html>
