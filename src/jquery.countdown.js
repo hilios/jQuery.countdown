@@ -68,7 +68,7 @@
           hours   : Math.floor(secondsLeft / 60 / 60) % 24,
           days    : Math.floor(secondsLeft / 60 / 60 / 24),
           weeks   : Math.floor(secondsLeft / 60 / 60 / 24 / 7),
-          daysLeft: Math.floor(secondsLeft / 60 / 60 / 24 / 7) % 7
+          daysLeft: Math.floor(secondsLeft / 60 / 60 / 24) % 7
         }
         for(var i=0; i<handlers.length; i++) {
           var eventName = handlers[i];
