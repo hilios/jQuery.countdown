@@ -196,6 +196,7 @@ The script was tested against:
 *   Chrome 12.0.742.122
 *   Safari 5.0.5
 *   Firefox 5.0
+*   IE 6/7/8/9
 
 Credits
 -------
