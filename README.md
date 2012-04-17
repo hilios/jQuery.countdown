@@ -48,7 +48,7 @@ Bellow we have some samples and the complete documentation of the functions argu
     </div>
 ```
 
-[Run this example](http://edson.hilios.com.br/jquery.countdown/examples/basic.html)
+[Run this example](http://static.hilios.com.br/jquery.countdown/examples/basic.html)
 
 Documentation
 -------------
@@ -135,7 +135,7 @@ Below we build a sample how to adapt the countdown plugin for the coupons sites 
     <!-- HTML -->
     <div id="clock"></div>
 
-[Run this example](http://edson.hilios.com.br/jquery.countdown/examples/coupons.html)
+[Run this example](http://static.hilios.com.br/jquery.countdown/examples/coupons.html)
 
 Now an example how [Groupon Getaways](http://www.groupon.com/getaways) does the countdown on his site (N days h:m:s):
 
@@ -181,10 +181,10 @@ Now an example how [Groupon Getaways](http://www.groupon.com/getaways) does the 
     <!-- HTML -->
     <div id="clock"></div>
 
-[Run this example](http://edson.hilios.com.br/jquery.countdown/examples/groupon.html)
+[Run this example](http://static.hilios.com.br/jquery.countdown/examples/groupon.html)
 
 **Need multiple countdowns on the same page?**   
-No problem at all [run this example](http://edson.hilios.com.br/jquery.countdown/examples/multiple_clocks.html) and see at work.
+No problem at all [run this example](http://static.hilios.com.br/jquery.countdown/examples/multiple_clocks.html) and see at work.
 
 Testing
 -------
