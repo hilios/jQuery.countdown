@@ -125,7 +125,7 @@ Below we build a sample how to adapt the countdown plugin for the coupons sites 
                 ];
                 // Convert the values to two digits strings
                 for(var i = 0; i < timeLeft.length; ++i) {
-                    timeLeft[i] = (timeLeft[i] < 10 ? '0' + '') + timeLeft[i].toString();
+                    timeLeft[i] = (timeLeft[i] < 10 ? '0' : '') + timeLeft[i].toString();
                 }
                 // Concatenate the array and display at the tag
                 $(this).html(timeLeft.join(':'));

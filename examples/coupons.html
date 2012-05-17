@@ -100,7 +100,7 @@ $(function() {
     ];
     // Convert the number to two digits strings
     for(var i = 0; i &lt; timeLeft.length; ++i) {
-      timeLeft[i] = (timeLeft[i] &lt; 10 ? '0' + '') + timeLeft[i].toString();
+      timeLeft[i] = (timeLeft[i] &lt; 10 ? '0' : '') + timeLeft[i].toString();
     }
     // Concatenate the strings with : and update the html
     $(this).html(timeLeft.join(':'));
