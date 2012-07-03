@@ -128,6 +128,6 @@
       removeFunction = $.fn.remove;
   $.fn.remove = function() {
     $(this).trigger(removeEvent);
-    return removeFunction(arguments);
+    return removeFunction.apply(this, arguments);
   }
 })(jQuery);
