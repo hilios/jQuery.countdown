@@ -86,6 +86,13 @@
       
       function dispatchEvent(eventName) {
         var event = $.Event(eventName);
+        
+        if($this.closest('html').length === 0) {
+          stop();
+          callback.call($this, $.Event('removed'));
+          return;
+        };
+        
         event.date  = new Date(new Date().valueOf() + secondsLeft);
         event.value = values[eventName] || "0";
         event.toDate = toDate;
@@ -105,11 +112,6 @@
         callback.call($this, event);
       }
       
-      $this.bind('remove', function() {
-        stop(); // If the selector is removed clear the interval for memory sake!
-        dispatchEvent('removed');
-      });
-      
       function stop() {
         clearInterval(interval);
       }
@@ -124,10 +126,4 @@
     });
   }
   // Wrap the remove method to trigger an event when called
-  var removeEvent = new $.Event('remove'),
-      removeFunction = $.fn.remove;
-  $.fn.remove = function() {
-    $(this).trigger(removeEvent);
-    return removeFunction.apply(this, arguments);
-  }
 })(jQuery);
