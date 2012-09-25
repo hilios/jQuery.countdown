@@ -58,6 +58,13 @@
           secondsLeft = Math.floor((toDate.valueOf() - currentDate.valueOf()) / 1000);
       
       function triggerEvents() {
+        // Evaluate if this node is included in the html
+        if($this.closest('html').length === 0) {
+          stop(); // Release the memory
+          dispatchEvent('removed');
+          return;
+        }
+        // Calculate the time offset
         secondsLeft--;
         if(secondsLeft < 0) {
           secondsLeft = 0;
@@ -85,17 +92,10 @@
       triggerEvents();
       
       function dispatchEvent(eventName) {
-        var event = $.Event(eventName);
-        
-        if($this.closest('html').length === 0) {
-          stop();
-          callback.call($this, $.Event('removed'));
-          return;
-        };
-        
-        event.date  = new Date(new Date().valueOf() + secondsLeft);
-        event.value = values[eventName] || "0";
-        event.toDate = toDate;
+        var event     = $.Event(eventName);
+        event.date    = new Date(new Date().valueOf() + secondsLeft);
+        event.value   = values[eventName] || "0";
+        event.toDate  = toDate;
         event.lasting = lasting;
         switch(eventName) {
           case "seconds":
@@ -125,5 +125,4 @@
       start();
     });
   }
-  // Wrap the remove method to trigger an event when called
 })(jQuery);

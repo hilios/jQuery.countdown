@@ -237,7 +237,7 @@ describe("jquery.countdown", function() {
               ++removedEvent;
             }
           }
-          expect(removedEvent).toBe(1);
+          expect(removedEvent).toBeGreaterThan(1);
         });
       });
     });
