@@ -24,13 +24,13 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/hilios/jQuery.countdown/blob/1.0/LICENSE.txt"
+            "url": "https://github.com/hilios/jQuery.countdown/blob/1.0.0/LICENSE.txt"
         }
     ],
     "bugs": "https://github.com/hilios/jQuery.countdown/issues",
     "homepage": "https://github.com/hilios/jQuery.countdown",
     "docs": "https://github.com/hilios/jQuery.countdown",
-    "download": "https://raw.github.com/hilios/jQuery.countdown/master/src/jquery.countdown.min.js",
+    "download": "https://raw.github.com/hilios/jQuery.countdown/1.0.0/src/jquery.countdown.min.js",
     "dependencies": {
         "jquery": ">=1.5"
     }
