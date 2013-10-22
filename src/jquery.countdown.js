@@ -1,52 +1,75 @@
 /*
- * jQuery The Final Countdown plugin v1.0.0
- * http://github.com/hilios/jquery.countdown
- *
- * Copyright (c) 2011 Edson Hilios
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+* jQuery The Final Countdown plugin v1.0.0
+* http://github.com/hilios/jquery.countdown
+*
+* Copyright (c) 2011 Edson Hilios
+*
+* Permission is hereby granted, free of charge, to any person obtaining
+* a copy of this software and associated documentation files (the
+* "Software"), to deal in the Software without restriction, including
+* without limitation the rights to use, copy, modify, merge, publish,
+* distribute, sublicense, and/or sell copies of the Software, and to
+* permit persons to whom the Software is furnished to do so, subject to
+* the following conditions:
+*
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+* LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+* OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 (function($) {
   
   $.fn.countdown = function(toDate, callback) {
+  	//Default callback function if none was provided. This function requires no preexisting HTML.
+  	callback = typeof callback == 'function' ? callback : 
+  		function(event) {
+		    // Update every second one time only
+		    if(event.type != "seconds") return;
+		    // Calculate the time left
+		    var timeLeft = [
+		      event.lasting.hours + event.lasting.days * 24,
+		      event.lasting.minutes,
+		      event.lasting.seconds
+		    ];
+		    // Convert the number to two digits strings
+		    for(var i = 0; i < timeLeft.length; ++i) {
+		      timeLeft[i] = (timeLeft[i] < 10 ? '0' : '') + timeLeft[i].toString();
+		    }
+		    // Add contextual html
+		    timeLeft[0] = '<span class="hours">'+timeLeft[0]+'</span>';
+		    timeLeft[1] = '<span class="minutes">'+timeLeft[1]+'</span>';
+		   	timeLeft[2] = '<span class="seconds">'+timeLeft[2]+'</span>';
+		    // Update the html
+		    $(this).html(timeLeft.join('<span class="seperator">:</span>'));
+		  };
+  	
     var handlers = ['seconds', 'minutes', 'hours', 'days', 'weeks', 'daysLeft'];
     
     function delegate(scope, method) {
-      return function() { return method.call(scope) }
+      return function() { return method.call(scope); };
     }
     
     return this.each(function() {
       // Convert
       if(!(toDate instanceof Date)) {
         if(String(toDate).match(/^[0-9]*$/)) {
-          toDate = new Date(toDate);
+          toDate = new Date(Number(toDate));
         } else if( toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/) ||
             toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/)
             ) {
           toDate = new Date(toDate);
-        } else if(toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})/) || 
+        } else if(toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})/) ||
                   toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})/)
                   ) {
-          toDate = new Date(toDate)
+          toDate = new Date(toDate);
         } else {
-          throw new Error("Doesn't seen to be a valid date object or string")
+          throw new Error("Doesn't seen to be a valid date object or string");
         }
       }
       
@@ -72,11 +95,11 @@
         lasting = {
           seconds : secondsLeft % 60,
           minutes : Math.floor(secondsLeft / 60) % 60,
-          hours   : Math.floor(secondsLeft / 60 / 60) % 24,
-          days    : Math.floor(secondsLeft / 60 / 60 / 24),
-          weeks   : Math.floor(secondsLeft / 60 / 60 / 24 / 7),
+          hours : Math.floor(secondsLeft / 60 / 60) % 24,
+          days : Math.floor(secondsLeft / 60 / 60 / 24),
+          weeks : Math.floor(secondsLeft / 60 / 60 / 24 / 7),
           daysLeft: Math.floor(secondsLeft / 60 / 60 / 24) % 7
-        }
+        };
         for(var i=0; i<handlers.length; i++) {
           var eventName = handlers[i];
           if(values[eventName] != lasting[eventName]) {
@@ -84,7 +107,7 @@
             dispatchEvent(eventName);
           }
         }
-        if(secondsLeft == 0) { 
+        if(secondsLeft == 0) {
           stop();
           dispatchEvent('finished');
         }
@@ -92,10 +115,10 @@
       triggerEvents();
       
       function dispatchEvent(eventName) {
-        var event     = $.Event(eventName);
-        event.date    = new Date(new Date().valueOf() + secondsLeft);
-        event.value   = values[eventName] || "0";
-        event.toDate  = toDate;
+        var event = $.Event(eventName);
+        event.date = new Date(new Date().valueOf() + secondsLeft);
+        event.value = values[eventName] || "0";
+        event.toDate = toDate;
         event.lasting = lasting;
         switch(eventName) {
           case "seconds":
@@ -124,5 +147,5 @@
       if(interval) stop();
       start();
     });
-  }
+  };
 })(jQuery);
