@@ -29,7 +29,7 @@
     var handlers = ['seconds', 'minutes', 'hours', 'days', 'weeks', 'daysLeft'];
     
     function delegate(scope, method) {
-      return function() { return method.call(scope) }
+      return function() { return method.call(scope); };
     }
     
     return this.each(function() {
@@ -44,9 +44,9 @@
         } else if(toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})/) || 
                   toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})/)
                   ) {
-          toDate = new Date(toDate)
+          toDate = new Date(toDate);
         } else {
-          throw new Error("Doesn't seen to be a valid date object or string")
+          throw new Error("Doesn't seen to be a valid date object or string");
         }
       }
       
@@ -76,7 +76,7 @@
           days    : Math.floor(secondsLeft / 60 / 60 / 24),
           weeks   : Math.floor(secondsLeft / 60 / 60 / 24 / 7),
           daysLeft: Math.floor(secondsLeft / 60 / 60 / 24) % 7
-        }
+        };
         for(var i=0; i<handlers.length; i++) {
           var eventName = handlers[i];
           if(values[eventName] != lasting[eventName]) {
@@ -124,5 +124,5 @@
       if(interval) stop();
       start();
     });
-  }
+  };
 })(jQuery);
