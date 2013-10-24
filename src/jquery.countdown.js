@@ -31,28 +31,30 @@
   }
 }(function($) {
   
-  $.fn.countdown = function(toDate, callback) {
+  $.fn.countdown = function(endDate, callback) {
     var handlers = ['seconds', 'minutes', 'hours', 'days', 'weeks', 'daysLeft'];
     
     function delegate(scope, method) {
-      return function() { return method.call(scope) }
+      return function() { 
+        return method.call(scope);
+      };
     }
     
     return this.each(function() {
       // Convert
-      if(!(toDate instanceof Date)) {
-        if(String(toDate).match(/^[0-9]*$/)) {
-          toDate = new Date(toDate);
-        } else if( toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/) ||
-            toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/)
+      if(!(endDate instanceof Date)) {
+        if(String(endDate).match(/^[0-9]*$/)) {
+          endDate = new Date(endDate);
+        } else if( endDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/) ||
+            endDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/)
             ) {
-          toDate = new Date(toDate);
-        } else if(toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})/) || 
-                  toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})/)
+          endDate = new Date(endDate);
+        } else if(endDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})/) || 
+                  endDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})/)
                   ) {
-          toDate = new Date(toDate)
+          endDate = new Date(endDate);
         } else {
-          throw new Error("Doesn't seen to be a valid date object or string")
+          throw new Error("Doesn't seen to be a valid date object or string");
         }
       }
       
@@ -61,7 +63,7 @@
           lasting = {},
           interval = $this.data('countdownInterval'),
           currentDate = new Date(),
-          secondsLeft = Math.floor((toDate.valueOf() - currentDate.valueOf()) / 1000);
+          secondsLeft = Math.floor((endDate.valueOf() - currentDate.valueOf()) / 1000);
       
       function triggerEvents() {
         // Evaluate if this node is included in the html
@@ -82,7 +84,7 @@
           days    : Math.floor(secondsLeft / 60 / 60 / 24),
           weeks   : Math.floor(secondsLeft / 60 / 60 / 24 / 7),
           daysLeft: Math.floor(secondsLeft / 60 / 60 / 24) % 7
-        }
+        };
         for(var i=0; i<handlers.length; i++) {
           var eventName = handlers[i];
           if(values[eventName] != lasting[eventName]) {
@@ -90,7 +92,7 @@
             dispatchEvent(eventName);
           }
         }
-        if(secondsLeft == 0) { 
+        if(secondsLeft === 0) { 
           stop();
           dispatchEvent('finished');
         }
@@ -101,7 +103,7 @@
         var event     = $.Event(eventName);
         event.date    = new Date(new Date().valueOf() + secondsLeft);
         event.value   = values[eventName] || "0";
-        event.toDate  = toDate;
+        event.endDate  = endDate;
         event.lasting = lasting;
         switch(eventName) {
           case "seconds":
@@ -130,5 +132,5 @@
       if(interval) stop();
       start();
     });
-  }
+  };
 }));
