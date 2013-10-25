@@ -54,9 +54,9 @@ asyncTest('trigger the finish event', 1, function() {
 
 asyncTest('event object has {currentDate, finalDate, offset} properties', 3, function() {
     $dom.countdown('2020/10/20').on('update.countdown', function(event) {
-        ok(event.hasOwnProperty('currentDate'));
         ok(event.hasOwnProperty('finalDate'));
         ok(event.hasOwnProperty('offset'));
+        ok(event.hasOwnProperty('offsetDate'));
         start();
     });
 });

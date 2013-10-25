@@ -126,10 +126,9 @@
         },
         dispatchEvent: function(eventName) {
             var event = $.Event(eventName + '.countdown');
-            event.currentDate  = new Date(new Date().valueOf() + 
-                this.totalSecsLeft);
-            event.finalDate    = this.finalDate;
-            event.offset       = this.offset;
+            event.finalDate     = this.finalDate;
+            event.offset        = this.offset;
+            event.offsetDate    = new Date(this.totalSecsLeft);
             this.$el.trigger(event);
         }
     });
