@@ -19,7 +19,7 @@ module.exports = function(grunt) {
         // contrib-uglify
         uglify: {
             options: {
-                banner: grunt.file.read('Copyright.txt'),
+                banner: grunt.file.read('License.txt'),
                 preserveComments: false
             },
             all: {
