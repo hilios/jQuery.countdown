@@ -3,48 +3,40 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         // contrib-watch
         watch: {
-            source: {
-                files: ['src/**/*.js', 'lib/**/*.js', 'spec/**/*.js', 'Gruntfile.js'],
+            all: {
+                files: ['src/**/*.js', 'lib/**/*.js', 'test/**/*.js', 'Gruntfile.js'],
                 tasks: ['test', 'build']
             }
         },
         // contrib-jshint
         jshint: {
-            source: ['Gruntfile.js', 'src/**/*.js'] // , 'spec/**/*.js'
+            all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
         },
-        // contrib-jasmine
-        jasmine: {
-            source: {
-                src:            ['src/**/*.js'],
-                options: {
-                    // host : 'http://127.0.0.1:8998/',
-                    vendor:     ['lib/*.js'],
-                    helpers:    ['spec/*Helper.js'],
-                    specs:      ['spec/*Spec.js']
-                }
-            }
+        // contrib-qunit
+        qunit: {
+            all: 'test/**/*.html'
         },
         // contrib-uglify
         uglify: {
             options: {
                 banner: grunt.file.read('Copyright.txt'),
-                preserveComments: false,
-                compress: true,
-                report: true
+                preserveComments: false
             },
-            source: {
-                'src/jquery.countdown.js': ['src/jquery.countdown.min.js']
+            all: {
+                files: {
+                    'src/jquery.countdown.min.js': ['src/jquery.countdown.js']
+                }
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Project tasks
-    grunt.registerTask('test',      ['jshint', 'jasmine']);
+    grunt.registerTask('test',      ['jshint', 'qunit']);
     grunt.registerTask('build',     ['uglify']);
-    grunt.registerTask('default',   ['watch']);
+    grunt.registerTask('default',   ['build', 'watch']);
 };
