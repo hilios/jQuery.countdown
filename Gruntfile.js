@@ -19,8 +19,10 @@ module.exports = function(grunt) {
         // contrib-uglify
         uglify: {
             options: {
-                banner: grunt.file.read('License.txt'),
-                preserveComments: false
+                preserveComments: function(node, comment) {
+                    // Preserve the license banner
+                    return comment.col === 0 && comment.pos === 0;
+                }
             },
             all: {
                 files: {
@@ -36,7 +38,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Project tasks
+    grunt.registerTask('license', function() {
+
+    });
+
     grunt.registerTask('test',      ['jshint', 'qunit']);
-    grunt.registerTask('build',     ['uglify']);
+    grunt.registerTask('build',     ['license', 'uglify']);
     grunt.registerTask('default',   ['test', 'build', 'watch']);
 };
