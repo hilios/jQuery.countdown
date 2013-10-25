@@ -1,49 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Jasmine Spec Runner</title>
 
-  <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.1.0/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="../.grunt/grunt-contrib-jasmine/jasmine.css">
 
-  <link rel="stylesheet" type="text/css" href="../lib/jasmine-1.1.0/jasmine.css">
-  <script type="text/javascript" src="../lib/jquery-1.6.2.js"></script>
-  <script type="text/javascript" src="../lib/jasmine-1.1.0/jasmine.js"></script>
-  <script type="text/javascript" src="../lib/jasmine-1.1.0/jasmine-html.js"></script>
-  <!-- Source files -->
-  <script type="text/javascript" src="../src/jquery.countdown.js"></script>
-  <!-- Spec files -->
-  <script type="text/javascript" src="SpecHelper.js"></script>
-  <script type="text/javascript" src="Countdown.js"></script>
+
   
-  <script type="text/javascript">
-    (function() {
-      var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 1000;
+  <script src="../.grunt/grunt-contrib-jasmine/phantom-polyfill.js"></script>
+  
+  <script src="../.grunt/grunt-contrib-jasmine/jasmine.js"></script>
+  
+  <script src="../.grunt/grunt-contrib-jasmine/jasmine-html.js"></script>
+  
+  <script src="../lib/jquery.js"></script>
+  
+  <script src="SpecHelper.js"></script>
+  
+  <script src="../src/jquery.countdown.js"></script>
+  
+  <script src="CountdownSpec.js"></script>
+  
+  <script src="../.grunt/grunt-contrib-jasmine/reporter.js"></script>
+  
+  <script src="../.grunt/grunt-contrib-jasmine/jasmine-helper.js"></script>
+  
 
-      var trivialReporter = new jasmine.TrivialReporter();
-
-      jasmineEnv.addReporter(trivialReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return trivialReporter.specFilter(spec);
-      };
-
-      var currentWindowOnload = window.onload;
-
-      window.onload = function() {
-        if (currentWindowOnload) {
-          currentWindowOnload();
-        }
-        execJasmine();
-      };
-
-      function execJasmine() {
-        jasmineEnv.execute();
-      }
-
-    })();
-  </script>
 </head>
 <body>
 </body>
