@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         },
         // contrib-jshint
         jshint: {
-            all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
+            all: ['Gruntfile.js', 'src/jquery.countdown.js', 'test/**/*.js']
         },
         // contrib-qunit
         qunit: {
