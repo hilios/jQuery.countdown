@@ -23,7 +23,14 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-;(function($){
+ // AMD support
+;(function(factory) {
+    if (typeof define == 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else {
+        factory(jQuery);
+    }
+})(function($){
     var PRECISION = 100; // 0.1 seconds
     var instances  = {},
         matchers   = [];
@@ -45,13 +52,15 @@
         }
         // Caste string to date object
         if(String(dateString).match(matchers)) {
-            // If looks like a milisecond value cast to number before final casting
+            // If looks like a milisecond value cast to number before 
+            // final casting
             if(String(dateString).match(/^[0-9]*$/)) {
                 dateString = Number(dateString);
             }
             return new Date(dateString);
         } else {
-            throw new Error("Couldn't cast `"+dateString+"` to a date object.");
+            throw new Error("Couldn't cast `" + dateString +
+                "` to a date object.");
         }
     }
     // The Final Countdown
@@ -62,7 +71,8 @@
         this.offset         = {};
         this.currentDate    = new Date();
         this.finalDate      = parseDateString(finalDate); // Cast the given date
-        this.totalSecsLeft  = Math.floor((this.finalDate.valueOf() - this.currentDate.valueOf()) / 1000);
+        this.totalSecsLeft  = Math.floor((this.finalDate.valueOf() - 
+            this.currentDate.valueOf()) / 1000);
 
         if(callback) {
             this.$el.on('update.countdown', callback);
@@ -96,7 +106,8 @@
             }
             // Calculate the remaining time
             this.totalSecsLeft -= 1;
-            this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
+            this.totalSecsLeft = this.totalSecsLeft < 0 ? 
+                0 : this.totalSecsLeft;
             this.offset = {
                 seconds : this.totalSecsLeft % 60,
                 minutes : Math.floor(this.totalSecsLeft / 60) % 60,
@@ -115,7 +126,8 @@
         },
         dispatchEvent: function(eventName) {
             var event = $.Event(eventName + '.countdown');
-            event.currentDate  = new Date(new Date().valueOf() + this.totalSecsLeft);
+            event.currentDate  = new Date(new Date().valueOf() + 
+                this.totalSecsLeft);
             event.finalDate    = this.finalDate;
             event.offset       = this.offset;
             this.$el.trigger(event);
@@ -128,13 +140,16 @@
             if(instances.hasOwnProperty(this)) {
                 var method = argumentsArray[0];
                 if(Countdown.prototype[method]) {
-                    return instances[this][method].apply(instances[this], argumentsArray.slice(1));
+                    return instances[this][method].apply(instances[this], 
+                        argumentsArray.slice(1));
                 } else {
-                    $.error('Method %s does not exist on jQuery.countdown'.replace(/\%s/gi, method));
+                    $.error('Method %s does not exist on jQuery.countdown'.
+                        replace(/\%s/gi, method));
                 }
             } else {
-                instances[this] = new Countdown(this, argumentsArray[0], argumentsArray[1]);
+                instances[this] = new Countdown(this, argumentsArray[0], 
+                    argumentsArray[1]);
             }
         });
     };
-})(jQuery);
+});
