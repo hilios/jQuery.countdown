@@ -1,9 +1,7 @@
 QUnit.config.autostart = false;
 (function( factory ) {
     if ( typeof define !== "undefined" && define.amd ) {
-        require(['jquery', '../src/jquery.countdown'], function($) {
-            factory($);
-        });
+        require(['jquery', '../src/jquery.countdown'], factory);
     } else {
       factory(jQuery);
     }
