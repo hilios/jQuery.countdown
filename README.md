@@ -2,9 +2,9 @@ The Final Countdown (v.2.0.0)
 =============================
 **A simple and html agnostic date countdown plugin for jQuery**
 
-[The Final Countdown](http://www.youtube.com/watch?v=9jK-NcRmVcw) is a plugin tailored to be used in any layout, withou worring with CSS of HTML. One of the design requirements was to fit and mimic any popular countdown styles you see out there, like Groupon.
+[The Final Countdown](http://www.youtube.com/watch?v=9jK-NcRmVcw) is a plugin tailored to be used in any layout, without worring with CSS of HTML. The design goal was to fit and mimic any popular countdown styles you see out there in coupons and auction sites.
 
-So take control of your DOM, register yours callbacks and start counting...
+Take control of your DOM, register yours callbacks and start counting...
 
 #### Requirements ####
 
@@ -21,7 +21,7 @@ $('div#clock').countdown(finalDate[, callback]);
 
 ### Legacy sample
 
-The example bellow is the most simple usage of the plugin, under the [Documentation](#documentation) section you will find all about the `event` data object and comples examples to help achieve your goals. 
+The example bellow is the most simple usage of the plugin. Under the [Documentation](#documentation) section you will find all about the `event` data object the heart of the plugin and a couples of examples to help achieve your design goals. 
 
 ```html
 <div id="clock">
@@ -35,7 +35,7 @@ The example bellow is the most simple usage of the plugin, under the [Documentat
 <script type="text/javascript">
   $(function() {
     $('div#clock').countdown("2015/06/28", function(event) {
-      var $this = $(this);
+        var $this = $(this);
     });
   });
 </script>
@@ -45,20 +45,21 @@ The example bellow is the most simple usage of the plugin, under the [Documentat
 Documentation
 -------------
 
-For each DOM in your selector chain, and instance of the countdown will be created, with an interval that sends  signals (events) with all time remaining components has weeks, days, hours, so on so forth. The countdown will be wrapped within the DOM and will auto remove itself when the DOM is excluded.
+For each DOM in your selector chain, an instance of the countdown will be created with an interval, that sends  signals (events) with the time remaining components has weeks, days, hours, so on so forth. The countdown is wrapped within the DOM and will auto delete itself when the DOM is removed.
 
 ```javascript
 $('div#clock').countdown(finalDate[, callback]);
 ```
 
-With the legacy approach you will need to handle all events in a single callback (update, finish or stop) through the `event.type` property. If you preffer an event orieted programming style, this plugin also support the `on` method to register your callbacks.
+With the legacy approach you will need to handle all events in a single callback (update, finish or stop) through the `event.type` property, if you prefer an event orieted programming style, this plugin also support the default jQuery `on` method to register your callbacks.
 
 ```javascript
 $('div#clock').countdown(finalDate)
     .on('update', callback)
     .on('finish', callback);
 ```
-The only requirement to start the plugin is the `finalDate`, but you will need register a callback to update your DOM.
+
+To start the countdown the only requirement is the `finalDate`, but you still need register a callback to manipulate/update the DOM.
 
 ### Arguments
 
@@ -75,8 +76,7 @@ The target date that you are seeking to countdown. This argument can be one of t
     -   *MM/DD/YYYY hh:mm:ss*
 
 **callback**  
-
-A function that will handle the `event`, despite the fact we have three event types, all of them will have the same object properties (described bellow), where you can access the offset calculation.
+A function that will handle the `event` triggered, despite the fact we have three event types, all of them will have the same object properties (as described bellow), where you can access the offset calculation.
 
 ```javascript
 function(event) { ... }
@@ -114,16 +114,30 @@ All events are namespaced with `*.countdown`, but you can avoid them.
 
 The most important property is the *event.offset*, there you will find the information that you want do display to your end user.
 
+### Controls
+
+The plugin allow you to pause/resume the countdown anytime.
+
+```javascript
+// Pause the countdown
+$('div#clock').countdown('pause');
+$('div#clock').countdown('stop');
+// Resume the countdown
+$('div#clock').countdown('resume');
+$('div#clock').countdown('start');
+```
+
 Examples
 --------
 
-Please see our examples bellow to see wich on fits your scenario, and if anyone does it's a good starting point to a advanced usage of the script.
+Please see our examples bellow and see wich one fits your scenario, and if anyone doesn't it's a good starting point to a advanced usage of the script.
 
 -   [Coupon site with format hr:min:sec](#)
 -   [Coupon site with format N days hr:min:sec](#)
 -   [Coupon site with format N days hr:min:sec](#)
 -   [Groupon Getaways](#)
 -   [Multiple countdown on the same page](#)
+-   [Website launch](#)
 
 Contributing
 ------------
@@ -145,6 +159,15 @@ The functional tests were made against:
 *   Safari >= 5
 *   Firefox >= 5.0
 *   IE 7/8/9
+
+Contributors
+------------
+
+Thanks to for bug reporting and fixes
+
+*   Daniel Leavitt @dleavitt
+*   Fagner Brack @FagnerMartinsBrack
+*   Matthew Sigley @msigley
 
 License
 -------

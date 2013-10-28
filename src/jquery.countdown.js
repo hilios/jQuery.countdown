@@ -53,7 +53,7 @@
         // Caste string to date object
         if(String(dateString).match(matchers)) {
             // If looks like a milisecond value cast to number before 
-            // final casting
+            // final casting (Thanks to @msigley)
             if(String(dateString).match(/^[0-9]*$/)) {
                 dateString = Number(dateString);
             }
@@ -73,13 +73,12 @@
         this.finalDate      = parseDateString(finalDate); // Cast the given date
         this.totalSecsLeft  = Math.floor((this.finalDate.valueOf() - 
             this.currentDate.valueOf()) / 1000);
-
+        // Register the callbacks when supplied
         if(callback) {
             this.$el.on('update.countdown', callback);
             this.$el.on('stoped.countdown', callback);
             this.$el.on('finish.countdown', callback);
         }
-
         this.start();
     };
     $.extend(Countdown.prototype, {
@@ -109,7 +108,7 @@
             delete instances[this.el];
         },
         update: function() {
-            // Stop if dom is not in the html
+            // Stop if dom is not in the html (Thanks to @dleavitt)
             if(this.$el.closest('html').length === 0) {
                 this.remove();
                 return;
