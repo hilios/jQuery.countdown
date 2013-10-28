@@ -170,7 +170,7 @@ asyncTest('accept a native Date object', 1, function() {
     });
 });
 
-asyncTest('cast miliseconds as a string', 1, function() {
+asyncTest('cast miliseconds as a string (Bug report @msigley pull-request #17)', 1, function() {
     // Remember that the month starts at zero 0
     var ms = new Date(2020, 8, 9, 10, 11, 12).getTime();
     $dom.countdown(String(ms)).on('update.countdown', function(event) {
