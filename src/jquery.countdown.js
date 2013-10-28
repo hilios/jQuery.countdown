@@ -31,9 +31,9 @@
         factory(jQuery);
     }
 })(function($){
-    var PRECISION = 100; // 0.1 seconds
-    var instances  = {},
-        matchers   = [];
+    var PRECISION   = 100; // 0.1 seconds, used to update the DOM
+    var instances   = {},
+        matchers    = [];
     // Miliseconds
     matchers.push(/^[0-9]*$/.source);
     // Month/Day/Year hours:minutes:seconds
@@ -84,6 +84,9 @@
     };
     $.extend(Countdown.prototype, {
         start: function() {
+            if(this.interval !== null) {
+                throw new Error("Countdown is already running!");
+            }
             var self = this;
             this.update();
             this.interval = setInterval(function() {
@@ -92,7 +95,14 @@
         },
         stop: function() {
             clearInterval(this.interval);
+            this.interval = null;
             this.dispatchEvent('stoped');
+        },
+        pause: function() {
+            this.stop.call(this);
+        },
+        resume: function() {
+            this.start.call(this);
         },
         remove: function() {
             this.stop();

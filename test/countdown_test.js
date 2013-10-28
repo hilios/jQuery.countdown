@@ -103,6 +103,27 @@ asyncTest('stop/start the countdown', 2, function() {
     }, 1200);
 });
 
+asyncTest('pause/resume the countdown', 2, function() {
+    var callback = sinon.spy();
+    $dom.countdown('2020/10/20').on('update.countdown', callback);
+    // Stop after 0.51 sec
+    setTimeout(function() {
+        $dom.countdown('pause');
+    }, 510);
+    // Resume after 1 sec
+    setTimeout(function() {
+        // Should execute the updated how many times of precision required
+        // Note: Se the PRECISION variable
+        ok(callback.callCount === 5);
+        $dom.countdown('resume');
+    }, 1000);
+    // Verify if update event was called once more after 1.2 sec
+    setTimeout(function() {
+        ok(callback.callCount > 5);
+        start();
+    }, 1200);
+});
+
 asyncTest('remove the countdown instance', 1, function() {
     var callback = sinon.spy();
     $dom.countdown('2020/10/20').on('update.countdown', callback);
@@ -123,6 +144,13 @@ asyncTest('remove the countdown if dom was removed', 1, function() {
         ok(callback.callCount === 0);
         start();
     }, 500);
+});
+
+test('throw an error when try to start a countdown that isalready running', function() {
+    $dom.countdown('2020/10/20');
+    throws(function() {
+        $dom.countdown('start');
+    });
 });
 
 module('Date manipulation');
