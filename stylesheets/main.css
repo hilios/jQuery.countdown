@@ -1,0 +1,27 @@
+body {
+    font-size: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding-top: 51px;
+}
+h1{
+    font-size: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-weight: normal;
+}
+.navbar{
+    background-color: #222222;
+    margin-bottom: 0;
+}
+.jumbotron{
+    background-color: #242424;
+    background-image: url('/images/background.png');
+    border-top: 1px solid #444444;
+    color: #ffffff;
+}
+.jumbotron .btn-primary{
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    line-height: 40px;
+    margin-top: 80px;
+}
+.jumbotron .btn-primary:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
