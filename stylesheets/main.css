@@ -6,8 +6,25 @@ header h1{
 }
 footer{
     border-top: 1px solid #cccccc;
+    font-size: 85%;
     margin-top: 20px;
     padding: 40px 0;
+}
+footer ul{
+    display: block;
+    padding: 0;
+    margin: 10px 0;
+}
+footer li{
+    display: inline-block;
+    float: left;
+}
+footer li:after{
+    content: "• ";
+    margin: 0 5px;
+}
+footer li:last-child:after{
+    content: "";
 }
 .navbar{
     background-color: #222222;

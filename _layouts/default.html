@@ -46,15 +46,24 @@
 </nav>
 {{ content }}
 <footer>
-    <p class="container">
-        {% include github_buttons.html %}
-        <br/>
-        <small>
-            The Final Countdown (jQuery.countdown) was created and is maintained by <a href="https://github.com/hilios" target="_blank">@hilios</a><br>
-            This is a free software is licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>
-        </small>
-
-    </p>
+    <div class="container">
+        <div class="row">
+            <p class="col-md-6">
+                The Final Countdown (jQuery.countdown) was created and is maintained by <a href="https://github.com/hilios" target="_blank">@hilios</a>
+                <br/>
+                This is a free software is licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>
+            </p>
+            <div class="col-md-6">
+                {% include github_buttons.html %}
+                <ul>
+                    <li><a href="{{ site.baseurl }}documentation.html">Documentation</a></li>
+                    <li><a href="{{ site.baseurl }}examples.html">Examples</a></li>
+                    <li><a href="https://github.com/hilios/jQuery.countdown">GitHub Project</a></li>
+                    <li><a href="http://plugins.jquery.com/countdown/">jQuery Plugins</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </footer>
 <a href="https://github.com/hilios/jQuery.countdown"><img style="position: absolute; top: 0; right: 0; border: 0; position: fixed; z-index: 1050;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 </body>
