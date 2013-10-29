@@ -1,6 +1,8 @@
 name:       The Final Countdown
 nickname:   jQuery.countdown
 baseurl:    http://hilios.github.io/jQuery.countdown/
-markdown:   redcarpet
-pygments:   true
 permalink:  examples/:title
+pygments:   true
+markdown:   redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
