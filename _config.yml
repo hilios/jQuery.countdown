@@ -3,3 +3,4 @@ nickname:   jQuery.countdown
 baseurl:    http://hilios.github.io/jQuery.countdown/
 markdown:   redcarpet
 pygments:   true
+permalink:  examples/:title
