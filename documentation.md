@@ -99,7 +99,7 @@ Event object
 }
 ```
 
-The most important property is the **event.offset**, there you will find the information that you want do display to your end user.
+Most of the time you will be using the `event.strftime` function to render the countdown, the next section goes deeper in this subject.
 
 <a class="anchor" id="formatter"></a>
 
@@ -116,47 +116,56 @@ Most of the directives are zero-padded (01, 02, 03, ..., 10) by default, if you 
 
 <table class="table table-striped table-bordered">
     <tr>
-        <th>Char</th>
+        <th>Short version</th>
+        <th>Long version</th>
         <th>Explanation</th>
         <th>Blank-padded</th>
     </tr>
     <tr>
         <td><code>%Y</code></td>
+        <td><code>%years</code></td>
         <td>Years left</td>
         <td>-</td>
     </tr>
     <tr>
         <td><code>%m</code></td>
+        <td><code>%months</code></td>
         <td>Monts left</td>
         <td><code>%-m</code></td>
     </tr>
     <tr>
         <td><code>%w</code></td>
+        <td><code>%weeks</code></td>
         <td>Weeks left</td>
         <td>-</td>
     </tr>
     <tr>
         <td><code>%d</code></td>
+        <td><code>%days</code></td>
         <td>Days left</td>
         <td><code>%-d</code></td>
     </tr>
     <tr>
         <td><code>%D</code></td>
+        <td><code>%totalDays</code></td>
         <td>Total amount of days left</td>
         <td><code>%-D</code></td>
     </tr>
     <tr>
         <td><code>%H</code></td>
+        <td><code>%hours</code></td>
         <td>Hours left</td>
         <td><code>%-H</code></td>
     </tr>
     <tr>
         <td><code>%M</code></td>
+        <td><code>%minutes</code></td>
         <td>Minutes left</td>
         <td><code>%-M</code></td>
     </tr>
     <tr>
         <td><code>%S</code></td>
+        <td><code>%seconds</code></td>
         <td>Seconds left</td>
         <td><code>%-S</code></td>
     </tr>
