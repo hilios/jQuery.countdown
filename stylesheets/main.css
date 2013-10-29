@@ -15,7 +15,7 @@ footer{
 }
 .jumbotron{
     background-color: #242424;
-    background-image: url('/images/background.png');
+    background-image: url('../images/background.png');
     border-top: 1px solid #444444;
     color: #ffffff;
 }
@@ -30,7 +30,7 @@ footer{
     background-color: rgba(255, 255, 255, 0.3);
 }
 .icon-github{
-    background-image: url('/images/octocat-icon.png');
+    background-image: url('../images/octocat-icon.png');
     display: inline-block;
     height: 23px;
     width: 28px;
