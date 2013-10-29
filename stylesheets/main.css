@@ -56,7 +56,7 @@ footer li:last-child:after{
 .affix{
     top: 60px;
 }
-.content-menu ul{
+.toc ul{
     margin-top: 10px;
 }
 /* Fix the anchor position top problem */

@@ -1,7 +1,8 @@
 ---
 layout:     content
 title:      Documentation
-submenu:
+toc:        documentation-toc.html
+toc-content:
     - Introduction
     - Events
     - Event object

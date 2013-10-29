@@ -1,26 +1,17 @@
 ---
 layout: default
-scrollspy: '#sub-nav'
+scrollspy: '#toc'
 ---
 <div class="container page-header">
     <h1>{{ page.title }}</h1>
 </div>
 <div class="container">
     <div class="row">
-        {% if page.submenu %}
-        <nav id="sub-nav" class="col-md-2 content-menu">
-            <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset="130">
-            {% for menu in page.submenu %}
-                <li>
-                    <a href="#{{ menu | downcase | replace:' ','-' }}">
-                        {{ forloop.index }}. {{ menu }}
-                    </a>
-                </li>
-            {% endfor %}
-            </ul>
-        </nav>
+        {% if page.toc %}
+        toc-content
+        <nav id="toc" class="toc col-md-2">{% include toc %}</nav>
         {% endif %}
-        <article class="{% if page.submenu %}col-md-10{% else %}col-md-12{% endif %}">
+        <article class="{% if page.subnav %}col-md-10{% else %}col-md-12{% endif %}">
             {{ content }}
         </article>
     </div>
