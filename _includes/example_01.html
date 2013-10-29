@@ -7,11 +7,12 @@
   <span class="seconds"></span> seconds
 </div>
 <script type="text/javascript">
-  $('#simple-countdown').countdown("2014/01/01", function(event) {
+  $('#simple-countdown').countdown("{{ site.time | date: '%Y' | plus:1 }}/01/01", function(event) {
     var $this = $(this);
     for(var key in event.offset) {
-      if(event.hasOwnProperty(key)) { return; }
-      $this.find('.' + key).html(event.offset[key]);
+      if(event.offset.hasOwnProperty(key)) {
+        $this.find('.' + key).html(event.offset[key]);
+      }
     }
   });
 </script>
