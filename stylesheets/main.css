@@ -81,6 +81,16 @@ footer li:last-child:after{
     line-height: 25px;
     padding: 5px;
 }
-.content-menu{
-    margin-top: 38px;
+.affix{
+    top: 60px;
+}
+.content-menu ul{
+    margin-top: 10px;
+}
+/* Fix the anchor position top problem */
+.anchor{
+    display: block; 
+    position: relative; 
+    top: -60px; 
+    visibility: hidden;
 }

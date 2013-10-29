@@ -2,14 +2,22 @@
 layout:     content
 title:      Documentation
 submenu:
-    -   label:  Introduction
-        link:   '#introduction'
+    - Introduction
+    - Events
+    - Event object
+    - Controls
 ---
 
-Initialization
+#### Requirements ####
+
+Since version 2.0.0 we only support jQuery up to version 1.7, for legacy 1.6 support please use the version 1.0.1.
+
+<a class="anchor" id="introduction"></a>
+
+Introduction
 --------------
 
-For each DOM in your selector chain, an instance of the countdown will be created with an interval, that sends  signals (events) with the time remaining components has weeks, days, hours, so on so forth. The countdown is wrapped within the DOM and will auto delete itself when the DOM is removed.
+For each DOM in your selector chain, an instance of the countdown will be created with an interval, that sends  signals (events) with the time remaining components has weeks, days, hours, so on so forth (for more details see [Event object](#event-object) section). The countdown is wrapped within the DOM and will auto delete itself when the DOM is removed.
 
 ```javascript
 $('div#clock').countdown(finalDate[, callback]);
@@ -46,48 +54,26 @@ A function that will handle the `event` triggered, despite the fact we have thre
 function(event) { ... }
 ```
 
-Legacy sample
--------------
-
-The example bellow is the most simple usage of the plugin. Under the [Documentation](#documentation) section you will find all about the `event` data object the heart of the plugin and a couples of examples to help achieve your design goals. 
-
-```html
-<div id="clock">
-    <span class="weeks"></span>      Weeks
-    <span class="days"></span>       Days
-    <span class="hours"></span>      Hours
-    <span class="minutes"></span>    Minutes
-    <span class="seconds"></span>    Seconds
-</div>
-
-<script type="text/javascript">
-    $(function() {
-        $('#clock').countdown("2015/06/28", function(event) {
-            var $this = $(this);
-            for(var key in event) {
-                if(event.hasOwnProperty(key)) { return; }
-                $this.find('.' + key).html(event[key]);
-            }
-        });
-    });
-</script>
-```
-[Run this example](#)
+<a class="anchor" id="events"></a>
 
 Events
 ------
   
 This plugin will trigger an event whenever some state change like:
--   **Update**: Every time we need to update the DOM
--   **Finish**: Inform when was finished
--   **Stop**:   Inform that was paused
+
+-   **Update**: Triggered to update the DOM
+-   **Finish**: Triggered when finished
+-   **Stop**:   Triggered that paused
 
 To register a callback use the following *event.type*:
+
 -   `update.countdown`
 -   `finish.countdown`
 -   `stop.countdown`
 
 All events are namespaced with `*.countdown`, but you can avoid them.
+
+<a class="anchor" id="event-object"></a>
 
 Event object
 ------------
@@ -108,7 +94,9 @@ Event object
 }
 ```
 
-The most important property is the *event.offset*, there you will find the information that you want do display to your end user.
+The most important property is the **event.offset**, there you will find the information that you want do display to your end user.
+
+<a class="anchor" id="controls"></a>
 
 Controls
 --------
@@ -123,8 +111,3 @@ $('div#clock').countdown('stop');
 $('div#clock').countdown('resume');
 $('div#clock').countdown('start');
 ```
-
-Requirements
-------------
-
-Since version 2.0.0 we only support jQuery up to version 1.7, for legacy 1.6 support please use the v1.0.1 branch.
