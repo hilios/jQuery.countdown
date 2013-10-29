@@ -10,7 +10,7 @@ submenu:
 
 #### Requirements ####
 
-Since version 2.0.0 we only support jQuery up to version 1.7, for legacy 1.6 support please use the version 1.0.1.
+Since version 2.0.0 we only support **jQuery**  above 1.7 (including 2.0). For legacy 1.6 support please use the version 1.0.1.
 
 <a class="anchor" id="introduction"></a>
 
