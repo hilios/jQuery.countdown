@@ -27,7 +27,8 @@ footer{
     margin-top: 50px;
 }
 .jumbotron .btn-primary:hover{
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: #ffffff;
+    color: #000000;
 }
 .icon-github{
     background-image: url('../images/octocat-icon.png');
