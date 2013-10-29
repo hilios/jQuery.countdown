@@ -23,32 +23,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{{ site.nickname }}</a>
+            <a class="navbar-brand" href="/">{{ site.nickname }}</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Documentation</a></li>
-                <li><a href="#">Example</a></li>
-                <li><a href="#">GitHub</a></li>
+                <li {% if page.url == '/documentation.html' %}class="active"{% endif %}>
+                    <a href="/documentation.html">Documentation</a>
+                </li>
+                <li {% if page.url == '/examples.html' %}class="active"{% endif %}>
+                    <a href="/examples.html">Examples</a>
+                </li>
+                <li><a href="https://github.com/hilios/jQuery.countdown" target="_blank">Source code</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<header class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <h1>{{ site.name }}</h1>
-                <p>A simple and html agnostic date countdown plugin for jQuery</p>
-                <p><a class="btn btn-primary btn-lg">Download jQuery.countdown</a></p>
-            </div>
-            <div class="col-md-5 text-right">
-                <iframe width="420" height="315" src="//www.youtube.com/embed/9jK-NcRmVcw" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</header>
 {{ content }}
 <a href="https://github.com/hilios/jQuery.countdown"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1050;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 <script src="//code.jquery.com/jquery.js"></script>

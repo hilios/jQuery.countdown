@@ -20,8 +20,15 @@ h1{
     background-color: transparent;
     border: 1px solid #ffffff;
     line-height: 40px;
+    margin-right: 10px;
     margin-top: 80px;
 }
 .jumbotron .btn-primary:hover{
     background-color: rgba(255, 255, 255, 0.3);
+}
+.icon-github{
+    background-image: url('/images/octocat-icon.png');
+    display: inline-block;
+    height: 23px;
+    width: 28px;
 }
