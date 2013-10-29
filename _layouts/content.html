@@ -1,0 +1,25 @@
+---
+layout: default
+scrollspy: .nav-stacked
+---
+<div class="container">
+    <div class="row">
+        <nav class="col-md-2 content-menu">
+            <ul class="nav nav-pills nav-stacked" data-spy="affix">
+            {% for menu in page.submenu %}
+                <li>
+                    <a href="{{ menu.link }}">
+                        {{ forloop.index }}. {{ menu.label }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </nav>
+        <article class="col-md-10">
+            <div class="page-header">
+                <h1>{{ page.title }}</h1>
+            </div>
+            {{ content }}
+        </article>
+    </div>
+</div>

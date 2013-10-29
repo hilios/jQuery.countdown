@@ -12,7 +12,7 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="{{ site.baseurl }}javascripts/jquery.countdown.min.js"></script>
 </head>
-<body>
+<body {% if page.scrollspy %}data-spy="scroll" data-target="{{ page.scrollspy }}"{% endif %}>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
