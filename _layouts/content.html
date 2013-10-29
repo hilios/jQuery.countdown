@@ -7,6 +7,7 @@ scrollspy: '#sub-nav'
 </div>
 <div class="container">
     <div class="row">
+        {% if page.submenu %}
         <nav id="sub-nav" class="col-md-2 content-menu">
             <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset="130">
             {% for menu in page.submenu %}
@@ -18,7 +19,8 @@ scrollspy: '#sub-nav'
             {% endfor %}
             </ul>
         </nav>
-        <article class="col-md-10">
+        {% endif %}
+        <article class="{% if page.submenu %}col-md-10{% else %}col-md-12{% endif %}">
             {{ content }}
         </article>
     </div>
