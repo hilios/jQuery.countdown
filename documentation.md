@@ -103,64 +103,66 @@ The most important property is the **event.offset**, there you will find the inf
 
 <a class="anchor" id="formatter"></a>
 
-Formatter <small>(strftime)</small>
+Formatter <small>(event.strftime)</small>
 -----------------------------------
 
-A simple formatter that helps keep your code more semantic and avoid repetitive tasks, like prepending zeros. This function was inspired on [Ruby's strftime method](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/date/rdoc/DateTime.html#method-i-strftime).
+A simple formatter that helps keep your code more semantic and avoid repetitive tasks, like prepending zeros. 
+
+It formats the offset date according to the directives in the given format string. The directive consists of a percent (%) character. Any text not listed as a directive will be passed through to the output string.
+
+Most of the directives are zero-padded (01, 02, 03, ..., 10) by default, if you need the blank-padded version (1, 2, 3, ..., 10) refer to the right column directive.
 
 #### Directives ####
 
 <table class="table table-striped table-bordered">
     <tr>
-        <th>Zero-padded</th>
+        <th>Char</th>
+        <th>Explanation</th>
         <th>Blank-padded</th>
-        <th></th>
     </tr>
     <tr>
-        <td>-</td>
         <td><code>%Y</code></td>
         <td>Years left</td>
+        <td>-</td>
     </tr>
     <tr>
         <td><code>%m</code></td>
-        <td><code>%-m</code></td>
         <td>Monts left</td>
+        <td><code>%-m</code></td>
     </tr>
     <tr>
-        <td>-</td>
         <td><code>%w</code></td>
         <td>Weeks left</td>
+        <td>-</td>
     </tr>
     <tr>
         <td><code>%d</code></td>
-        <td><code>%-d</code></td>
         <td>Days left</td>
+        <td><code>%-d</code></td>
     </tr>
     <tr>
         <td><code>%D</code></td>
-        <td><code>%-D</code></td>
         <td>Total amount of days left</td>
+        <td><code>%-D</code></td>
     </tr>
     <tr>
         <td><code>%H</code></td>
-        <td><code>%-H</code></td>
         <td>Hours left</td>
+        <td><code>%-H</code></td>
     </tr>
     <tr>
         <td><code>%M</code></td>
-        <td><code>%-M</code></td>
         <td>Minutes left</td>
+        <td><code>%-M</code></td>
     </tr>
     <tr>
         <td><code>%S</code></td>
-        <td><code>%-S</code></td>
         <td>Seconds left</td>
+        <td><code>%-S</code></td>
     </tr>
 </table>
 
-<small>**Blank-paded serie:** [1, 2, 3, ..., 10] – **Zero-paded serie**: [01, 02, 03, ..., 10]</small>
-
-Bellow we show some use cases:
+Bellow some use cases examples:
 
 ```javascript
 event.strftime('%W weeks %-D days %-H h %M min %S sec'); // 1 Week 2 days 3 h 04 min 05 sec 
