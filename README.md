@@ -16,15 +16,12 @@ Getting started
 
 <iframe src="http://hilios.github.io/jQuery.countdown/preview.html"></iframe>
 
-Documentation
--------------
+### Documentation ###
 
-Our documentation is powered by Jekyll and hosted in GitHub Pages. at http://hilios.github.io/jQuery.countdown/documentation.html. 
+Our documentation is powered by Jekyll and hosted in GitHub Pages at http://hilios.github.io/jQuery.countdown/documentation.html. 
+### Examples ###
 
-Examples
---------
-
-Please see our examples bellow and see wich one fits your scenario, and if anyone doesn't it's a good starting point to a advanced usage of the script.
+There are few ways to get started, from the most simple example to the advanced, we support many different countdown styles, see wich one fits your scenario, and if anyone doesn't it's a good starting point to customize the script.
 
 -   [Coupon site with format hr:min:sec](#)
 -   [Coupon site with format N days hr:min:sec](#)
@@ -54,8 +51,7 @@ The functional tests were made against:
 *   Firefox >= 5.0
 *   IE 7/8/9
 
-Contributors
-------------
+### Contributors ###
 
 Thanks for bug reporting and fixes:
 
@@ -63,8 +59,7 @@ Thanks for bug reporting and fixes:
 *   Fagner Brack (@FagnerMartinsBrack)
 *   Matthew Sigley (@msigley)
 
-License
--------
+### License ###
 
 Copyright (c) 20011 Edson Hilios. This is a free software is licensed under the MIT License.
 
