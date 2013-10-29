@@ -5,6 +5,7 @@ submenu:
     - Introduction
     - Events
     - Event object
+    - Formatter
     - Controls
 ---
 
@@ -43,9 +44,10 @@ The target date that you are seeking to countdown. This argument can be one of t
 *   String formatted as following:
     -   *YYYY/MM/DD*
     -   *MM/DD/YYYY*
-    -   *YYYY/MM/DD hh:mm:ss.sss*
     -   *YYYY/MM/DD hh:mm:ss*
     -   *MM/DD/YYYY hh:mm:ss*
+    -   *YYYY/MM/DD hh:mm:ss.sss*
+    -   *MM/DD/YYYY hh:mm:ss.sss*
 
 **callback**  
 A function that will handle the `event` triggered, despite the fact we have three event types, all of them will have the same object properties (as described bellow), where you can access the offset calculation.
@@ -83,18 +85,88 @@ Event object
     type:           '{String} The namespaced event type {update,finish,stop}.countdown',
     finalDate:      '{Date} The Date native object'
     offset: {
-        seconds:    '{int} The remaining seconds for the next minute',
-        minutes:    '{int} The remaining minutes for the next hour',
-        hours:      '{int} The reamining hours for the next day',
-        days:       '{int} The remaining days for the week',
-        weeks:      '{int} The remaining weeks to the final date',
-        fullDays:   '{int} The remaining day to the final date'
+        seconds:    '{int} Seconds left for the next minute',
+        minutes:    '{int} Minutes left for the next hour',
+        hours:      '{int} Hours left until next day',
+        days:       '{int} Days left until next week',
+        fullDays:   '{int} Total amount of days left until final date',
+        weeks:      '{int} Weeks left until the final date',
+        months:     '{int} Months left until final date' ,
+        years:      '{int} Year left until final date'
     },
-    offsetDate:     '{Date} A native date with the offset value'
+    offsetDate:     '{Date} A native date with the offset value',
+    strftime:       '{Function} A simple formatter function'
 }
 ```
 
 The most important property is the **event.offset**, there you will find the information that you want do display to your end user.
+
+<a class="anchor" id="formatter"></a>
+
+Formatter <small>(strftime)</small>
+-----------------------------------
+
+A simple formatter that helps keep your code more semantic and avoid repetitive tasks, like prepending zeros. This function was inspired on [Ruby's strftime method](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/date/rdoc/DateTime.html#method-i-strftime).
+
+#### Directives ####
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>Zero-padded</th>
+        <th>Blank-padded</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>-</td>
+        <td><code>%Y</code></td>
+        <td>Years left</td>
+    </tr>
+    <tr>
+        <td><code>%m</code></td>
+        <td><code>%-m</code></td>
+        <td>Monts left</td>
+    </tr>
+    <tr>
+        <td>-</td>
+        <td><code>%w</code></td>
+        <td>Weeks left</td>
+    </tr>
+    <tr>
+        <td><code>%d</code></td>
+        <td><code>%-d</code></td>
+        <td>Days left</td>
+    </tr>
+    <tr>
+        <td><code>%D</code></td>
+        <td><code>%-D</code></td>
+        <td>Total amount of days left</td>
+    </tr>
+    <tr>
+        <td><code>%H</code></td>
+        <td><code>%-H</code></td>
+        <td>Hours left</td>
+    </tr>
+    <tr>
+        <td><code>%M</code></td>
+        <td><code>%-M</code></td>
+        <td>Minutes left</td>
+    </tr>
+    <tr>
+        <td><code>%S</code></td>
+        <td><code>%-S</code></td>
+        <td>Seconds left</td>
+    </tr>
+</table>
+
+<small>**Blank-paded serie:** [1, 2, 3, ..., 10] – **Zero-paded serie**: [01, 02, 03, ..., 10]</small>
+
+Bellow we show some use cases:
+
+```javascript
+event.strftime('%W weeks %-D days %-H h %M min %S sec'); // 1 Week 2 days 3 h 04 min 05 sec 
+```
+
+
 
 <a class="anchor" id="controls"></a>
 
