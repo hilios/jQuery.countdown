@@ -8,10 +8,16 @@ scrollspy: '#toc'
 <div class="container">
     <div class="row">
         {% if page.toc %}
-        toc-content
-        <nav id="toc" class="toc col-md-2">{% include toc %}</nav>
+        <nav id="toc" class="toc col-md-2">
+            {% case page.toc %}
+            {% when 'anchors' %}
+                {% include anchors-toc.html %}
+            {% when 'examples' %}
+                {% include examples-toc.html %}
+            {% endcase %}
+        </nav>
         {% endif %}
-        <article class="{% if page.subnav %}col-md-10{% else %}col-md-12{% endif %}">
+        <article class="{% if page.toc %}col-md-10{% else %}col-md-12{% endif %}">
             {{ content }}
         </article>
     </div>

@@ -1,7 +1,7 @@
 ---
 layout:     content
 title:      Examples
-toc:        examples-toc.html
+toc:        examples
 ---
 
 ### Legacy style ###

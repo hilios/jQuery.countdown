@@ -1,7 +1,7 @@
 ---
 layout:     content
 title:      Documentation
-toc:        documentation-toc.html
+toc:        anchors
 toc-content:
     - Introduction
     - Events
