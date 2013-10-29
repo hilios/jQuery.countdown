@@ -36,12 +36,10 @@
         matchers    = [];
     // Miliseconds
     matchers.push(/^[0-9]*$/.source);
-    // Month/Day/Year hours:minutes:seconds
-    matchers.push(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/.source);
-    matchers.push(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})/.source);
-    // Year/Day/Month hours:minutes:seconds
-    matchers.push(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/.source);
-    matchers.push(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})/.source);
+    // Month/Day/Year [hours:minutes:seconds[.TZD]]
+    matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}((\s|T)[0-9]{1,2}(\:[0-9]{2}){2})?/.source);
+    // Year/Day/Month [hours:minutes:seconds[.TZD]]
+    matchers.push(/[0-9]{4}(\/[0-9]{1,2}){2}((\s|T)[0-9]{1,2}(\:[0-9]{2}){2})?/.source);
     // Cast the matchers to a regular expression object
     matchers = new RegExp(matchers.join("|"));
     // Parse a Date formatted has String to a native object
@@ -62,6 +60,10 @@
             throw new Error("Couldn't cast `" + dateString +
                 "` to a date object.");
         }
+    }
+    //
+    function strftime(format) {
+        return;
     }
     // The Final Countdown
     var Countdown = function(el, finalDate, callback) {
@@ -122,8 +124,9 @@
                 minutes : Math.floor(this.totalSecsLeft / 60) % 60,
                 hours   : Math.floor(this.totalSecsLeft / 60 / 60) % 24,
                 days    : Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                fullDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
                 weeks   : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
-                fullDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24)
+                years   : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
             };
             // Dispatch an event
             if(this.totalSecsLeft === 0) {
@@ -138,6 +141,7 @@
             event.finalDate     = this.finalDate;
             event.offset        = this.offset;
             event.offsetDate    = new Date(this.totalSecsLeft);
+            event.strftime      = strftime;
             this.$el.trigger(event);
         }
     });

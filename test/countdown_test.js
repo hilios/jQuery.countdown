@@ -52,28 +52,34 @@ asyncTest('trigger the finish event', 1, function() {
     });
 });
 
-asyncTest('event object has {currentDate, finalDate, offset} properties', 3, function() {
+asyncTest('event object has {finalDate, offset, offsetDate, strftime} properties', function() {
+    expect(4);
+
     $dom.countdown('2020/10/20').on('update.countdown', function(event) {
         ok(event.hasOwnProperty('finalDate'));
         ok(event.hasOwnProperty('offset'));
         ok(event.hasOwnProperty('offsetDate'));
+        ok(event.hasOwnProperty('strftime'));
         start();
     });
 });
 
-asyncTest('event.offset object has {seconds, minutes, hours, days, weeks, fullDays} properties', 6, function() {
+asyncTest('event.offset object has {seconds, minutes, hours, days, fullDays, weeks, years} properties', function() {
+    expect(7);
+
     $dom.countdown('2020/10/20').on('update.countdown', function(event) {
         ok(event.offset.hasOwnProperty('seconds'));
         ok(event.offset.hasOwnProperty('minutes'));
         ok(event.offset.hasOwnProperty('hours'));
         ok(event.offset.hasOwnProperty('days'));
-        ok(event.offset.hasOwnProperty('weeks'));
         ok(event.offset.hasOwnProperty('fullDays'));
+        ok(event.offset.hasOwnProperty('weeks'));
+        ok(event.offset.hasOwnProperty('years'));
         start();
     });
 });
 
-asyncTest('allow the callback be setted uppon initialization', 1, function() {
+asyncTest('allow the callback be setted uppon initialization (legacy style)', 1, function() {
     $dom.countdown('2020/10/20', function(event) {
         ok(true); // Up to this point the event was dispatched
         start();
@@ -202,13 +208,6 @@ asyncTest('cast YYYY/MM/DD', 1, function() {
     });
 });
 
-asyncTest('cast MM/DD/YYYY hh:mm:ss', 1, function() {
-    $dom.countdown('11/22/2020 12:34:56').on('update.countdown', function(event) {
-        ok(event.finalDate.toString().match(/Nov 22 2020 12:34:56/));
-        start();
-    });
-});
-
 asyncTest('cast MM/DD/YYYY', 1, function() {
     $dom.countdown('11/22/2020').on('update.countdown', function(event) {
         ok(event.finalDate.toString().match(/Nov 22 2020 00:00:00/));
@@ -219,6 +218,15 @@ asyncTest('cast MM/DD/YYYY', 1, function() {
 asyncTest('cast MM/DD/YYYY', 1, function() {
     $dom.countdown('11/22/2020').on('update.countdown', function(event) {
         ok(event.finalDate.toString().match(/Nov 22 2020 00:00:00/));
+        start();
+    });
+});
+
+module('strftime');
+
+asyncTest('cast MM/DD/YYYY', 1, function() {
+    $dom.countdown('11/22/2020').on('update.countdown', function(event) {
+        ok(true);
         start();
     });
 });
