@@ -1,10 +1,13 @@
-body {
-    font-size: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+body{
     padding-top: 51px;
 }
-h1{
-    font-size: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+header h1{
     font-weight: normal;
+}
+footer{
+    border-top: 1px solid #cccccc;
+    margin-top: 20px;
+    padding: 40px 0;
 }
 .navbar{
     background-color: #222222;
@@ -21,7 +24,7 @@ h1{
     border: 1px solid #ffffff;
     line-height: 40px;
     margin-right: 10px;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .jumbotron .btn-primary:hover{
     background-color: rgba(255, 255, 255, 0.3);
@@ -31,4 +34,32 @@ h1{
     display: inline-block;
     height: 23px;
     width: 28px;
+}
+/* Getting started example */
+.getting-started #simple-countdown{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    border: 1px solid #cccccc;
+    margin: 20px 0;
+    padding: 10px 0;
+    text-align: center;
+}
+.getting-started #simple-countdown span{
+    border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+
+    background-color: #333333;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px;
 }

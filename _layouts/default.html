@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <!-- syntax highlighting CSS -->
-    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:300italic,300'>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/application.css">
     <link rel="stylesheet" href="/stylesheets/syntax.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery.countdown.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -34,14 +34,25 @@
                 <li {% if page.url == '/examples.html' %}class="active"{% endif %}>
                     <a href="/examples.html">Examples</a>
                 </li>
-                <li><a href="https://github.com/hilios/jQuery.countdown" target="_blank">Source code</a></li>
+                <li>
+                    <a href="https://github.com/hilios/jQuery.countdown" target="_blank">Source code</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 {{ content }}
-<a href="https://github.com/hilios/jQuery.countdown"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1050;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<footer>
+    <p class="container">
+        {% include github_buttons.html %}
+        <br/>
+        <small>
+            The Final Countdown (jQuery.countdown) was created and is maintained by <a href="https://github.com/hilios" target="_blank">@hilios</a><br>
+            This is a free software is licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>
+        </small>
+
+    </p>
+</footer>
+<a href="https://github.com/hilios/jQuery.countdown"><img style="position: absolute; top: 0; right: 0; border: 0; position: fixed; z-index: 1050;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 </body>
 </html>
