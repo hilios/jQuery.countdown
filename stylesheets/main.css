@@ -53,8 +53,21 @@ footer li:last-child:after{
     height: 23px;
     width: 28px;
 }
-/* Getting started example */
-.getting-started #simple-countdown{
+.affix{
+    top: 60px;
+}
+.content-menu ul{
+    margin-top: 10px;
+}
+/* Fix the anchor position top problem */
+.anchor{
+    display: block; 
+    position: relative; 
+    top: -60px; 
+    visibility: hidden;
+}
+/* Examples */
+#legacy-style{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -66,7 +79,7 @@ footer li:last-child:after{
     padding: 10px 0;
     text-align: center;
 }
-.getting-started #simple-countdown span{
+#legacy-style span{
     border-radius: 2px;
     -o-border-radius: 2px;
     -ms-border-radius: 2px;
@@ -80,17 +93,4 @@ footer li:last-child:after{
     font-weight: bold;
     line-height: 25px;
     padding: 5px;
-}
-.affix{
-    top: 60px;
-}
-.content-menu ul{
-    margin-top: 10px;
-}
-/* Fix the anchor position top problem */
-.anchor{
-    display: block; 
-    position: relative; 
-    top: -60px; 
-    visibility: hidden;
 }
