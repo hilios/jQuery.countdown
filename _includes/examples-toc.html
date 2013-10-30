@@ -1,7 +1,15 @@
-<ul>
-{% for post in site.posts %}
-    <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+<div class="list-group" data-spy="affix" data-offset="130">
+    <a href="{{ site.baseurl }}examples.html" class="list-group-item {% if page.url == '/examples.html' %}active{% endif %}">Legacy style</a>
+    {% for post in site.posts %}
+    <a href="{{ post.url }}" class="list-group-item {% if page.url == post.url %}active{% endif %}">
+        {{ post.title }}
+    </a>
+    {% endfor %}
+</div>
+
+<ul class="nav nav-pills nav-stacked">
+    <li {% if page.url == '/examples.html' %}class='active'{% endif %}>
+        
     </li>
-{% endfor %}
+    
 </ul>

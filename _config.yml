@@ -1,7 +1,7 @@
 name:       The Final Countdown
 nickname:   jQuery.countdown
 baseurl:    http://hilios.github.io/jQuery.countdown/
-permalink:  examples/:title
+permalink:  examples/:title.html
 pygments:   true
 markdown:   redcarpet
 # redcarpet:

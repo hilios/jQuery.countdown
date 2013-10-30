@@ -59,9 +59,6 @@ footer li:last-child:after{
 .affix{
     top: 60px;
 }
-.toc ul{
-    margin-top: 10px;
-}
 /* Fix the anchor position top problem */
 .anchor{
     display: block; 
@@ -70,7 +67,7 @@ footer li:last-child:after{
     visibility: hidden;
 }
 /* Getting started example */
-#countdown{
+#getting-started{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -82,7 +79,7 @@ footer li:last-child:after{
     padding: 10px 0;
     text-align: center;
 }
-#countdown span{
+#getting-started span{
     border-radius: 2px;
     -o-border-radius: 2px;
     -ms-border-radius: 2px;
@@ -96,4 +93,22 @@ footer li:last-child:after{
     font-weight: bold;
     line-height: 25px;
     padding: 5px;
+}
+/* Examples */
+.basic-coupon{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #eeeeee;
+    font-weight: bold;
+    margin: 20px 0 20px;
+    text-align: center;
+    padding: 20px;
+}
+.basic-coupon span{
+    font-size: 20px;
+    display: block;
 }
