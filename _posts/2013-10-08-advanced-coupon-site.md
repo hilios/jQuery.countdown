@@ -60,15 +60,7 @@ To see in action change the value on the drop down bellow.
                 val = 0;
         }
         selectedDate = new Date().valueOf() + val;
-        if($clock) {
-            try {
-                $clock.countdown('remove');    
-            } catch(e) {
-                // Countdown wasn't created
-            }
-        }
         $clock.countdown(selectedDate);
-
     }).trigger('change');
 </script>
 
@@ -77,10 +69,10 @@ $('#clock').countdown('2020/10/10 12:34:56')
     .on('update.countdown', function(event) {
         var format = '%H:%M:%S';
         if(event.offset.days > 0) {
-            format = '%-d days ' + format;
+            format = '%-d day%!d ' + format;
         }
         if(event.offset.weeks > 0) {
-            format = '%-w weeks ' + format;
+            format = '%-w week%!w ' + format;
         }
         $(this).html(event.strftime());
     })

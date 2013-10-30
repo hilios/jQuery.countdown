@@ -29,7 +29,7 @@ With the legacy approach you will need to handle all events in a single callback
 
 ```javascript
 $('div#clock').countdown(finalDate)
-    .on('update', callback)
+    .on('update.countdown', callback)
     .on('finish', callback);
 ```
 
@@ -195,7 +195,7 @@ event.strftime('%W weeks %-D days %-H h %M min %S sec'); // 1 week 2 days 3 h 04
 // Pluralization
 event.strftime('%-D day%!D %H:%M:%S'); // 1 day 23:45:56 (or) 2 days 23:45:56
 // Now in german
-event.strftime('%-D tag%!D(e) %H:%M:%S'); // 1 tage 23:45:56 (or) 2 tag 23:45:56
+event.strftime('%-D tag%!D<e> %H:%M:%S'); // 1 tage 23:45:56 (or) 2 tag 23:45:56
 ```
 
 #### Pluralization #####
