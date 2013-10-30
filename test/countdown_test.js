@@ -246,9 +246,9 @@ asyncTest('escaping percentage character %% ', 1, function() {
 });
 
 /*
-%Y          %years      Years left
+%Y  %-Y     %years      Years left
 %m  %-m     %months     Monts left
-%w          %weeks      Weeks left
+%w  %-w     %weeks      Weeks left
 %d  %-d     %days       Days left
 %D  %-D     %totalDays  Total amount of days left
 %H  %-H     %hours      Hours left
@@ -267,14 +267,15 @@ asyncTest('long-version directives ', 1, function() {
 asyncTest('short-version directives ', 1, function() {
     $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
         ok(event.strftime('%Y %m %w %d %D %H %M %S')
-            .match(/([0-9]{1,}\s?){8}/) !== null);
+            .match(/^([0-9]{1,}\s?){8}$/) !== null);
         start();
     });
 });
 
-// asyncTest('short-version blank-padded directives ', 1, function() {
-//     $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
-//         ok(event.strftime('%-Y %-m %-w %-d %-D %-H %-M %-S').match(/([0-9]{1,}\s?){8}/) !== null);
-//         start();
-//     });
-// });
+asyncTest('short-version blank-padded directives ', 1, function() {
+    $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
+        ok(event.strftime('%-Y %-m %-w %-d %-D %-H %-M %-S')
+            .match(/^([0-9]{1,}\s?){8}$/) !== null);
+        start();
+    });
+});

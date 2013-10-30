@@ -77,8 +77,8 @@
             var directives = format.match(/\%\-?[a-zA-Z]{1,}/g);
             if(directives) {
                 for(var i = 0, len = directives.length; i < len; ++i) {
-                    var directive   = directives[i].match(/\%(\-?)([a-zA-Z]+)/),
-                        modifier    = directive[1],
+                    var directive   = directives[i].match(/\%(\-)?([a-zA-Z]+)/),
+                        modifier    = directive[1] || '',
                         value       = null;
                         // Get the key
                         directive = directive[2];
@@ -95,13 +95,11 @@
                         if(modifier === '') {
                             if(value < 10) {
                                 value = "0" + value.toString();
-                            } else {
-                                value = value.toString();
                             }
                         }
                         // Replace the directive
-                        var replaceRegexp = new RegExp('%' + directive);
-                        format = format.replace(replaceRegexp, value);
+                        var replaceRegexp = new RegExp('%' + modifier + directive);
+                        format = format.replace(replaceRegexp, value.toString());
                     }
                 }
             }
