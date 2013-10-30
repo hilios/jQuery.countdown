@@ -74,11 +74,14 @@
     // Time string formatter 
     function strftime(offsetObject) {
         return function(format) {
-            var directives = format.match(/\%\-?[a-zA-Z]{1,}/g);
+            var directives = format.match(/%(-|!)?[A-Z]{1,}(:.+)?/gi);
             if(directives) {
                 for(var i = 0, len = directives.length; i < len; ++i) {
-                    var directive   = directives[i].match(/\%(\-)?([a-zA-Z]+)/),
+                    var directive   = directives[i]
+                            .match(/%(-|!)?([a-zA-Z]+)(:.+)?/),
+                        regexp      = new RegExp(directive[0]),
                         modifier    = directive[1] || '',
+                        plural      = directive[3] || '',
                         value       = null;
                         // Get the key
                         directive = directive[2];
@@ -91,15 +94,18 @@
                         value = Number(offsetObject[directive]);
                     }
                     if(value !== null) {
+                        // Pluralize
+                        if(modifier === '!') {
+                            value = pluralize(plural, value);
+                        }
                         // Add zero-padding
                         if(modifier === '') {
                             if(value < 10) {
-                                value = "0" + value.toString();
+                                value = '0' + value.toString();
                             }
                         }
                         // Replace the directive
-                        var replaceRegexp = new RegExp('%' + modifier + directive);
-                        format = format.replace(replaceRegexp, value.toString());
+                        format = format.replace(regexp, value.toString());
                     }
                 }
             }
@@ -107,6 +113,26 @@
             return format;
         };
     }
+    // Pluralize
+    function pluralize(format, count) {
+        var plural = 's', singular = '';
+        if(format) {
+            format = format.replace(/(:|\s)/gi, '').split(/\,/);
+            if(format.length === 1) {
+                plural = format[0];
+            } else {
+                singular = format[0];
+                plural = format[1];
+            }
+        }
+        if(Math.abs(count) === 1) {
+            return singular;
+        } else {
+            return plural;
+        }
+        
+    }
+
     // The Final Countdown
     var Countdown = function(el, finalDate, callback) {
         this.el             = el;
@@ -161,7 +187,7 @@
             // Calculate the remaining time
             this.totalSecsLeft = this.finalDate.valueOf() - 
                 new Date().valueOf(); // In miliseconds
-            this.totalSecsLeft = Math.floor(this.totalSecsLeft) / 1000;
+            this.totalSecsLeft = Math.floor(this.totalSecsLeft / 1000);
             this.totalSecsLeft = this.totalSecsLeft < 0 ? 
                 0 : this.totalSecsLeft;
             // Calculate the offsets
