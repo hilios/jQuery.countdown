@@ -187,7 +187,7 @@
             // Calculate the remaining time
             this.totalSecsLeft = this.finalDate.valueOf() - 
                 new Date().valueOf(); // In miliseconds
-            this.totalSecsLeft = Math.floor(this.totalSecsLeft / 1000);
+            this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000);
             this.totalSecsLeft = this.totalSecsLeft < 0 ? 
                 0 : this.totalSecsLeft;
             // Calculate the offsets
