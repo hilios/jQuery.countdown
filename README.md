@@ -14,7 +14,8 @@ Since version >= 2.0.0 we only support jQuery up to version 1.7, for legacy 1.6 
 Getting started
 ---------------
 
-<iframe src="http://hilios.github.io/jQuery.countdown/preview.html"></iframe>
+<iframe src="http://hilios.github.io/jQuery.countdown/preview.html"
+    allowtransparency="true" frameborder="0" scrolling="0" width="650" height="430"></iframe>
 
 ### Documentation ###
 
