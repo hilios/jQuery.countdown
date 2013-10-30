@@ -4,8 +4,8 @@ module.exports = function(grunt) {
         // contrib-watch
         watch: {
             all: {
-                files: ['src/**/*.js', 'lib/**/*.js', 'test/**/*.js', 'Gruntfile.js'],
-                tasks: ['test', 'build']
+                files: ['src/jquery.countdown.js', 'lib/**/*.js', 'test/**/*.js', 'Gruntfile.js'],
+                tasks: ['build:dev']
             }
         },
         // contrib-jshint
@@ -32,19 +32,18 @@ module.exports = function(grunt) {
             }
         }
     });
-
+    // Load grunt tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-
     // Project tasks
-    grunt.registerTask('license', function() {
-
-    });
-
+    // Test
     grunt.registerTask('test',      ['jshint', 'qunit:all']);
-    grunt.registerTask('build',     ['qunit:all', 'uglify']);
-    grunt.registerTask('build:dev', ['qunit:dev', 'uglify']);
-    grunt.registerTask('default',   ['build:dev', 'watch']);
+    grunt.registerTask('test:dev',  ['jshint', 'qunit:dev']);
+    // Build
+    grunt.registerTask('build',     ['test:all', 'uglify']);
+    grunt.registerTask('build:dev', ['test:dev', 'uglify']);
+    // Develop
+    grunt.registerTask('default',   ['watch', 'build:dev']);
 };
