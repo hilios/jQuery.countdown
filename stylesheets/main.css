@@ -95,7 +95,8 @@ footer li:last-child:after{
     padding: 5px;
 }
 /* Examples */
-.basic-coupon{
+.basic-coupon,
+.advanced-coupon{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -109,9 +110,19 @@ footer li:last-child:after{
     text-align: center;
     padding: 20px;
 }
-.basic-coupon span{
+.basic-coupon span,
+.advanced-coupon span{
     font-size: 20px;
     display: block;
+}
+.advanced-coupon{
+    background-color: #5BC0DE;
+}
+.advanced-coupon.disabled{
+    background-color: #999999;
+}
+.advanced-coupon-display{
+    padding-top: 20px;
 }
 .launch-time{
     text-align: center;
