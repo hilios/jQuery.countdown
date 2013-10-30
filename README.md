@@ -14,8 +14,28 @@ Since version >= 2.0.0 we only support jQuery up to version 1.7, for legacy 1.6 
 Getting started
 ---------------
 
-<iframe src="http://hilios.github.io/jQuery.countdown/getting-started.html"
-    allowtransparency="true" frameborder="0" scrolling="0" width="650" height="430"></iframe>
+![Getting started screenshot](http://hilios.github.io/jQuery.countdown/images/getting-started-screenshot.png "Getting started")
+
+```html
+<div id="countdown">
+  Next year in
+  <span class="weeks"></span>   weeks
+  <span class="days"></span>    days
+  <span class="hours"></span>   hours
+  <span class="minutes"></span> minutes
+  <span class="seconds"></span> seconds
+</div>
+<script type="text/javascript">
+  $('#countdown').countdown("{{ site.time | date: '%Y' | plus:1 }}/01/01", function(event) {
+    var $this = $(this);
+    for(var key in event.offset) {
+      if(event.offset.hasOwnProperty(key)) {
+        $this.find('.' + key).html(event.strftime('%' + key));
+      }
+    }
+  });
+</script>
+```
 
 ### Documentation ###
 
