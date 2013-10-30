@@ -105,68 +105,69 @@ Most of the time you will be using the `event.strftime` function to render the c
 Formatter <small>(event.strftime)</small>
 -----------------------------------
 
-A simple formatter that helps keep your code more semantic and avoid repetitive tasks, like prepending zeros. 
+A simple formatter that helps keep your code more semantic and avoid repetitive tasks. 
 
-It formats the offset date according to the directives in the given format string. The directive consists of a percent (%) character. Any text not listed as a directive will be passed through to the output string.
+It formats the offset date according to the directives in the given format string. The directive consists of a percent (`%`) character. Any text not listed as a directive will be passed through to the output string.
 
-Most of the directives are zero-padded (01, 02, 03, ..., 10) by default, if you need the blank-padded version (1, 2, 3, ..., 10) refer to the right column directive.
+All the short and long directives contains zero-padded (01, 02, 03, ..., 10) and blank-padded (1, 2, 3, ..., 10) versions, to use the latter please use the dash `-` modifier.
 
 #### Directives ####
 
 <table class="table table-striped table-bordered">
     <tr>
-        <th>Short version</th>
         <th>Long version</th>
-        <th>Explanation</th>
+        <th>Short version</th>
         <th>Blank-padded</th>
+        <th>Description</th>
+        
     </tr>
     <tr>
-        <td><code>%Y</code></td>
         <td><code>%years</code></td>
+        <td><code>%Y</code></td>
+        <td><code>%-Y</code></td>
         <td>Years left</td>
-        <td>-</td>
     </tr>
     <tr>
-        <td><code>%m</code></td>
         <td><code>%months</code></td>
-        <td>Monts left</td>
+        <td><code>%m</code></td>
         <td><code>%-m</code></td>
+        <td>Monts left</td>
     </tr>
     <tr>
-        <td><code>%w</code></td>
         <td><code>%weeks</code></td>
+        <td><code>%w</code></td>
+        <td><code>%-w</code></td>
         <td>Weeks left</td>
-        <td>-</td>
     </tr>
     <tr>
-        <td><code>%d</code></td>
         <td><code>%days</code></td>
-        <td>Days left</td>
+        <td><code>%d</code></td>
         <td><code>%-d</code></td>
+        <td>Days left</td>
     </tr>
     <tr>
-        <td><code>%D</code></td>
         <td><code>%totalDays</code></td>
-        <td>Total amount of days left</td>
+        <td><code>%D</code></td>
         <td><code>%-D</code></td>
+        <td>Total amount of days left</td>
     </tr>
     <tr>
-        <td><code>%H</code></td>
         <td><code>%hours</code></td>
-        <td>Hours left</td>
+        <td><code>%H</code></td>
         <td><code>%-H</code></td>
+        <td>Hours left</td>
     </tr>
     <tr>
-        <td><code>%M</code></td>
         <td><code>%minutes</code></td>
-        <td>Minutes left</td>
+        <td><code>%M</code></td>
         <td><code>%-M</code></td>
+        <td>Minutes left</td>
     </tr>
     <tr>
-        <td><code>%S</code></td>
         <td><code>%seconds</code></td>
-        <td>Seconds left</td>
+        <td><code>%S</code></td>
         <td><code>%-S</code></td>
+        <td>Seconds left</td>
     </tr>
 </table>
 
