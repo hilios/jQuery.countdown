@@ -1,6 +1,9 @@
 body{
     padding-top: 51px;
 }
+.iframe{
+    padding: 0 !important;    
+}
 header h1{
     font-weight: normal;
 }
@@ -66,8 +69,8 @@ footer li:last-child:after{
     top: -60px; 
     visibility: hidden;
 }
-/* Examples */
-#legacy-style{
+/* Getting started example */
+#countdown{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -79,7 +82,7 @@ footer li:last-child:after{
     padding: 10px 0;
     text-align: center;
 }
-#legacy-style span{
+#countdown span{
     border-radius: 2px;
     -o-border-radius: 2px;
     -ms-border-radius: 2px;
@@ -93,4 +96,7 @@ footer li:last-child:after{
     font-weight: bold;
     line-height: 25px;
     padding: 5px;
+}
+.iframe #countdown{
+    margin-top: 0 !important;
 }

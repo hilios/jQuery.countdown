@@ -1,4 +1,4 @@
-<div id="legacy-style">
+<div id="countdown">
   Next year in
   <span class="weeks"></span>   weeks
   <span class="days"></span>    days
@@ -7,7 +7,7 @@
   <span class="seconds"></span> seconds
 </div>
 <script type="text/javascript">
-  $('#legacy-style').countdown("{{ site.time | date: '%Y' | plus:1 }}/01/01", function(event) {
+  $('#countdown').countdown("{{ site.time | date: '%Y' | plus:1 }}/01/01", function(event) {
     var $this = $(this);
     for(var key in event.offset) {
       if(event.offset.hasOwnProperty(key)) {
