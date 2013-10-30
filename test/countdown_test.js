@@ -64,7 +64,7 @@ asyncTest('event object has {finalDate, offset, offsetDate, strftime} properties
     });
 });
 
-asyncTest('event.offset object has {seconds, minutes, hours, days, fullDays, weeks, years} properties', function() {
+asyncTest('event.offset object has {seconds, minutes, hours, days, totalDays, weeks, years} properties', function() {
     expect(7);
 
     $dom.countdown('2020/10/20').on('update.countdown', function(event) {
@@ -72,7 +72,7 @@ asyncTest('event.offset object has {seconds, minutes, hours, days, fullDays, wee
         ok(event.offset.hasOwnProperty('minutes'));
         ok(event.offset.hasOwnProperty('hours'));
         ok(event.offset.hasOwnProperty('days'));
-        ok(event.offset.hasOwnProperty('fullDays'));
+        ok(event.offset.hasOwnProperty('totalDays'));
         ok(event.offset.hasOwnProperty('weeks'));
         ok(event.offset.hasOwnProperty('years'));
         start();
@@ -224,9 +224,58 @@ asyncTest('cast MM/DD/YYYY', 1, function() {
 
 module('strftime');
 
-asyncTest('cast MM/DD/YYYY', 1, function() {
+asyncTest('strftime is a function that returns a string', 2, function() {
     $dom.countdown('11/22/2020').on('update.countdown', function(event) {
-        ok(true);
+        ok(typeof event.strftime === 'function');
+        ok(typeof event.strftime('foo') === 'string');
         start();
     });
 });
+
+asyncTest('strftime returns the same string if no replaces were made', 1, function() {
+    $dom.countdown('11/22/2020').on('update.countdown', function(event) {
+        ok(event.strftime('Foo Bar') === 'Foo Bar');
+        start();
+    });
+});
+
+asyncTest('escaping percentage character %% ', 1, function() {
+    $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
+        ok(event.strftime('%%') === '%');
+        start();
+    });
+});
+
+/*
+%Y          %years      Years left
+%m  %-m     %months     Monts left
+%w          %weeks      Weeks left
+%d  %-d     %days       Days left
+%D  %-D     %totalDays  Total amount of days left
+%H  %-H     %hours      Hours left
+%M  %-M     %minutes    Minutes left
+%S  %-S     %seconds    Seconds left
+*/
+
+asyncTest('long-version directives ', 1, function() {
+    $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
+        ok(event.strftime('%years %months %weeks %days %totalDays %hours %minutes %seconds')
+            .match(/^([0-9]{1,}\s?){8}$/) !== null);
+        start();
+    });
+});
+
+asyncTest('short-version directives ', 1, function() {
+    $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
+        ok(event.strftime('%Y %m %w %d %D %H %M %S')
+            .match(/([0-9]{1,}\s?){8}/) !== null);
+        start();
+    });
+});
+
+// asyncTest('short-version blank-padded directives ', 1, function() {
+//     $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
+//         ok(event.strftime('%-Y %-m %-w %-d %-D %-H %-M %-S').match(/([0-9]{1,}\s?){8}/) !== null);
+//         start();
+//     });
+// });

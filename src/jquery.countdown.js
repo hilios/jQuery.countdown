@@ -61,9 +61,53 @@
                 "` to a date object.");
         }
     }
-    //
-    function strftime(format) {
-        return;
+    var DIRECTIVE_KEY_MAP = {
+        'Y': 'years',
+        'm': 'months',
+        'w': 'weeks',
+        'd': 'days',
+        'D': 'totalDays',
+        'H': 'hours',
+        'M': 'minutes',
+        'S': 'seconds'
+    };
+    // Time string formatter 
+    function strftime(offsetObject) {
+        return function(format) {
+            var directives = format.match(/\%\-?[a-zA-Z]{1,}/g);
+            if(directives) {
+                for(var i = 0, len = directives.length; i < len; ++i) {
+                    var directive   = directives[i].match(/\%(\-?)([a-zA-Z]+)/),
+                        modifier    = directive[1],
+                        value       = null;
+                        // Get the key
+                        directive = directive[2];
+                    // Swap shot-versions directives
+                    if(DIRECTIVE_KEY_MAP.hasOwnProperty(directive)) {
+                        value = DIRECTIVE_KEY_MAP[directive];
+                        value = Number(offsetObject[value]);
+                    }
+                    if(offsetObject.hasOwnProperty(directive)) {
+                        value = Number(offsetObject[directive]);
+                    }
+                    if(value !== null) {
+                        // Add zero-padding
+                        if(modifier === '') {
+                            if(value < 10) {
+                                value = "0" + value.toString();
+                            } else {
+                                value = value.toString();
+                            }
+                        }
+                        // Replace the directive
+                        var replaceRegexp = new RegExp('%' + directive);
+                        format = format.replace(replaceRegexp, value);
+                    }
+                }
+            }
+            format = format.replace(/%%/, '%');
+            return format;
+        };
     }
     // The Final Countdown
     var Countdown = function(el, finalDate, callback) {
@@ -120,13 +164,14 @@
             this.totalSecsLeft = this.totalSecsLeft < 0 ? 
                 0 : this.totalSecsLeft;
             this.offset = {
-                seconds : this.totalSecsLeft % 60,
-                minutes : Math.floor(this.totalSecsLeft / 60) % 60,
-                hours   : Math.floor(this.totalSecsLeft / 60 / 60) % 24,
-                days    : Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
-                fullDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
-                weeks   : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
-                years   : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
+                seconds     : this.totalSecsLeft % 60,
+                minutes     : Math.floor(this.totalSecsLeft / 60) % 60,
+                hours       : Math.floor(this.totalSecsLeft / 60 / 60) % 24,
+                days        : Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                totalDays   : Math.floor(this.totalSecsLeft / 60 / 60 / 24),
+                weeks       : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
+                months      : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30),
+                years       : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
             };
             // Dispatch an event
             if(this.totalSecsLeft === 0) {
@@ -139,9 +184,9 @@
         dispatchEvent: function(eventName) {
             var event = $.Event(eventName + '.countdown');
             event.finalDate     = this.finalDate;
-            event.offset        = this.offset;
+            event.offset        = $.extend({}, this.offset);
             event.offsetDate    = new Date(this.totalSecsLeft);
-            event.strftime      = strftime;
+            event.strftime      = strftime(this.offset);
             this.$el.trigger(event);
         }
     });
