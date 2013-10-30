@@ -102,7 +102,8 @@ footer li:last-child:after{
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 
-    background-color: #eeeeee;
+    background-color: #609DD6;
+    color: #ffffff;
     font-weight: bold;
     margin: 20px 0 20px;
     text-align: center;
@@ -111,4 +112,26 @@ footer li:last-child:after{
 .basic-coupon span{
     font-size: 20px;
     display: block;
+}
+.launch-time{
+    text-align: center;
+    padding: 20px;
+}
+.launch-time div{
+    font-size: 150%;
+    margin-top: 10px;
+    line-height: 55px;
+}
+.launch-time span{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 150%;
+    font-weight: bold;
+    padding: 10px;
 }
