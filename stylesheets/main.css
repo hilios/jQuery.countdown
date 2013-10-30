@@ -97,6 +97,3 @@ footer li:last-child:after{
     line-height: 25px;
     padding: 5px;
 }
-.iframe #countdown{
-    margin-top: 0 !important;
-}
