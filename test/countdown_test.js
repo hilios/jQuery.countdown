@@ -79,10 +79,9 @@ asyncTest('event.offset object has {seconds, minutes, hours, days, totalDays, we
     });
 });
 
-asyncTest('allow the callback be setted uppon initialization (legacy style)', 1, function() {
+test('allow the callback be setted uppon initialization (legacy style)', function() {
     $dom.countdown('2020/10/20', function(event) {
         ok(true); // Up to this point the event was dispatched
-        start();
     });
 });
 
