@@ -36,10 +36,10 @@
         matchers    = [];
     // Miliseconds
     matchers.push(/^[0-9]*$/.source);
-    // Month/Day/Year [hours:minutes:seconds[.TZD]]
-    matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}(\s[0-9]{1,2}(\:[0-9]{2}){2})?/.source);
-    // Year/Day/Month [hours:minutes:seconds[.TZD]]
-    matchers.push(/[0-9]{4}(\/[0-9]{1,2}){2}(\s[0-9]{1,2}(\:[0-9]{2}){2})?/.source);
+    // Month/Day/Year [hours:minutes:seconds
+    matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
+    // Year/Day/Month [hours:minutes:seconds
+    matchers.push(/[0-9]{4}(\/[0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
     // Cast the matchers to a regular expression object
     matchers = new RegExp(matchers.join("|"));
     // Parse a Date formatted has String to a native object
@@ -74,11 +74,11 @@
     // Time string formatter 
     function strftime(offsetObject) {
         return function(format) {
-            var directives = format.match(/%(-|!)?[A-Z]{1,}(<[^>]+>)?/gi);
+            var directives = format.match(/%(-|!)?[A-Z]{1,}(:[^;]+;)?/gi);
             if(directives) {
                 for(var i = 0, len = directives.length; i < len; ++i) {
                     var directive   = directives[i]
-                            .match(/%(-|!)?([a-zA-Z]+)(<[^>]+>)?/),
+                            .match(/%(-|!)?([a-zA-Z]+)(:[^;]+;)?/),
                         regexp      = new RegExp(directive[0]),
                         modifier    = directive[1] || '',
                         plural      = directive[3] || '',
@@ -117,7 +117,7 @@
     function pluralize(format, count) {
         var plural = 's', singular = '';
         if(format) {
-            format = format.replace(/(<|>|\s)/gi, '').split(/\,/);
+            format = format.replace(/(:|;|\s)/gi, '').split(/\,/);
             if(format.length === 1) {
                 plural = format[0];
             } else {
