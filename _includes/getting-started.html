@@ -11,7 +11,7 @@
     var $this = $(this);
     for(var key in event.offset) {
       if(event.offset.hasOwnProperty(key)) {
-        $this.find('.' + key).html(event.offset[key]);
+        $this.find('.' + key).html(event.strftime('%' + key));
       }
     }
   });
