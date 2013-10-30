@@ -159,11 +159,12 @@
                 return;
             }
             // Calculate the remaining time
-            this.totalSecsLeft  = Math.floor((this.finalDate.valueOf() - 
-                new Date().valueOf()) / 1000);
-
+            this.totalSecsLeft = this.finalDate.valueOf() - 
+                new Date().valueOf(); // In miliseconds
+            this.totalSecsLeft = Math.floor(this.totalSecsLeft) / 1000;
             this.totalSecsLeft = this.totalSecsLeft < 0 ? 
                 0 : this.totalSecsLeft;
+            // Calculate the offsets
             this.offset = {
                 seconds     : this.totalSecsLeft % 60,
                 minutes     : Math.floor(this.totalSecsLeft / 60) % 60,
