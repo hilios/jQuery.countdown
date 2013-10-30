@@ -9,16 +9,18 @@ This example handle multiple cases of the countdown, like hiding weeks and days 
 To see in action change the value on the drop down bellow.
 
 <div class="advanced-coupon">
-    <select id="time-selector" class="form-control">
-        <option value="5w" selected>5 weeks from now</option>
-        <option value="5d">5 days from now</option>
-        <option value="5h">5 hours from now</option>
-        <option value="5s">5 seconds from now</option>
-    </select>
     <div class="advanced-coupon-display">
         Limited Time Only!
         <span id="clock"></span>
     </div>
+    <select id="time-selector" class="form-control">
+        <option value="5w" selected>5 weeks from now</option>
+        <option value="1.1w">1 week from now (pluralization in action)</option>
+        <option value="5d">5 days from now</option>
+        <option value="1.1d">1 day from now (pluralization in action)</option>
+        <option value="5h">5 hours from now</option>
+        <option value="5s">5 seconds from now (finishin in ...)</option>
+    </select>
 </div>
 
 <script type="text/javascript">
@@ -40,8 +42,8 @@ To see in action change the value on the drop down bellow.
         });
 
     $('#time-selector').on('change', function() {
-        var val = $(this).val().toString().match(/^([0-9]{1,})([a-z]{1})$/),
-            qnt = parseInt(val[1]),
+        var val = $(this).val().toString().match(/^([0-9\.]{1,})([a-z]{1})$/),
+            qnt = parseFloat(val[1]),
             mod = val[2];
         switch(mod) {
             case 's':
