@@ -111,6 +111,23 @@ It formats the offset date according to the directives in the given format strin
 
 All the short and long directives contains zero-padded (01, 02, 03, ..., 10) and blank-padded (1, 2, 3, ..., 10) versions, to use the latter please use the dash `-` modifier.
 
+The formatter is also capable of handle pluralization through the bang `!` modifier, by default always return the `s` character, if you need a complex logic please read the **Pluralization** topic of this section.
+
+<table class="table table-striped table-bordered table-nonfluid">
+    <tr>
+        <th>Modifier</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>-</code></td>
+        <td>Blank padding</td>
+    </tr>
+    <tr>
+        <td><code>!</code></td>
+        <td>Pluralization plugin</td>
+    </tr>
+</table>
+
 #### Directives ####
 
 <table class="table table-striped table-bordered">
@@ -174,9 +191,16 @@ All the short and long directives contains zero-padded (01, 02, 03, ..., 10) and
 Bellow some use cases examples:
 
 ```javascript
-event.strftime('%W weeks %-D days %-H h %M min %S sec'); // 1 Week 2 days 3 h 04 min 05 sec 
+event.strftime('%W weeks %-D days %-H h %M min %S sec'); // 1 week 2 days 3 h 04 min 05 sec
+// Pluralization
+event.strftime('%-D day%!D %H:%M:%S'); // 1 day 23:45:56 (or) 2 days 23:45:56
+// Now in german
+event.strftime('%-D tag%!D(e) %H:%M:%S'); // 1 tage 23:45:56 (or) 2 tag 23:45:56
 ```
 
+#### Pluralization #####
+
+*Coming soon...*
 
 
 <a class="anchor" id="controls"></a>

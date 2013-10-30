@@ -59,6 +59,9 @@ footer li:last-child:after{
 .affix{
     top: 60px;
 }
+.table-nonfluid {
+   width: auto;
+}
 /* Fix the anchor position top problem */
 .anchor{
     display: block; 
