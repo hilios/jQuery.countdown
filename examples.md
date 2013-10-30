@@ -1,12 +1,15 @@
 ---
-layout:     content
-title:      Examples
-toc:        examples
+layout: content
+title:  Examples
+toc:    links
 ---
 
-### Legacy style ###
+There are few ways to get started, from the most simple example to advanced, we support many different countdown styles, see wich one fits your scenario, and if anyone doesn't it's a good starting point to customize your output.
 
-Assign the callback uppon initialization, format the countdown in **N weeks N days N hours N minutes N seconds** where each `N` value is displayed on his own DOM element.
+Legacy style
+------------
 
-{%include legacy-style.html %}
-{% highlight html linenos %}{%include legacy-style.html %}{% endhighlight %}
+Assign the callback uppon initialization, format the countdown `%w` weeks `%d` days `%H` hours `%M` minutes `%S` seconds where each directive value is displayed within his own DOM element (`<span>`) and all are zero-padded.
+
+{%include getting-started.html %}
+{% highlight html linenos %}{%include getting-started.html noJs=true %}{% endhighlight %}

@@ -1,0 +1,23 @@
+<div id="getting-started">
+  Next year in
+  <span>%w</span> weeks
+  <span>%d</span> days
+  <span>%H</span> hours
+  <span>%M</span> minutes
+  <span>%S</span> seconds
+</div>
+{% unless include.noJs %}
+<script type="text/javascript">
+  var nextYear = new Date().getFullYear() + 1;
+</script>
+{% endunless %}
+<script type="text/javascript">
+  $('#getting-started').countdown({% if include.noJs %}'{{ site.time|date:'%Y'|plus:1 }}/01/01'{% else %}nextYear + "/01/01"{% endif %}, function(event) {
+    $(this).html(event.strftime('Next year in '
+      + '<span>%w</span> weeks '
+      + '<span>%d</span> days '
+      + '<span>%H</span> hours '
+      + '<span>%M</span> minutes '
+      + '<span>%S</span> seconds'));
+  });
+</script>

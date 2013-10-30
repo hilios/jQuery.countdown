@@ -1,6 +1,9 @@
 body{
     padding-top: 51px;
 }
+.iframe{
+    padding: 0 !important;    
+}
 header h1{
     font-weight: normal;
 }
@@ -56,8 +59,8 @@ footer li:last-child:after{
 .affix{
     top: 60px;
 }
-.toc ul{
-    margin-top: 10px;
+.table-nonfluid {
+   width: auto;
 }
 /* Fix the anchor position top problem */
 .anchor{
@@ -66,8 +69,8 @@ footer li:last-child:after{
     top: -60px; 
     visibility: hidden;
 }
-/* Examples */
-#legacy-style{
+/* Getting started example */
+#getting-started{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -79,7 +82,7 @@ footer li:last-child:after{
     padding: 10px 0;
     text-align: center;
 }
-#legacy-style span{
+#getting-started span{
     border-radius: 2px;
     -o-border-radius: 2px;
     -ms-border-radius: 2px;
@@ -93,4 +96,56 @@ footer li:last-child:after{
     font-weight: bold;
     line-height: 25px;
     padding: 5px;
+}
+/* Examples */
+.basic-coupon,
+.advanced-coupon{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #609DD6;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 20px 0 20px;
+    text-align: center;
+    padding: 20px;
+}
+.basic-coupon span,
+.advanced-coupon span{
+    font-size: 20px;
+    display: block;
+}
+.advanced-coupon{
+    background-color: #5BC0DE;
+}
+.advanced-coupon.disabled{
+    background-color: #999999;
+}
+.advanced-coupon-display{
+    padding-top: 20px;
+}
+.launch-time{
+    text-align: center;
+    padding: 20px;
+}
+.launch-time div{
+    font-size: 150%;
+    margin-top: 10px;
+    line-height: 55px;
+}
+.launch-time span{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 150%;
+    font-weight: bold;
+    padding: 10px;
 }
