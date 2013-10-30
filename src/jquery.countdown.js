@@ -113,10 +113,8 @@
         this.$el            = $(el);
         this.interval       = null;
         this.offset         = {};
-        this.currentDate    = new Date();
-        this.finalDate      = parseDateString(finalDate); // Cast the given date
-        this.totalSecsLeft  = Math.floor((this.finalDate.valueOf() - 
-            this.currentDate.valueOf()) / 1000);
+        // Set the final date
+        this.setFinalDate(finalDate);
         // Register the callbacks when supplied
         if(callback) {
             this.$el.on('update.countdown', callback);
@@ -151,6 +149,9 @@
             this.stop();
             delete instances[this.el];
         },
+        setFinalDate: function(value) {
+            this.finalDate = parseDateString(value); // Cast the given date
+        },
         update: function() {
             // Stop if dom is not in the html (Thanks to @dleavitt)
             if(this.$el.closest('html').length === 0) {
@@ -158,7 +159,9 @@
                 return;
             }
             // Calculate the remaining time
-            this.totalSecsLeft -= 1;
+            this.totalSecsLeft  = Math.floor((this.finalDate.valueOf() - 
+                new Date().valueOf()) / 1000);
+
             this.totalSecsLeft = this.totalSecsLeft < 0 ? 
                 0 : this.totalSecsLeft;
             this.offset = {
@@ -192,16 +195,23 @@
     $.fn.countdown = function() {
         var argumentsArray = Array.prototype.slice.call(arguments, 0);
         return this.each(function() {
+            // Verify if we already have a countdown for this node ...
             if(instances.hasOwnProperty(this)) {
                 var method = argumentsArray[0];
-                if(Countdown.prototype[method]) {
-                    return instances[this][method].apply(instances[this], 
+                // If method exists in the prototype execute
+                if(Countdown.prototype.hasOwnProperty(method)) {
+                    instances[this][method].apply(instances[this], 
                         argumentsArray.slice(1));
+                // If method look like a date try to set a new final date
+                } else if(method.match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
+                    instances[this].setFinalDate.call(instances[this], 
+                        method);
                 } else {
                     $.error('Method %s does not exist on jQuery.countdown'.
                         replace(/\%s/gi, method));
                 }
             } else {
+                // ... if not we create an instance
                 instances[this] = new Countdown(this, argumentsArray[0], 
                     argumentsArray[1]);
             }

@@ -151,6 +151,19 @@ asyncTest('remove the countdown if dom was removed', 1, function() {
     }, 500);
 });
 
+asyncTest('set a new finalDate by calling the countdown with a new date', 1, function() {
+    $dom.countdown('2020/10/20')
+        .on('update.countdown', function(event) {
+            ok(event.finalDate.toString().match(/Oct 20 2020/));
+        })
+        .off('update.countdown')
+        .countdown('2021/10/20')
+        .on('update.countdown', function(event) {
+            ok(event.finalDate.toString().match(/Oct 20 2021/));
+            start();
+        });
+});
+
 test('throw an error when try to start a countdown that isalready running', function() {
     $dom.countdown('2020/10/20');
     throws(function() {
