@@ -312,7 +312,7 @@ asyncTest('return an `s` when when plural', 2, function() {
 asyncTest('return the given character when plural', 2, function() {
     $dom.countdown(new Date().valueOf() + 2000).on('update.countdown', function(event) {
         ok(event.offset.seconds === 2);
-        ok(event.strftime('sekunde%!S:n') === 'sekunden');
+        ok(event.strftime('sekunde%!S<n>') === 'sekunden');
         start();
     });
 });
@@ -320,7 +320,7 @@ asyncTest('return the given character when plural', 2, function() {
 asyncTest('return the plural when given pair of arguments', 2, function() {
     $dom.countdown(new Date().valueOf() + 2000).on('update.countdown', function(event) {
         ok(event.offset.seconds === 2);
-        ok(event.strftime('%!S:day,days') === 'days');
+        ok(event.strftime('%!S<day,days>') === 'days');
         start();
     });
 });
@@ -328,7 +328,7 @@ asyncTest('return the plural when given pair of arguments', 2, function() {
 asyncTest('return the singular when given pair of arguments', 2, function() {
     $dom.countdown(new Date().valueOf() + 1000).on('update.countdown', function(event) {
         ok(event.offset.seconds === 1);
-        ok(event.strftime('%!S:day,days') === 'day');
+        ok(event.strftime('%!S<day,days>') === 'day');
         start();
     });
 });

@@ -74,7 +74,7 @@
     // Time string formatter 
     function strftime(offsetObject) {
         return function(format) {
-            var directives = format.match(/%(-|!)?[A-Z]{1,}(:.+)?/gi);
+            var directives = format.match(/%(-|!)?[A-Z]{1,}(<[^>]+>)?/gi);
             if(directives) {
                 for(var i = 0, len = directives.length; i < len; ++i) {
                     var directive   = directives[i]
@@ -117,7 +117,7 @@
     function pluralize(format, count) {
         var plural = 's', singular = '';
         if(format) {
-            format = format.replace(/(:|\s)/gi, '').split(/\,/);
+            format = format.replace(/(<|>|\s)/gi, '').split(/\,/);
             if(format.length === 1) {
                 plural = format[0];
             } else {
