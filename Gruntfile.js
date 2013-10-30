@@ -14,7 +14,8 @@ module.exports = function(grunt) {
         },
         // contrib-qunit
         qunit: {
-            all: 'test/**/*.html'
+            all: 'test/**/*.html',
+            dev: 'test/scenario-jquery-1.9.1.html'
         },
         // contrib-uglify
         uglify: {
@@ -42,7 +43,8 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.registerTask('test',      ['jshint', 'qunit']);
-    grunt.registerTask('build',     ['license', 'uglify']);
-    grunt.registerTask('default',   ['test', 'build', 'watch']);
+    grunt.registerTask('test',      ['jshint', 'qunit:all']);
+    grunt.registerTask('build',     ['qunit:all', 'uglify']);
+    grunt.registerTask('build:dev', ['qunit:dev', 'uglify']);
+    grunt.registerTask('default',   ['build:dev', 'watch']);
 };
