@@ -90,7 +90,7 @@ Event object
         minutes:    '{int} Minutes left for the next hour',
         hours:      '{int} Hours left until next day',
         days:       '{int} Days left until next week',
-        fullDays:   '{int} Total amount of days left until final date',
+        totalDays:  '{int} Total amount of days left until final date',
         weeks:      '{int} Weeks left until the final date',
         months:     '{int} Months left until final date' ,
         years:      '{int} Year left until final date'
