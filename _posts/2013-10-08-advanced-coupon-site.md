@@ -26,17 +26,17 @@ To see in action change the value on the drop down bellow.
         .on('update.countdown', function(event) {
             var format = '%H:%M:%S';
             if(event.offset.days > 0) {
-                format = '%-d days ' + format;
+                format = '%-d day%!d ' + format;
             }
             if(event.offset.weeks > 0) {
-                format = '%-w weeks ' + format;
+                format = '%-w week%!w ' + format;
             }
             $(this).html(event.strftime(format));
         })
         .on('finish.countdown', function(event) {
             $(this).parent()
                 .addClass('disabled')
-                .html('<strong>This offer has ended!</strong>');
+                .html('<strong>This offer has expired!</strong>');
         });
 
     $('#time-selector').on('change', function() {
@@ -60,7 +60,7 @@ To see in action change the value on the drop down bellow.
                 val = 0;
         }
         selectedDate = new Date().valueOf() + val;
-        $clock.countdown(selectedDate);
+        $clock.countdown(selectedDate.toString());
     }).trigger('change');
 </script>
 
@@ -77,6 +77,8 @@ $('#clock').countdown('2020/10/10 12:34:56')
         $(this).html(event.strftime());
     })
     .on('finish.countdown', function(event) {
-        $(this).parent().addClass('disabled').html('<strong>This offer has ended!</strong>');
+        $(this).parent()
+            .addClass('disabled')
+            .html('<strong>This offer has expired!</strong>');
     });
 {% endhighlight %}
