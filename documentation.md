@@ -43,12 +43,10 @@ The target date that you are seeking to countdown. This argument can be one of t
 *   A native date object
 *   The milliseconds
 *   String formatted as following:
-    -   *YYYY/MM/DD*
-    -   *MM/DD/YYYY*
-    -   *YYYY/MM/DD hh:mm:ss*
-    -   *MM/DD/YYYY hh:mm:ss*
-    -   *YYYY/MM/DD hh:mm:ss.sss*
-    -   *MM/DD/YYYY hh:mm:ss.sss*
+    -   `YYYY/MM/DD`
+    -   `MM/DD/YYYY`
+    -   `YYYY/MM/DD hh:mm:ss`
+    -   `MM/DD/YYYY hh:mm:ss`
 
 **callback**  
 A function that will handle the `event` triggered, despite the fact we have three event types, all of them will have the same object properties (as described bellow), where you can access the offset calculation.
@@ -68,7 +66,7 @@ This plugin will trigger an event whenever some state change like:
 -   **Finish**: Triggered when finished
 -   **Stop**:   Triggered that paused
 
-To register a callback use the following *event.type*:
+To register a callback use the following `event.type`:
 
 -   `update.countdown`
 -   `finish.countdown`
