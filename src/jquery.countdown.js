@@ -78,7 +78,7 @@
             if(directives) {
                 for(var i = 0, len = directives.length; i < len; ++i) {
                     var directive   = directives[i]
-                            .match(/%(-|!)?([a-zA-Z]+)(:.+)?/),
+                            .match(/%(-|!)?([a-zA-Z]+)(<[^>]+>)?/),
                         regexp      = new RegExp(directive[0]),
                         modifier    = directive[1] || '',
                         plural      = directive[3] || '',
