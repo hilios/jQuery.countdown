@@ -5,7 +5,7 @@ The Final Countdown
 
 To get started, check-it out: http://hilios.github.io/jQuery.countdown/
 
-The ultimate countdown plugin designed to fit in any coupon and auction site. Read our [documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
+The ultimate countdown plugin designed to fit in any coupon and auction site. Read our [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
 
 #### Requirements ####
 
