@@ -17,22 +17,23 @@ Getting started
 [![Getting started screenshot](http://hilios.github.io/jQuery.countdown/images/getting-started-screenshot.png)](http://hilios.github.io/jQuery.countdown/)
 
 ```html
-<div id="countdown">
+<div id="getting-started">
   Next year in
-  <span class="weeks"></span>   weeks
-  <span class="days"></span>    days
-  <span class="hours"></span>   hours
-  <span class="minutes"></span> minutes
-  <span class="seconds"></span> seconds
+  <span>%w</span> weeks
+  <span>%d</span> days
+  <span>%H</span> hours
+  <span>%M</span> minutes
+  <span>%S</span> seconds
 </div>
+
 <script type="text/javascript">
-  $('#countdown').countdown("{{ site.time | date: '%Y' | plus:1 }}/01/01", function(event) {
-    var $this = $(this);
-    for(var key in event.offset) {
-      if(event.offset.hasOwnProperty(key)) {
-        $this.find('.' + key).html(event.strftime('%' + key));
-      }
-    }
+  $('#getting-started').countdown('2014/01/01', function(event) {
+    $(this).html(event.strftime('Next year in '
+      + '<span>%w</span> weeks '
+      + '<span>%d</span> days '
+      + '<span>%H</span> hours '
+      + '<span>%M</span> minutes '
+      + '<span>%S</span> seconds'));
   });
 </script>
 ```
