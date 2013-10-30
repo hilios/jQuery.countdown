@@ -7,8 +7,9 @@
   <span>%S</span> seconds
 </div>
 <script type="text/javascript">
+  {% unless include.noJs %}
   var nextYear = new Date().getFullYear() + 1;
-  $('#getting-started').countdown(nextYear + "/01/01", function(event) {
+  {% endunless %}$('#getting-started').countdown({% if include.noJs %}'{{ site.time | date: '%Y' | plus: 1 }}/01/01'{% else %}nextYear + "/01/01"{% endif %}, function(event) {
     var $this = $(this).html(event.strftime('Next year in '
       + '<span>%w</span> weeks '
       + '<span>%d</span> days '
