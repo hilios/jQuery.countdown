@@ -39,7 +39,8 @@ Getting started
 
 ### Documentation ###
 
-Our documentation is powered by Jekyll and hosted in GitHub Pages at http://hilios.github.io/jQuery.countdown/documentation.html. 
+Our documentation is powered by [Jekyll](http://jekyllrb.com/) (see `gh-page` branch) and hosted in GitHub Pages at [http://hilios.github.io/jQuery.countdown/](http://hilios.github.io/jQuery.countdown/documentation.html).
+
 ### Examples ###
 
 There are few ways to get started, from the most simple example to the advanced, we support many different countdown styles, see wich one fits your scenario, and if anyone doesn't it's a good starting point to customize the script.
