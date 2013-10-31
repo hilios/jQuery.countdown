@@ -230,7 +230,7 @@
                     instances[this][method].apply(instances[this], 
                         argumentsArray.slice(1));
                 // If method look like a date try to set a new final date
-                } else if(method.match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
+                } else if(String(method).match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
                     instances[this].setFinalDate.call(instances[this], 
                         method);
                 } else {
