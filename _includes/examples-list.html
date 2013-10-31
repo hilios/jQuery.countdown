@@ -1,21 +1,13 @@
-<div class="list-group" 
-    {% if include.excerpt == null or include.excerpt == false %}data-spy="affix" data-offset="130"{% endif %}>
-{% for example in site.pages %}
+<div class="list-group" data-spy="affix" data-offset="130">
+    {% for example in site.pages %}
     {% if example.category contains 'examples' %}
     <a href="{{ site.baseurl }}{{ example.url }}" class="list-group-item 
         {% if example.url == page.url %}active{% endif %}">
-        {% if include.excerpt != null and include.excerpt %}
-            <h4>{{ example.title }}</h4>
-            {{ example.excerpt }}
-        {% else %}
-            {{ example.title }}
-        {% endif %}
+        {{ example.title }}
     </a>
     {% endif %}
-{% endfor %}
-{% if include.back == null or include.back %}
+    {% endfor %}
     <a href="{{ site.baseurl }}/examples.html" class="list-group-item">
         Back
     </a>
-{% endif %}
 </div>

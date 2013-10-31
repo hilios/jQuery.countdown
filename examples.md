@@ -9,4 +9,14 @@ title:  Examples
     <div class="col-md-6">{% include getting-started.html %}</div>
 </div>
 
-{% include examples-list.html back=false excerpt=true %}
+<div>
+{% for example in site.pages %}
+    {% if example.category contains 'examples' %}
+    <a href="{{ site.baseurl }}{{ example.url }}" class="list-group-item 
+        {% if example.url == page.url %}active{% endif %}">
+        <h4>{{ example.title }}</h4>
+        {{ example.content | remove_first:"<p>" | split:"</p>" | first }}
+    </a>
+    {% endif %}
+{% endfor %}
+</div>
