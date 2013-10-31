@@ -213,8 +213,7 @@
             var event = $.Event(eventName + '.countdown');
             event.finalDate     = this.finalDate;
             event.offset        = $.extend({}, this.offset);
-            event.offsetDate    = new Date(this.totalSecsLeft);
-            event.strftime      = strftime(this.offset);
+        event.strftime      = strftime(this.offset);
             this.$el.trigger(event);
         }
     });

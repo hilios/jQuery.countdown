@@ -52,14 +52,14 @@ asyncTest('trigger the finish event', 1, function() {
     });
 });
 
-asyncTest('event object has {finalDate, offset, offsetDate, strftime} properties', function() {
+asyncTest('event object has {type, strftime, finalDate, offset} properties', function() {
     expect(4);
 
     $dom.countdown('2020/10/20').on('update.countdown', function(event) {
+        ok(event.hasOwnProperty('type'));
+        ok(event.hasOwnProperty('strftime'));
         ok(event.hasOwnProperty('finalDate'));
         ok(event.hasOwnProperty('offset'));
-        ok(event.hasOwnProperty('offsetDate'));
-        ok(event.hasOwnProperty('strftime'));
         start();
     });
 });
