@@ -1,15 +1,13 @@
 <div class="list-group" data-spy="affix" data-offset="130">
-    <a href="{{ site.baseurl }}examples.html" class="list-group-item {% if page.url == '/examples.html' %}active{% endif %}">Legacy style</a>
-    {% for post in site.posts %}
-    <a href="{{ post.url }}" class="list-group-item {% if page.url == post.url %}active{% endif %}">
-        {{ post.title }}
+    <a href="{{ site.baseurl }}examples.html" class="list-group-item {% if page.url == '/examples.html' %}active{% endif %}">
+        Legacy style
     </a>
+    {% for example in site.pages %}
+        {% assign folder = example.url|replace_first:'/'|split:'/'|first %}
+        {% if folder == 'examples' %}
+        <a href="{{ example.url }}" class="list-group-item {% if example.url == page.url %}active{% endif %}">
+            {{ example.title }}
+        </a>
+        {% endif %}
     {% endfor %}
 </div>
-
-<ul class="nav nav-pills nav-stacked">
-    <li {% if page.url == '/examples.html' %}class='active'{% endif %}>
-        
-    </li>
-    
-</ul>
