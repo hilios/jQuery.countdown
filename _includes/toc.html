@@ -1,5 +1,5 @@
 <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset="130">
-    {% for toc in page.toc-content %}
+    {% for toc in page.toc %}
     <li>
         <a href="#{{ toc | downcase | replace:' ','-' }}">
             {{ forloop.index }}. {{ toc }}

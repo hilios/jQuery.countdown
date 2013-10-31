@@ -1,8 +1,8 @@
 ---
-layout:     content
-title:      Documentation
-toc:        anchors
-toc-content:
+layout: content
+title:  Documentation
+category: docs
+toc:
     - Introduction
     - Events
     - Event object
