@@ -13,7 +13,7 @@ To see in action change the value on the drop down bellow.
         Limited Time Only!
         <span id="clock"></span>
     </div>
-    <select id="time-selector" class="form-control">
+    <select id="time-selector" class="form-control form-control-nonfluid">
         <option value="5w" selected>5 weeks from now</option>
         <option value="1.1w">1 week from now (pluralization in action)</option>
         <option value="5d">5 days from now</option>
@@ -36,7 +36,7 @@ To see in action change the value on the drop down bellow.
             $(this).html(event.strftime(format));
         })
         .on('finish.countdown', function(event) {
-            $(this).parent()
+            $(this).parent().parent()
                 .addClass('disabled')
                 .html('<strong>This offer has expired!</strong>');
         });

@@ -62,6 +62,9 @@ footer li:last-child:after{
 .table-nonfluid {
    width: auto;
 }
+.form-control-nonfluid{
+    width: auto !important;
+}
 /* Fix the anchor position top problem */
 .anchor{
     display: block; 
@@ -119,10 +122,18 @@ footer li:last-child:after{
     display: block;
 }
 .advanced-coupon{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
     background-color: #5BC0DE;
 }
 .advanced-coupon.disabled{
     background-color: #999999;
+}
+.advanced-coupon .form-control{
+    margin: 0 auto;
 }
 .advanced-coupon-display{
     padding-bottom: 20px;
