@@ -6,7 +6,7 @@
         {% if example.url == page.url %}active{% endif %}">
         {% if include.excerpt != null and include.excerpt %}
             <h4>{{ example.title }}</h4>
-            {{ example.content | markdownify | split:"</p>" | first | remove_first:"<p>" }}
+            {{ example.excerpt | markdownify }}
         {% else %}
             {{ example.title }}
         {% endif %}
