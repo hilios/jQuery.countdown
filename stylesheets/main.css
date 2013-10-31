@@ -168,6 +168,7 @@ footer li:last-child:after{
 
     background-color: #999999;
     color: #ffffff;
+    font-weight: bold;
     line-height: 30px;
     text-align: center;
 }

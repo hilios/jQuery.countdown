@@ -7,40 +7,44 @@ Assign the countdown on several elements at the same time.
 
 <div class="row multiple-instance">
     <div class="col-md-3">
-        <div class="clock">1</div>
+        <div class="clock" data-countdown="2020/01/01">&nbsp;</div>
     </div>
     <div class="col-md-3">
-        <div class="clock">2</div>
+        <div class="clock" data-countdown="2019/01/01">&nbsp;</div>
     </div>
     <div class="col-md-3">
-        <div class="clock">3</div>
+        <div class="clock" data-countdown="2018/01/01">&nbsp;</div>
     </div>
     <div class="col-md-3">
-        <div class="clock">4</div>
+        <div class="clock" data-countdown="2017/01/01">&nbsp;</div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $('.clock').each(function() {
-        $(this).countdown('2020/01/01', function(event) {
-            $(this).html(event.strftime('%D days %H:%M:%S'));
+    $('[data-countdown]').each(function() {
+        var $this = $(this), 
+            finalDate = new Date().valueOf() 
+                + parseInt(Math.random() * 150) * 24 * 60 * 60 * 1000;
+        $this.countdown(finalDate, function(event) {
+            $this.html(event.strftime('%D days %H:%M:%S'));
         });
     });
 </script>
 
 ##### HTML:
 {% highlight html linenos %}
-<div class="clock"></div>
-<div class="clock"></div>
-<div class="clock"></div>
-<div class="clock"></div>
+<div data-countdown="2020/01/01"></div>
+<div data-countdown="2019/01/01"></div>
+<div data-countdown="2018/01/01"></div>
+<div data-countdown="2017/01/01"></div>
 {% endhighlight %}
 
 ##### Javascript:
 {% highlight js linenos %}
-$('.clock').each(function() {
-    $(this).countdown('2020/01/01', function(event) {
-        $(this).html(event.strftime('%D days %H:%M:%S'));
+$('[data-countdown]').each(function() {
+    var $this = $(this), finalDate = $(this).data('countdown');
+    $this.countdown(finalDate, function(event) {
+        $this.html(event.strftime('%D days %H:%M:%S'));
     });
 });
 {% endhighlight %}
