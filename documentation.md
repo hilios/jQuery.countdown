@@ -72,17 +72,20 @@ To register a callback use the following `event.type`:
 -   `finish.countdown`
 -   `stop.countdown`
 
-All events are namespaced with `*.countdown`, but you can avoid them.
+Be aware thtat **ALL** events should be registered with the namespace `*.countdown`.
 
 <a class="anchor" id="event-object"></a>
 
 Event object
 ------------
 
+Most of the time you will be using the `event.strftime` function to render the countdown, the next section goes deeper in this subject. But you can access all raw values
+
 ```javascript
 {
     type:           '{String} The namespaced event type {update,finish,stop}.countdown',
-    finalDate:      '{Date} The Date native object'
+    strftime:       '{Function} The formatter function',
+    finalDate:      '{Date} The parsed final date native object',
     offset: {
         seconds:    '{int} Seconds left for the next minute',
         minutes:    '{int} Minutes left for the next hour',
@@ -92,13 +95,9 @@ Event object
         weeks:      '{int} Weeks left until the final date',
         months:     '{int} Months left until final date' ,
         years:      '{int} Year left until final date'
-    },
-    offsetDate:     '{Date} A native date with the offset value',
-    strftime:       '{Function} A simple formatter function'
+    }
 }
 ```
-
-Most of the time you will be using the `event.strftime` function to render the countdown, the next section goes deeper in this subject.
 
 <a class="anchor" id="formatter"></a>
 
@@ -109,7 +108,11 @@ A simple formatter that helps keep your code more semantic and avoid repetitive 
 
 It formats the offset date according to the directives in the given format string. The directive consists of a percent (`%`) character. Any text not listed as a directive will be passed through to the output string.
 
-All the short and long directives contains zero-padded (01, 02, 03, ..., 10) and blank-padded (1, 2, 3, ..., 10) versions, to use the latter please use the dash `-` modifier.
+```javascript
+event.strftime('%W weeks %-D days %-H h %M min %S sec'); // 1 week 2 days 3 h 04 min 05 sec
+```
+
+All the directives contains zero-padded (01, 02, 03, ..., 10) and blank-padded (1, 2, 3, ..., 10) versions, to use the latter please use the dash `-` modifier.
 
 The formatter is also capable of handle pluralization through the bang `!` modifier, by default always return the `s` character, if you need a complex logic please read the **Pluralization** topic of this section.
 
@@ -132,76 +135,87 @@ The formatter is also capable of handle pluralization through the bang `!` modif
 
 <table class="table table-striped table-bordered">
     <tr>
-        <th>Long version</th>
-        <th>Short version</th>
+        <th>Directive</th>
         <th>Blank-padded</th>
         <th>Description</th>
         
     </tr>
     <tr>
-        <td><code>%years</code></td>
         <td><code>%Y</code></td>
         <td><code>%-Y</code></td>
-        <td>Years left</td>
+        <td>Years left *</td>
     </tr>
     <tr>
-        <td><code>%months</code></td>
         <td><code>%m</code></td>
         <td><code>%-m</code></td>
-        <td>Monts left</td>
+        <td>Monts left *</td>
     </tr>
     <tr>
-        <td><code>%weeks</code></td>
         <td><code>%w</code></td>
         <td><code>%-w</code></td>
         <td>Weeks left</td>
     </tr>
     <tr>
-        <td><code>%days</code></td>
         <td><code>%d</code></td>
         <td><code>%-d</code></td>
         <td>Days left</td>
     </tr>
     <tr>
-        <td><code>%totalDays</code></td>
         <td><code>%D</code></td>
         <td><code>%-D</code></td>
         <td>Total amount of days left</td>
     </tr>
     <tr>
-        <td><code>%hours</code></td>
         <td><code>%H</code></td>
         <td><code>%-H</code></td>
         <td>Hours left</td>
     </tr>
     <tr>
-        <td><code>%minutes</code></td>
         <td><code>%M</code></td>
         <td><code>%-M</code></td>
         <td>Minutes left</td>
     </tr>
     <tr>
-        <td><code>%seconds</code></td>
         <td><code>%S</code></td>
         <td><code>%-S</code></td>
         <td>Seconds left</td>
     </tr>
 </table>
 
-Bellow some use cases examples:
-
-```javascript
-event.strftime('%W weeks %-D days %-H h %M min %S sec'); // 1 week 2 days 3 h 04 min 05 sec
-// Pluralization
-event.strftime('%-D day%!D %H:%M:%S'); // 1 day 23:45:56 (or) 2 days 23:45:56
-// Now in german
-event.strftime('%-D tag%!D:e; %H:%M:%S'); // 1 tage 23:45:56 (or) 2 tag 23:45:56
-```
+<small>* Due to their non linear constrains the years and months calculation are not precise, and it's pretending to use as a approximation or not use at all.</small>
 
 #### Pluralization #####
 
-*Coming soon...*
+The support for pluralization is built in the formatter by adding the `!` (bang) modifier to the directive, the default behavior is to return a **s** character, it's also possible to customize the return using the suffix `:...;`. 
 
+The table bellow show the supported use cases of the pluralization plugin.
+
+<table class="table table-striped table-bordered table-nonfluid">
+    <tr>
+        <th>Directive</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>%!H</code></td>
+        <td>Return <strong>s</strong> when the hour is different than 1</td>
+    </tr>
+    <tr>
+        <td><code>%!S:plural;</code></td>
+        <td>Return <strong>plural</strong> when seconds if different than 1</td>
+    </tr>
+    <tr>
+        <td><code>%!d:singular,plural;</code></td>
+        <td>Return <strong>singular</strong> when day is 1 and <strong>plural</strong> otherwise</td>
+    </tr>
+</table>
+
+
+```javascript
+event.strftime('%-D day%!D %H:%M:%S'); // 1 day 23:45:56 (or) 2 days 23:45:56
+// Now in german
+event.strftime('%-D tag%!D:e; %H:%M:%S'); // 1 tage 23:45:56 (or) 2 tag 23:45:56
+event.strftime('%S %!S:sekonde,sekonden;'); // 01 sekonde (or) 02 sekonden
+```
 
 <a class="anchor" id="controls"></a>
 
