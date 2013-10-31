@@ -181,8 +181,7 @@ The formatter is also capable of handle pluralization through the bang `!` modif
         <td>Seconds left</td>
     </tr>
 </table>
-
-<small>* Due to their non linear constrains the years and months calculation are not precise, and it's pretending to use as a approximation or not use at all.</small>
+<small class="text-center">* Due to their non linear constrains the years and months calculation are not precise and it's pretending to use as a approximation or not use at all.</small>
 
 #### Pluralization #####
 
@@ -222,13 +221,28 @@ event.strftime('%S %!S:sekonde,sekonden;'); // 01 sekonde (or) 02 sekonden
 Controls
 --------
 
-The plugin allow you to pause/resume the countdown anytime.
+The plugin allow you to `pause`/`resume` the countdown anytime:
 
 ```javascript
 // Pause the countdown
 $('div#clock').countdown('pause');
-$('div#clock').countdown('stop');
 // Resume the countdown
 $('div#clock').countdown('resume');
+```
+
+If you prefer you can call `stop`/`start`:
+
+```javascript
+// Pause the countdown
+$('div#clock').countdown('stop');
+// Resume the countdown
 $('div#clock').countdown('start');
+```
+
+If you need to set a new final date for the countdown, just call the plugin initialization again.
+
+```javascript
+$('div#clock').countdown('2010/10/10');
+// Then ...
+$('div#clock').countdown('2012/20/20 12:34:56');
 ```
