@@ -4,9 +4,7 @@ title:  Website launch (callback style)
 category: examples
 ---
 
-This one is very similar to the legacy example, but uses the callback style. 
-
-Format the output with blank-padded values for weeks (`%-w`) and days (`%-d`).
+This one is very similar to the legacy example, but uses the callback style instead. Format the output with blank-padded values for weeks (`%-w`) and days (`%-d`).
 
 <div class="launch-time">
     This plugin will be available in ...

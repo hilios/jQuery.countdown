@@ -4,10 +4,7 @@ title:  Basic coupon site
 category: examples
 ---
 
-This is the most common case to use the script, that mimic the countdown style in coupon sites like [Groupon](http://www.groupon.com/browse/miami). 
-
-Just use the formatter with `%D days %H:%M:%S`.
-
+This is the most common case to use the script, that mimic the countdown style in coupon sites like [Groupon](http://www.groupon.com/browse/miami). Format the output with `%D days %H:%M:%S`.
 
 <div class="basic-coupon">
     Limited Time Only!

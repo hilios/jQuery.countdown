@@ -137,8 +137,9 @@ footer li:last-child:after{
     padding-bottom: 20px;
 }
 .launch-time{
-    text-align: center;
+    height: 130px;
     padding: 20px;
+    text-align: center;
 }
 .launch-time div{
     font-size: 150%;

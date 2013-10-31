@@ -3,10 +3,7 @@ layout: content
 title:  Advanced coupon site
 category: examples
 ---
-
-This example handle multiple cases of the countdown, like hiding weeks and days when they are not needed, handling pluralization and the finish event.
-
-Change the value on the drop down to see the changes.
+This example handle multiple cases of the countdown, show `%-w` weeks and `%-d` days only when necessary and handle pluralization, display the time as `%H:%M:%S`.
 
 <div class="advanced-coupon">
     <div class="advanced-coupon-display">
@@ -22,6 +19,8 @@ Change the value on the drop down to see the changes.
         <option value="5s">5 seconds from now (finishin in ...)</option>
     </select>
 </div>
+
+<small>Change the value on the drop down to see the changes.</small>
 
 <script type="text/javascript">
     var $clock = $('#clock')
