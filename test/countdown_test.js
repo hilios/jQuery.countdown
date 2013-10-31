@@ -259,25 +259,19 @@ asyncTest('escaping percentage character %% ', 1, function() {
 });
 
 /*
-%Y  %-Y     %years      Years left
-%m  %-m     %months     Monts left
-%w  %-w     %weeks      Weeks left
-%d  %-d     %days       Days left
-%D  %-D     %totalDays  Total amount of days left
-%H  %-H     %hours      Hours left
-%M  %-M     %minutes    Minutes left
-%S  %-S     %seconds    Seconds left
+| Directive     | Blank-padded  | Pluralization | Description               |
+|---------------|---------------|---------------|---------------------------|
+| %Y            | %-Y           | %!Y           | Years left                |
+| %m            | %-m           | %!m           | Months left               |
+| %w            | %-w           | %!w           | Weeks left                |
+| %d            | %-d           | %!d           | Days left                 |
+| %D            | %-D           | %!D           | Total amount of days left |
+| %H            | %-H           | %!H           | Hours left                |
+| %M            | %-M           | %!M           | Minutes left              |
+| %S            | %-S           | %!S           | Seconds left              |
 */
 
-asyncTest('long-version directives', 1, function() {
-    $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
-        ok(event.strftime('%years %months %weeks %days %totalDays %hours %minutes %seconds')
-            .match(/^([0-9]{1,}\s?){8}$/) !== null);
-        start();
-    });
-});
-
-asyncTest('short-version directives', 1, function() {
+asyncTest('directives', 1, function() {
     $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
         ok(event.strftime('%Y %m %w %d %D %H %M %S')
             .match(/^([0-9]{1,}\s?){8}$/) !== null);
@@ -285,7 +279,7 @@ asyncTest('short-version directives', 1, function() {
     });
 });
 
-asyncTest('short-version blank-padded directives', 1, function() {
+asyncTest('blank-padded directives', 1, function() {
     $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
         ok(event.strftime('%-Y %-m %-w %-d %-D %-H %-M %-S')
             .match(/^([0-9]{1,}\s?){8}$/) !== null);
@@ -301,7 +295,7 @@ asyncTest('return an empty character when plural', 2, function() {
     });
 });
 
-asyncTest('return an `s` when when plural', 2, function() {
+asyncTest('return a `s` when when plural', 2, function() {
     $dom.countdown(new Date().valueOf() + 2000).on('update.countdown', function(event) {
         ok(event.offset.seconds === 2);
         ok(event.strftime('%!S') === 's');

@@ -74,11 +74,11 @@
     // Time string formatter 
     function strftime(offsetObject) {
         return function(format) {
-            var directives = format.match(/%(-|!)?[A-Z]{1,}(:[^;]+;)?/gi);
+            var directives = format.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
             if(directives) {
                 for(var i = 0, len = directives.length; i < len; ++i) {
                     var directive   = directives[i]
-                            .match(/%(-|!)?([a-zA-Z]+)(:[^;]+;)?/),
+                            .match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/),
                         regexp      = new RegExp(directive[0]),
                         modifier    = directive[1] || '',
                         plural      = directive[3] || '',
@@ -89,9 +89,6 @@
                     if(DIRECTIVE_KEY_MAP.hasOwnProperty(directive)) {
                         value = DIRECTIVE_KEY_MAP[directive];
                         value = Number(offsetObject[value]);
-                    }
-                    if(offsetObject.hasOwnProperty(directive)) {
-                        value = Number(offsetObject[directive]);
                     }
                     if(value !== null) {
                         // Pluralize
