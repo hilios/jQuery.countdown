@@ -2,7 +2,6 @@
 layout: content
 title:  Advanced coupon site
 category: examples
-position: 4
 ---
 This example handle multiple cases of the countdown, show `%-w` weeks and `%-d` days only when necessary and handle pluralization, display the time as `%H:%M:%S`.
 

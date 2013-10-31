@@ -2,7 +2,6 @@
 layout: content
 title:  Callback style and formatter modifiers
 category: examples
-position: 2
 ---
 Very similar to the legacy example, but uses the callback style instead. Format the output with blank-padded value for weeks (`%-w`) and days (`%-d`) and pluralize it's output with `%!w` and `%!d`.
 

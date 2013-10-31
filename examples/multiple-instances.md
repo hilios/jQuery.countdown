@@ -2,7 +2,6 @@
 layout: content
 title:  Multiple instances on the same page
 category: examples
-position: 6
 ---
 Assign the countdown on several elements at the same time.
 

@@ -2,7 +2,6 @@
 layout: content
 title:  Basic coupon site
 category: examples
-position: 3
 ---
 This is the most common case to use the script, that mimic the countdown style in coupon sites like **Groupon**. Format the output with `%D days %H:%M:%S`.
 
