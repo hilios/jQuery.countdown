@@ -2,6 +2,7 @@
 layout: content
 title:  Legacy style
 category: examples
+position: 1
 ---
 Assign the callback uppon initialization, format the countdown `%w` weeks `%d` days `%H` hours `%M` minutes `%S` seconds where each directive value is displayed within his own DOM element (`<span>`) and all are zero-padded.
 
