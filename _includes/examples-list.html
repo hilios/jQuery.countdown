@@ -2,11 +2,11 @@
     {% if include.excerpt == null or include.excerpt == false %}data-spy="affix" data-offset="130"{% endif %}>
 {% for example in site.pages %}
     {% if example.category contains 'examples' %}
-    <a href="{{ example.url }}" class="list-group-item 
+    <a href="{{ site.baseurl }}{{ example.url }}" class="list-group-item 
         {% if example.url == page.url %}active{% endif %}">
         {% if include.excerpt != null and include.excerpt %}
             <h4>{{ example.title }}</h4>
-            {{ example.excerpt | markdownify }}
+            {{ example.excerpt }}
         {% else %}
             {{ example.title }}
         {% endif %}
