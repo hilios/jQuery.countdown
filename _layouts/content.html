@@ -8,7 +8,7 @@ scrollspy: '#toc'
 <div class="container">
     <div class="row">
         {% if page.category contains 'docs' %}
-        <nav id="toc" class="toc col-md-2">
+        <nav id="toc" class="col-md-2">
             {% include toc.html %}
         </nav>
         {% endif %}
@@ -20,7 +20,7 @@ scrollspy: '#toc'
             {{ content }}
         </article>
         {% if page.category contains 'examples' %}
-        <nav class="toc-links col-md-4">
+        <nav class="col-md-4">
             {% include examples-list.html %}
         </nav>
         {% endif %}

@@ -81,7 +81,7 @@ footer li:last-child:after{
     -webkit-border-radius: 5px;
 
     border: 1px solid #cccccc;
-    margin: 20px 0;
+    margin-bottom: 20px;
     padding: 10px 0;
     text-align: center;
 }
@@ -136,17 +136,17 @@ footer li:last-child:after{
 .advanced-coupon-display{
     padding-bottom: 20px;
 }
-.launch-time{
+.big-countdown{
     height: 130px;
     padding: 20px;
     text-align: center;
 }
-.launch-time div{
+.big-countdown div{
     font-size: 150%;
     margin-top: 10px;
     line-height: 55px;
 }
-.launch-time span{
+.big-countdown span{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;

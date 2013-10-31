@@ -3,6 +3,7 @@ layout: content
 title:  Multiple instances on the same page
 category: examples
 ---
+Assign the countdown on several elements at the same time.
 
 <div class="row multiple-instance">
     <div class="col-md-3">
@@ -37,5 +38,9 @@ category: examples
 
 ##### Javascript:
 {% highlight js linenos %}
-
+$('.clock').each(function() {
+    $(this).countdown('2020/01/01', function(event) {
+        $(this).html(event.strftime('%D days %H:%M:%S'));
+    });
+});
 {% endhighlight %}

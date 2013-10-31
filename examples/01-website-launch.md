@@ -1,23 +1,22 @@
 ---
 layout: content
-title:  Website launch (callback style)
+title:  Callback style and formatter modifiers
 category: examples
 ---
+Very similar to the legacy example, but uses the callback style instead. Format the output with blank-padded value for weeks (`%-w`) and days (`%-d`) and pluralize it's output with `%!w` and `%!d`.
 
-This one is very similar to the legacy example, but uses the callback style instead. Format the output with blank-padded values for weeks (`%-w`) and days (`%-d`).
-
-<div class="launch-time">
+<div class="big-countdown">
     This plugin will be available in ...
-    <div id="launch-time"></div>
+    <div id="clock"></div>
 </div>
 
 <script type="text/javascript">
     var sixMonths = new Date(new Date().valueOf() + 6 * 30 * 24 * 60 * 60 * 1000);
 
-    $('#launch-time').countdown(sixMonths).on('update.countdown', function(event) {
+    $('#clock').countdown(sixMonths).on('update.countdown', function(event) {
     var $this = $(this).html(event.strftime(''
-        + '<span>%-w</span> weeks '
-        + '<span>%-d</span> days '
+        + '<span>%-w</span> week%!w '
+        + '<span>%-d</span> day%!d '
         + '<span>%H</span> hr '
         + '<span>%M</span> min '
         + '<span>%S</span> sec'));
@@ -26,15 +25,15 @@ This one is very similar to the legacy example, but uses the callback style inst
 
 ##### HTML:
 {% highlight html linenos %}
-<div id="launch-time"></div>
+<div id="clock"></div>
 {% endhighlight %}
 
 ##### Javascript:
 {% highlight js linenos %}
-$('#launch-time').countdown('2020/10/10').on('update.countdown', function(event) {
+$('#clock').countdown('2020/10/10').on('update.countdown', function(event) {
     var $this = $(this).html(event.strftime(''
-        + '<span>%-w</span> weeks '
-        + '<span>%-d</span> days '
+        + '<span>%-w</span> week%!w '
+        + '<span>%-d</span> day%!d '
         + '<span>%H</span> hr '
         + '<span>%M</span> min '
         + '<span>%S</span> sec'));

@@ -28,10 +28,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li {% if page.url == '/documentation.html' %}class="active"{% endif %}>
+                <li {% if page.url contains 'documentation' %}class="active"{% endif %}>
                     <a href="{{ site.baseurl }}documentation.html">Documentation</a>
                 </li>
-                <li {% if page.url == '/examples.html' %}class="active"{% endif %}>
+                <li {% if page.url contains 'examples' %}class="active"{% endif %}>
                     <a href="{{ site.baseurl }}examples.html">Examples</a>
                 </li>
                 <li>
