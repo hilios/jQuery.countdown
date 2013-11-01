@@ -1,4 +1,4 @@
-[The Final Countdown](http://hilios.github.io/jQuery.countdown/)
+[The Final Countdown](http://hilios.github.io/jQuery.countdown/) [![Build Status](https://travis-ci.org/hilios/jQuery.countdown.png)](https://travis-ci.org/hilios/jQuery.countdown)
 =====================
 
 #### A simple and html agnostic date countdown plugin for jQuery ####
