@@ -9,18 +9,11 @@
         "datetime",
         "date"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": {
         "name": "Edson Hilios",
         "url": "http://edson.hilios.com.br"
     },
-    "maintainers": [
-        {
-            "name": "Edson Hilios",
-            "email": "support@hilios.com.br",
-            "url": "http://edson.hilios.com.br"
-        }
-    ],
     "licenses": [
         {
             "type": "MIT",
