@@ -4,3 +4,9 @@ node_js:
 before_script:
   - npm install -g grunt-cli
   - npm install
+branches:
+  except:
+    - gh-pages
+    - v1.0.2
+    - v1.0.1
+    - v1.0.0
