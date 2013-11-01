@@ -6,7 +6,6 @@ before_script:
   - npm install
 branches:
   except:
+    - /^v1\..*/
+    - /^1\..*/
     - gh-pages
-    - v1.0.2
-    - v1.0.1
-    - v1.0.0
