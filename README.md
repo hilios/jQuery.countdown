@@ -41,20 +41,20 @@ There are few ways to get started, from the most simple example to advanced, we 
 Release notes
 -------------
 
-### What's new in 2.0.0
+#### What's new in 2.0.0
 
 *   Add the `strftime` formatter
 *   Add support for jQuery callback style
 *   Add grunt tools
 *   Better docs and examples
 
-### What's new in 1.0.1
+#### What's new in 1.0.1
 
 *   Add AMD support
 *   Fix bug that call finish 2sec earlier
 *   Fix bug when send miliseconds has a string was not parsed
 
-### What's new in 1.0.0
+#### What's new in 1.0.0
 
 *   First public release
 
