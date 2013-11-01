@@ -43,6 +43,7 @@ Release notes
 
 #### What's new in 2.0.1
 
+*   Use strict mode
 *   Add proper RequireJS testing
 
 #### What's new in 2.0.0

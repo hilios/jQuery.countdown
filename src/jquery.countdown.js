@@ -31,6 +31,8 @@
         factory(jQuery);
     }
 })(function($){
+    'use strict';
+    
     var PRECISION   = 100; // 0.1 seconds, used to update the DOM
     var instances   = [],
         matchers    = [];
