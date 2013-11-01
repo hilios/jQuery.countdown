@@ -42,7 +42,7 @@
       // Convert
       if(!(toDate instanceof Date)) {
         if(String(toDate).match(/^[0-9]*$/)) {
-          toDate = new Date(toDate);
+          toDate = new Date(Number(toDate));
         } else if( toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/) ||
             toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/)
             ) {
