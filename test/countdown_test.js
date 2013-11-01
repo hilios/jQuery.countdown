@@ -4,14 +4,14 @@ module('jQuery The Final Countdown');
 var $dom;
 
 QUnit.testStart(function() {
-    $dom = $('<div id="clock" />').appendTo('body');
+    $dom = $('<div id="test" />').appendTo('#qunit-fixture');
 });
 
 QUnit.testDone(function() {
     try{
         $dom.countdown('remove');
     } catch(e) {
-        $dom.remove();
+        // ... countdown wasn't created
     }
 });
 
@@ -32,7 +32,7 @@ test('countdown method exists within jquery selector', function() {
 
 test('throws an error when initiated with wrong number of arguments', function() {
     throws(function() {
-        $('<div />').countdown();
+        $('<div/>').countdown();
     });
 });
 
