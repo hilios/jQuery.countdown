@@ -1,15 +1,15 @@
-The Final Countdown
-===================
+[The Final Countdown](http://hilios.github.io/jQuery.countdown/)
+=====================
 
 #### A simple and html agnostic date countdown plugin for jQuery ####
 
 To get started, check-it out: http://hilios.github.io/jQuery.countdown/
 
-The ultimate countdown plugin designed to fit in any coupon and auction site. Read our [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
+The ultimate countdown plugin designed to fit in any coupon, auction site or product launch. Read our [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
 
 #### Requirements ####
 
-Since version >= 2.0.0 we only support jQuery up to version 1.7, for legacy 1.6 support please use the v1.0.1 branch.
+Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.1](https://github.com/hilios/jQuery.countdown/tree/v1.0.1).
 
 Getting started
 ---------------
@@ -44,14 +44,33 @@ Our documentation is powered by [Jekyll](http://jekyllrb.com/) (see `gh-page` br
 
 ### [Examples](http://hilios.github.io/jQuery.countdown/examples.html)
 
-There are few ways to get started, from the most simple example to the advanced, we support many different countdown styles, see wich one fits your scenario, and if anyone doesn't it's a good starting point to customize the script.
+There are few ways to get started, from the most simple example to advanced, we support many different countdown styles, see wich one fits your scenario, and if anyone doesn't it's a good starting point to customize your output.
 
--   [Coupon site with format hr:min:sec](#)
--   [Coupon site with format N days hr:min:sec](#)
--   [Coupon site with format N days hr:min:sec](#)
--   [Groupon Getaways](#)
--   [Multiple countdown on the same page](#)
--   [Website launch](#)
+-   [Basic coupon site with format N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/legacy-style.html)
+-   [Advance coupon with conditionals and pluralization, format N weeks N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/advanced-coupon-site.html)
+-   [Website launch, callback style](http://hilios.github.io/jQuery.countdown/examples/website-launch.html)
+-   [Multiple instances on the same page](http://hilios.github.io/jQuery.countdown/examples/multiple-instances.html)
+-   [Calculate the countdown total hours](http://hilios.github.io/jQuery.countdown/examples/show-total-hours.html)
+
+Release notes
+-------------
+
+### What's new in 2.0.0
+
+*   Add the `strftime` formatter
+*   Add support for jQuery callback style
+*   Add grunt tools
+*   Better docs and examples
+
+### What's new in 1.0.1
+
+*   Add AMD support
+*   Fix bug that call finish 2sec earlier
+*   Fix bug when send miliseconds has a string was not parsed
+
+### What's new in 1.0.0
+
+*   First public release
 
 Contributing
 ------------
