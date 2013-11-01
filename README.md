@@ -14,26 +14,11 @@ Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). Fo
 Getting started
 ---------------
 
-[![Getting started screenshot](http://hilios.github.io/jQuery.countdown/images/getting-started-screenshot.png)](http://hilios.github.io/jQuery.countdown/)
-
 ```html
-<div id="getting-started">
-  Next year in
-  <span>%w</span> weeks
-  <span>%d</span> days
-  <span>%H</span> hours
-  <span>%M</span> minutes
-  <span>%S</span> seconds
-</div>
-
+<div id="getting-started"></div>
 <script type="text/javascript">
-  $('#getting-started').countdown('2014/01/01', function(event) {
-    $(this).html(event.strftime('Next year in '
-      + '<span>%w</span> weeks '
-      + '<span>%d</span> days '
-      + '<span>%H</span> hours '
-      + '<span>%M</span> minutes '
-      + '<span>%S</span> seconds'));
+  $('#getting-started').countdown('2015/01/01', function(event) {
+    $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
   });
 </script>
 ```
