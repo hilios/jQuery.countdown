@@ -61,7 +61,7 @@
           lasting = {},
           interval = $this.data('countdownInterval'),
           currentDate = new Date(),
-          secondsLeft = Math.floor((toDate.valueOf() - currentDate.valueOf()) / 1000);
+          secondsLeft = Math.ceil((toDate.valueOf() - currentDate.valueOf()) / 1000);
       
       function triggerEvents() {
         // Evaluate if this node is included in the html
