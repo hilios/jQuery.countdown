@@ -15,13 +15,6 @@
         "name":         "Edson Hilios",
         "url":          "http://edson.hilios.com.br"
     },
-    "maintainers": [
-        {
-            "name":     "Edson Hilios",
-            "email":    "support@hilios.com.br",
-            "url":      "http://edson.hilios.com.br"
-        }
-    ],
     "licenses": [
         {
             "type": "MIT",
