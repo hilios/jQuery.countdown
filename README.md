@@ -41,6 +41,10 @@ There are few ways to get started, from the most simple example to advanced, we 
 Release notes
 -------------
 
+#### What's new in 2.0.1
+
+*   Add proper RequireJS testing
+
 #### What's new in 2.0.0
 
 *   Add the `strftime` formatter
@@ -48,7 +52,7 @@ Release notes
 *   Add grunt tools
 *   Better docs and examples
 
-#### What's new in 1.0.1
+#### What's new in 1.0.1 - 1.0.2
 
 *   Add AMD support
 *   Fix bug that call finish 2sec earlier
