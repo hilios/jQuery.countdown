@@ -15,7 +15,7 @@ title:  Examples
     <a href="{{ site.baseurl }}{{ example.url }}" class="list-group-item 
         {% if example.url == page.url %}active{% endif %}">
         <h4>{{ example.title }}</h4>
-        {{ example.content | remove_first:"<p>" | split:"</p>" | first }}
+        {{ example.content | markdownify | remove_first:"<p>" | split:"</p>" | first }}
     </a>
     {% endif %}
 {% endfor %}
