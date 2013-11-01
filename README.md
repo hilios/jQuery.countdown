@@ -46,9 +46,10 @@ Our documentation is powered by [Jekyll](http://jekyllrb.com/) (see `gh-page` br
 
 There are few ways to get started, from the most simple example to advanced, we support many different countdown styles, see wich one fits your scenario, and if anyone doesn't it's a good starting point to customize your output.
 
--   [Basic coupon site with format N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/legacy-style.html)
+-   [Basic coupon site with format N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/basic-coupon-site.html)
 -   [Advance coupon with conditionals and pluralization, format N weeks N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/advanced-coupon-site.html)
--   [Website launch, callback style](http://hilios.github.io/jQuery.countdown/examples/website-launch.html)
+-   [Product launch in... (callback style)](http://hilios.github.io/jQuery.countdown/examples/website-launch.html)
+-   [New year's eve (legacy style)](http://hilios.github.io/jQuery.countdown/examples/legacy-style.html)
 -   [Multiple instances on the same page](http://hilios.github.io/jQuery.countdown/examples/multiple-instances.html)
 -   [Calculate the countdown total hours](http://hilios.github.io/jQuery.countdown/examples/show-total-hours.html)
 
