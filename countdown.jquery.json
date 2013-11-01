@@ -10,7 +10,7 @@
         "datetime",
         "date"
     ],
-    "version":      "2.0.0",
+    "version":      "2.0.1",
     "author": {
         "name":     "Edson Hilios",
         "url":      "http://edson.hilios.com.br"
@@ -25,7 +25,7 @@
     "docs":     "http://hilios.github.io/jQuery.countdown/documentation.html",
     "demo":     "http://hilios.github.io/jQuery.countdown/examples.html",
     "bugs":     "https://github.com/hilios/jQuery.countdown/issues",
-    "download": "https://github.com/hilios/jQuery.countdown/archive/2.0.0.zip",
+    "download": "https://github.com/hilios/jQuery.countdown/archive/2.0.1.zip",
     "dependencies": {
         "jquery": ">=1.7"
     }
