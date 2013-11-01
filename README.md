@@ -9,7 +9,7 @@ The ultimate countdown plugin designed to fit in any coupon, auction site or pro
 
 #### Requirements ####
 
-Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.1](https://github.com/hilios/jQuery.countdown/tree/v1.0.1).
+Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/tree/v1.0.2).
 
 Getting started
 ---------------
@@ -41,6 +41,11 @@ There are few ways to get started, from the most simple example to advanced, we 
 Release notes
 -------------
 
+#### What's new in 2.0.1
+
+*   Use strict mode
+*   Add proper RequireJS testing
+
 #### What's new in 2.0.0
 
 *   Add the `strftime` formatter
@@ -48,7 +53,7 @@ Release notes
 *   Add grunt tools
 *   Better docs and examples
 
-#### What's new in 1.0.1
+#### What's new in 1.0.1 - 1.0.2
 
 *   Add AMD support
 *   Fix bug that call finish 2sec earlier

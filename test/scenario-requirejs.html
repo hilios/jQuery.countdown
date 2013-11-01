@@ -8,27 +8,9 @@
 <body>
 <div id="qunit"></div>
 <div id="qunit-fixture"></div>
-<script src="../lib/require-2.1.9.js"></script>
+<script data-main="../lib/require.main.js" src="../lib/require-2.1.9.js"></script>
 <script src="../lib/qunit.js"></script>
-<script src="../lib/sinon.js"></script>
-<script type="text/javascript">
-window.addEventListener('load', function onLoad() {
-    QUnit.config.autostart = false;
-    // Without this setTimeout, the specs don't always get execute in webKit browsers
-    setTimeout(function () {
-        // load tests using require
-        require(['../src/countdown_test'], function (one) {
-            // now trigger them.
-            QUnit.start();
-        });
-        
-    }, 10);
-    window.removeEventListener('load', onLoad, true);
-}, true);
-</script>
 <!-- Test suite -->
-<!-- <script src="../lib/jquery-1.7.2.js"></script>
-<script src="../src/jquery.countdown.js"></script>
-<script src="countdown_test.js"></script> -->
+<script src="countdown_require_test.js"></script>
 </body>
 </html>
