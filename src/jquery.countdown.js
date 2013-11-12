@@ -38,9 +38,9 @@
         matchers    = [];
     // Miliseconds
     matchers.push(/^[0-9]*$/.source);
-    // Month/Day/Year [hours:minutes:seconds
+    // Month/Day/Year [hours:minutes:seconds]
     matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
-    // Year/Day/Month [hours:minutes:seconds
+    // Year/Day/Month [hours:minutes:seconds]
     matchers.push(/[0-9]{4}(\/[0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
     // Cast the matchers to a regular expression object
     matchers = new RegExp(matchers.join("|"));
@@ -63,6 +63,7 @@
                 "` to a date object.");
         }
     }
+    // Map to convert from a directive to offset object property
     var DIRECTIVE_KEY_MAP = {
         'Y': 'years',
         'm': 'months',
@@ -215,7 +216,7 @@
             var event = $.Event(eventName + '.countdown');
             event.finalDate     = this.finalDate;
             event.offset        = $.extend({}, this.offset);
-        event.strftime      = strftime(this.offset);
+            event.strftime      = strftime(this.offset);
             this.$el.trigger(event);
         }
     });
