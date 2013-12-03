@@ -177,6 +177,7 @@
         remove: function() {
             this.stop();
             delete instances[this.instanceNumber];
+            delete this.$el.data().countdownInstance;
         },
         setFinalDate: function(value) {
             this.finalDate = parseDateString(value); // Cast the given date
@@ -226,7 +227,7 @@
         return this.each(function() {
             var instanceNumber = $(this).data('countdown-instance');
             // Verify if we already have a countdown for this node ...
-            if(instanceNumber) {
+            if(instanceNumber != null) {
                 var instance = instances[instanceNumber],
                     method = argumentsArray[0];
                 // If method exists in the prototype execute
