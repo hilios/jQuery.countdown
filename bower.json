@@ -9,10 +9,9 @@
     "**/.*",
     "lib/**/*",
     "src/**/*",
-    "test/**/*"
+    "test/**/*",
     "package.json",
-    "Gruntfile.js",
-    ""
+    "Gruntfile.js"
   ],
   "dependencies": {
     "jquery": ">=1.7.0"
