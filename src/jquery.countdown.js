@@ -224,9 +224,11 @@
     $.fn.countdown = function() {
         var argumentsArray = Array.prototype.slice.call(arguments, 0);
         return this.each(function() {
+            // If no data was set, jQuery.data returns undefined
             var instanceNumber = $(this).data('countdown-instance');
+            // Thanks to @romanbsd and @FagnerMartinsBrack
             // Verify if we already have a countdown for this node ...
-            if (instanceNumber != null) {
+            if (instanceNumber !== undefined) {
                 var instance = instances[instanceNumber],
                     method = argumentsArray[0];
                 // If method exists in the prototype execute
