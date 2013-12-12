@@ -1,38 +1,39 @@
 {
-  "name": "jquery.countdown",
-  "version": "2.0.2",
-  "description": "jQuery plugin to display a countdown clock on your page",
-  "keywords": [
-    "jquery",
-    "countdown",
-    "clock"
-  ],
-  "homepage": "http://hilios.github.io/jQuery.countdown/",
-  "authors": [
-    "Edson Hilios"
-  ],
-  "license": [
-    {
-      "type": "MIT",
-      "url":  "https://github.com/hilios/jQuery.countdown/blob/2.0.2/LICENSE.md"
-    }
-  ],
+    "name": "jquery.countdown",
+    "version": "2.0.2",
+    "description": "jQuery plugin to display a countdown clock on your page",
+    "keywords": [
+        "countdown",
+        "coupons",
+        "auction",
+        "clock",
+        "datetime",
+        "date"
+    ],
+    "author": "Edson Hilios",
+    "homepage": "http://hilios.github.io/jQuery.countdown/",
+    "license": [
+        {
+            "type": "MIT",
+            "url":  "https://github.com/hilios/jQuery.countdown/blob/2.0.2/LICENSE.md"
+        }
+    ],
 
-  "main": [
-    "./dist/jquery.countdown.js",
-    "./dist/jquery.countdown.min.js"
-  ],
-  "ignore": [
-    "**/.*",
-    "lib",
-    "src",
-    "test",
-    "package.json",
-    "Gruntfile.js",
-    "node_modules",
-    "bower_components"
-  ],
-  "dependencies": {
-    "jquery": ">=1.7.0"
-  }
+    "main": [
+        "./dist/jquery.countdown.js",
+        "./dist/jquery.countdown.min.js"
+    ],
+    "ignore": [
+        "**/.*",
+        "lib",
+        "src",
+        "test",
+        "package.json",
+        "Gruntfile.js",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "jquery": ">=1.7.0"
+    }
 }
