@@ -14,13 +14,13 @@ Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). Fo
 #### Install via Bower ####
 
 ```
-bower install jquery-countdown
+bower install jquery.countdown
 ```
 
 Add a `script` to your html:
 
 ```html
-<script src="/bower_components/jquery-countdown/dist/jquery.countdown.js"></script>
+<script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
 ```
 
 Getting started
