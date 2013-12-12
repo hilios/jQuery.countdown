@@ -6,8 +6,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         dirs: {
-            src:  './src',
-            lib:  './lib',
+            src: './src',
+            lib: './lib',
+            bin: './build',
             test: './test',
             dest: './dist'
         },
@@ -15,22 +16,22 @@ module.exports = function(grunt) {
         pluginName: 'jquery.<%= pkg.name %>',
         license: grunt.file.read('LICENSE.md').split('\n').splice(3).join('\n'),
         banner: '/*!\n' +
-              ' * <%= pkg.description %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-              ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-              ' * <%= license.replace(/\\n/gm, "\\n * ") %>\n' +
-              ' */\n',
+                ' * <%= pkg.description %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+                ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+                ' * <%= license.replace(/\\n/gm, "\\n * ") %>\n' +
+                ' */\n',
         // contrib-clean
         clean: ['<%= dirs.dest %>'],
         // contrib-compress
         compress: {
             release: {
                 options: {
-                    archive: './build/jquery.countdown-<%= pkg.version %>.zip'
+                    archive: '<%= dirs.bin %>/<%= pluginName %>-<%= pkg.version %>.zip'
                 },
                 expand: true,
                 cwd: '<%= dirs.dest %>',
                 src: ['**/*'],
-                dest: 'jquery.countdown-<%= pkg.version %>'
+                dest: '<%= pluginName %>-<%= pkg.version %>'
             }
         },
         // contrib-jshint
@@ -53,10 +54,10 @@ module.exports = function(grunt) {
                         ['<%= dirs.src %>/**/*.js']
                 },
                 options: {
-                    beautify:           true,
-                    compress:           false,
-                    mangle:             false,
-                    preserveComments:   false
+                    beautify: true,
+                    compress: false,
+                    mangle: false,
+                    preserveComments: false
                 }
             },
             min: {
@@ -99,10 +100,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-version');
     // Test
-    grunt.registerTask('test',      ['jshint', 'qunit:all']);
-    grunt.registerTask('test:dev',  ['jshint', 'qunit:dev']);
+    grunt.registerTask('test', ['jshint', 'qunit:all']);
+    grunt.registerTask('test:dev', ['jshint', 'qunit:dev']);
     // Build
-    grunt.registerTask('build',     ['uglify', 'test:all', 'version', 'compress']);
+    grunt.registerTask('build', ['uglify', 'test:all', 'version', 'compress']);
     // Develop
-    grunt.registerTask('default',   ['watch']);
+    grunt.registerTask('default', ['watch']);
 };
