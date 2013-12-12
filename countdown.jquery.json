@@ -1,5 +1,6 @@
 {
     "name": "countdown",
+    "version": "2.0.2",
     "title": "The Final Countdown",
     "description": "jQuery plugin to display a countdown clock on your page.",
     "keywords": [
@@ -10,7 +11,6 @@
         "datetime",
         "date"
     ],
-    "version": "2.0.2",
     "author": {
         "name": "Edson Hilios",
         "url": "http://edson.hilios.com.br"
