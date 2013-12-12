@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>QUnit</title>
+<link rel="stylesheet" href="../lib/qunit.css">
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="../lib/qunit.js"></script>
+<script src="../lib/sinon.js"></script>
+<!-- Test suite -->
+<script src="../lib/jquery-1.9.1.js"></script>
+<script src="../dist/jquery.countdown.js"></script>
+<script type="text/javascript">
+
+    var $dom;
+
+    QUnit.testStart(function() {
+        $dom = $('<div id="test" />').appendTo('#qunit-fixture');
+    });
+
+    // Instance check against undefine, as 0 is a falsy value
+    // Issue #24
+    asyncTest('control a single instance correctly', 2, function() {
+        var callback = sinon.spy();
+        $dom.countdown('2020/10/20').on('update.countdown', callback);
+        // Stop after 0.51 sec
+        setTimeout(function() {
+            $dom.countdown('stop');
+        }, 510);
+        // Resume after 1 sec
+        setTimeout(function() {
+            // Should execute the updated how many times of precision required
+            // Note: Se the PRECISION variable
+            ok(callback.callCount === 5);
+            $dom.countdown('start');
+        }, 1000);
+        // Verify if update event was called once more after 1.2 sec
+        setTimeout(function() {
+            ok(callback.callCount > 5);
+            start();
+        }, 1200);
+    });
+
+</script>
+</body>
+</html>
