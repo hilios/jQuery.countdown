@@ -80,7 +80,13 @@ module.exports = function(grunt) {
                     '<%= dirs.lib %>/**/*.js', 
                     '<%= dirs.test %>/**/*.js'
                 ],
-                tasks: ['build:dev']
+                tasks: ['uglify', 'test:dev']
+            }
+        },
+        // version
+        version: {
+            release: {
+                src: ['*.json']
             }
         }
     });
@@ -91,12 +97,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-version');
     // Test
     grunt.registerTask('test',      ['jshint', 'qunit:all']);
     grunt.registerTask('test:dev',  ['jshint', 'qunit:dev']);
     // Build
-    grunt.registerTask('build',     ['uglify', 'test:all', 'compress']);
-    grunt.registerTask('build:dev', ['uglify', 'test:dev']);
+    grunt.registerTask('build',     ['uglify', 'test:all', 'version', 'compress']);
     // Develop
     grunt.registerTask('default',   ['watch']);
 };
