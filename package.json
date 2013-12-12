@@ -2,14 +2,12 @@
     "name": "countdown",
     "version": "2.0.2",
     "description": "The Final Countdown for jQuery",
-
     "author": "Edson Hilios",
     "homepage": "http://hilios.github.io/jQuery.countdown/",
     "repository": {
         "type" : "git",
         "url"  : "https://github.com/hilios/jQuery.countdown"
     },
-
     "devDependencies": {
         "grunt": "~0.4.1",
         "grunt-contrib-clean": "~0.5.0",
@@ -20,7 +18,6 @@
         "grunt-contrib-watch": "~0.5.3",
         "grunt-version": "~0.2.2"
     },
-    
     "scripts": {
         "test": "grunt test"
     }

@@ -18,7 +18,6 @@
             "url":  "https://github.com/hilios/jQuery.countdown/blob/2.0.2/LICENSE.md"
         }
     ],
-
     "main": [
         "./dist/jquery.countdown.js",
         "./dist/jquery.countdown.min.js"
