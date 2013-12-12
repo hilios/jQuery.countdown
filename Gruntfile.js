@@ -15,12 +15,24 @@ module.exports = function(grunt) {
         pluginName: 'jquery.<%= pkg.name %>',
         license: grunt.file.read('LICENSE.md').split('\n').splice(3).join('\n'),
         banner: '/*!\n' +
-              ' * The Final Countdown for jQuery v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+              ' * <%= pkg.description %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
               ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * <%= license.replace(/\\n/gm, "\\n * ") %>\n' +
               ' */\n',
         // contrib-clean
         clean: ['<%= dirs.dest %>'],
+        // contrib-compress
+        compress: {
+            release: {
+                options: {
+                    archive: './build/jquery.countdown-<%= pkg.version %>.zip'
+                },
+                expand: true,
+                cwd: '<%= dirs.dest %>',
+                src: ['**/*'],
+                dest: 'jquery.countdown-<%= pkg.version %>'
+            }
+        },
         // contrib-jshint
         jshint: {
             all: [
@@ -74,6 +86,7 @@ module.exports = function(grunt) {
     });
     // Load grunt tasks
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -82,7 +95,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test',      ['jshint', 'qunit:all']);
     grunt.registerTask('test:dev',  ['jshint', 'qunit:dev']);
     // Build
-    grunt.registerTask('build',     ['uglify', 'test:all']);
+    grunt.registerTask('build',     ['uglify', 'test:all', 'compress']);
     grunt.registerTask('build:dev', ['uglify', 'test:dev']);
     // Develop
     grunt.registerTask('default',   ['watch']);
