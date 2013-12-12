@@ -1,16 +1,32 @@
 module.exports = function(grunt) {
+    'use strict';
+    // Force use of Unix newlines
+    grunt.util.linefeed = '\n';
+    // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        // contrib-watch
-        watch: {
-            all: {
-                files: ['src/jquery.countdown.js', 'lib/**/*.js', 'test/**/*.js', 'Gruntfile.js'],
-                tasks: ['build:dev']
-            }
+        dirs: {
+            src:  './src',
+            lib:  './lib',
+            test: './test',
+            dest: './dist'
         },
+        // project utils
+        pluginName: 'jquery.<%= pkg.name %>',
+        license: grunt.file.read('LICENSE.md').split('\n').splice(3).join('\n'),
+        banner: '/*!\n' +
+              ' * The Final Countdown for jQuery v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+              ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+              ' * <%= license.replace(/\\n/gm, "\\n * ") %>\n' +
+              ' */\n',
+        // contrib-clean
+        clean: ['<%= dirs.dest %>'],
         // contrib-jshint
         jshint: {
-            all: ['Gruntfile.js', 'src/jquery.countdown.js', 'test/**/*.js']
+            all: [
+                'Gruntfile.js',
+                '<%= dirs.src %>/**/*.js', '<%= dirs.test %>/**/*.js'
+            ]
         },
         // contrib-qunit
         qunit: {
@@ -19,31 +35,55 @@ module.exports = function(grunt) {
         },
         // contrib-uglify
         uglify: {
-            options: {
-                preserveComments: function(node, comment) {
-                    // Preserve the license banner
-                    return comment.col === 0 && comment.pos === 0;
+            dev: {
+                files: {
+                    '<%= dirs.dest %>/<%= pluginName %>.js': 
+                        ['<%= dirs.src %>/**/*.js']
+                },
+                options: {
+                    beautify:           true,
+                    compress:           false,
+                    mangle:             false,
+                    preserveComments:   false
                 }
             },
-            all: {
+            min: {
                 files: {
-                    'src/jquery.countdown.min.js': ['src/jquery.countdown.js']
+                    '<%= dirs.dest %>/<%= pluginName %>.min.js': 
+                        ['<%= dirs.src %>/**/*.js']
+                },
+                options: {
+                    report: 'min'
                 }
+            },
+            options: {
+                banner: '<%= banner %>'
+            }
+        },
+        // contrib-watch
+        watch: {
+            all: {
+                files: [
+                    '<%= dirs.src %>/**/*.js', 
+                    '<%= dirs.lib %>/**/*.js', 
+                    '<%= dirs.test %>/**/*.js'
+                ],
+                tasks: ['build:dev']
             }
         }
     });
     // Load grunt tasks
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    // Project tasks
+    grunt.loadNpmTasks('grunt-contrib-watch');
     // Test
     grunt.registerTask('test',      ['jshint', 'qunit:all']);
     grunt.registerTask('test:dev',  ['jshint', 'qunit:dev']);
     // Build
-    grunt.registerTask('build',     ['test:all', 'uglify']);
-    grunt.registerTask('build:dev', ['test:dev', 'uglify']);
+    grunt.registerTask('build',     ['uglify', 'test:all']);
+    grunt.registerTask('build:dev', ['uglify', 'test:dev']);
     // Develop
-    grunt.registerTask('default',   ['watch', 'build:dev']);
+    grunt.registerTask('default',   ['watch']);
 };
