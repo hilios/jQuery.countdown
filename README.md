@@ -11,7 +11,7 @@ The ultimate countdown plugin designed to fit in any coupon, auction site or pro
 
 [Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.2/jquery.countdown-2.0.2.zip)
 
-If you want to clone the repo always use the files under [dist/](https://github.com/hilios/jQuery.countdown/tree/master/dist) folder, they are optimized for production and development.
+If you want to clone the repo always use the files under [dist](https://github.com/hilios/jQuery.countdown/tree/master/dist) folder, they are optimized for production and development.
 
 #### Install via Bower ####
 
