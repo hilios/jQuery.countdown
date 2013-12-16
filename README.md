@@ -7,10 +7,6 @@ To get started, check-it out: http://hilios.github.io/jQuery.countdown/
 
 The ultimate countdown plugin designed to fit in any coupon, auction site or product launch. Read our [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
 
-#### Requirements ####
-
-Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
-
 #### Download ####
 
 [Click here to download the latest version.](https://github.com/hilios/jQuery.countdown/releases/download/2.0.2/jquery.countdown-2.0.2.zip)
@@ -41,6 +37,10 @@ Getting started
 </script>
 ```
 
+### Requirements
+
+Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
+
 ### [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html)
 
 Our documentation is powered by [Jekyll](http://jekyllrb.com/) (see `gh-page` branch) and hosted in GitHub Pages at [http://hilios.github.io/jQuery.countdown/](http://hilios.github.io/jQuery.countdown/documentation.html).
@@ -56,8 +56,8 @@ There are few ways to get started, from the most simple example to advanced, we 
 -   [Multiple instances on the same page](http://hilios.github.io/jQuery.countdown/examples/multiple-instances.html)
 -   [Calculate the countdown total hours](http://hilios.github.io/jQuery.countdown/examples/show-total-hours.html)
 
-Release notes
--------------
+[Release notes](https://github.com/hilios/jQuery.countdown/releases)
+---------------
 
 #### What's new in 2.0.2
 
