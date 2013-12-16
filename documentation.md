@@ -10,9 +10,21 @@ toc:
     - Controls
 ---
 
+#### Install via Bower ####
+
+```
+bower install jquery.countdown
+```
+
+Add a `script` to your html:
+
+```html
+<script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
+```
+
 #### Requirements ####
 
-Since version 2.0.0 we only support **jQuery**  above 1.7 (including 2.0). For legacy 1.6 support please use the version 1.0.1.
+The latest versions supports **jQuery**  from 1.7 up to >= 2.0.3. For legacy support (<= 1.6) please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
 
 <a class="anchor" id="introduction"></a>
 
