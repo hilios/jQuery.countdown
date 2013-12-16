@@ -114,9 +114,10 @@ Thanks for bug reporting and fixes:
 *   Daniel Leavitt (@dleavitt)
 *   Fagner Brack (@FagnerMartinsBrack)
 *   Matthew Sigley (@msigley)
+*   Roman Shterenzon (@romanbsd)
 
 ### License ###
 
-Copyright (c) 20011 Edson Hilios. This is a free software is licensed under the MIT License.
+Copyright (c) 2011-2014 Edson Hilios. This is a free software is licensed under the MIT License.
 
 *   [Edson Hilios](http://edson.hilios.com.br). Mail me: edson (at) hilios (dot) com (dot) br
