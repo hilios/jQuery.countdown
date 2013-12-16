@@ -9,7 +9,13 @@ The ultimate countdown plugin designed to fit in any coupon, auction site or pro
 
 #### Requirements ####
 
-Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/tree/v1.0.2).
+Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
+
+#### Download ####
+
+[Click here to download the latest version.](https://github.com/hilios/jQuery.countdown/releases/download/2.0.2/jquery.countdown-2.0.2.zip)
+
+If you want to clone the repo always use the files under [dist/](https://github.com/hilios/jQuery.countdown/tree/master/dist) folder, they are optimized for production and development.
 
 #### Install via Bower ####
 
@@ -88,7 +94,7 @@ The Final Countdown uses **Grunt** with convenient methods for working with the 
 ```shell
 npm install
 grunt test  # Lint code and run unit test
-grunt build # Generate the min version
+grunt build # Generate the release files (dev, min and zip)
 grunt       # Watch for updates than test and build
 ```
 
