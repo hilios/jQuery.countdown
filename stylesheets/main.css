@@ -172,3 +172,9 @@ footer li:last-child:after{
     line-height: 30px;
     text-align: center;
 }
+/* Adjust beetter */
+@media (max-width: 992px) {
+  .jumbotron .btn-primary{
+        width: 100%;
+  }
+}
