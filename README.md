@@ -61,13 +61,13 @@ There are few ways to get started, from the most simple example to advanced, we 
 
 #### What's new in 2.0.2
 
-*   Fix pause/continue crash with one countdown instance
-*   Add Bower support
+*   #22: Fix pause/continue crash with one countdown instance
+*   #25: Add Bower support
 
 #### What's new in 2.0.1
 
 *   Use strict mode
-*   Add proper RequireJS testing
+*   #18: Add proper RequireJS testing
 
 #### What's new in 2.0.0
 
@@ -78,9 +78,9 @@ There are few ways to get started, from the most simple example to advanced, we 
 
 #### What's new in 1.0.1 - 1.0.2
 
-*   Add AMD support
-*   Fix bug that call finish 2sec earlier
-*   Fix bug when send miliseconds has a string was not parsed
+*   #15: Add AMD support
+*   #10: Fix bug that call finish 2sec earlier
+*   #17: Fix bug when send miliseconds has a string was not parsed
 
 #### What's new in 1.0.0
 
