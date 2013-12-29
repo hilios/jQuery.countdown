@@ -142,6 +142,7 @@
         remove: function() {
             this.stop();
             delete instances[this.instanceNumber];
+            delete this.$el.data().countdownInstance;
         },
         setFinalDate: function(value) {
             this.finalDate = parseDateString(value);

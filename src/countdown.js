@@ -152,6 +152,8 @@
         remove: function() {
             this.stop();
             delete instances[this.instanceNumber];
+            // Reset the countdown instance under data attr (Thanks to @assiotis)
+            delete this.$el.data().countdownInstance;
         },
         setFinalDate: function(value) {
             this.finalDate = parseDateString(value); // Cast the given date

@@ -115,6 +115,7 @@ Thanks for bug reporting and fixes:
 *   Fagner Brack (@FagnerMartinsBrack)
 *   Matthew Sigley (@msigley)
 *   Roman Shterenzon (@romanbsd)
+*   Marios (@assiotis)
 
 ### License ###
 

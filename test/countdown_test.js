@@ -170,6 +170,15 @@ asyncTest('remove the countdown if dom was removed', 1, function() {
     }, 500);
 });
 
+test('set countdown-instance data attr to undefined uppon remove', function() {
+    var callback = sinon.spy();
+    $dom.countdown('2020/10/20').on('update.countdown', callback);
+    ok($dom.data('countdown-instance') !== undefined);
+    
+    $dom.countdown('remove');
+    ok($dom.data('countdown-instance') === undefined);
+});
+
 asyncTest('set a new finalDate by calling the countdown with a new date', 1, function() {
     $dom.countdown('2020/10/20')
         .on('update.countdown', function(event) {
