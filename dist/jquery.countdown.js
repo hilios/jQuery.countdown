@@ -31,7 +31,7 @@
     var instances = [], matchers = [];
     matchers.push(/^[0-9]*$/.source);
     matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
-    matchers.push(/[0-9]{4}(\/[0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
+    matchers.push(/[0-9]{4}([\/\-][0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
     matchers = new RegExp(matchers.join("|"));
     function parseDateString(dateString) {
         if (dateString instanceof Date) {

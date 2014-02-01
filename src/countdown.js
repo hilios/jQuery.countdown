@@ -15,8 +15,8 @@
     matchers.push(/^[0-9]*$/.source);
     // Month/Day/Year [hours:minutes:seconds]
     matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
-    // Year/Day/Month [hours:minutes:seconds]
-    matchers.push(/[0-9]{4}(\/[0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
+    // Year/Day/Month [hours:minutes:seconds] and Year-Day-Month [hours:minutes:seconds]
+    matchers.push(/[0-9]{4}([\/\-][0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
     // Cast the matchers to a regular expression object
     matchers = new RegExp(matchers.join("|"));
     // Parse a Date formatted has String to a native object
