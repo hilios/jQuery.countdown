@@ -41,6 +41,9 @@
             if (String(dateString).match(/^[0-9]*$/)) {
                 dateString = Number(dateString);
             }
+            if(String(dateString).match(/^[0-9]*$/)) {
+                dateString = dateString.replace(/\-/g, '/');
+            }
             return new Date(dateString);
         } else {
             throw new Error("Couldn't cast `" + dateString + "` to a date object.");
