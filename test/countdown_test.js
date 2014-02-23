@@ -241,6 +241,13 @@ asyncTest('cast YYYY/MM/DD hh:mm:ss', 1, function() {
     });
 });
 
+asyncTest('cast YYYY-MM-DD hh:mm:ss', 1, function() {
+    $dom.countdown('2020-10-20 12:34:56').on('update.countdown', function(event) {
+        ok(event.finalDate.toString().match(/Oct 20 2020 12:34:56/));
+        start();
+    });
+});
+
 asyncTest('cast YYYY/MM/DD', 1, function() {
     $dom.countdown('2020/10/20').on('update.countdown', function(event) {
         ok(event.finalDate.toString().match(/Oct 20 2020 00:00:00/));
