@@ -33,7 +33,7 @@
                 dateString = Number(dateString);
             }
             // Replace dashes to slashes
-            if(String(dateString).match(/^[0-9]*$/)) {
+            if(String(dateString).match(/\-/)) {
                 dateString = String(dateString).replace(/\-/g, '/');
             }
             return new Date(dateString);
