@@ -1,13 +1,14 @@
 ---
 layout: content
-title:  Documentation
+title: Documentation
 category: docs
-toc:
-    - Introduction
-    - Events
-    - Event object
-    - Formatter
-    - Controls
+toc: 
+  - Introduction
+  - Events
+  - Event object
+  - Formatter
+  - Controls
+published: true
 ---
 
 #### Install via Bower ####
@@ -170,7 +171,7 @@ The formatter is also capable of handle pluralization through the bang `!` modif
     <tr>
         <td><code>%d</code></td>
         <td><code>%-d</code></td>
-        <td>Days left</td>
+        <td>Days left (w/o weeks)</td>
     </tr>
     <tr>
         <td><code>%D</code></td>
@@ -197,7 +198,7 @@ The formatter is also capable of handle pluralization through the bang `!` modif
 
 #### Pluralization #####
 
-The support for pluralization is built in the formatter by adding the `!` (bang) modifier to the directive, the default behavior is to return a **s** character, it's also possible to customize the return using the suffix `:...;`. 
+The support for pluralization is built in the formatter by adding the `!` (bang) modifier to the directive, the default behavior is to return the **s** character, it's also possible to customize the return using the suffix `:...;`. 
 
 The table bellow show the supported use cases of the pluralization plugin.
 
@@ -233,7 +234,7 @@ event.strftime('%S %!S:sekonde,sekonden;'); // 01 sekonde (or) 02 sekonden
 Controls
 --------
 
-The plugin allow you to `pause`/`resume` the countdown anytime:
+The methods `pause`/`resume` allows to control the execution flow of the countdown:
 
 ```javascript
 // Pause the countdown
@@ -242,7 +243,7 @@ $('div#clock').countdown('pause');
 $('div#clock').countdown('resume');
 ```
 
-If you prefer you can call `stop`/`start`:
+There also the aliases `stop`/`start` for the same functionality:
 
 ```javascript
 // Pause the countdown
@@ -251,7 +252,7 @@ $('div#clock').countdown('stop');
 $('div#clock').countdown('start');
 ```
 
-If you need to set a new final date for the countdown, just call the plugin initialization again.
+To set a new final date for the countdown, call the plugin initialization function with a valid date string:
 
 ```javascript
 $('div#clock').countdown('2010/10/10');
