@@ -1,6 +1,6 @@
 /*!
  * The Final Countdown for jQuery v2.0.2 (http://hilios.github.io/jQuery.countdown/)
- * Copyright (c) 2013 Edson Hilios
+ * Copyright (c) 2014 Edson Hilios
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -41,8 +41,8 @@
             if (String(dateString).match(/^[0-9]*$/)) {
                 dateString = Number(dateString);
             }
-            if(String(dateString).match(/\-/)) {
-                dateString = String(dateString).replace(/\-/g, '/');
+            if (String(dateString).match(/\-/)) {
+                dateString = String(dateString).replace(/\-/g, "/");
             }
             return new Date(dateString);
         } else {
@@ -122,10 +122,10 @@
     };
     $.extend(Countdown.prototype, {
         start: function() {
-            if (this.interval !== null) {
-                throw new Error("Countdown is already running!");
-            }
             var self = this;
+            if (this.interval !== null) {
+                clearInterval(this.interval);
+            }
             this.update();
             this.interval = setInterval(function() {
                 self.update.call(self);
@@ -149,6 +149,7 @@
         },
         setFinalDate: function(value) {
             this.finalDate = parseDateString(value);
+            this.start();
         },
         update: function() {
             if (this.$el.closest("html").length === 0) {
