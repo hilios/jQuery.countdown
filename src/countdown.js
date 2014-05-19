@@ -134,7 +134,7 @@
     $.extend(Countdown.prototype, {
         start: function() {
             if(this.interval !== null) {
-                throw new Error("Countdown is already running!");
+              clearInterval(this.interval);
             }
             var self = this;
             this.update();
@@ -220,6 +220,7 @@
                 } else if(String(method).match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
                     instance.setFinalDate.call(instance, 
                         method);
+                    instance.start();
                 } else {
                     $.error('Method %s does not exist on jQuery.countdown'.
                         replace(/\%s/gi, method));
