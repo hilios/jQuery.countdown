@@ -41,7 +41,6 @@ module('Events');
 
 asyncTest('trigger the update event', function() {
   expect(1);
-
   $dom.countdown('2020/10/20').on('update.countdown', function(event) {
     ok(true); // Up to this point the event was dispatched
     start();
@@ -50,7 +49,6 @@ asyncTest('trigger the update event', function() {
 
 asyncTest('trigger the finish event', function() {
   expect(1);
-
   $dom.countdown('2010/10/20').on('finish.countdown', function(event) {
     ok(true); // Up to this point the event was dispatched
     start();
@@ -60,7 +58,6 @@ asyncTest('trigger the finish event', function() {
 asyncTest('event object has {type, strftime, finalDate, offset} properties',
 function() {
   expect(4);
-
   $dom.countdown('2020/10/20').on('update.countdown', function(event) {
     ok(event.hasOwnProperty('type'));
     ok(event.hasOwnProperty('strftime'));
@@ -73,7 +70,6 @@ function() {
 asyncTest('event.offset object has {seconds, minutes, hours, days, ' +
 'totalDays, weeks, years} properties', function() {
   expect(7);
-
   $dom.countdown('2020/10/20').on('update.countdown', function(event) {
     ok(event.offset.hasOwnProperty('seconds'));
     ok(event.offset.hasOwnProperty('minutes'));
@@ -88,16 +84,15 @@ asyncTest('event.offset object has {seconds, minutes, hours, days, ' +
 
 test('allow the callback be setted uppon initialization (legacy style)',
 function() {
-    $dom.countdown('2020/10/20', function(event) {
-        ok(true); // Up to this point the event was dispatched
-    });
+  $dom.countdown('2020/10/20', function(event) {
+    ok(true); // Up to this point the event was dispatched
+  });
 });
 
 module('Plugin math');
 
 asyncTest('time offset calculation', function() {
   expect(5);
-
   var testDate = new Date().getTime();
   testDate += 7 * 24 * 60 * 60 * 1000; // 1 week
   testDate += 2 * 24 * 60 * 60 * 1000; // 2 days
@@ -118,7 +113,6 @@ module('Commands and functionality');
 
 asyncTest('stop/start the countdown', function() {
   expect(2);
-
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   // Stop after 0.51 sec
@@ -141,7 +135,6 @@ asyncTest('stop/start the countdown', function() {
 
 asyncTest('pause/resume the countdown', function() {
   expect(2);
-
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   // Stop after 0.51 sec
@@ -164,7 +157,6 @@ asyncTest('pause/resume the countdown', function() {
 
 asyncTest('remove the countdown instance', function() {
   expect(1);
-
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   $dom.countdown('remove');
@@ -177,7 +169,6 @@ asyncTest('remove the countdown instance', function() {
 
 asyncTest('remove the countdown if dom was removed', function() {
   expect(1);
-
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   $dom.remove();
@@ -200,7 +191,6 @@ test('set countdown-instance data attr to undefined uppon remove', function() {
 asyncTest('set a new finalDate by calling the countdown with a new date',
 function() {
   expect(1);
-
   $dom.countdown('2020/10/20')
   .on('update.countdown', function(event) {
     ok(event.finalDate.toString().match(/Oct 20 2020/));
@@ -217,9 +207,7 @@ function() {
 asyncTest('starts the countdown again after being finished (issue #38)',
 function() {
   expect(2);
-
   var interactions = 0;
-
   function startCounting() {
     var twoSecondsFromNow = new Date().getTime() + (500);
     $dom.countdown(twoSecondsFromNow)
@@ -369,6 +357,7 @@ asyncTest('escaping percentage character %% ', function() {
 | %H            | %-H           | %!H           | Hours left                |
 | %M            | %-M           | %!M           | Minutes left              |
 | %S            | %-S           | %!S           | Seconds left              |
+|---------------------------------------------------------------------------|
 */
 
 asyncTest('directives', function() {
@@ -411,7 +400,8 @@ asyncTest('return a `s` when when plural', function() {
   });
 });
 
-asyncTest('return the given character when plural', 2, function() {
+asyncTest('return the given character when plural', function() {
+  expect(2);
   $dom.countdown(new Date().valueOf() + 2000)
   .on('update.countdown', function(event) {
     ok(event.offset.seconds === 2);
@@ -420,7 +410,8 @@ asyncTest('return the given character when plural', 2, function() {
   });
 });
 
-asyncTest('return the plural when given pair of arguments', 2, function() {
+asyncTest('return the plural when given pair of arguments', function() {
+  expect(2);
   $dom.countdown(new Date().valueOf() + 2000)
   .on('update.countdown', function(event) {
     ok(event.offset.seconds === 2);
@@ -429,7 +420,8 @@ asyncTest('return the plural when given pair of arguments', 2, function() {
   });
 });
 
-asyncTest('return the singular when given pair of arguments', 2, function() {
+asyncTest('return the singular when given pair of arguments', function() {
+  expect(2);
   $dom.countdown(new Date().valueOf() + 1000)
   .on('update.countdown', function(event) {
     ok(event.offset.seconds === 1);
