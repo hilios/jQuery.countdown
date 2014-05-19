@@ -16,8 +16,10 @@ module.exports = function(grunt) {
     pluginName: 'jquery.<%= pkg.name %>',
     license: grunt.file.read('LICENSE.md').split('\n').splice(3).join('\n'),
     banner: '/*!\n' +
-            ' * <%= pkg.description %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-            ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+            ' * <%= pkg.description %> v<%= pkg.version %> ' +
+              '(<%= pkg.homepage %>)\n' +
+            ' * Copyright (c) <%= grunt.template.today("yyyy") %> ' +
+              '<%= pkg.author %>\n' +
             ' * <%= license.replace(/\\n/gm, "\\n * ") %>\n' +
             ' */\n',
     // contrib-clean
@@ -41,7 +43,8 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= dirs.src %>/**/*.js', '<%= dirs.test %>/**/*.js'
+        '<%= dirs.src %>/**/*.js',
+        '<%= dirs.test %>/**/*.js'
       ]
     },
     // contrib-qunit
