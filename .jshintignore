@@ -1,0 +1,2 @@
+test/vendor/**/*.js
+lib/**/*.js
