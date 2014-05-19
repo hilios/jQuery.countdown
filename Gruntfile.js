@@ -36,6 +36,9 @@ module.exports = function(grunt) {
     },
     // contrib-jshint
     jshint: {
+      options: {
+        jshintrc: true
+      },
       all: [
         'Gruntfile.js',
         '<%= dirs.src %>/**/*.js', '<%= dirs.test %>/**/*.js'
