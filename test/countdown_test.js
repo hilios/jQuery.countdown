@@ -88,18 +88,18 @@ test('allow the callback be setted uppon initialization (legacy style)', functio
 module('Plugin math');
 
 asyncTest('time offset calculation', 5, function() {
-    var testDate = new Date().valueOf(); 
+    var testDate = new Date().getTime();
     testDate += 7 * 24 * 60 * 60 * 1000; // 1 week
     testDate += 2 * 24 * 60 * 60 * 1000; // 2 days
     testDate += 3 * 60 * 60 * 1000;      // 3 hours
     testDate += 4 * 60 * 1000;           // 4 minutes
     testDate += 5 * 1000;                // 5 seconds
     $dom.countdown(testDate, function(event) {
-        ok(event.offset.weeks   === 1);
-        ok(event.offset.days    === 2);
-        ok(event.offset.hours   === 3);
-        ok(event.offset.minutes === 4);
-        ok(event.offset.seconds === 5);
+        ok(event.offset.weeks   === 1, 'Weeks ' + event.offset.weeks);
+        ok(event.offset.days    === 2, 'Days ' + event.offset.weeks);
+        ok(event.offset.hours   === 3, 'Hours ' + event.offset.weeks);
+        ok(event.offset.minutes === 4, 'Minutes ' + event.offset.weeks);
+        ok(event.offset.seconds === 5, 'Seconds ' + event.offset.weeks);
         start();
     });
 });
@@ -174,7 +174,7 @@ test('set countdown-instance data attr to undefined uppon remove', function() {
     var callback = sinon.spy();
     $dom.countdown('2020/10/20').on('update.countdown', callback);
     ok($dom.data('countdown-instance') !== undefined);
-    
+
     $dom.countdown('remove');
     ok($dom.data('countdown-instance') === undefined);
 });
@@ -192,11 +192,34 @@ asyncTest('set a new finalDate by calling the countdown with a new date', 1, fun
         });
 });
 
-test('throw an error when try to start a countdown that isalready running', function() {
-    $dom.countdown('2020/10/20');
-    throws(function() {
-        $dom.countdown('start');
-    });
+// test('throw an error when try to start a countdown that isalready running', function() {
+//     $dom.countdown('2020/10/20');
+//     throws(function() {
+//         $dom.countdown('start');
+//     });
+// });
+
+asyncTest('starts the countdown again after being finished (issue #38)', function() {
+    var interactions = 0;
+    expect(2);
+    function startCounting() {
+        var twoSecondsFromNow = new Date().getTime() + (500);
+        $dom.countdown(twoSecondsFromNow)
+        .on('finish.countdown', function() {
+            interactions++;
+            switch(interactions) {
+                case 1:
+                    ok(true, 'Countdown finished, restarting...');
+                    startCounting();
+                    break;
+                case 2:
+                    ok(true, 'Countdown restarted succesfully!');
+                    start();
+                    break;
+            }
+        });
+    }
+    startCounting();
 });
 
 module('Date manipulation');
