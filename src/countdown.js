@@ -121,8 +121,6 @@
     this.$el      = $(el);
     this.interval = null;
     this.offset   = {};
-    // Set the final date
-    this.setFinalDate(finalDate);
     // Register this instance
     this.instanceNumber = instances.length;
     instances.push(this);
@@ -134,6 +132,8 @@
       this.$el.on('stoped.countdown', callback);
       this.$el.on('finish.countdown', callback);
     }
+    // Set the final date and start
+    this.setFinalDate(finalDate);
     this.start();
   };
   $.extend(Countdown.prototype, {
@@ -160,14 +160,12 @@
     },
     remove: function() {
       this.stop();
-      delete instances[this.instanceNumber];
+      instances[this.instanceNumber] = null;
       // Reset the countdown instance under data attr (Thanks to @assiotis)
       delete this.$el.data().countdownInstance;
     },
     setFinalDate: function(value) {
       this.finalDate = parseDateString(value); // Cast the given date
-      // Allow plugin to restart after finished (Issue #38 thanks to @yaoazhen)
-      this.instance.start();
     },
     update: function() {
       // Stop if dom is not in the html (Thanks to @dleavitt)
@@ -224,6 +222,8 @@
         // If method look like a date try to set a new final date
         } else if(String(method).match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
           instance.setFinalDate.call(instance, method);
+          // Allow plugin to restart after finished (Issue #38 thanks to @yaoazhen)
+          instance.start();
         } else {
           $.error('Method %s does not exist on jQuery.countdown'
             .replace(/\%s/gi, method));
