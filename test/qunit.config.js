@@ -13,7 +13,7 @@ QUnit.testDone(function() {
   try{
     $dom.countdown('remove');
     $dom.remove();
-    delete $dom;
+    $dom = null;
   } catch(e) {
     // ... countdown wasn't created
   }

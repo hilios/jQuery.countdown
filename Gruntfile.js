@@ -1,7 +1,5 @@
 module.exports = function(grunt) {
   'use strict';
-  // Force use of Unix newlines
-  grunt.util.linefeed = '\n';
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -47,11 +45,6 @@ module.exports = function(grunt) {
         '<%= dirs.test %>/**/*.js'
       ]
     },
-    // contrib-qunit
-    qunit: {
-      all: 'test/*.html',
-      dev: 'test/scenario-jquery-1.9.1.html'
-    },
     // contrib-uglify
     uglify: {
       dev: {
@@ -79,15 +72,18 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       }
     },
-    // contrib-watch
-    watch: {
-      all: {
-        files: [
-          '<%= dirs.src %>/**/*.js',
-          '<%= dirs.lib %>/**/*.js',
-          '<%= dirs.test %>/**/*.js'
-        ],
-        tasks: ['uglify', 'test:dev']
+    // karma
+    karma: {
+      options: {
+        configFile: 'karma.conf.js'
+      },
+      unit: {
+        autoWatch: true,
+        singleRun: false
+      },
+      ci: {
+        autoWatch: false,
+        singleRun: true
       }
     },
     // version
@@ -101,13 +97,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-version');
   // Test
-  grunt.registerTask('test', ['jshint', 'qunit:all']);
-  grunt.registerTask('test:dev', ['jshint', 'qunit:dev']);
+  grunt.registerTask('test', ['jshint', 'karma:ci']);
+  grunt.registerTask('test:unit', ['jshint', 'karma:unit']);
   // Build
   grunt.registerTask('build', ['uglify', 'test:all', 'version', 'compress']);
   // Develop

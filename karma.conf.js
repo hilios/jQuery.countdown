@@ -9,18 +9,9 @@ module.exports = function(config) {
     ],
     files: [
       'test/*.config.js',
-      {
-        pattern: 'lib/jquery.js',
-        included: true
-      },
-      {
-        pattern: 'src/**/*.js',
-        included: true
-      },
-      {
-        pattern: 'test/unit/**/*test.js',
-        included: true
-      }
+      'lib/jquery.js',
+      'src/**/*.js',
+      'test/unit/**/*test.js'
     ],
     exclude: [
       'karma.conf.js'
@@ -42,7 +33,7 @@ module.exports = function(config) {
     browsers: [
       'PhantomJS'
     ],
-    autoWatch: true,
-    singleRun: false
+    autoWatch: false,
+    singleRun: true
   });
 };

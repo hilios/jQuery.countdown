@@ -222,7 +222,8 @@
         // If method look like a date try to set a new final date
         } else if(String(method).match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
           instance.setFinalDate.call(instance, method);
-          // Allow plugin to restart after finished (Issue #38 thanks to @yaoazhen)
+          // Allow plugin to restart after finished
+          // Fix issue #38 (thanks to @yaoazhen)
           instance.start();
         } else {
           $.error('Method %s does not exist on jQuery.countdown'
