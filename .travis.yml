@@ -4,6 +4,8 @@ node_js:
 before_script:
   - npm install -g grunt-cli
   - npm install
+  - npm install -g bower
+  - bower install
 branches:
   except:
     - /^v1\..*/

@@ -32,6 +32,9 @@
     "bower_components"
   ],
   "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "devDependencies": {
     "jquery-2.1": "jquery#~2.1",
     "jquery-2.0": "jquery#~2.0",
     "jquery-1.9": "jquery#~1.9",
