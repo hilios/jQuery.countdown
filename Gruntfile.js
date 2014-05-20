@@ -77,11 +77,11 @@ module.exports = function(grunt) {
       options: {
         configFile: 'karma.conf.js'
       },
-      unit: {
+      watch: {
         autoWatch: true,
         singleRun: false
       },
-      ci: {
+      unit: {
         autoWatch: false,
         singleRun: true
       }
@@ -101,10 +101,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-version');
   // Test
-  grunt.registerTask('test', ['jshint', 'karma:ci']);
+  grunt.registerTask('test', ['jshint', 'karma:unit']);
   grunt.registerTask('test:unit', ['jshint', 'karma:unit']);
   // Build
   grunt.registerTask('build', ['uglify', 'test:all', 'version', 'compress']);
   // Develop
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['karma:watch']);
 };
