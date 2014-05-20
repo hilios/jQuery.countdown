@@ -3,13 +3,12 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: [
-      // 'requirejs',
       'qunit',
       'sinon'
     ],
     files: [
+      'test/vendor/jquery-2.1/dist/jquery.js',
       'test/*.config.js',
-      'lib/jquery.js',
       'src/**/*.js',
       'test/unit/**/*test.js'
     ],
