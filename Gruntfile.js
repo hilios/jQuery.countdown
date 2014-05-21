@@ -75,11 +75,12 @@ module.exports = function(grunt) {
     // karma
     karma: {
       options: {
-        configFile: 'karma.conf.js'
-      },
-      watch: {
+        configFile: 'karma.conf.js',
         autoWatch: true,
         singleRun: false
+      },
+      watch: {
+
       },
       unit: {
         autoWatch: false,
@@ -91,7 +92,7 @@ module.exports = function(grunt) {
       release: {
         src: ['*.json']
       }
-    }
+    },
   });
   // Load grunt tasks
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -101,8 +102,56 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-version');
   // Test
-  grunt.registerTask('test', ['jshint', 'karma:unit']);
+  grunt.registerTask('test', ['jshint', 'test:scenarios']);
   grunt.registerTask('test:unit', ['jshint', 'karma:unit']);
+  // Test scenarios
+  grunt.registerTask('test:scenarios',
+                     'Test multiple scenarios', function() {
+
+    var scenariosConf = require('./test/scenarios.json'),
+      scenarios = Object.keys(scenariosConf),
+      scenariosTasks = [],
+      karmaConf = {},
+      karmaFiles;
+    // Fetchs the values of karma conf file.
+    require('./karma.conf.js')({set: function(values) {
+      karmaConf = values;
+    }});
+
+    karmaFiles = karmaConf.files.filter(function(file) {
+      return !(/vendor/.test(file));
+    });
+
+    grunt.log.write('Configuring scenarios:'.cyan +
+      ' %s found...'.replace(/%s/, scenarios.length));
+
+    scenarios.forEach(function(scenario) {
+      var value = scenariosConf[scenario],
+        confName = 'karma.scenario_' + scenario.replace(/[._-]/gi, '_'),
+        conf = {
+          autoWatch: false,
+          singleRun: true,
+          logLevel: 'OFF',
+          reporters: 'dots'
+        };
+
+      if (Array.isArray(value)) {
+        conf.options = {
+          files: value.concat(karmaFiles),
+        };
+      } else {
+        conf.configFile = value;
+      }
+      // Register the scenario
+      grunt.config.set(confName, conf);
+      scenariosTasks.push(confName.replace(/\./, ':'));
+    });
+
+    grunt.log.ok();
+
+    grunt.task.run(scenariosTasks);
+
+  });
   // Build
   grunt.registerTask('build', ['uglify', 'test:all', 'version', 'compress']);
   // Develop
