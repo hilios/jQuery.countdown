@@ -59,53 +59,50 @@ There are few ways to get started, from the most simple example to advanced, we 
 [Release notes](https://github.com/hilios/jQuery.countdown/releases)
 ---------------
 
-#### What's new in 2.0.2
+Current version is **2.0.3**, to follow our history please visti our [release notes](https://github.com/hilios/jQuery.countdown/releases).
 
-*   #22: Fix pause/continue crash with one countdown instance
-*   #25: Add Bower support
+#### What's new in 2.0.3?
 
-#### What's new in 2.0.1
-
-*   Use strict mode
-*   #18: Add proper RequireJS testing
-
-#### What's new in 2.0.0
-
-*   Add the `strftime` formatter
-*   Add support for jQuery callback style
-*   Add grunt tools
-*   Better docs and examples
-
-#### What's new in 1.0.1 - 1.0.2
-
-*   #15: Add AMD support
-*   #10: Fix bug that call finish 2sec earlier
-*   #17: Fix bug when send miliseconds has a string was not parsed
-
-#### What's new in 1.0.0
-
-*   First public release
+*    Fix #27 Remove instance number from data element that had the countdown removed;
+*    Fix #34 Add support for MySQL dates `YYYY-mm-dd`;
+*    Fix #38 Countdown couldn't restart after finished;
+*    Add functional test automation through Karma;
+*    Use Bower to manage development dependencies;
 
 Contributing
 ------------
 
-The Final Countdown uses **Grunt** with convenient methods for working with the plugin. It's how we compile our code and run tests. To use it, get [NodeJS](http://nodejs.org/), install the required dependencies as directed and then run some Grunt commands.
+The Final Countdown uses **Grunt** and **Bower** with convenient methods for developing the plugin. It's how we compile our code and run tests. To get started install [NodeJS](http://nodejs.org/), [Bower](http://bower.io/), and then run some Grunt/Bower commands.
 
 ```shell
+bower install
 npm install
-grunt test  # Lint code and run unit test
+grunt test  # Lint code and run test suite
 grunt build # Generate the release files (dev, min and zip)
 grunt       # Watch for updates than test and build
 ```
 
-This plugin is tested with [QUnit](http://qunitjs.com/), under jQuery 1.7.2 up to 2.0.3, Bootstrap 3.0 and RequireJS 2.1.9. 
+This plugin is tested with [QUnit](http://qunitjs.com/), under jQuery 1.7 up to 2.1, Bootstrap 3.0 and RequireJS.
 
-The functional tests were made against:
+The functional tests made against:
 
 *   Chrome >= 12
 *   Safari >= 5
 *   Firefox >= 5.0
 *   IE 7/8/9
+
+Code coverage:
+
+```sh
+-------------------+-----------+-----------+-----------+-----------+
+File               |   % Stmts |% Branches |   % Funcs |   % Lines |
+-------------------+-----------+-----------+-----------+-----------+
+   src/            |     98.18 |        90 |       100 |     98.18 |
+      countdown.js |     98.18 |        90 |       100 |     98.18 |
+-------------------+-----------+-----------+-----------+-----------+
+All files          |     98.18 |        90 |       100 |     98.18 |
+-------------------+-----------+-----------+-----------+-----------+
+``
 
 ### Contributors ###
 
@@ -116,6 +113,7 @@ Thanks for bug reporting and fixes:
 *   Matthew Sigley (@msigley)
 *   Roman Shterenzon (@romanbsd)
 *   Marios (@assiotis)
+*   Zane Yao (@yaoazhen)
 
 ### License ###
 
