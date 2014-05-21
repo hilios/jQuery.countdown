@@ -1,7 +1,5 @@
 module.exports = function(grunt) {
   'use strict';
-  // Force use of Unix newlines
-  grunt.util.linefeed = '\n';
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -47,11 +45,6 @@ module.exports = function(grunt) {
         '<%= dirs.test %>/**/*.js'
       ]
     },
-    // contrib-qunit
-    qunit: {
-      all: 'test/*.html',
-      dev: 'test/scenario-jquery-1.9.1.html'
-    },
     // contrib-uglify
     uglify: {
       dev: {
@@ -79,15 +72,19 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       }
     },
-    // contrib-watch
-    watch: {
-      all: {
-        files: [
-          '<%= dirs.src %>/**/*.js',
-          '<%= dirs.lib %>/**/*.js',
-          '<%= dirs.test %>/**/*.js'
-        ],
-        tasks: ['uglify', 'test:dev']
+    // karma
+    karma: {
+      options: {
+        configFile: 'karma.conf.js',
+        autoWatch: true,
+        singleRun: false
+      },
+      watch: {
+
+      },
+      unit: {
+        autoWatch: false,
+        singleRun: true
       }
     },
     // version
@@ -101,15 +98,60 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-version');
   // Test
-  grunt.registerTask('test', ['jshint', 'qunit:all']);
-  grunt.registerTask('test:dev', ['jshint', 'qunit:dev']);
+  grunt.registerTask('test', ['jshint', 'test:scenarios']);
+  grunt.registerTask('test:unit', ['jshint', 'karma:unit']);
+  // Test scenarios
+  grunt.registerTask('test:scenarios',
+                     'Test multiple scenarios', function() {
+
+    var scenariosConf = require('./test/scenarios.json'),
+      scenarios = Object.keys(scenariosConf),
+      scenariosTasks = [],
+      karmaConf = {},
+      karmaFiles;
+    // Fetchs the values of karma conf file.
+    require('./karma.conf.js')({set: function(values) {
+      karmaConf = values;
+    }});
+
+    karmaFiles = karmaConf.files.filter(function(file) {
+      return !(/vendor/.test(file));
+    });
+
+    grunt.log.write('Configuring scenarios:'.cyan +
+      ' %s found...'.replace(/%s/, scenarios.length));
+
+    scenarios.forEach(function(scenario) {
+      var value = scenariosConf[scenario],
+        confName = 'karma.scenario_' + scenario.replace(/[._-]/gi, '_'),
+        conf = {
+          autoWatch: false,
+          singleRun: true,
+          logLevel: 'OFF',
+          reporters: 'dots'
+        };
+
+      if (Array.isArray(value)) {
+        conf.options = {
+          files: value.concat(karmaFiles)
+        };
+      } else {
+        conf.configFile = value;
+      }
+      // Register the scenario
+      grunt.config.set(confName, conf);
+      scenariosTasks.push(confName.replace(/\./, ':'));
+    });
+    grunt.log.ok();
+    // Run all scenarios tasks
+    grunt.task.run(scenariosTasks);
+  });
   // Build
   grunt.registerTask('build', ['uglify', 'test:all', 'version', 'compress']);
   // Develop
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['karma:watch']);
 };

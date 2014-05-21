@@ -1,0 +1,13 @@
+{
+  "jquery-1.10": ["test/vendor/jquery-1.10/jquery.js"],
+  "jquery-1.7": ["test/vendor/jquery-1.7/jquery.js"],
+  "jquery-1.8": ["test/vendor/jquery-1.8/jquery.js"],
+  "jquery-1.9": ["test/vendor/jquery-1.9/jquery.js"],
+  "jquery-2.0": ["test/vendor/jquery-2.0/jquery.js"],
+  "jquery-2.1": ["test/vendor/jquery-2.1/dist/jquery.js"],
+  "bootstrap": [
+    "test/vendor/jquery-2.1/dist/jquery.js",
+    "test/vendor/bootstrap/dist/js/bootstrap.js"
+  ],
+  "requirejs": "test/integration/karma.conf.js"
+}

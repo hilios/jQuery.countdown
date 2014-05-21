@@ -49,6 +49,7 @@
     "test": false,
     "sinon": false,
     "require": false,
-    "define": false
+    "define": false,
+    "$dom": true
   }
 }

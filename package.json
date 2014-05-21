@@ -5,18 +5,24 @@
   "author": "Edson Hilios",
   "homepage": "http://hilios.github.io/jQuery.countdown/",
   "repository": {
-    "type" : "git",
-    "url"  : "https://github.com/hilios/jQuery.countdown"
+    "type": "git",
+    "url": "https://github.com/hilios/jQuery.countdown"
   },
   "devDependencies": {
     "grunt": "~0.4",
     "grunt-contrib-clean": "~0.5",
     "grunt-contrib-compress": "~0.6",
     "grunt-contrib-jshint": "~0.10",
-    "grunt-contrib-qunit": "~0.4",
     "grunt-contrib-uglify": "~0.4",
-    "grunt-contrib-watch": "~0.6",
-    "grunt-version": "~0.3"
+    "grunt-karma": "~0.8",
+    "grunt-version": "~0.3",
+    "karma": "~0.12",
+    "karma-coverage": "~0.2",
+    "karma-phantomjs-launcher": "~0.1",
+    "karma-qunit": "~0.1",
+    "karma-requirejs": "~0.2",
+    "karma-sinon": "~1.0",
+    "requirejs": "~2.1"
   },
   "scripts": {
     "test": "grunt test"
