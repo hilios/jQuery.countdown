@@ -9,7 +9,7 @@ The ultimate countdown plugin designed to fit in any coupon, auction site or pro
 
 #### [Download](https://github.com/hilios/jQuery.countdown/releases/download/2.0.2/jquery.countdown-2.0.2.zip) ####
 
-[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.2/jquery.countdown-2.0.2.zip)
+[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.3/jquery.countdown-2.0.3.zip)
 
 If you want to clone the repo always use the files under [dist](https://github.com/hilios/jQuery.countdown/tree/master/dist) folder, they are optimized for production and development.
 
@@ -37,37 +37,37 @@ Getting started
 </script>
 ```
 
-### Requirements
+### Requirements ###
 
 Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
 
-### [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html)
+### [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) ###
 
 Our documentation is powered by [Jekyll](http://jekyllrb.com/) (see `gh-page` branch) and hosted in GitHub Pages at [http://hilios.github.io/jQuery.countdown/](http://hilios.github.io/jQuery.countdown/documentation.html).
 
-### [Examples](http://hilios.github.io/jQuery.countdown/examples.html)
+### [Examples](http://hilios.github.io/jQuery.countdown/examples.html) ###
 
 There are few ways to get started, from the most simple example to advanced, we support many different countdown styles, see wich one fits your scenario, and if anyone doesn't it's a good starting point to customize your output.
 
--   [Basic coupon site with format N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/basic-coupon-site.html)
--   [Advance coupon with conditionals and pluralization, format N weeks N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/advanced-coupon-site.html)
--   [Product launch in... (callback style)](http://hilios.github.io/jQuery.countdown/examples/website-launch.html)
--   [New year's eve (legacy style)](http://hilios.github.io/jQuery.countdown/examples/legacy-style.html)
--   [Multiple instances on the same page](http://hilios.github.io/jQuery.countdown/examples/multiple-instances.html)
--   [Calculate the countdown total hours](http://hilios.github.io/jQuery.countdown/examples/show-total-hours.html)
+ - [Basic coupon site with format N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/basic-coupon-site.html)
+ - [Advance coupon with conditionals and pluralization, format N weeks N days hr:min:sec](http://hilios.github.io/jQuery.countdown/examples/advanced-coupon-site.html)
+ - [Product launch in... (callback style)](http://hilios.github.io/jQuery.countdown/examples/website-launch.html)
+ - [New year's eve (legacy style)](http://hilios.github.io/jQuery.countdown/examples/legacy-style.html)
+ - [Multiple instances on the same page](http://hilios.github.io/jQuery.countdown/examples/multiple-instances.html)
+ - [Calculate the countdown total hours](http://hilios.github.io/jQuery.countdown/examples/show-total-hours.html)
 
 [Release notes](https://github.com/hilios/jQuery.countdown/releases)
 ---------------
 
-Current version is **2.0.3**, to follow our history please visti our [release notes](https://github.com/hilios/jQuery.countdown/releases).
+Current version is **2.0.3**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
 
-#### What's new in 2.0.3?
+#### What's new in 2.0.3? ####
 
-*    Fix #27 Remove instance number from data element that had the countdown removed;
-*    Fix #34 Add support for MySQL dates `YYYY-mm-dd`;
-*    Fix #38 Countdown couldn't restart after finished;
-*    Add functional test automation through Karma;
-*    Use Bower to manage development dependencies;
+ * Fix #27 Remove instance number from data element that had the countdown removed;
+ * Fix #34 Add support for MySQL dates `YYYY-mm-dd`;
+ * Fix #38 Countdown couldn't restart after finished;
+ * Add functional test automation through Karma;
+ * Use Bower to manage development dependencies;
 
 Contributing
 ------------
@@ -102,7 +102,7 @@ File               |   % Stmts |% Branches |   % Funcs |   % Lines |
 -------------------+-----------+-----------+-----------+-----------+
 All files          |     98.18 |        90 |       100 |     98.18 |
 -------------------+-----------+-----------+-----------+-----------+
-``
+```
 
 ### Contributors ###
 
