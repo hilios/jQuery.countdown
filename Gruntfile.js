@@ -72,6 +72,11 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       }
     },
+    jsonlint: {
+      all: {
+        src: ['*.json']
+      }
+    },
     // karma
     karma: {
       options: {
@@ -99,11 +104,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-jsonlint');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-version');
   // Test
-  grunt.registerTask('test', ['jshint', 'test:scenarios']);
-  grunt.registerTask('test:unit', ['jshint', 'karma:unit']);
+  grunt.registerTask('test', ['jshint', 'jsonlint', 'test:scenarios']);
+  grunt.registerTask('test:unit', ['jshint', 'jsonlint', 'karma:unit']);
   // Test scenarios
   grunt.registerTask('test:scenarios',
                      'Test multiple scenarios', function() {
