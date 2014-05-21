@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{page.title}}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/syntax.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/pure.css">
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{{site.baseurl}}/javascripts/jquery.countdown.min.js"></script>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="pure-g-r">
+      <div class="pure-u-1-5">
+        <a href="#" class="pure-menu-heading">jQuery.countdown</a>
+      </div>
+      <div class="pure-u-4-5">
+        <nav class="pure-menu pure-menu-horizontal pure-menu-open">
+          {% include main-menu.html %}
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+{{content}}
+<footer>
+  <div class="container">
+    <div class="pure-g-r">
+      <div class="pure-u-1-2">
+        <p>
+          The Final Countdown (jQuery.countdown) was created and is maintained by <a href="https://github.com/hilios" target="_blank">@hilios</a>
+          <br/>
+          This is a free software is licensed under the <a href="https://github.com/hilios/jQuery.countdown/blob/master/LICENSE.md" target="_blank">MIT License</a>
+        </p>
+      </div>
+      <div class="pure-u-1-2">
+        {% include main-menu.html %}
+        {% include github-buttons.html %}
+      </div>
+    </div>
+  </div>
+</footer>
+{% include github-ribbon.html %}
+{% include ga.html %}
+</body>
+</html>
