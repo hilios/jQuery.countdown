@@ -92,7 +92,7 @@ module.exports = function(grunt) {
       release: {
         src: ['*.json']
       }
-    },
+    }
   });
   // Load grunt tasks
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
 
       if (Array.isArray(value)) {
         conf.options = {
-          files: value.concat(karmaFiles),
+          files: value.concat(karmaFiles)
         };
       } else {
         conf.configFile = value;
@@ -146,11 +146,9 @@ module.exports = function(grunt) {
       grunt.config.set(confName, conf);
       scenariosTasks.push(confName.replace(/\./, ':'));
     });
-
     grunt.log.ok();
-
+    // Run all scenarios tasks
     grunt.task.run(scenariosTasks);
-
   });
   // Build
   grunt.registerTask('build', ['uglify', 'test:all', 'version', 'compress']);
