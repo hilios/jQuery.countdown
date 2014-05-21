@@ -16,15 +16,8 @@ module.exports = function(config) {
         pattern: 'src/**/*.js',
         included: false
       },
-      {
-        pattern: 'test/*.config.js',
-        included: false
-      },
-      {
-        pattern: 'test/integration/*test.js',
-        included: false
-      },
-      'test/integration/*.config.js'
+      'test/integration/*.config.js',
+      'test/integration/*test.js'
     ],
     exclude: [
       'karma.conf.js'
