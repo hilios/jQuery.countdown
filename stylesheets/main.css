@@ -80,7 +80,7 @@ header .nav-toggle .pure-button i {
 /**
  * Navigation module
  */
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   nav.pure-menu {
     display: none;
   }
@@ -108,6 +108,15 @@ main a:visited:hover {
   color: #000;
   text-decoration: underline;
 }
+main article {
+  padding: 1em;
+}
+main [class*="pure-u-"]:first-child article {
+  padding-left: 0;
+}
+main [class*="pure-u-"]:last-child article {
+  padding-right: 0;
+}
 /**
  * Footer module
  */
@@ -116,6 +125,7 @@ footer {
   color: #777;
   line-height: 1.8;
   font-size: small;
+  text-align: center;
 }
 footer ul {
   list-style: none;
@@ -176,7 +186,7 @@ footer a:visited:hover {
   margin-right: 20px;
   text-decoration: none;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .home-welcome .pure-button {
     display: block;
     margin-top: 20px;
@@ -193,15 +203,6 @@ footer a:visited:hover {
   text-align: center;
   line-height: 2em;
   margin: .67em 0;
-}
-.home-content article {
-  padding: 1em;
-}
-.home-content .pure-u-1-2:first-child article {
-  padding-left: 0;
-}
-.home-content .pure-u-1-2:last-child article {
-  padding-right: 0;
 }
 .home-content .lead {
   font-size: 110%;
@@ -222,4 +223,149 @@ footer a:visited:hover {
   left: 0;
   width: 100%;
   height: 100%;
+}
+/**
+ * Content module
+ */
+.content-header {
+  background-image: linear-gradient(45deg, #361752, #B31B67);
+  color: white;
+}
+.content-header h1 {
+  color: white;
+  margin: 0;
+  padding: 0.5em 0;
+}
+/**
+ * Docs module
+ */
+.docs article {
+  padding-top: 0 !important;
+}
+.docs h2 {
+  border-bottom: 1px solid #eee;
+  margin-top: 1.2em;
+  padding-bottom: 0.5em;
+}
+@media screen and (min-width: 767px) {
+  .docs h2:first-child {
+    margin-top: 0 !important;
+  }
+}
+.docs h2 small {
+  color: #777;
+}
+/**
+ * Examples module
+ */
+.examples-list-index .pure-g-r {
+  border-top: 1px solid #ddd;
+}
+.examples-list-index article {
+  padding: 1em !important;
+}
+.examples-list-index .pure-button,
+.examples-list-index .pure-button:hover {
+  background-color: #361752;
+  color: white !important;
+}
+
+/* Getting started example */
+#getting-started{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: center;
+}
+#getting-started span{
+    border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+
+    background-color: #333333;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px;
+}
+.basic-coupon,
+.advanced-coupon{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #609DD6;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 20px 0 20px;
+    text-align: center;
+    padding: 20px;
+}
+.basic-coupon span,
+.advanced-coupon span{
+    font-size: 20px;
+    display: block;
+}
+.advanced-coupon.disabled{
+    background-color: #999999;
+}
+.advanced-coupon .form-control{
+    margin: 0 auto;
+}
+.advanced-coupon-display{
+    padding-bottom: 20px;
+}
+.big-countdown{
+    height: 130px;
+    padding: 20px;
+    text-align: center;
+}
+.big-countdown div{
+    font-size: 150%;
+    margin-top: 10px;
+    line-height: 55px;
+}
+.big-countdown span{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 150%;
+    font-weight: bold;
+    padding: 10px;
+}
+.multiple-instance .clock{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #609DD6;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
 }

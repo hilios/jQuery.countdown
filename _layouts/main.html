@@ -8,10 +8,8 @@
     <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,300italic">
-
     <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/syntax.css">
     <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/main.css">
-
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="{{site.baseurl}}/javascripts/jquery.countdown.min.js"></script>
 </head>
@@ -40,24 +38,20 @@
 </main>
 <footer>
   <div class="container">
-    <div class="pure-g-r">
-      <div class="pure-u-1-2">
-        <p>
-          The Final Countdown (jQuery.countdown) was created and is maintained by <a href="https://github.com/hilios" target="_blank">@hilios</a>
-          <br/>
-          This is a free software is licensed under the <a href="https://github.com/hilios/jQuery.countdown/blob/master/LICENSE.md" target="_blank">MIT License</a>
-        </p>
-      </div>
-      <div class="pure-u-1-2">
-        <nav>
-          {% include main-menu.html %}
-        </nav>
-        {% include github-buttons.html %}
-      </div>
-    </div>
+    <p>
+      {% include gh-buttons.html %}
+    </p>
+    <p>
+      The Final Countdown (jQuery.countdown) was created and is maintained by <a href="https://github.com/hilios" target="_blank">@hilios</a>
+      <br/>
+      This is a free software is licensed under the <a href="https://github.com/hilios/jQuery.countdown/blob/master/LICENSE.md" target="_blank">MIT License</a>
+    </p>
+    <nav>
+      {% include main-menu.html %}
+    </nav>
   </div>
 </footer>
-{% include github-ribbon.html %}
+{% include gh-ribbon.html %}
 {% include ga.html %}
 </body>
 </html>

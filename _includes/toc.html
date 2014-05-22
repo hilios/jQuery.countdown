@@ -1,9 +1,12 @@
-<ul class="nav nav-pills nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset="130">
+<aside class="pure-menu pure-menu-open">
+  <ul>
+    <li class="pure-menu-heading">TOC</li>
     {% for toc in page.toc %}
     <li>
-        <a href="#{{ toc | downcase | replace:' ','-' }}">
-            {{ forloop.index }}. {{ toc }}
-        </a>
+      <a href="#{{ toc | downcase | replace:' ','-' }}">
+        {{ forloop.index }}. {{ toc }}
+      </a>
     </li>
     {% endfor %}
-</ul>
+  </ul>
+</aside>

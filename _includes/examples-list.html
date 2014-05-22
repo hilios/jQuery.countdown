@@ -1,13 +1,23 @@
-<div class="list-group hidden-xs hidden-sm" data-spy="affix" data-offset="130">
-    {% for example in site.pages %}
-    {% if example.category contains 'examples' %}
-    <a href="{{ site.baseurl }}{{ example.url }}" class="list-group-item 
-        {% if example.url == page.url %}active{% endif %}">
-        {{ example.title }}
-    </a>
+<aside class="pure-menu pure-menu-open">
+  <ul>
+    <li class="pure-menu-heading">
+      <i class="fa fa-code"></i>
+      Examples
+    </li>
+    {% for page in site.pages %}
+    {% if page.category == 'examples' %}
+    <li class="{% if page.url == page.url %}pure-menu-selected{% endif %}">
+      <a href="{{site.baseurl}}{{page.url}}">
+        {{page.title}}
+      </a>
+    </li>
     {% endif %}
     {% endfor %}
-    <a href="{{ site.baseurl }}/examples.html" class="list-group-item">
+    <li>
+      <a href="{{site.baseurl}}/examples.html">
+        <i class="fa fa-arrow-circle-left"></i>
         Back
-    </a>
-</div>
+      </a>
+    </li>
+  </ul>
+</aside>

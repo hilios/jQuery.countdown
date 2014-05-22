@@ -1,28 +1,30 @@
 ---
-layout: default
-scrollspy: '#toc'
+layout: main
 ---
-<div class="container page-header">
-    <h1>{{ page.title }}</h1>
-</div>
+<header class="content-header">
+  <div class="container">
+    <h1>{{page.title}}</h1>
+  </div>
+</header>
+
 <div class="container">
-    <div class="row">
-        {% if page.category contains 'docs' %}
-        <nav id="toc" class="col-md-2">
-            {% include toc.html %}
-        </nav>
-        {% endif %}
-        <article class="{% case page.category %}
-            {% when 'examples'  %}col-md-8
-            {% when 'docs'      %}col-md-10 
-            {% else             %}col-md-12
-            {% endcase %}">
-            {{ content }}
-        </article>
-        {% if page.category contains 'examples' %}
-        <nav class="col-md-4">
-            {% include examples-list.html %}
-        </nav>
-        {% endif %}
+  <div class="pure-g-r">
+    {% if page.category == 'docs' %}
+    <div class="pure-u-1-5">
+      {% include toc.html %}
     </div>
+    {% endif %}
+    <div class="{{page.category}} {% case page.category %}
+        {% when 'examples'  %}pure-u-3-5
+        {% when 'docs'      %}pure-u-4-5
+        {% else             %}pure-u-1-1
+        {% endcase %}">
+      <article>{{content}}</article>
+    </div>
+    {% if page.category == 'examples' %}
+    <div class="pure-u-2-5">
+      {% include examples-list.html %}
+    </div>
+    {% endif %}
+  </div>
 </div>
