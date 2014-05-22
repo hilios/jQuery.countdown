@@ -3,7 +3,19 @@ layout: main
 ---
 <header class="content-header">
   <div class="container">
-    <h1>{{page.title}}</h1>
+    <h1>
+      {% case page.category %}
+        {% when 'examples' or 'examples-index' %}
+        <i class="fa fa-code"></i>
+        {% when 'docs' %}
+        <i class="fa fa-file-text-o"></i>
+        {% else %}
+        {% if page.icon %}
+        <i class="fa {{page.icon}}"></i>
+        {% endif %}
+      {% endcase %}
+      {{page.title}}
+    </h1>
   </div>
 </header>
 

@@ -1,10 +1,10 @@
-<aside class="pure-menu pure-menu-open">
+<aside class="toc pure-menu pure-menu-open" data-spy="affix" data-offset-top="160">
   <ul>
     <li class="pure-menu-heading">TOC</li>
     {% for toc in page.toc %}
     <li>
-      <a href="#{{ toc | downcase | replace:' ','-' }}">
-        {{ forloop.index }}. {{ toc }}
+      <a href="#{{toc | downcase | replace:' ','-'}}">
+        {{forloop.index}}. {{toc}}
       </a>
     </li>
     {% endfor %}

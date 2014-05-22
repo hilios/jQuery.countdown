@@ -29,7 +29,7 @@ pre {
   margin: 0 auto;
   padding: 1em 2em;
 }
-.pure-button i {
+i {
   margin-right: 5px;
 }
 a.pure-button {
@@ -207,6 +207,13 @@ footer a:visited:hover {
 .home-content .lead {
   font-size: 110%;
 }
+.home-get-involved {
+  line-height: 1.6em;
+}
+.home-get-involved dd {
+  margin: 0;
+  padding: 0;
+}
 .home-video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -254,6 +261,20 @@ footer a:visited:hover {
 }
 .docs h2 small {
   color: #777;
+}
+/**
+ * TOC module
+ */
+.toc a {
+  text-decoration: none !important;
+}
+.toc .active {
+  background-color: #eee;
+}
+.toc.affix {
+  position: fixed;
+  top: 20px;
+  width: auto;
 }
 /**
  * Examples module

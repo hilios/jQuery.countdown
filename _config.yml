@@ -1,5 +1,12 @@
 name:         The Final Countdown
 nickname:     jQuery.countdown
 baseurl:      http://hilios.github.io/jQuery.countdown
-highlighter:  true
+highlight:    true
 markdown:     redcarpet
+redcarpet:
+  extensions:
+    - no_intra_emphasis
+    - fenced_code_blocks
+    - autolink
+    - strikethrough
+    - superscript
