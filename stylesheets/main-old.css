@@ -1,0 +1,180 @@
+body{
+    padding-top: 51px;
+}
+.iframe{
+    padding: 0 !important;    
+}
+header h1{
+    font-weight: normal;
+}
+footer{
+    border-top: 1px solid #cccccc;
+    font-size: 85%;
+    margin-top: 20px;
+    padding: 40px 0;
+}
+footer ul{
+    display: block;
+    padding: 0;
+    margin: 10px 0;
+}
+footer li{
+    display: inline-block;
+    float: left;
+}
+footer li:after{
+    content: "• ";
+    margin: 0 5px;
+}
+footer li:last-child:after{
+    content: "";
+}
+.navbar{
+    background-color: #222222;
+    margin-bottom: 0;
+}
+.jumbotron{
+    background-color: #242424;
+    background-image: url('../images/background.png');
+    border-top: 1px solid #444444;
+    color: #ffffff;
+}
+.jumbotron .btn-primary{
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    line-height: 40px;
+    margin-right: 10px;
+    margin-top: 50px;
+}
+.jumbotron .btn-primary:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+.icon-github{
+    background-image: url('../images/octocat-icon.png');
+    display: inline-block;
+    height: 23px;
+    width: 28px;
+}
+.affix{
+    top: 60px;
+}
+.table-nonfluid {
+   width: auto;
+}
+.form-control-nonfluid{
+    width: auto !important;
+}
+/* Fix the anchor position top problem */
+.anchor{
+    display: block; 
+    position: relative; 
+    top: -60px; 
+    visibility: hidden;
+}
+/* Getting started example */
+#getting-started{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: center;
+}
+#getting-started span{
+    border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+
+    background-color: #333333;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px;
+}
+/* Examples */
+.basic-coupon,
+.advanced-coupon{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #609DD6;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 20px 0 20px;
+    text-align: center;
+    padding: 20px;
+}
+.basic-coupon span,
+.advanced-coupon span{
+    font-size: 20px;
+    display: block;
+}
+.advanced-coupon.disabled{
+    background-color: #999999;
+}
+.advanced-coupon .form-control{
+    margin: 0 auto;
+}
+.advanced-coupon-display{
+    padding-bottom: 20px;
+}
+.big-countdown{
+    height: 130px;
+    padding: 20px;
+    text-align: center;
+}
+.big-countdown div{
+    font-size: 150%;
+    margin-top: 10px;
+    line-height: 55px;
+}
+.big-countdown span{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 150%;
+    font-weight: bold;
+    padding: 10px;
+}
+.multiple-instance .clock{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    background-color: #609DD6;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+}
+/* Adjust beetter */
+@media (max-width: 992px) {
+  .jumbotron .btn-primary{
+        width: 100%;
+  }
+}

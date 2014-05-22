@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{page.title}}</title>
+    <title>{{page.title}} - jQuery.countdown</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,300italic">
 
     <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/syntax.css">
-    <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/pure.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/main.css">
 
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="{{site.baseurl}}/javascripts/jquery.countdown.min.js"></script>
@@ -19,7 +20,12 @@
   <div class="container">
     <div class="pure-g-r">
       <div class="pure-u-1-5">
-        <a href="#" class="pure-menu-heading">jQuery.countdown</a>
+        <a href="{{site.baseurl}}/" class="brand">jQuery.countdown</a>
+        <div class="nav-toggle pure-hidden-tablet pure-hidden-desktop">
+          <button class="pure-button">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
       </div>
       <div class="pure-u-4-5">
         <nav class="pure-menu pure-menu-horizontal pure-menu-open">
@@ -29,7 +35,9 @@
     </div>
   </div>
 </header>
-{{content}}
+<main>
+  {{content}}
+</main>
 <footer>
   <div class="container">
     <div class="pure-g-r">
@@ -41,7 +49,9 @@
         </p>
       </div>
       <div class="pure-u-1-2">
-        {% include main-menu.html %}
+        <nav>
+          {% include main-menu.html %}
+        </nav>
         {% include github-buttons.html %}
       </div>
     </div>

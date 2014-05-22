@@ -1,66 +1,129 @@
 ---
-layout: default
+layout: main
 title: The Final Countdown
 ---
-<header class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <h1>{{ site.name }}</h1>
-                <p>A simple and html agnostic date countdown plugin for jQuery</p>
-                <p>{% include github-buttons.html %}</p>
-                <p>
-                    <a class="btn btn-primary btn-lg" onclick="ga('send', 'event', 'download', 'click');" href="https://github.com/hilios/jQuery.countdown/releases/download/2.0.2/jquery.countdown-2.0.2.zip">
-                        <i class="glyphicon glyphicon-floppy-save"></i>
-                        Download now
-                    </a>
-
-                    <a class="btn btn-primary btn-lg" href="https://github.com/hilios/jQuery.countdown">
-                        <i class="icon-github"></i>
-                        View on GitHub
-                    </a>
-                </p>
-            </div>
-            <div class="col-md-5 hidden-xs hidden-sm">
-                <iframe width="100%" height="315" src="//www.youtube.com/embed/9jK-NcRmVcw" frameborder="0" allowfullscreen></iframe>
-            </div>
+<div class="home-welcome">
+  <div class="container">
+    <div class="pure-g-r">
+      <div class="pure-u-1-2">
+        <h1>{{ site.name }}</h1>
+        <p>
+          A simple and html agnostic date countdown plugin for jQuery
+          {% include github-buttons.html %}
+        </p>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="home-welcome-example">
+          Next year begins in:<br/>
+          <span id="welcome" class="countdown"></span>
         </div>
+      </div>
     </div>
-</header>
-<div class="container">
-    <div class="row getting-started">
-        <div class="col-md-5">
-            <h2>All countdown styles in one</h2>
-            <p class="lead">
-                Take control of your DOM, register yours callbacks and start counting...
-            </p>
-            <p>
-                The Final Countdown is a plugin tailored to be used in any layout, without worring with CSS of HTML. The design goal was to fit and mimic differents countdown styles as you see out there in <strong>coupons</strong> and <strong>auction</strong> sites.
-            </p>
-            <h4>Install via Bower</h4>
-            {% highlight bash %}bower install jquery.countdown{% endhighlight %}
-            <h4>Features</h4>
-            <ul>
-                <li>Comprehensive documentation</li>
-                <li>Bult-in time formatter</li>
-                <li>Zero-pad support to all variables</li>
-                <li>Pluralization support</li>
-                <li>Internationalization support for pluralization</li>
-                <li>Fully tested (since first release)</li>
-                <li>HTML and CSS agnostic</li>
-                <li>Community support since 2011</li>
-            </ul>
-        </div>
-        <div class="col-md-7">
-            <h2>Getting Started</h2>
-            <p>
-                There are few ways to get started, the simplest example is beside, but we support many different countdown styles.
-            </p>
-            <p>
-                Read our <a href="{{ site.baseurl }}/documentation.html">Documentation</a> and follow our <a href="{{ site.baseurl }}/examples.html">Examples</a> to see what suits your particular needs.
-            </p>
-            {%include getting-started.html %}
-            {% highlight html linenos %}{%include getting-started.html noJs=true %}{% endhighlight %}
-        </div>
+    <div class="pure-g-r">
+      <div class="pure-u-1-1">
+        <p>
+          <a class="button-xlarge pure-button" href="https://github.com/hilios/jQuery.countdown/releases/download/2.0.3/jquery.countdown-2.0.3.zip" onclick="ga('send', 'event', 'download', 'click');">
+            <i class="fa fa-file-zip-o"></i>
+            Download 2.0.3
+          </a>
+          <a class="button-xlarge pure-button" href="https://github.com/hilios/jQuery.countdown">
+            <i class="fa fa-github-alt"></i>
+            View on GitHub
+          </a>
+        </p>
+      </div>
     </div>
+  </div>
 </div>
+
+<div class="home-content container">
+  <div class="pure-g-r">
+    <div class="pure-u-1-2">
+      <article>
+        <h2>All countdown styles in one</h2>
+        <p class="lead">
+          Take control of your DOM, register yours callbacks and start counting!
+        </p>
+        <p>
+          The Final Countdown is a plugin tailored to be used in any layout, without any CSS/HTML dependency. The goal was to fit and mimic differents countdown styles as you see out there in <strong>coupons</strong> and <strong>auction</strong> sites.
+        </p>
+        <p>
+          There are few ways to get started, the simplest example is as shown here, but we support many different countdown styles.
+        </p>
+        <p>
+          Read our <a href="{{site.baseurl}}/documentation.html">Documentation</a> and follow our <a href="{{site.baseurl}}/examples.html">Examples</a> to see what suits your particular needs.
+        </p>
+        <h4>Features</h4>
+        <ul>
+          <li>Comprehensive documentation;</li>
+          <li>Bult-in time formatter;</li>
+          <li>Zero-pad support to all variables;</li>
+          <li>Pluralization support;</li>
+          <li>i18n aware;</li>
+          <li>HTML and CSS agnostic;</li>
+          <li>Support since 2011.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="pure-u-1-2">
+      <article>
+        <h2>Getting Started</h2>
+        <h4>Install via Bower:</h4>
+        <p>
+          {% highlight bash %}bower install jquery.countdown{% endhighlight %}
+        </p>
+        <h4>Download files:</h4>
+        <p>
+          <a class="pure-button" href="https://github.com/hilios/jQuery.countdown/releases/download/2.0.3/jquery.countdown-2.0.3.zip" onclick="ga('send', 'event', 'download', 'click');">
+            <i class="fa fa-file-zip-o"></i>
+            Download jQuery.countdown.zip
+          </a>
+        </p>
+        <h4>Example:</h4>
+        <div class="home-countdown-example" id="getting-started"></div>
+        {% highlight html linenos %}
+<div id="getting-started"></div>
+<script type="text/javascript">
+  $("#getting-started")
+  .countdown("{{site.time|date:'%Y'|plus:1}}/01/01", function(event) {
+    $(this).html(event.strftime('%D days %H:%M:%S'));
+  });
+</script>
+        {% endhighlight %}
+      </article>
+    </div>
+  </div>
+  <div class="pure-g-r">
+    <div class="pure-u-1-2">
+      <article>
+        <h2>Get involved</h2>
+      </article>
+    </div>
+    <div class="pure-u-1-2">
+      <article>
+        <div class="home-video-container">
+          <iframe width="560" height="315" src="//www.youtube.com/embed/9jK-NcRmVcw" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var nextYear = (new Date().getFullYear() + 1) + "/01/01";
+  $('#welcome').countdown(nextYear, function(event) {
+    var format = '<span>%H</span>:<span>%M</span>:<span>%S</span>';
+
+    if (event.offset.days > 0) {
+      format = '<span>%-d</span> day%!d ' + format;
+    }
+    if (event.offset.weeks > 0) {
+      format = '<span>%-w</span> week%!w ' + format;
+    }
+
+    $(this).html(event.strftime(format));
+  });
+  $("#getting-started").countdown(nextYear, function(event) {
+    $(this).html(event.strftime('%-w weeks %-d days %H hours %M minutes %S seconds'));
+  });
+</script>
