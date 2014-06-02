@@ -117,6 +117,139 @@ main [class*="pure-u-"]:first-child article {
 main [class*="pure-u-"]:last-child article {
   padding-right: 0;
 }
+.main-example {
+  margin: 0 auto;
+  width: 355px;
+}
+.main-example .countdown-container {
+  height: 200px;
+}
+.main-example .time {
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  height: 95px;
+  width: 65px;
+
+  -webkit-perspective: 500px;
+  -moz-perspective: 500px;
+  -ms-perspective: 500px;
+  -o-perspective: 500px;
+  perspective: 500px;
+}
+.main-example .count {
+  background: #202020;
+  color: #f8f8f8;
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  line-height: 2.4em;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  top: 0;
+  width: 100%;
+
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+
+  -webkit-transform-style: flat;
+  -moz-transform-style: flat;
+  -ms-transform-style: flat;
+  -o-transform-style: flat;
+  transform-style: flat;
+}
+.main-example .count.top {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-radius: 5px 5px 0 0;
+  height: 50%;
+
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.main-example .count.bottom {
+  background-image: linear-gradient(rgba(255,255,255,0.1), transparent);
+  background-image: -webkit-linear-gradient(rgba(255,255,255,0.1), transparent);
+  background-image: -moz-linear-gradient(rgba(255,255,255,0.1), transparent);
+  background-image: -ms-linear-gradient(rgba(255,255,255,0.1), transparent);
+  background-image: -o-linear-gradient(rgba(255,255,255,0.1), transparent);
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-radius: 0 0 5px 5px;
+  line-height: 0;
+  height: 50%;
+  top: 50%;
+
+  -webkit-transform-origin: 50% 0;
+  -moz-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  -o-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+}
+.main-example .count.next {
+}
+.main-example .label {
+  font-size: normal;
+  margin-top: 5px;
+  display: block;
+  position: absolute;
+  top: 95px;
+  width: 100%;
+}
+/* Animation start */
+.main-example .count.curr.top {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  -o-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  z-index: 3;
+}
+.main-example .count.next.bottom {
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  -o-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  z-index: 2;
+}
+/* Animation end */
+.main-example .animate .count.curr.top {
+  -webkit-transition: all 250ms ease-in-out;
+  -moz-transition: all 250ms ease-in-out;
+  -ms-transition: all 250ms ease-in-out;
+  -o-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+.main-example .animate .count.next.bottom {
+  -webkit-transition: all 250ms ease-in-out 250ms;
+  -moz-transition: all 250ms ease-in-out 250ms;
+  -ms-transition: all 250ms ease-in-out 250ms;
+  -o-transition: all 250ms ease-in-out 250ms;
+  transition: all 250ms ease-in-out 250ms;
+
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  -o-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
 /**
  * Footer module
  */
@@ -157,6 +290,10 @@ footer a:visited:hover {
  */
 .home-welcome {
   background-image: linear-gradient(45deg, #361752, #B31B67);
+  background-image: -webkit-linear-gradient(45deg, #361752, #B31B67);
+  background-image: -moz-linear-gradient(45deg, #361752, #B31B67);
+  background-image: -ms-linear-gradient(45deg, #361752, #B31B67);
+  background-image: -o-linear-gradient(45deg, #361752, #B31B67);
   color: white;
   padding: 2em 0 4em;
   font-size: 125%;
@@ -164,17 +301,6 @@ footer a:visited:hover {
 .home-welcome h1 {
   color: white;
   line-height: 1em;
-}
-.home-welcome .countdown {
-  /*font-size: 100%;
-  line-height: 200%;*/
-}
-.home-welcome .countdown span {
-  background: rgba(255,255,255,0.2);
-  border-radius: 2px;
-  display: inline-block;
-  /*font-size: 200%;*/
-  padding: 0 10px;
 }
 .home-welcome .pure-button {
   background-color: transparent;
@@ -198,11 +324,6 @@ footer a:visited:hover {
 }
 .home-welcome .pure-button:active {
   background-color: rgba(255, 255, 255, 0.2);
-}
-.home-welcome-example {
-  text-align: center;
-  line-height: 2em;
-  margin: .67em 0;
 }
 .home-content .lead {
   font-size: 110%;
@@ -236,6 +357,10 @@ footer a:visited:hover {
  */
 .content-header {
   background-image: linear-gradient(45deg, #361752, #B31B67);
+  background-image: -webkit-linear-gradient(45deg, #361752, #B31B67);
+  background-image: -moz-linear-gradient(45deg, #361752, #B31B67);
+  background-image: -ms-linear-gradient(45deg, #361752, #B31B67);
+  background-image: -o-linear-gradient(45deg, #361752, #B31B67);
   color: white;
 }
 .content-header h1 {
@@ -293,25 +418,14 @@ footer a:visited:hover {
 
 /* Getting started example */
 #getting-started{
-    border-radius: 5px;
-    -o-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-
     border: 1px solid #cccccc;
     margin-bottom: 20px;
     padding: 10px 0;
     text-align: center;
 }
 #getting-started span{
-    border-radius: 2px;
-    -o-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-
     background-color: #333333;
+    border-radius: 2px;
     color: #ffffff;
     display: inline-block;
     font-size: 25px;
@@ -327,13 +441,8 @@ footer a:visited:hover {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 
-    border-radius: 5px;
-    -o-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-
     background-color: #609DD6;
+    border-radius: 5px;
     color: #ffffff;
     font-weight: bold;
     margin: 20px 0 20px;
@@ -365,26 +474,16 @@ footer a:visited:hover {
     line-height: 55px;
 }
 .big-countdown span{
-    border-radius: 5px;
-    -o-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-
     background-color: #333333;
+    border-radius: 5px;
     color: #ffffff;
     font-size: 150%;
     font-weight: bold;
     padding: 10px;
 }
 .multiple-instance .clock{
-    border-radius: 5px;
-    -o-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-
     background-color: #609DD6;
+    border-radius: 5px;
     color: #ffffff;
     font-weight: bold;
     line-height: 30px;

@@ -16,10 +16,7 @@ title: The Final Countdown
         </p>
       </div>
       <div class="pure-u-1-2">
-        <div class="home-welcome-example">
-          Next year begins in:<br/>
-          <span id="welcome" class="countdown"></span>
-        </div>
+        {% include main-example.html %}
       </div>
     </div>
     <div class="pure-g-r">
@@ -140,18 +137,6 @@ title: The Final Countdown
 
 <script type="text/javascript">
   var nextYear = (new Date().getFullYear() + 1) + "/01/01";
-  $('#welcome').countdown(nextYear, function(event) {
-    var format = '<span>%H</span>:<span>%M</span>:<span>%S</span>';
-
-    if (event.offset.days > 0) {
-      format = '<span>%-d</span> day%!d ' + format;
-    }
-    if (event.offset.weeks > 0) {
-      format = '<span>%-w</span> week%!w ' + format;
-    }
-
-    $(this).html(event.strftime(format));
-  });
   $("#getting-started").countdown(nextYear, function(event) {
     $(this).html(event.strftime('%-w weeks %-d days %H hours %M minutes %S seconds'));
   });
