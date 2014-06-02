@@ -10,3 +10,8 @@ redcarpet:
     - autolink
     - strikethrough
     - superscript
+collections:
+  examples:
+    output: true
+exclude:
+  - node_modules/
