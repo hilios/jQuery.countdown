@@ -4,14 +4,12 @@
       <i class="fa fa-code"></i>
       Examples
     </li>
-    {% for page in site.pages %}
-    {% if page.category == 'examples' %}
+    {% for page in site.examples %}
     <li class="{% if page.url == page.url %}pure-menu-selected{% endif %}">
       <a href="{{site.baseurl}}{{page.url}}">
         {{page.title}}
       </a>
     </li>
-    {% endif %}
     {% endfor %}
     <li>
       <a href="{{site.baseurl}}/examples.html">

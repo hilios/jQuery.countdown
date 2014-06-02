@@ -1,7 +1,6 @@
 ---
 layout: content
 title:  Examples
-category: examples-index
 ---
 
 There are few ways to get started, from the most simple example to advanced, we support many different countdown styles, see wich one fits your scenario, and if any doesn't the [Docs]({{site.baseurl}}/documentation.html) are a good starting point to customize your output.
@@ -9,11 +8,8 @@ There are few ways to get started, from the most simple example to advanced, we 
 <!-- {% include getting-started.html %} -->
 
 <div class="examples-list-index">
-{% assign index = 0 %}
-{% for page in site.pages %}
-{% if page.category contains 'examples' %}
-  {% assign index = index | plus:1 %}
-  {% assign row = index | modulo: 3 %}
+{% for page in site.examples %}
+  {% assign row = forloop.index | modulo: 3 %}
 
   {% if row == 1 %}
   <div class="pure-g-r">
@@ -37,7 +33,5 @@ There are few ways to get started, from the most simple example to advanced, we 
   {% if row == 0 %}
   </div>
   {% endif %}
-
-{% endif %}
 {% endfor %}
 </div>

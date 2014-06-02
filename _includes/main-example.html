@@ -1,0 +1,40 @@
+<div class="main-example">
+  Next year begins in:<br/>
+  <div id="main-example">
+    <div class="time">
+      <span class="count">00</span>
+      <span class="label">weeks</span>
+    </div>
+    <div class="time">
+      <span class="count">00</span>
+      <span class="label">days</span>
+    </div>
+    <div class="time">
+      <span class="count">00</span>
+      <span class="label">hours</span>
+    </div>
+    <div class="time">
+      <span class="count">00</span>
+      <span class="label">min</span>
+    </div>
+    <div class="time">
+      <span class="count">00</span>
+      <span class="label">sec</span>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var nextYear = (new Date().getFullYear() + 1) + "/01/01";
+  // $('#welcome').countdown(nextYear, function(event) {
+  //   var format = '<span>%H</span>:<span>%M</span>:<span>%S</span>';
+
+  //   if (event.offset.days > 0) {
+  //     format = '<span>%-d</span> day%!d ' + format;
+  //   }
+  //   if (event.offset.weeks > 0) {
+  //     format = '<span>%-w</span> week%!w ' + format;
+  //   }
+
+  //   $(this).html(event.strftime(format));
+  // });
+</script>
