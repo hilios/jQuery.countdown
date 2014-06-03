@@ -12,7 +12,7 @@ toc:
 published: true
 ---
 
-Install
+Install <a id="install"></a>
 -------
 
 We provide two installation methods:
@@ -35,7 +35,7 @@ Download the files and add a `script` to your html:
 
 The latest versions supports **jQuery**  from 1.7 up to >= 2.1. For legacy support (<= 1.6) please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
 
-Introduction
+Introduction <a id="introduction"></a>
 ------------
 
 For each DOM in your selector chain, an instance of the countdown will be created with an interval, that sends  signals (events) with the time remaining components has weeks, days, hours, so on so forth (for more details see [Event object](#event-object) section). The countdown is wrapped within the DOM and will auto delete itself when the DOM is removed.
@@ -76,7 +76,7 @@ A function that will handle the `event` triggered, despite the fact we have thre
 function(event) { ... }
 ```
 
-Events
+Events <a id="events"></a>
 ------
 
 This plugin will trigger an event whenever some state change like:
@@ -93,7 +93,7 @@ To register a callback use the following `event.type`:
 
 Be aware thtat **ALL** events should be registered with the namespace `*.countdown`.
 
-Event object
+Event object <a id="event-object"></a>
 ------------
 
 Most of the time you will be using the `event.strftime` function to render the countdown, the next section goes deeper in this subject. But you can access all raw values
@@ -116,10 +116,8 @@ Most of the time you will be using the `event.strftime` function to render the c
 }
 ```
 
-Formatter
+Formatter <small>(event.strftime)</small> <a id="formatter"></a>
 ---------
-
-### event.strftime ###
 
 A simple formatter that helps keep your code more semantic and avoid repetitive tasks.
 
@@ -249,7 +247,7 @@ event.strftime('%S %!S:sekonde,sekonden;');
 // => 01 sekonde (or) 02 sekonden
 ```
 
-Controls
+Controls <a id="controls"></a>
 --------
 
 The methods `pause`/`resume` allows to control the execution flow of the countdown:

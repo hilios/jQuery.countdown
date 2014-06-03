@@ -413,12 +413,17 @@ footer a:visited:hover {
   padding-bottom: 0.5em;
 }
 @media screen and (min-width: 48em) {
-  .docs h2:first-child {
+  .docs h2:first-of-type {
     margin-top: 0 !important;
   }
 }
 .docs h2 small {
   color: #777;
+}
+.docs a[id]:after {
+  content: ".";
+  font-size: 0;
+  line-height: 0;
 }
 /**
  * TOC module
