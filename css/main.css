@@ -88,7 +88,7 @@ header .nav-toggle .pure-button i {
 /**
  * Navigation module
  */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 48em) {
   nav.pure-menu {
     display: none;
   }
@@ -130,7 +130,7 @@ main [class*="pure-u-"]:last-child article {
   width: 355px;
 }
 .main-example .countdown-container {
-  height: 200px;
+  height: 130px;
 }
 .main-example .time {
   border-radius: 5px;
@@ -320,7 +320,7 @@ footer a:visited:hover {
   margin-right: 20px;
   text-decoration: none;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 48em) {
   .home-welcome .pure-button {
     display: block;
     margin-top: 20px;
@@ -360,6 +360,22 @@ footer a:visited:hover {
   width: 100%;
   height: 100%;
 }
+.home-countdown-example{
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: center;
+}
+.home-countdown-example span{
+    background-color: #333333;
+    border-radius: 2px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px;
+}
 /**
  * Content module
  */
@@ -387,7 +403,7 @@ footer a:visited:hover {
   margin-top: 1.2em;
   padding-bottom: 0.5em;
 }
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 48em) {
   .docs h2:first-child {
     margin-top: 0 !important;
   }
@@ -484,77 +500,4 @@ footer a:visited:hover {
   display: block;
   font-size: 1.4em;
   width: 100%;
-}
-/* Getting started example */
-#getting-started{
-    border: 1px solid #cccccc;
-    margin-bottom: 20px;
-    padding: 10px 0;
-    text-align: center;
-}
-#getting-started span{
-    background-color: #333333;
-    border-radius: 2px;
-    color: #ffffff;
-    display: inline-block;
-    font-size: 25px;
-    font-weight: bold;
-    line-height: 25px;
-    padding: 5px;
-}
-.basic-coupon,
-.advanced-coupon{
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-
-    background-color: #609DD6;
-    border-radius: 5px;
-    color: #ffffff;
-    font-weight: bold;
-    margin: 20px 0 20px;
-    text-align: center;
-    padding: 20px;
-}
-.basic-coupon span,
-.advanced-coupon span{
-    font-size: 20px;
-    display: block;
-}
-.advanced-coupon.disabled{
-    background-color: #999999;
-}
-.advanced-coupon .form-control{
-    margin: 0 auto;
-}
-.advanced-coupon-display{
-    padding-bottom: 20px;
-}
-.big-countdown{
-    height: 130px;
-    padding: 20px;
-    text-align: center;
-}
-.big-countdown div{
-    font-size: 150%;
-    margin-top: 10px;
-    line-height: 55px;
-}
-.big-countdown span{
-    background-color: #333333;
-    border-radius: 5px;
-    color: #ffffff;
-    font-size: 150%;
-    font-weight: bold;
-    padding: 10px;
-}
-.multiple-instance .clock{
-    background-color: #609DD6;
-    border-radius: 5px;
-    color: #ffffff;
-    font-weight: bold;
-    line-height: 30px;
-    text-align: center;
 }

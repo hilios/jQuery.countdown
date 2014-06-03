@@ -6,8 +6,6 @@ category: examples-main
 
 There are few ways to get started, from the most simple example to advanced, we support many different countdown styles, see wich one fits your scenario, and if any doesn't the [Docs]({{site.baseurl}}/documentation.html) are a good starting point to customize your output.
 
-<!-- {% include getting-started.html %} -->
-
 <div class="examples-list-index">
 {% for page in site.examples %}
   {% assign row = forloop.index | modulo: 3 %}
