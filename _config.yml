@@ -1,6 +1,6 @@
 name:           The Final Countdown
 nickname:       jQuery.countdown
-plugin_version: 2.0.3
+plugin_version: 2.0.4
 baseurl:        http://hilios.github.io/jQuery.countdown
 highlight:      true
 markdown:       redcarpet
