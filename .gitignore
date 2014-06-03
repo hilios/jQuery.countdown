@@ -19,3 +19,4 @@ node_modules
 .DS_Store
 
 test/vendor
+_site/
