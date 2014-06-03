@@ -7,8 +7,11 @@ category: examples-main
 There are few ways to get started, from the most simple example to advanced, we support many different countdown styles, see wich one fits your scenario, and if any doesn't the [Docs]({{site.baseurl}}/documentation.html) are a good starting point to customize your output.
 
 <div class="examples-list-index">
-{% for page in site.examples %}
-  {% assign row = forloop.index | modulo: 3 %}
+{% assign examples = 0 %}
+{% for page in site.pages %}
+{% if page.category == 'examples' %}
+  {% assign examples = examples | plus: 1 %}
+  {% assign row = examples | modulo: 3 %}
 
   {% if row == 1 %}
   <div class="pure-g-r">
@@ -32,5 +35,6 @@ There are few ways to get started, from the most simple example to advanced, we 
   {% if row == 0 %}
   </div>
   {% endif %}
+{% endif %}
 {% endfor %}
 </div>
