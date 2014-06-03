@@ -12,4 +12,4 @@ Install [Jekyll](http://jekyllrb.com/) on your machine, proceed to your terminal
 jekyll serve -w -b ''
 ```
 
-Open you favorite browser (i.e. Internet Explorer 6) and access [http://localhost:4000](http://localhost:4000) and you're ready to roll.
+Open you favorite browser (i.e. IE 6) and access [http://localhost:4000](http://localhost:4000) and you're ready to roll.

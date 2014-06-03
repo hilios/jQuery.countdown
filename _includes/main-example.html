@@ -47,7 +47,7 @@
     currDate = '00:00:00:00',
     nextDate = '00:00:00:00',
     parser = /([0-9]{2})/gi;
-  // Setup
+  // Parse countdown string to an object
   function strfobj(str) {
     var parsed = str.match(parser),
       obj = {};
@@ -58,7 +58,7 @@
     obj['seconds'] = parsed[4];
     return obj;
   }
-
+  // Return the time components that diffs
   function diff(obj1, obj2) {
     var diff = [];
     ['weeks', 'days', 'hours', 'minutes', 'seconds'].forEach(function(key) {
@@ -68,7 +68,7 @@
     });
     return diff;
   }
-
+  // Starts the countdown
   $('#main-example').countdown(nextYear, function(event) {
     var newDate = event.strftime('%w:%d:%H:%M:%S'),
       data, $countdown;

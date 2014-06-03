@@ -21,6 +21,14 @@ pre {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+pre > code {
+  background-color: transparent;
+  color: #666;
+}
+code {
+  background-color: #fff0f0;
+  color: #dd2200;
+}
 /**
  * Layout
  */
@@ -415,7 +423,68 @@ footer a:visited:hover {
   background-color: #361752;
   color: white !important;
 }
+/**
+ * Example module
+ */
+.example-base,
+.example-blocks,
+.example-coupon,
+.example-multiple {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
+  background-color: #ddd;
+  border: 1px solid transparent;
+  border-radius: 1px;
+  color: #444;
+  margin: 20px 0;
+  text-align: center;
+  padding: 20px;
+}
+.example-base span {
+  display: block;
+  line-height: 2em;
+  font-size: 2em;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+.example-blocks div {
+  margin-top: 10px;
+}
+.example-blocks span {
+  display: inline-block;
+  font-size: 2em;
+  line-height: 2em;
+  padding: 0 10px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+.example-coupon span {
+  display: block;
+  line-height: 1.4em;
+  font-size: 1.4em;
+}
+.example-base.disabled,
+.example-coupon.disabled {
+  background: #eee;
+  color: #666;
+  font-size: 1.4em;
+}
+.example-multiple {
+  border-right: 1px solid white;
+  text-align: center;
+  padding: 10px;
+}
+.example-selector {
+  margin-bottom: 10px;
+  text-align: center;
+}
+.example-selector select {
+  display: block;
+  font-size: 1.4em;
+  width: 100%;
+}
 /* Getting started example */
 #getting-started{
     border: 1px solid #cccccc;
