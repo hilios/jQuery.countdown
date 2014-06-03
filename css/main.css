@@ -348,6 +348,10 @@ footer a:visited:hover {
   margin: 0;
   padding: 0;
 }
+.home-get-involved i {
+  text-align: center;
+  width: 16px;
+}
 .home-video-container {
   position: relative;
   padding-bottom: 56.25%;
