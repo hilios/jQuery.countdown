@@ -1,4 +1,4 @@
-[The Final Countdown](http://hilios.github.io/jQuery.countdown/) [![Build Status](https://travis-ci.org/hilios/jQuery.countdown.png)](https://travis-ci.org/hilios/jQuery.countdown)
+[The Final Countdown](http://hilios.github.io/jQuery.countdown/) [![Build Status](https://travis-ci.org/hilios/jQuery.countdown.svg)](https://travis-ci.org/hilios/jQuery.countdown)
 =====================
 
 #### A simple and html agnostic date countdown plugin for jQuery ####
@@ -7,9 +7,9 @@ To get started, check-it out: http://hilios.github.io/jQuery.countdown/
 
 The ultimate countdown plugin designed to fit in any coupon, auction site or product launch. Read our [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
 
-#### [Download](https://github.com/hilios/jQuery.countdown/releases/download/2.0.2/jquery.countdown-2.0.2.zip) ####
+#### [Download](https://github.com/hilios/jQuery.countdown/releases/download/2.0.4/jquery.countdown-2.0.4.zip) ####
 
-[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.3/jquery.countdown-2.0.3.zip)
+[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.4/jquery.countdown-2.0.4.zip)
 
 If you want to clone the repo always use the files under [dist](https://github.com/hilios/jQuery.countdown/tree/master/dist) folder, they are optimized for production and development.
 
@@ -59,7 +59,12 @@ There are few ways to get started, from the most simple example to advanced, we 
 [Release notes](https://github.com/hilios/jQuery.countdown/releases)
 ---------------
 
-Current version is **2.0.3**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
+Current version is **2.0.4**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
+
+#### What's new in 2.0.4? ####
+
+ * Fix bower tag
+ * Fix jQuery plugin tag
 
 #### What's new in 2.0.3? ####
 
