@@ -429,6 +429,9 @@ footer a:visited:hover {
 .toc .active {
   background-color: #eee;
 }
+.toc .active a {
+  color: black;
+}
 .toc.affix {
   position: fixed;
   top: 20px;

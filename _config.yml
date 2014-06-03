@@ -5,6 +5,7 @@ highlight:    true
 markdown:     redcarpet
 redcarpet:
   extensions:
+    - with_toc_data
     - no_intra_emphasis
     - fenced_code_blocks
     - autolink

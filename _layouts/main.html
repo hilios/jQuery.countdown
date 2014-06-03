@@ -17,7 +17,7 @@
   <script src="{{site.baseurl}}/js/jquery.countdown.min.js"></script>
   <script src="{{site.baseurl}}/js/main.js"></script>
 </head>
-<body {% if page.toc %}data-spy="scroll" data-target=".toc"{% endif %}>
+<body>
 <header>
   <div class="container">
     <div class="pure-g-r">
@@ -57,5 +57,12 @@
 </footer>
 {% include gh-ribbon.html %}
 {% include ga.html %}
+<script type="text/javascript">
+$(function() {
+  $('.nav-toggle > button').click(function(event) {
+    $('header nav').toggleClass('active');
+  });
+});
+</script>
 </body>
 </html>

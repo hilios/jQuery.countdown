@@ -15,8 +15,6 @@ published: true
 Install
 -------
 
-<a class="anchor" id="install"></a>
-
 We provide two installation methods:
 
 #### Bower ####
@@ -36,8 +34,6 @@ Download the files and add a `script` to your html:
 #### Requirements ####
 
 The latest versions supports **jQuery**  from 1.7 up to >= 2.1. For legacy support (<= 1.6) please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
-
-<a class="anchor" id="introduction"></a>
 
 Introduction
 ------------
@@ -80,8 +76,6 @@ A function that will handle the `event` triggered, despite the fact we have thre
 function(event) { ... }
 ```
 
-<a class="anchor" id="events"></a>
-
 Events
 ------
 
@@ -98,8 +92,6 @@ To register a callback use the following `event.type`:
 -   `stop.countdown`
 
 Be aware thtat **ALL** events should be registered with the namespace `*.countdown`.
-
-<a class="anchor" id="event-object"></a>
 
 Event object
 ------------
@@ -124,10 +116,10 @@ Most of the time you will be using the `event.strftime` function to render the c
 }
 ```
 
-<a class="anchor" id="formatter"></a>
+Formatter
+---------
 
-Formatter <small>(event.strftime)</small>
------------------------------------
+### event.strftime ###
 
 A simple formatter that helps keep your code more semantic and avoid repetitive tasks.
 
@@ -256,8 +248,6 @@ event.strftime('%-D tag%!D:e; %H:%M:%S');
 event.strftime('%S %!S:sekonde,sekonden;');
 // => 01 sekonde (or) 02 sekonden
 ```
-
-<a class="anchor" id="controls"></a>
 
 Controls
 --------

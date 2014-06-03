@@ -42,52 +42,54 @@
 </div>
 </script>
 <script type="text/javascript">
-  var nextYear = (new Date().getFullYear() + 1) + "/01/01",
-    template = _.template($('#main-example-template').html()),
-    currDate = '00:00:00:00',
-    nextDate = '00:00:00:00',
-    parser = /([0-9]{2})/gi;
-  // Parse countdown string to an object
-  function strfobj(str) {
-    var parsed = str.match(parser),
-      obj = {};
-    obj['weeks'] = parsed[0];
-    obj['days'] = parsed[1];
-    obj['hours'] = parsed[2];
-    obj['minutes'] = parsed[3];
-    obj['seconds'] = parsed[4];
-    return obj;
-  }
-  // Return the time components that diffs
-  function diff(obj1, obj2) {
-    var diff = [];
-    ['weeks', 'days', 'hours', 'minutes', 'seconds'].forEach(function(key) {
-      if (obj1[key] !== obj2[key]) {
-        diff.push('.' + key);
+  $(window).on('load', function() {
+    var nextYear = (new Date().getFullYear() + 1) + "/01/01",
+      template = _.template($('#main-example-template').html()),
+      currDate = '00:00:00:00',
+      nextDate = '00:00:00:00',
+      parser = /([0-9]{2})/gi;
+    // Parse countdown string to an object
+    function strfobj(str) {
+      var parsed = str.match(parser),
+        obj = {};
+      obj['weeks'] = parsed[0];
+      obj['days'] = parsed[1];
+      obj['hours'] = parsed[2];
+      obj['minutes'] = parsed[3];
+      obj['seconds'] = parsed[4];
+      return obj;
+    }
+    // Return the time components that diffs
+    function diff(obj1, obj2) {
+      var diff = [];
+      ['weeks', 'days', 'hours', 'minutes', 'seconds'].forEach(function(key) {
+        if (obj1[key] !== obj2[key]) {
+          diff.push('.' + key);
+        }
+      });
+      return diff;
+    }
+    // Starts the countdown
+    $('#main-example').countdown(nextYear, function(event) {
+      var newDate = event.strftime('%w:%d:%H:%M:%S'),
+        data, $countdown;
+      if (newDate !== nextDate) {
+        $countdown = $(this);
+        currDate = nextDate;
+        nextDate = newDate;
+        // Setup the data
+        data = {
+          'curr': strfobj(currDate),
+          'next': strfobj(nextDate)
+        };
+        // Update the template
+        $countdown.html(template(data));
+        // Delay this function to after this callback
+        _.delay(function() {
+          $countdown.find(diff(data.curr, data.next).join(', '))
+            .addClass('animate')
+        }, 1);
       }
     });
-    return diff;
-  }
-  // Starts the countdown
-  $('#main-example').countdown(nextYear, function(event) {
-    var newDate = event.strftime('%w:%d:%H:%M:%S'),
-      data, $countdown;
-    if (newDate !== nextDate) {
-      $countdown = $(this);
-      currDate = nextDate;
-      nextDate = newDate;
-      // Setup the data
-      data = {
-        'curr': strfobj(currDate),
-        'next': strfobj(nextDate)
-      };
-      // Update the template
-      $countdown.html(template(data));
-      // Delay this function to after this callback
-      _.delay(function() {
-        $countdown.find(diff(data.curr, data.next).join(', '))
-          .addClass('animate')
-      }, 1);
-    }
   });
 </script>
