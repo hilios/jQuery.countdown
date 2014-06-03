@@ -90,15 +90,20 @@ header .nav-toggle .pure-button i {
  */
 @media screen and (max-width: 48em) {
   nav.pure-menu {
-    display: none;
+    height: 0;
+    overflow: hidden;
   }
-  nav.pure-menu.pure-menu-horizontal>ul {
+  nav.pure-menu.pure-menu-horizontal > ul {
     display: block;
     margin: 0 -2em;
   }
   nav.pure-menu-horizontal li {
     display: block;
     border-top: 1px solid #eee;
+  }
+  nav.pure-menu.active {
+    height: auto;
+    overflow: visible;
   }
 }
 /**
@@ -425,6 +430,11 @@ footer a:visited:hover {
   top: 20px;
   width: auto;
 }
+@media screen and (max-width: 48em) {
+  .toc.affix {
+    position: static !important;
+  }
+}
 /**
  * Examples module
  */
@@ -438,6 +448,14 @@ footer a:visited:hover {
 .examples-list-index .pure-button:hover {
   background-color: #361752;
   color: white !important;
+}
+@media screen and (max-width: 48em) {
+  .examples-list-index .pure-g-r {
+    border-top-style: none;
+  }
+  .examples-list-index [class*="pure-u-"] {
+    border-top: 1px solid #ddd;
+  }
 }
 /**
  * Example module
