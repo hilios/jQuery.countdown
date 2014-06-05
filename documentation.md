@@ -242,9 +242,9 @@ event.strftime('%-D day%!D %H:%M:%S');
 
 // Now in german
 event.strftime('%-D tag%!D:e; %H:%M:%S');
-// => 1 tage 23:45:56 (or) 2 tag 23:45:56
-event.strftime('%S %!S:sekonde,sekonden;');
-// => 01 sekonde (or) 02 sekonden
+// => 1 tag 23:45:56 (or) 2 tage 23:45:56
+event.strftime('%S %!S:sekunde,sekunden;');
+// => 01 sekunde (or) 02 sekunden
 ```
 
 Controls <a id="controls"></a>
