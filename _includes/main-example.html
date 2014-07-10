@@ -5,76 +5,56 @@
   <div class="countdown-container" id="main-example"></div>
 </div>
 <script type="text/template" id="main-example-template">
-<div class="time weeks">
-  <span class="count curr top"><%= curr.weeks %></span>
-  <span class="count next top"><%= next.weeks %></span>
-  <span class="count next bottom"><%= next.weeks %></span>
-  <span class="count curr bottom"><%= curr.weeks %></span>
-  <span class="label">weeks</span>
-</div>
-<div class="time days">
-  <span class="count curr top"><%= curr.days %></span>
-  <span class="count next top"><%= next.days %></span>
-  <span class="count curr bottom"><%= curr.days %></span>
-  <span class="count next bottom"><%= next.days %></span>
-  <span class="label">days</span>
-</div>
-<div class="time hours">
-  <span class="count curr top"><%= curr.hours %></span>
-  <span class="count next top"><%= next.hours %></span>
-  <span class="count curr bottom"><%= curr.hours %></span>
-  <span class="count next bottom"><%= next.hours %></span>
-  <span class="label">hours</span>
-</div>
-<div class="time minutes">
-  <span class="count curr top"><%= curr.minutes %></span>
-  <span class="count next top"><%= next.minutes %></span>
-  <span class="count curr bottom"><%= curr.minutes %></span>
-  <span class="count next bottom"><%= next.minutes %></span>
-  <span class="label">min</span>
-</div>
-<div class="time seconds">
-  <span class="count curr top"><%= curr.seconds %></span>
-  <span class="count next top"><%= next.seconds %></span>
-  <span class="count curr bottom"><%= curr.seconds %></span>
-  <span class="count next bottom"><%= next.seconds %></span>
-  <span class="label">sec</span>
+<div class="time <%= label %>">
+  <span class="count curr top"><%= curr %></span>
+  <span class="count next top"><%= next %></span>
+  <span class="count next bottom"><%= next %></span>
+  <span class="count curr bottom"><%= curr %></span>
+  <span class="label"><%= label.length < 6 ? label : label.substr(0, 3)  %></span>
 </div>
 </script>
 <script type="text/javascript">
   $(window).on('load', function() {
-    var nextYear = (new Date().getFullYear() + 1) + "/01/01",
+    var labels = ['weeks', 'days', 'hours', 'minutes', 'seconds'],
+      nextYear = (new Date().getFullYear() + 1) + '/01/01',
       template = _.template($('#main-example-template').html()),
-      currDate = '00:00:00:00',
-      nextDate = '00:00:00:00',
-      parser = /([0-9]{2})/gi;
+      currDate = '00:00:00:00:00',
+      nextDate = '00:00:00:00:00',
+      parser = /([0-9]{2})/gi,
+      $example = $('#main-example')
     // Parse countdown string to an object
     function strfobj(str) {
       var parsed = str.match(parser),
         obj = {};
-      obj['weeks'] = parsed[0];
-      obj['days'] = parsed[1];
-      obj['hours'] = parsed[2];
-      obj['minutes'] = parsed[3];
-      obj['seconds'] = parsed[4];
+      labels.forEach(function(label, i) {
+        obj[label] = parsed[i]
+      });
       return obj;
     }
     // Return the time components that diffs
     function diff(obj1, obj2) {
       var diff = [];
-      ['weeks', 'days', 'hours', 'minutes', 'seconds'].forEach(function(key) {
+      labels.forEach(function(key) {
         if (obj1[key] !== obj2[key]) {
-          diff.push('.' + key);
+          diff.push(key);
         }
       });
       return diff;
     }
+    // Build the layout
+    var initData = strfobj(currDate);
+    labels.forEach(function(label, i) {
+      $example.append(template({
+        curr: initData[label],
+        next: initData[label],
+        label: label
+      }));
+    });
     // Starts the countdown
-    $('#main-example').countdown(nextYear, function(event) {
+    $example.countdown(nextYear, function(event) {
       var newDate = event.strftime('%w:%d:%H:%M:%S'),
-        data, $countdown;
+        data;
       if (newDate !== nextDate) {
-        $countdown = $(this);
         currDate = nextDate;
         nextDate = newDate;
         // Setup the data
@@ -82,13 +62,20 @@
           'curr': strfobj(currDate),
           'next': strfobj(nextDate)
         };
-        // Update the template
-        $countdown.html(template(data));
-        // Delay this function to after this callback
-        _.delay(function() {
-          $countdown.find(diff(data.curr, data.next).join(', '))
-            .addClass('animate')
-        }, 1);
+        // Remove animate
+        $example.find('.animate').removeClass('animate');
+        //
+        diff(data.curr, data.next).forEach(function(label) {
+          var selector = '.%s'.replace(/%s/, label);
+          $example.find('%s > .curr'.replace(/%s/, selector))
+            .html(data.curr[label]);
+          $example.find('%s > .next'.replace(/%s/, selector))
+            .html(data.next[label]);
+          // Delay the animation
+          _.delay(function() {
+            $example.find(selector).addClass('animate')
+          }, 5);
+        });
       }
     });
   });
