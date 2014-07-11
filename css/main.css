@@ -237,7 +237,7 @@ main [class*="pure-u-"]:last-child article {
   z-index: 2;
 }
 /* Animation end */
-.main-example .animate .count.curr.top {
+.main-example .flip .count.curr.top {
   -webkit-transition: all 250ms ease-in-out;
   -moz-transition: all 250ms ease-in-out;
   -ms-transition: all 250ms ease-in-out;
@@ -250,7 +250,7 @@ main [class*="pure-u-"]:last-child article {
   -o-transform: rotateX(-90deg);
   transform: rotateX(-90deg);
 }
-.main-example .animate .count.next.bottom {
+.main-example .flip .count.next.bottom {
   -webkit-transition: all 250ms ease-in-out 250ms;
   -moz-transition: all 250ms ease-in-out 250ms;
   -ms-transition: all 250ms ease-in-out 250ms;

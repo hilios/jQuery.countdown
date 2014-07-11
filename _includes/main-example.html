@@ -62,19 +62,18 @@
           'curr': strfobj(currDate),
           'next': strfobj(nextDate)
         };
-        // Remove animate
-        $example.find('.animate').removeClass('animate');
-        //
+        // Apply the new values to each node that changed
         diff(data.curr, data.next).forEach(function(label) {
-          var selector = '.%s'.replace(/%s/, label);
-          $example.find('%s > .curr'.replace(/%s/, selector))
-            .html(data.curr[label]);
-          $example.find('%s > .next'.replace(/%s/, selector))
-            .html(data.next[label]);
-          // Delay the animation
-          _.delay(function() {
-            $example.find(selector).addClass('animate')
-          }, 5);
+          var selector = '.%s'.replace(/%s/, label),
+              $node = $example.find(selector);
+          // Update the node
+          $node.removeClass('flip');
+          $node.find('.curr').text(data.curr[label]);
+          $node.find('.next').text(data.next[label]);
+          // Wait for a repaint to then flip
+          _.delay(function($node) {
+            $node.addClass('flip');
+          }, 5, $node);
         });
       }
     });
