@@ -86,7 +86,9 @@ title: The Final Countdown
 <script type="text/javascript">
   $("#getting-started")
   .countdown("{{site.time|date:'%Y'|plus:1}}/01/01", function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
+    $(this).text(
+      event.strftime('%D days %H:%M:%S')
+    );
   });
 </script>
         {% endhighlight %}
@@ -138,6 +140,6 @@ title: The Final Countdown
 <script type="text/javascript">
   var nextYear = (new Date().getFullYear() + 1) + "/01/01";
   $("#getting-started").countdown(nextYear, function(event) {
-    $(this).html(event.strftime('%-w weeks %-d days %H hours %M minutes %S seconds'));
+    $(this).html(event.strftime('%D days %H:%M:%S'));
   });
 </script>
