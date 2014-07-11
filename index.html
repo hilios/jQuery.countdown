@@ -140,6 +140,6 @@ title: The Final Countdown
 <script type="text/javascript">
   var nextYear = (new Date().getFullYear() + 1) + "/01/01";
   $("#getting-started").countdown(nextYear, function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
+    $(this).html(event.strftime('%-w weeks %-d days %Hh %Mm %Ss'));
   });
 </script>
