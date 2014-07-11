@@ -46,6 +46,26 @@ test('pause/resume the countdown', function() {
   }, 1200);
 });
 
+test('toggle countdown', function() {
+  var callback = sinon.spy();
+  $dom.countdown('2020/10/20').on('update.countdown', callback);
+  // Start async
+  stop();
+  // Toggle the countdown to pause
+  $dom.countdown('toggle');
+  // Test if callback wasn't invoked and toggle gain
+  setTimeout(function() {
+    ok(callback.callCount === 0);
+    // Resume
+    $dom.countdown('toggle');
+  }, 100);
+  // Ensure it's running
+  setTimeout(function() {
+    ok(callback.callCount > 0);
+    start();
+  }, 500);
+});
+
 test('remove the countdown instance', function() {
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);

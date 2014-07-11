@@ -152,14 +152,21 @@
       this.interval = null;
       this.dispatchEvent('stoped');
     },
+    toggle: function() {
+      if (this.interval) {
+        this.stop();
+      } else {
+        this.start();
+      }
+    },
     pause: function() {
-      this.stop.call(this);
+      this.stop();
     },
     resume: function() {
-      this.start.call(this);
+      this.start();
     },
     remove: function() {
-      this.stop();
+      this.stop.call(this);
       instances[this.instanceNumber] = null;
       // Reset the countdown instance under data attr (Thanks to @assiotis)
       delete this.$el.data().countdownInstance;
