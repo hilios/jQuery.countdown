@@ -60,3 +60,7 @@
 .highlight .vg { color: #dd7700 } /* Name.Variable.Global */
 .highlight .vi { color: #3333bb } /* Name.Variable.Instance */
 .highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+/* For mobile devices */
+@media screen and (max-width: 48em) {
+  .highlight .lineno { display: none; }
+}

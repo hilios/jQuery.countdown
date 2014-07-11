@@ -72,13 +72,15 @@ title: The Final Countdown
         <p>
           {% highlight bash %}bower install jquery.countdown{% endhighlight %}
         </p>
-        <h4>Download files:</h4>
-        <p>
-          <a class="pure-button" href="https://github.com/hilios/jQuery.countdown/releases/download/{{site.plugin_version}}/jquery.countdown-{{site.plugin_version}}.zip" onclick="ga('send', 'event', 'download', 'click');">
-            <i class="fa fa-file-zip-o"></i>
-            Download jQuery.countdown.zip
-          </a>
-        </p>
+        <div class="download">
+          <h4>Download files:</h4>
+          <p>
+            <a class="pure-button" href="https://github.com/hilios/jQuery.countdown/releases/download/{{site.plugin_version}}/jquery.countdown-{{site.plugin_version}}.zip" onclick="ga('send', 'event', 'download', 'click');">
+              <i class="fa fa-file-zip-o"></i>
+              Download jQuery.countdown.zip
+            </a>
+          </p>
+        </div>
         <h4>Example:</h4>
         <div class="home-countdown-example" id="getting-started"></div>
         {% highlight html linenos %}

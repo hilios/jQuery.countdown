@@ -18,7 +18,9 @@ pre {
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
-  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 pre > code {
@@ -45,6 +47,14 @@ a.pure-button {
 }
 .gh-btns {
   min-width: 340px;
+}
+@media screen and (max-width: 48em) {
+  .container {
+    padding: 0.5em 1em !important;
+  }
+  .gh-btns {
+    display: none;
+  }
 }
 /**
  * Header module
@@ -85,6 +95,11 @@ header .nav-toggle .pure-button {
 header .nav-toggle .pure-button i {
   margin: 0;
 }
+@media screen and (max-width: 48em) {
+  header .container {
+    padding: 0;
+  }
+}
 /**
  * Navigation module
  */
@@ -95,7 +110,7 @@ header .nav-toggle .pure-button i {
   }
   nav.pure-menu.pure-menu-horizontal > ul {
     display: block;
-    margin: 0 -2em;
+    margin: 0 -1em;
   }
   nav.pure-menu-horizontal li {
     display: block;
@@ -129,6 +144,11 @@ main [class*="pure-u-"]:first-child article {
 }
 main [class*="pure-u-"]:last-child article {
   padding-right: 0;
+}
+@media screen and (max-width: 48em) {
+  main article {
+    padding: 0 !important;
+  }
 }
 .main-example {
   margin: 0 auto;
@@ -263,6 +283,26 @@ main [class*="pure-u-"]:last-child article {
   -o-transform: rotateX(0deg);
   transform: rotateX(0deg);
 }
+@media screen and (max-width: 48em) {
+  .main-example {
+    width: 100%;
+  }
+  .main-example .countdown-container {
+    height: 100px;
+  }
+  .main-example .time {
+      height: 70px;
+      width: 48px;
+  }
+  .main-example .count {
+    font-size: 1.5em;
+    line-height: 70px;
+  }
+  .main-example .label {
+    font-size: 0.8em;
+    top: 72px;
+  }
+}
 /**
  * Footer module
  */
@@ -325,13 +365,6 @@ footer a:visited:hover {
   margin-right: 20px;
   text-decoration: none;
 }
-@media screen and (max-width: 48em) {
-  .home-welcome .pure-button {
-    display: block;
-    margin-top: 20px;
-    margin-right: 0;
-  }
-}
 .home-welcome .pure-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
@@ -384,6 +417,23 @@ footer a:visited:hover {
     font-weight: bold;
     line-height: 25px;
     padding: 5px;
+}
+@media screen and (max-width: 48em) {
+  .home-welcome {
+    padding: 0;
+  }
+  .home-welcome h1 {
+    display: none;
+  }
+  .home-welcome .pure-button {
+    display: block;
+    margin-top: 20px;
+    margin-right: 0;
+  }
+  .home-content .download,
+  .home-video-container {
+    display: none;
+  }
 }
 /**
  * Content module
@@ -461,12 +511,20 @@ footer a:visited:hover {
   background-color: #361752;
   color: white !important;
 }
+.examples-list .pure-menu-selected {
+  background-color: #eee;
+}
 @media screen and (max-width: 48em) {
   .examples-list-index .pure-g-r {
     border-top-style: none;
   }
   .examples-list-index [class*="pure-u-"] {
     border-top: 1px solid #ddd;
+  }
+  .examples-list a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 /**
@@ -530,4 +588,13 @@ footer a:visited:hover {
   display: block;
   font-size: 1.4em;
   width: 100%;
+}
+@media screen and (max-width: 48em) {
+  .example-base span {
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+  .example-selector select {
+    font-size: 1em;
+  }
 }

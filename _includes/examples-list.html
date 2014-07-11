@@ -1,14 +1,14 @@
-<aside class="pure-menu pure-menu-open">
+<aside class="examples-list pure-menu pure-menu-open">
   <ul>
     <li class="pure-menu-heading">
       <i class="fa fa-code"></i>
       Examples
     </li>
-    {% for page in site.pages %}
-    {% if page.category == 'examples' %}
-    <li class="{% if page.url == page.url %}pure-menu-selected{% endif %}">
-      <a href="{{site.baseurl}}{{page.url}}">
-        {{page.title}}
+    {% for example in site.pages %}
+    {% if example.category == 'examples' %}
+    <li class="{% if example.url == page.url %}pure-menu-selected{% endif %}">
+      <a href="{{site.baseurl}}{{example.url}}">
+        {{example.title}}
       </a>
     </li>
     {% endif %}
