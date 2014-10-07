@@ -60,12 +60,16 @@
         M: "minutes",
         S: "seconds"
     };
+    function escapedRegExp(str) {
+        var sanitize = str.toString().replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+        return new RegExp(sanitize);
+    }
     function strftime(offsetObject) {
         return function(format) {
             var directives = format.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
             if (directives) {
                 for (var i = 0, len = directives.length; i < len; ++i) {
-                    var directive = directives[i].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), regexp = new RegExp(directive[0]), modifier = directive[1] || "", plural = directive[3] || "", value = null;
+                    var directive = directives[i].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), regexp = escapedRegExp(directive[0]), modifier = directive[1] || "", plural = directive[3] || "", value = null;
                     directive = directive[2];
                     if (DIRECTIVE_KEY_MAP.hasOwnProperty(directive)) {
                         value = DIRECTIVE_KEY_MAP[directive];
@@ -137,14 +141,21 @@
             this.interval = null;
             this.dispatchEvent("stoped");
         },
+        toggle: function() {
+            if (this.interval) {
+                this.stop();
+            } else {
+                this.start();
+            }
+        },
         pause: function() {
-            this.stop.call(this);
+            this.stop();
         },
         resume: function() {
-            this.start.call(this);
+            this.start();
         },
         remove: function() {
-            this.stop();
+            this.stop.call(this);
             instances[this.instanceNumber] = null;
             delete this.$el.data().countdownInstance;
         },
