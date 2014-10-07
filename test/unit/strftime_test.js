@@ -112,7 +112,7 @@ test('return the singular when given pair of arguments', function() {
   });
 });
 
-test('return the singular when given pair of arguments', function() {
+test('return the correct plural even with odd looking (issue #70)', function() {
   stop();
   $dom.countdown(new Date().valueOf() + 2 * 60 * 1000)
   .on('update.countdown', function(event) {
