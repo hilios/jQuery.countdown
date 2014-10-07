@@ -19,8 +19,7 @@
     }
   ],
   "main": [
-    "./dist/jquery.countdown.js",
-    "./dist/jquery.countdown.min.js"
+    "./dist/jquery.countdown.js"
   ],
   "ignore": [
     "**/.*",
