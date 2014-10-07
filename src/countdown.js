@@ -58,6 +58,11 @@
     'M': 'minutes',
     'S': 'seconds'
   };
+  // Returns an escaped regexp from the string
+  function escapedRegExp(str) {
+    var sanitize = str.toString().replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
+    return new RegExp(sanitize);
+  }
   // Time string formatter
   function strftime(offsetObject) {
     return function(format) {
@@ -66,7 +71,7 @@
         for(var i = 0, len = directives.length; i < len; ++i) {
           var directive   = directives[i]
               .match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/),
-            regexp    = new RegExp(directive[0]),
+            regexp    = escapedRegExp(directive[0]),
             modifier  = directive[1] || '',
             plural    = directive[3] || '',
             value     = null;

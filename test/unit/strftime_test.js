@@ -111,3 +111,13 @@ test('return the singular when given pair of arguments', function() {
     start();
   });
 });
+
+test('return the singular when given pair of arguments', function() {
+  stop();
+  $dom.countdown(new Date().valueOf() + 2 * 60 * 1000)
+  .on('update.countdown', function(event) {
+    ok(event.offset.minutes === 2);
+    ok(event.strftime('%!M:Minuta,Minute(e);') === 'Minute(e)');
+    start();
+  });
+});
