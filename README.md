@@ -25,6 +25,10 @@ Add a `script` to your html:
 <script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
 ```
 
+#### Use with Rails ####
+
+Please see [jquery-final_countdown-rails](https://github.com/JuanitoFatas/jquery-final_countdown-rails)'s README.md.
+
 Getting started
 ---------------
 
