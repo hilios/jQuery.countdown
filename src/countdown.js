@@ -80,7 +80,8 @@
           // Swap shot-versions directives
           if(DIRECTIVE_KEY_MAP.hasOwnProperty(directive)) {
             value = DIRECTIVE_KEY_MAP[directive];
-            value = Number(offsetObject[value]);
+            value = (Number(offsetObject[value]) < 0) ?
+              Number(offsetObject[value]) * -1 : Number(offsetObject[value]);
           }
           if(value !== null) {
             // Pluralize
@@ -126,6 +127,7 @@
     this.$el      = $(el);
     this.interval = null;
     this.offset   = {};
+    this.elapsed  = true;
     // Register this instance
     this.instanceNumber = instances.length;
     instances.push(this);
@@ -136,6 +138,7 @@
       this.$el.on('update.countdown', callback);
       this.$el.on('stoped.countdown', callback);
       this.$el.on('finish.countdown', callback);
+      this.$el.on('elapsed.countdown', callback);
     }
     // Set the final date and start
     this.setFinalDate(finalDate);
@@ -189,7 +192,9 @@
       this.totalSecsLeft = this.finalDate.getTime() -
         new Date().getTime(); // In miliseconds
       this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000);
-      this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
+      if (!this.elapsed) {
+        this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;    
+      }
       // Calculate the offsets
       this.offset = {
         seconds   : this.totalSecsLeft % 60,
@@ -202,11 +207,13 @@
         years     : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
       };
       // Dispatch an event
-      if(this.totalSecsLeft === 0) {
+      if (this.totalSecsLeft < 0 && this.elapsed) {
+        this.dispatchEvent("elapsed");
+      } else if (this.totalSecsLeft === 0) {
         this.stop();
-        this.dispatchEvent('finish');
+        this.dispatchEvent("finish");
       } else {
-        this.dispatchEvent('update');
+        this.dispatchEvent("update");
       }
     },
     dispatchEvent: function(eventName) {
