@@ -1,17 +1,17 @@
 /*!
  * The Final Countdown for jQuery v2.0.4 (http://hilios.github.io/jQuery.countdown/)
  * Copyright (c) 2014 Edson Hilios
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -60,16 +60,12 @@
         M: "minutes",
         S: "seconds"
     };
-    function escapedRegExp(str) {
-        var sanitize = str.toString().replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
-        return new RegExp(sanitize);
-    }
     function strftime(offsetObject) {
         return function(format) {
             var directives = format.match(/%(-|!)?[A-Z]{1}(:[^;]+;)?/gi);
             if (directives) {
                 for (var i = 0, len = directives.length; i < len; ++i) {
-                    var directive = directives[i].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), regexp = escapedRegExp(directive[0]), modifier = directive[1] || "", plural = directive[3] || "", value = null;
+                    var directive = directives[i].match(/%(-|!)?([a-zA-Z]{1})(:[^;]+;)?/), regexp = new RegExp(directive[0]), modifier = directive[1] || "", plural = directive[3] || "", value = null;
                     directive = directive[2];
                     if (DIRECTIVE_KEY_MAP.hasOwnProperty(directive)) {
                         value = DIRECTIVE_KEY_MAP[directive];
@@ -109,7 +105,15 @@
             return plural;
         }
     }
-    var Countdown = function(el, finalDate, callback) {
+
+	var Countdown = function (el, startDate, finalDate, callback) {
+
+		if (arguments.length === 3) {
+			callback = finalDate;
+			finalDate = startDate;
+			startDate = new Date();
+		}
+
         this.el = el;
         this.$el = $(el);
         this.interval = null;
@@ -122,7 +126,10 @@
             this.$el.on("stoped.countdown", callback);
             this.$el.on("finish.countdown", callback);
         }
+
+		this.setStartDate(startDate);
         this.setFinalDate(finalDate);
+
         this.start();
     };
     $.extend(Countdown.prototype, {
@@ -141,24 +148,20 @@
             this.interval = null;
             this.dispatchEvent("stoped");
         },
-        toggle: function() {
-            if (this.interval) {
-                this.stop();
-            } else {
-                this.start();
-            }
-        },
         pause: function() {
-            this.stop();
+            this.stop.call(this);
         },
         resume: function() {
-            this.start();
+            this.start.call(this);
         },
         remove: function() {
-            this.stop.call(this);
+            this.stop();
             instances[this.instanceNumber] = null;
             delete this.$el.data().countdownInstance;
         },
+		setStartDate: function (value) {
+			this.startDate = value;
+		},
         setFinalDate: function(value) {
             this.finalDate = parseDateString(value);
         },
@@ -167,7 +170,7 @@
                 this.remove();
                 return;
             }
-            this.totalSecsLeft = this.finalDate.getTime() - new Date().getTime();
+			this.totalSecsLeft = this.finalDate.getTime() - this.startDate.getTime();
             this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1e3);
             this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
             this.offset = {
@@ -197,12 +200,14 @@
     });
     $.fn.countdown = function() {
         var argumentsArray = Array.prototype.slice.call(arguments, 0);
+		var numArguments = argumentsArray.length;
         return this.each(function() {
             var instanceNumber = $(this).data("countdown-instance");
             if (instanceNumber !== undefined) {
-                var instance = instances[instanceNumber], method = argumentsArray[0];
+				var _method = numArguments == 2 ? argumentsArray[1] : argumentsArray[0];
+				var instance = instances[instanceNumber], method = _method;
                 if (Countdown.prototype.hasOwnProperty(method)) {
-                    instance[method].apply(instance, argumentsArray.slice(1));
+					instance[method].apply(instance, argumentsArray.slice(numArguments));
                 } else if (String(method).match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
                     instance.setFinalDate.call(instance, method);
                     instance.start();
@@ -210,8 +215,11 @@
                     $.error("Method %s does not exist on jQuery.countdown".replace(/\%s/gi, method));
                 }
             } else {
-                new Countdown(this, argumentsArray[0], argumentsArray[1]);
-            }
-        });
-    };
+				if (numArguments == 2)
+					new Countdown(this, argumentsArray[0], argumentsArray[1], argumentsArray[2]);
+				else
+					new Countdown(this, argumentsArray[0], argumentsArray[1]);
+			}
+		});
+	};
 });
