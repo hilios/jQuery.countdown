@@ -121,7 +121,14 @@
     }
   }
   // The Final Countdown
-  var Countdown = function(el, finalDate, callback) {
+  var Countdown = function(el, startDate, finalDate, callback) {
+
+    if(arguments.length === 3) {
+      callback = finalDate;
+      finalDate = startDate;
+      startDate = new Date();
+    }
+
     this.el       = el;
     this.$el      = $(el);
     this.interval = null;
@@ -137,8 +144,10 @@
       this.$el.on('stoped.countdown', callback);
       this.$el.on('finish.countdown', callback);
     }
-    // Set the final date and start
+    // Set the start and final date
+    this.setStartDate(startDate);
     this.setFinalDate(finalDate);
+    // start countdown
     this.start();
   };
   $.extend(Countdown.prototype, {
@@ -176,6 +185,9 @@
       // Reset the countdown instance under data attr (Thanks to @assiotis)
       delete this.$el.data().countdownInstance;
     },
+    setStartDate: function (value) {
+      this.startDate = value;
+    },
     setFinalDate: function(value) {
       this.finalDate = parseDateString(value); // Cast the given date
     },
@@ -186,8 +198,7 @@
         return;
       }
       // Calculate the remaining time
-      this.totalSecsLeft = this.finalDate.getTime() -
-        new Date().getTime(); // In miliseconds
+      this.totalSecsLeft = this.finalDate.getTime() - this.startDate.getTime(); // In miliseconds
       this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000);
       this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
       // Calculate the offsets
@@ -220,17 +231,19 @@
   // Register the jQuery selector actions
   $.fn.countdown = function() {
     var argumentsArray = Array.prototype.slice.call(arguments, 0);
+    var numArguments = argumentsArray.length;
     return this.each(function() {
       // If no data was set, jQuery.data returns undefined
       var instanceNumber = $(this).data('countdown-instance');
       // Verify if we already have a countdown for this node ...
       // Fix issue #22 (Thanks to @romanbsd)
       if (instanceNumber !== undefined) {
+        var _method = numArguments == 2 ? argumentsArray[1] : argumentsArray[0];
         var instance = instances[instanceNumber],
-          method = argumentsArray[0];
+          method = _method;
         // If method exists in the prototype execute
         if(Countdown.prototype.hasOwnProperty(method)) {
-          instance[method].apply(instance, argumentsArray.slice(1));
+          instance[method].apply(instance, argumentsArray.slice(numArguments));
         // If method look like a date try to set a new final date
         } else if(String(method).match(/^[$A-Z_][0-9A-Z_$]*$/i) === null) {
           instance.setFinalDate.call(instance, method);
@@ -243,7 +256,10 @@
         }
       } else {
         // ... if not we create an instance
-        new Countdown(this, argumentsArray[0], argumentsArray[1]);
+        if (numArguments == 2)
+          new Countdown(this, argumentsArray[0], argumentsArray[1], argumentsArray[2]);
+        else
+          new Countdown(this, argumentsArray[0], argumentsArray[1]);
       }
     });
   };
