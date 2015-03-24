@@ -189,7 +189,9 @@
       this.totalSecsLeft = this.finalDate.getTime() -
         new Date().getTime(); // In miliseconds
       this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000);
-      this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
+      // Adds count-up functionality:
+      this.totalSecsLeft = this.totalSecsLeft < 0 ? 
+        Math.abs(this.totalSecsLeft) : this.totalSecsLeft;
       // Calculate the offsets
       this.offset = {
         seconds   : this.totalSecsLeft % 60,
