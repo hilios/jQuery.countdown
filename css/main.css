@@ -607,6 +607,25 @@ footer a:visited:hover {
   font-size: 1.4em;
   width: 100%;
 }
+.example-bootstrap {
+  border: 1px solid #B7B7B7;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 66.66%;
+  height: 0;
+}
+.example-bootstrap iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.example-bootstrap-expand {
+  margin-top: 5px;
+  text-align: right;
+}
+
 @media screen and (max-width: 48em) {
   .example-base span {
     font-size: 1.2em;

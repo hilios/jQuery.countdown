@@ -1,0 +1,120 @@
+---
+title: 'Bootstrap 3.3.4 Example'
+---
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{page.title}} - jQuery.countdown</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="//cdn.rawgit.com/hilios/jQuery.countdown/{{site.plugin_version}}/dist/jquery.countdown.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <style type="text/css">
+    body {
+      padding-top: 50px;
+    }
+    .starter-template {
+      padding: 40px 15px;
+      text-align: center;
+    }
+    .panel {
+      width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #btn-reset {
+      margin-right: 10px;
+    }
+    #clock {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="starter-template">
+    <h1>Bootstrap starter template</h1>
+    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    <div class="panel panel-default" data-toggle="tooltip" data-placement="top" title="Beautifull, insn't it?">
+      <div class="panel-body">
+        <div class="lead" id="clock"></div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="btn-reset">
+      <i class="glyphicon glyphicon-repeat"></i>
+      Reset countdown
+    </button>
+
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-default" id="btn-pause">
+        <input type="radio" name="options" id="option2" autocomplete="off">
+        <i class="glyphicon glyphicon-pause"></i>
+        Pause
+      </label>
+
+      <label class="btn btn-default active" id="btn-resume">
+        <input type="radio" name="options" id="option2" autocomplete="off" checked>
+        <i class="glyphicon glyphicon-play"></i>
+        Resume
+      </label>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  // Turn on Bootstrap
+  $('[data-toggle="tooltip"]').tooltip();
+
+  // 15 days from now!
+  function get15dayFromNow() {
+    return new Date(new Date().valueOf() + 15 * 24 * 60 * 60 * 1000);
+  }
+
+  var $clock = $('#clock');
+
+  $clock.countdown(get15dayFromNow(), function(event) {
+    $(this).html(event.strftime('%D days %H:%M:%S'));
+  });
+
+  $('#btn-reset').click(function() {
+    $clock.countdown(get15dayFromNow());
+  });
+
+  $('#btn-pause').click(function() {
+    $clock.countdown('pause');
+  });
+
+  $('#btn-resume').click(function() {
+    $clock.countdown('resume');
+  });
+
+</script>
+{% include ga.html %}
+</body>
+</html>
