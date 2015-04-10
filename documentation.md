@@ -49,7 +49,7 @@ With the legacy approach you will need to handle all events in a single callback
 ```javascript
 $('div#clock').countdown(finalDate)
     .on('update.countdown', callback)
-    .on('finish', callback);
+    .on('finish.countdown', callback);
 ```
 
 To start the countdown the only requirement is the `finalDate`, but you still need register a callback to manipulate/update the DOM.
