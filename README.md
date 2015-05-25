@@ -37,6 +37,18 @@ Getting started
 </script>
 ```
 
+
+You may pass a 3rd variable containing servertime in string format,
+```php
+<?php $now = new \DateTime(); ?>
+<div id="getting-started"></div>
+<script type="text/javascript">
+  $('#getting-started').countdown('2015/01/01', function(event) {
+    $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+  }, '<?= $now->format("M j, Y H:i:s O") ?>');
+</script>
+```
+
 ### Requirements ###
 
 Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
