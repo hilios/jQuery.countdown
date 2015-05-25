@@ -121,11 +121,15 @@
     }
   }
   // The Final Countdown
-  var Countdown = function(el, finalDate, callback) {
+  var Countdown = function(el, finalDate, callback, servertime) {
+    if (typeof servertime !== undefined) {
+      this.setServerTime(servertime);
+    }
     this.el       = el;
     this.$el      = $(el);
     this.interval = null;
     this.offset   = {};
+    this.counter  = 0;
     // Register this instance
     this.instanceNumber = instances.length;
     instances.push(this);
@@ -179,15 +183,31 @@
     setFinalDate: function(value) {
       this.finalDate = parseDateString(value); // Cast the given date
     },
+    setServerTime: function(value) {
+      this.serverTime = value;
+    },
     update: function() {
       // Stop if dom is not in the html (Thanks to @dleavitt)
       if(this.$el.closest('html').length === 0) {
         this.remove();
         return;
       }
+
+      var now = null;
+
+      if (typeof this.serverTime === undefined) {
+        //if we are not using servertime, use current client time
+        now = new Date();
+      } else {
+        //if we are using servertime, add milliseconds to passed time
+        now = new Date(this.serverTime);
+        //increment counter for servertime
+        ++this.counter;
+        now.setMilliseconds(now.getMilliseconds() + (this.counter * 100));
+      }
+
       // Calculate the remaining time
-      this.totalSecsLeft = this.finalDate.getTime() -
-        new Date().getTime(); // In miliseconds
+      this.totalSecsLeft = this.finalDate.getTime() - now.getTime(); // In ms
       this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000);
       this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
       // Calculate the offsets
@@ -243,7 +263,15 @@
         }
       } else {
         // ... if not we create an instance
-        new Countdown(this, argumentsArray[0], argumentsArray[1]);
+
+        //Check to see if user has provided server time
+        if (typeof argumentsArray[2] !== undefined) {
+          new Countdown(this, argumentsArray[0], argumentsArray[1],
+            argumentsArray[2]);
+        } else {
+          //if not execute as normal
+          new Countdown(this, argumentsArray[0], argumentsArray[1]);
+        }
       }
     });
   };
