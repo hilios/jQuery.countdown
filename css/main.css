@@ -48,6 +48,12 @@ a.pure-button {
 .gh-btns {
   min-width: 340px;
 }
+blockquote {
+  border-left: 8px solid #ddd;
+  margin: 0 !important;
+  padding: 1em 40px;
+  font-size: 0.94em;
+}
 @media screen and (max-width: 48em) {
   .container {
     padding: 0.5em 1em !important;
@@ -571,6 +577,12 @@ footer a:visited:hover {
   line-height: 2em;
   font-size: 2em;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+.example-base .header {
+  background-color: white;
+  border: 1px solid #ccc;
+  margin: -21px -21px 20px -21px;
+  padding: 20px;
 }
 .example-blocks div {
   margin-top: 10px;
