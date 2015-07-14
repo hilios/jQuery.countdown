@@ -5,14 +5,14 @@ test('stop/start the countdown', function() {
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   // Start async
   stop();
-  // Stop after 0.51 sec
+  // Stop after 0.55 sec
   setTimeout(function() {
     $dom.countdown('stop');
-  }, 510);
+  }, 550);
   // Resume after 1 sec
   setTimeout(function() {
     // Should execute the updated how many times of precision required
-    // Note: Se the PRECISION variable
+    // Note: Se the `defaultOptions.precision` property
     ok(callback.callCount === 5);
     $dom.countdown('start');
   }, 1000);
@@ -28,14 +28,14 @@ test('pause/resume the countdown', function() {
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   // Start async
   stop();
-  // Stop after 0.51 sec
+  // Stop after 0.55 sec
   setTimeout(function() {
     $dom.countdown('pause');
-  }, 510);
+  }, 550);
   // Resume after 1 sec
   setTimeout(function() {
     // Should execute the updated how many times of precision required
-    // Note: Se the PRECISION variable
+    // Note: Se the `defaultOptions.precision` property
     ok(callback.callCount === 5);
     $dom.countdown('resume');
   }, 1000);
@@ -148,10 +148,10 @@ test('control a single instance correctly (issue #24)', function() {
   // Start async
   stop();
   $single.countdown('2020/10/20').on('update.countdown', callback);
-  // Stop after 0.51 sec
+  // Stop after 0.55 sec
   setTimeout(function() {
     $single.countdown('stop');
-  }, 510);
+  }, 550);
   // Resume after 1 sec
   setTimeout(function() {
     // Should execute the updated how many times of precision required
@@ -164,4 +164,20 @@ test('control a single instance correctly (issue #24)', function() {
     ok(callback.callCount > 5);
     start();
   }, 1200);
+});
+
+
+test('configure the dom update rate', function() {
+  var callback = sinon.spy();
+  // Setup a different update rate precision
+  $dom.countdown('2020/10/20', {
+    precision: 499
+  }).on('update.countdown', callback);
+  // Start async
+  stop();
+  // Should execute just once in 500ms
+  setTimeout(function() {
+    ok(callback.callCount === 1);
+    start();
+  }, 500);
 });

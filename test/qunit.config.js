@@ -16,4 +16,3 @@ QUnit.testDone(function() {
     // ... countdown wasn't created
   }
 });
-

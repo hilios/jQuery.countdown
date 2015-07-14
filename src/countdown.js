@@ -10,9 +10,11 @@
 })(function($){
   'use strict';
 
-  var PRECISION   = 100; // 0.1 seconds, used to update the DOM
-  var instances   = [],
-      matchers    = [];
+  var instances = [],
+      matchers  = [],
+      defaultOptions  = {
+        precision: 100 // 0.1 seconds, used to update the DOM
+      };
   // Miliseconds
   matchers.push(/^[0-9]*$/.source);
   // Month/Day/Year [hours:minutes:seconds]
@@ -121,21 +123,28 @@
     }
   }
   // The Final Countdown
-  var Countdown = function(el, finalDate, callback) {
+  var Countdown = function(el, finalDate, options) {
     this.el       = el;
     this.$el      = $(el);
     this.interval = null;
     this.offset   = {};
+    this.options  = $.extend({}, defaultOptions);
+    // console.log(this.options);
     // Register this instance
     this.instanceNumber = instances.length;
     instances.push(this);
     // Save the reference
     this.$el.data('countdown-instance', this.instanceNumber);
-    // Register the callbacks when supplied
-    if(callback) {
-      this.$el.on('update.countdown', callback);
-      this.$el.on('stoped.countdown', callback);
-      this.$el.on('finish.countdown', callback);
+    // Handle options or callback
+    if (options) {
+      // Register the callbacks when supplied
+      if(typeof options === 'function') {
+        this.$el.on('update.countdown', options);
+        this.$el.on('stoped.countdown', options);
+        this.$el.on('finish.countdown', options);
+      } else {
+        this.options = $.extend({}, defaultOptions, options);
+      }
     }
     // Set the final date and start
     this.setFinalDate(finalDate);
@@ -150,7 +159,7 @@
       this.update();
       this.interval = setInterval(function() {
         self.update.call(self);
-      }, PRECISION);
+      }, this.options.precision);
     },
     stop: function() {
       clearInterval(this.interval);
