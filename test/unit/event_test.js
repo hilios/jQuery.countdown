@@ -1,18 +1,19 @@
 module('Events');
 
 test('trigger the update event', function() {
-  $dom.countdown('2020/10/20').on('update.countdown', function(event) {
-    ok(true); // Up to this point the event was dispatched
-  });
+  var callback = sinon.spy();
+  $dom.countdown('2020/10/20').on('update.countdown', callback);
   $clock.tick(500);
+  ok(callback.callCount > 0);
 });
 
 test('trigger the finish event', function() {
-  var today = new Date();
-  $dom.countdown(today).on('finish.countdown', function(event) {
-    ok(true);
-  });
-  $clock.tick(500);
+  var now = new Date();
+  var callback = sinon.spy();
+  $dom.countdown(now).on('finish.countdown', callback);
+  // Expect the callback to be called once (Issue #82)
+  $clock.tick(2000);
+  ok(callback.callCount === 1);
 });
 
 test('event object has {type, strftime, finalDate, offset, elapsed} ' +

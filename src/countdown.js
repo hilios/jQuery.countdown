@@ -195,13 +195,22 @@
         this.remove();
         return;
       }
+      var hasEventsAttached = $._data(this.el, 'events') !== undefined,
+          now               = new Date(),
+          newTotalSecsLeft;
       // Calculate the remaining time
-      var now = new Date();
-      this.totalSecsLeft = this.finalDate.getTime() - now.getTime(); // Ms
-      this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000); // Secs
+      newTotalSecsLeft = this.finalDate.getTime() - now.getTime(); // Ms
+      newTotalSecsLeft = Math.ceil(newTotalSecsLeft / 1000); // Secs
       // If is not have to elapse set the finish
-      this.totalSecsLeft = !this.options.elapse && this.totalSecsLeft < 0 ? 0 :
-        Math.abs(this.totalSecsLeft);
+      newTotalSecsLeft = !this.options.elapse && newTotalSecsLeft < 0 ? 0 :
+        Math.abs(newTotalSecsLeft);
+      // Do not proceed to calculation if the seconds have not changed or
+      // does not any event attached
+      if (this.totalSecsLeft === newTotalSecsLeft || !hasEventsAttached) {
+        return;
+      } else {
+        this.totalSecsLeft = newTotalSecsLeft;
+      }
       // Check if the countdown has elapsed
       this.elapsed = (now >= this.finalDate);
       // Calculate the offsets
