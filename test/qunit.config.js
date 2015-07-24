@@ -1,13 +1,15 @@
 module('jQuery The Final Countdown');
 
 // Helpers
-var uid = 0, $dom;
+var uid = 0, $dom, $clock;
 
 QUnit.testStart(function() {
+  $clock = sinon.useFakeTimers();
   $dom = $('<div id="test' + (uid++) + '" />').appendTo('body');
 });
 
 QUnit.testDone(function() {
+  $clock.restore();
   try{
     $dom.countdown('remove');
     $dom.remove();

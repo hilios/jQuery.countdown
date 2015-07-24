@@ -3,93 +3,68 @@ module('Functionality');
 test('stop/start the countdown', function() {
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
-  // Start async
-  stop();
   // Stop after 0.55 sec
-  setTimeout(function() {
-    $dom.countdown('stop');
-  }, 550);
+  $clock.tick(550);
+  $dom.countdown('stop');
+  // Should have been called once
+  ok(callback.calledOnce);
   // Resume after 1 sec
-  setTimeout(function() {
-    // Should execute the updated how many times of precision required
-    // Note: Se the `defaultOptions.precision` property
-    ok(callback.callCount === 5);
-    $dom.countdown('start');
-  }, 1000);
+  $clock.tick(1000);
+  $dom.countdown('start');
   // Verify if update event was called once more after 1.2 sec
-  setTimeout(function() {
-    ok(callback.callCount > 5);
-    start();
-  }, 1200);
+  $clock.tick(5000);
+  ok(callback.callCount > 5);
 });
 
 test('pause/resume the countdown', function() {
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
-  // Start async
-  stop();
   // Stop after 0.55 sec
-  setTimeout(function() {
-    $dom.countdown('pause');
-  }, 550);
+  $clock.tick(550);
+  $dom.countdown('pause');
+  // Should have been called once
+  ok(callback.calledOnce);
   // Resume after 1 sec
-  setTimeout(function() {
-    // Should execute the updated how many times of precision required
-    // Note: Se the `defaultOptions.precision` property
-    ok(callback.callCount === 5);
-    $dom.countdown('resume');
-  }, 1000);
+  $clock.tick(1000);
+  $dom.countdown('resume');
   // Verify if update event was called once more after 1.2 sec
-  setTimeout(function() {
-    ok(callback.callCount > 5);
-    start();
-  }, 1200);
+  $clock.tick(5000);
+  ok(callback.callCount > 5);
 });
 
 test('toggle countdown', function() {
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
-  // Start async
-  stop();
+  // Let it count once
+  $clock.tick(100);
+  ok(callback.callCount === 1);
   // Toggle the countdown to pause
   $dom.countdown('toggle');
   // Test if callback wasn't invoked and toggle gain
-  setTimeout(function() {
-    ok(callback.callCount === 0);
-    // Resume
-    $dom.countdown('toggle');
-  }, 100);
-  // Ensure it's running
-  setTimeout(function() {
-    ok(callback.callCount > 0);
-    start();
-  }, 500);
+  $clock.tick(1000);
+  ok(callback.callCount === 1);
+  $dom.countdown('toggle');
+  // Ensure it's running again
+  $clock.tick(5000);
+  ok(callback.callCount > 5);
 });
 
 test('remove the countdown instance', function() {
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   $dom.countdown('remove');
-  // Start async
-  stop();
   // See if noting was executed after 0.5 sec
-  setTimeout(function() {
-    ok(callback.callCount === 0);
-    start();
-  }, 500);
+  ok(callback.callCount === 0);
+  $clock.tick(500);
 });
 
 test('remove the countdown if dom was removed', function() {
   var callback = sinon.spy();
   $dom.countdown('2020/10/20').on('update.countdown', callback);
   $dom.remove();
-  // Start async
-  stop();
   // See if noting was executed after 0.5 sec
-  setTimeout(function() {
-    ok(callback.callCount === 0);
-    start();
-  }, 500);
+  ok(callback.callCount === 0);
+  $clock.tick(500);
 });
 
 test('set countdown-instance data attr to undefined uppon remove', function() {
@@ -102,42 +77,35 @@ test('set countdown-instance data attr to undefined uppon remove', function() {
 });
 
 test('set a new final date calling the countdown again', function() {
-  stop();
-  $dom.countdown('2020/10/20')
-  .on('update.countdown', function(event) {
+  $dom.countdown('2020/10/20').on('update.countdown', function(event) {
     ok(event.finalDate.toString().match(/Oct 20 2020/));
-  })
-  .off('update.countdown')
-  .countdown('2021/10/20')
+  });
+  $clock.tick(500);
+  // Unset the event and set a new date
+  $dom.off('update.countdown').countdown('2021/10/20')
   .on('update.countdown', function(event) {
     ok(event.finalDate.toString().match(/Oct 20 2021/));
-    start();
   });
+  $clock.tick(500);
 });
 
-
 test('starts the countdown again after being finished (issue #38)', function() {
-  var interactions = 0;
-  function startCounting() {
-    var twoSecondsFromNow = new Date().getTime() + (500);
-    $dom.countdown(twoSecondsFromNow)
-    .on('finish.countdown', function() {
-      interactions++;
-      switch(interactions) {
-        case 1:
-          ok(true, 'Countdown finished, restarting...');
-          startCounting();
-          break;
-        case 2:
-          ok(true, 'Countdown restarted succesfully!');
-          start();
-          break;
-      }
-    });
+  function twoSecondsFromNow() {
+     return new Date().getTime() + 2000;
   }
-  // Start async
-  stop();
-  startCounting();
+  // Count the number of times
+  var i = 0;
+  // Start a countdown for 2secs from now and uppon finish start it again from
+  // within the callback recursively
+  $dom.countdown(twoSecondsFromNow()).on('finish.countdown', function() {
+    ok(true, 'Countdown iteraction #' + i++);
+    if (i < 2) {
+      $dom.countdown(twoSecondsFromNow());
+    }
+  });
+  // Expect 2 assertions after 4 seconds
+  expect(2);
+  $clock.tick(4000);
 });
 
 // Instance check against undefined, as 0 is a falsy value
@@ -145,58 +113,47 @@ test('starts the countdown again after being finished (issue #38)', function() {
 test('control a single instance correctly (issue #24)', function() {
   var callback = sinon.spy(),
     $single = $('<div id="single" />').appendTo('body');
-  // Start async
-  stop();
-  $single.countdown('2020/10/20').on('update.countdown', callback);
-  // Stop after 0.55 sec
-  setTimeout(function() {
-    $single.countdown('stop');
-  }, 550);
-  // Resume after 1 sec
-  setTimeout(function() {
-    // Should execute the updated how many times of precision required
-    // Note: Se the PRECISION variable
-    ok(callback.callCount === 5);
-    $single.countdown('start');
-  }, 1000);
-  // Verify if update event was called once more after 1.2 sec
-  setTimeout(function() {
-    ok(callback.callCount > 5);
-    start();
-    // Remove the node
-    $single.remove();
-  }, 1200);
-});
 
+  $single.countdown('2020/10/20').on('update.countdown', callback);
+  // Let it count once
+  $clock.tick(100);
+  ok(callback.callCount === 1);
+  // Toggle the countdown to pause
+  $single.countdown('toggle');
+  // Test if callback wasn't invoked and toggle gain
+  $clock.tick(1000);
+  ok(callback.callCount === 1);
+  $single.countdown('toggle');
+  // Ensure it's running again
+  $clock.tick(5000);
+  ok(callback.callCount > 5);
+  // Remove the node
+  $single.remove();
+});
 
 test('configure the dom update rate', function() {
   var callback = sinon.spy();
   // Setup a different update rate precision
   $dom.countdown('2020/10/20', {
-    precision: 499
+    precision: 2000
   }).on('update.countdown', callback);
-  // Start async
-  stop();
-  // Should execute just once in 500ms
-  setTimeout(function() {
-    ok(callback.callCount === 1);
-    start();
-  }, 500);
+
+  // Should execute just once in 2s
+  $clock.tick(2000);
+  ok(callback.callCount === 1);
 });
 
 test('continue after pass the final date', function() {
-  var now = new Date();
+  var oneSecAgo = new Date().getTime() * 1000;
   var callback = sinon.spy();
   // Setup a different update rate precision
-  $dom.countdown(now, {
+  $dom.countdown(oneSecAgo, {
     elapse: true
   }).on('update.countdown', callback);
-  // Start async
-  stop();
   // Should execute just once in 500ms
-  setTimeout(function() {
-    ok(callback.callCount > 2);
-    ok(callback.lastCall.args[0]['elapsed'] === true);
-    start();
-  }, 500);
+  $clock.tick(500);
+  ok(callback.callCount === 1);
+  // Check if event was set has elapsed
+  var eventObject = callback.lastCall.args[0];
+  ok(eventObject.elapsed === true);
 });

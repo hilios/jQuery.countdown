@@ -50,6 +50,7 @@
     "sinon": false,
     "require": false,
     "define": false,
-    "$dom": true
+    "$dom": true,
+    "$clock": true
   }
 }
