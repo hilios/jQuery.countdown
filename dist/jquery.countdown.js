@@ -29,7 +29,8 @@
 })(function($) {
     "use strict";
     var instances = [], matchers = [], defaultOptions = {
-        precision: 100
+        precision: 100,
+        elapse: false
     };
     matchers.push(/^[0-9]*$/.source);
     matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
@@ -173,9 +174,16 @@
                 this.remove();
                 return;
             }
-            this.totalSecsLeft = this.finalDate.getTime() - new Date().getTime();
-            this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1e3);
-            this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
+            var hasEventsAttached = $._data(this.el, "events") !== undefined, now = new Date(), newTotalSecsLeft;
+            newTotalSecsLeft = this.finalDate.getTime() - now.getTime();
+            newTotalSecsLeft = Math.ceil(newTotalSecsLeft / 1e3);
+            newTotalSecsLeft = !this.options.elapse && newTotalSecsLeft < 0 ? 0 : Math.abs(newTotalSecsLeft);
+            if (this.totalSecsLeft === newTotalSecsLeft || !hasEventsAttached) {
+                return;
+            } else {
+                this.totalSecsLeft = newTotalSecsLeft;
+            }
+            this.elapsed = now >= this.finalDate;
             this.offset = {
                 seconds: this.totalSecsLeft % 60,
                 minutes: Math.floor(this.totalSecsLeft / 60) % 60,
@@ -186,7 +194,7 @@
                 months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30),
                 years: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
             };
-            if (this.totalSecsLeft === 0) {
+            if (!this.options.elapse && this.totalSecsLeft === 0) {
                 this.stop();
                 this.dispatchEvent("finish");
             } else {
@@ -196,6 +204,7 @@
         dispatchEvent: function(eventName) {
             var event = $.Event(eventName + ".countdown");
             event.finalDate = this.finalDate;
+            event.elapsed = this.elapsed;
             event.offset = $.extend({}, this.offset);
             event.strftime = strftime(this.offset);
             this.$el.trigger(event);
