@@ -13,7 +13,8 @@
   var instances = [],
       matchers  = [],
       defaultOptions  = {
-        precision: 100 // 0.1 seconds, used to update the DOM
+        precision: 100, // 0.1 seconds, used to update the DOM
+        elapse: false
       };
   // Miliseconds
   matchers.push(/^[0-9]*$/.source);
@@ -195,10 +196,14 @@
         return;
       }
       // Calculate the remaining time
-      this.totalSecsLeft = this.finalDate.getTime() -
-        new Date().getTime(); // In miliseconds
-      this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000);
-      this.totalSecsLeft = this.totalSecsLeft < 0 ? 0 : this.totalSecsLeft;
+      var now = new Date();
+      this.totalSecsLeft = this.finalDate.getTime() - now.getTime(); // Ms
+      this.totalSecsLeft = Math.ceil(this.totalSecsLeft / 1000); // Secs
+      // If is not have to elapse set the finish
+      this.totalSecsLeft = !this.options.elapse && this.totalSecsLeft < 0 ? 0 :
+        Math.abs(this.totalSecsLeft);
+      // Check if the countdown has elapsed
+      this.elapsed = (now >= this.finalDate);
       // Calculate the offsets
       this.offset = {
         seconds   : this.totalSecsLeft % 60,
@@ -211,7 +216,7 @@
         years     : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
       };
       // Dispatch an event
-      if(this.totalSecsLeft === 0) {
+      if(!this.options.elapse && this.totalSecsLeft === 0) {
         this.stop();
         this.dispatchEvent('finish');
       } else {
@@ -221,6 +226,7 @@
     dispatchEvent: function(eventName) {
       var event = $.Event(eventName + '.countdown');
       event.finalDate     = this.finalDate;
+      event.elapsed       = this.elapsed;
       event.offset        = $.extend({}, this.offset);
       event.strftime      = strftime(this.offset);
       this.$el.trigger(event);

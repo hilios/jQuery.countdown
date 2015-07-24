@@ -1,6 +1,6 @@
 /*!
  * The Final Countdown for jQuery v2.0.4 (http://hilios.github.io/jQuery.countdown/)
- * Copyright (c) 2014 Edson Hilios
+ * Copyright (c) 2015 Edson Hilios
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -28,8 +28,9 @@
     }
 })(function($) {
     "use strict";
-    var PRECISION = 100;
-    var instances = [], matchers = [];
+    var instances = [], matchers = [], defaultOptions = {
+        precision: 100
+    };
     matchers.push(/^[0-9]*$/.source);
     matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
     matchers.push(/[0-9]{4}([\/\-][0-9]{1,2}){2}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
@@ -109,18 +110,23 @@
             return plural;
         }
     }
-    var Countdown = function(el, finalDate, callback) {
+    var Countdown = function(el, finalDate, options) {
         this.el = el;
         this.$el = $(el);
         this.interval = null;
         this.offset = {};
+        this.options = $.extend({}, defaultOptions);
         this.instanceNumber = instances.length;
         instances.push(this);
         this.$el.data("countdown-instance", this.instanceNumber);
-        if (callback) {
-            this.$el.on("update.countdown", callback);
-            this.$el.on("stoped.countdown", callback);
-            this.$el.on("finish.countdown", callback);
+        if (options) {
+            if (typeof options === "function") {
+                this.$el.on("update.countdown", options);
+                this.$el.on("stoped.countdown", options);
+                this.$el.on("finish.countdown", options);
+            } else {
+                this.options = $.extend({}, defaultOptions, options);
+            }
         }
         this.setFinalDate(finalDate);
         this.start();
@@ -134,7 +140,7 @@
             this.update();
             this.interval = setInterval(function() {
                 self.update.call(self);
-            }, PRECISION);
+            }, this.options.precision);
         },
         stop: function() {
             clearInterval(this.interval);

@@ -163,6 +163,8 @@ test('control a single instance correctly (issue #24)', function() {
   setTimeout(function() {
     ok(callback.callCount > 5);
     start();
+    // Remove the node
+    $single.remove();
   }, 1200);
 });
 
@@ -178,6 +180,23 @@ test('configure the dom update rate', function() {
   // Should execute just once in 500ms
   setTimeout(function() {
     ok(callback.callCount === 1);
+    start();
+  }, 500);
+});
+
+test('continue after pass the final date', function() {
+  var now = new Date();
+  var callback = sinon.spy();
+  // Setup a different update rate precision
+  $dom.countdown(now, {
+    elapse: true
+  }).on('update.countdown', callback);
+  // Start async
+  stop();
+  // Should execute just once in 500ms
+  setTimeout(function() {
+    ok(callback.callCount > 2);
+    ok(callback.lastCall.args[0]['elapsed'] === true);
     start();
   }, 500);
 });

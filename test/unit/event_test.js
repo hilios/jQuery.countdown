@@ -16,7 +16,7 @@ test('trigger the finish event', function() {
   });
 });
 
-test('event object has {type, strftime, finalDate, offset} ' +
+test('event object has {type, strftime, finalDate, offset, elapsed} ' +
      'properties', function() {
   stop();
   $dom.countdown('2020/10/20').on('update.countdown', function(event) {
@@ -24,6 +24,7 @@ test('event object has {type, strftime, finalDate, offset} ' +
     ok(event.hasOwnProperty('strftime'));
     ok(event.hasOwnProperty('finalDate'));
     ok(event.hasOwnProperty('offset'));
+    ok(event.hasOwnProperty('elapsed'));
     start();
   });
 });
