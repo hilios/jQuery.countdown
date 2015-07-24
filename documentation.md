@@ -76,6 +76,36 @@ A function that will handle the `event` triggered, despite the fact we have thre
 function(event) { ... }
 ```
 
+#### Configuration object
+
+The plugin accepts some configuration passing by an object has the function second argument. This way one can control the precision the plugin will have and allow customizations:
+
+```javascript
+$('div#clock').countdown(finalDate, {
+  elapse:     '{bool} Allow to continue after finishes',
+  precision:  '{int} The update rate in milliseconds'
+})
+```
+
+The configuration mode is only available with the new style of initialization.
+
+### Elapse mode
+
+The elapse mode allows the plugin to continue counting even after reaches its finish. One can control the render within the callback using the `event.elapsed` property.
+
+```javascript
+$('div#clock').countdown(finalDate, {precision: true})
+  .on('update.countdown', function(event) {
+    if (event.elapsed) { // Either true or false
+      // Counting up...
+    } else {
+      // Countdown...
+    }
+  });
+```
+
+**Be aware** that no `finish` event will be dispatched at this mode!
+
 Events <a id="events"></a>
 ------
 
@@ -91,7 +121,7 @@ To register a callback use the following `event.type`:
 -   `finish.countdown`
 -   `stop.countdown`
 
-Be aware thtat **ALL** events should be registered with the namespace `*.countdown`.
+Be aware that **ALL** events should be registered with the namespace `*.countdown`.
 
 Event object <a id="event-object"></a>
 ------------
@@ -103,6 +133,7 @@ Most of the time you will be using the `event.strftime` function to render the c
     type:           '{String} The namespaced event type {update,finish,stop}.countdown',
     strftime:       '{Function} The formatter function',
     finalDate:      '{Date} The parsed final date native object',
+    elapsed:        '{bool} Passed away the final date?'
     offset: {
         seconds:    '{int} Seconds left for the next minute',
         minutes:    '{int} Minutes left for the next hour',
