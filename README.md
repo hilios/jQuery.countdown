@@ -7,9 +7,9 @@ To get started, check-it out: http://hilios.github.io/jQuery.countdown/
 
 The ultimate countdown plugin designed to fit in any coupon, auction site or product launch. Read our [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
 
-#### [Download](https://github.com/hilios/jQuery.countdown/releases/download/2.0.4/jquery.countdown-2.0.4.zip) ####
+#### [Download](https://github.com/hilios/jQuery.countdown/releases/download/2.0.5/jquery.countdown-2.0.5.zip) ####
 
-[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.4/jquery.countdown-2.0.4.zip)
+[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.5/jquery.countdown-2.0.5.zip)
 
 If you want to clone the repo always use the files under [dist](https://github.com/hilios/jQuery.countdown/tree/master/dist) folder, they are optimized for production and development.
 
@@ -59,20 +59,13 @@ There are few ways to get started, from the most simple example to advanced, we 
 [Release notes](https://github.com/hilios/jQuery.countdown/releases)
 ---------------
 
-Current version is **2.0.4**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
+Current version is **2.0.5**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
 
-#### What's new in 2.0.4? ####
+#### What's new in 2.0.5? ####
 
- * Fix bower tag
- * Fix jQuery plugin tag
-
-#### What's new in 2.0.3? ####
-
- * Fix #27 Remove instance number from data element that had the countdown removed;
- * Fix #34 Add support for MySQL dates `YYYY-mm-dd`;
- * Fix #38 Countdown couldn't restart after finished;
- * Add functional test automation through Karma;
- * Use Bower to manage development dependencies;
+ * Allow precision controls through an options object;
+ * Allow to continue after countdown finishes;
+ * Don't dispatch events when nothing changes;
 
 Contributing
 ------------
@@ -99,14 +92,14 @@ The functional tests made against:
 Code coverage:
 
 ```sh
--------------------+-----------+-----------+-----------+-----------+
-File               |   % Stmts |% Branches |   % Funcs |   % Lines |
--------------------+-----------+-----------+-----------+-----------+
-   src/            |     98.18 |        90 |       100 |     98.18 |
-      countdown.js |     98.18 |        90 |       100 |     98.18 |
--------------------+-----------+-----------+-----------+-----------+
-All files          |     98.18 |        90 |       100 |     98.18 |
--------------------+-----------+-----------+-----------+-----------+
+---------------|----------|----------|----------|----------|----------------|
+File           |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+---------------|----------|----------|----------|----------|----------------|
+ src/          |    98.39 |    90.32 |      100 |    98.39 |                |
+  countdown.js |    98.39 |    90.32 |      100 |    98.39 |          6,265 |
+---------------|----------|----------|----------|----------|----------------|
+All files      |    98.39 |    90.32 |      100 |    98.39 |                |
+---------------|----------|----------|----------|----------|----------------|
 ```
 
 ### Contributors ###
@@ -122,6 +115,6 @@ Thanks for bug reporting and fixes:
 
 ### License ###
 
-Copyright (c) 2011-2014 Edson Hilios. This is a free software is licensed under the MIT License.
+Copyright (c) 2011-2015 Edson Hilios. This is a free software is licensed under the MIT License.
 
 *   [Edson Hilios](http://edson.hilios.com.br). Mail me: edson (at) hilios (dot) com (dot) br
