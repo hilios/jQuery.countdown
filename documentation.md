@@ -94,7 +94,7 @@ The configuration mode is only available with the new style of initialization.
 The elapse mode allows the plugin to continue counting even after reaches its finish. One can control the render within the callback using the `event.elapsed` property.
 
 ```javascript
-$('div#clock').countdown(finalDate, {precision: true})
+$('div#clock').countdown(finalDate, {elapse: true})
   .on('update.countdown', function(event) {
     if (event.elapsed) { // Either true or false
       // Counting up...

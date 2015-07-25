@@ -10,9 +10,9 @@ Configure countdown to continue after reaches its end, then the timer will start
 </div>
 
 <script type="text/javascript">
-  var fiveSecondsAgo = new Date().getTime() + 5000;
+  var fiveSeconds = new Date().getTime() + 5000;
 
-  $('#clock').countdown(fiveSecondsAgo, {elapse: true}).on('update.countdown', function(event) {
+  $('#clock').countdown(fiveSeconds, {elapse: true}).on('update.countdown', function(event) {
     var $this = $(this);
     if (event.elapsed) {
       $this.html(event.strftime('After end:<br>'
@@ -31,7 +31,8 @@ Configure countdown to continue after reaches its end, then the timer will start
 
 ##### JS:
 {% highlight js linenos %}
-$('#clock').countdown('2020/10/10').on('update.countdown', function(event) {
+var fiveSeconds = new Date().getTime() + 5000;
+$('#clock').countdown(fiveSeconds).on('update.countdown', function(event) {
   var $this = $(this);
   if (event.elapsed) {
     $this.html(event.strftime('After end: <span>%H:%M:%S</span>'));
