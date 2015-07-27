@@ -9,12 +9,39 @@ test('time offset calculation', function() {
   testDate += 5 * 1000;                // 5 seconds
 
   $dom.countdown(testDate).on('update.countdown', function(event) {
-    ok(event.offset.weeks   === 1);
-    ok(event.offset.days    === 2);
-    ok(event.offset.hours   === 3);
-    ok(event.offset.minutes === 4);
-    ok(event.offset.seconds === 5);
+    ok(event.offset.weeks     === 1);
+    ok(event.offset.days      === 2);
+    ok(event.offset.hours     === 3);
+    ok(event.offset.minutes   === 4);
+    ok(event.offset.seconds   === 5);
     ok(event.offset.totalDays === 9);
+  });
+
+  $clock.tick(500);
+});
+
+test('days differencence for week and month offset (Issue #125)', function() {
+  var now = new Date(2015, 6, 16).getTime();
+  $clock = sinon.useFakeTimers(now);
+
+  var testDate = new Date(2015, 8, 25).getTime();
+
+  $dom.countdown(testDate).on('update.countdown', function(event) {
+    ok(event.offset.months === 2);
+    ok(event.offset.daysToMonth === 10);
+  });
+
+  $clock.tick(500);
+});
+
+test('years offset calculation (Issue #125)', function() {
+  var now = new Date(2014, 0, 1).getTime();
+  $clock = sinon.useFakeTimers(now);
+
+  var testDate = new Date(2015, 0, 1).getTime();
+
+  $dom.countdown(testDate).on('update.countdown', function(event) {
+    ok(event.offset.years === 1);
   });
 
   $clock.tick(500);

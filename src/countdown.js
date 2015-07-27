@@ -54,6 +54,7 @@
   var DIRECTIVE_KEY_MAP = {
     'Y': 'years',
     'm': 'months',
+    'n': 'daysToMonth',
     'w': 'weeks',
     'd': 'days',
     'D': 'totalDays',
@@ -198,8 +199,9 @@
       var hasEventsAttached = $._data(this.el, 'events') !== undefined,
           now               = new Date(),
           newTotalSecsLeft;
+      // Create an offset date object
+      newTotalSecsLeft = this.finalDate.getTime() - now.getTime(); // Millisecs
       // Calculate the remaining time
-      newTotalSecsLeft = this.finalDate.getTime() - now.getTime(); // Ms
       newTotalSecsLeft = Math.ceil(newTotalSecsLeft / 1000); // Secs
       // If is not have to elapse set the finish
       newTotalSecsLeft = !this.options.elapse && newTotalSecsLeft < 0 ? 0 :
@@ -215,14 +217,15 @@
       this.elapsed = (now >= this.finalDate);
       // Calculate the offsets
       this.offset = {
-        seconds   : this.totalSecsLeft % 60,
-        minutes   : Math.floor(this.totalSecsLeft / 60) % 60,
-        hours     : Math.floor(this.totalSecsLeft / 60 / 60) % 24,
-        days      : Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
-        totalDays : Math.floor(this.totalSecsLeft / 60 / 60 / 24),
-        weeks     : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
-        months    : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30),
-        years     : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
+        seconds     : this.totalSecsLeft % 60,
+        minutes     : Math.floor(this.totalSecsLeft / 60) % 60,
+        hours       : Math.floor(this.totalSecsLeft / 60 / 60) % 24,
+        days        : Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+        daysToMonth : Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
+        totalDays   : Math.floor(this.totalSecsLeft / 60 / 60 / 24),
+        weeks       : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
+        months      : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
+        years       : Math.abs(this.finalDate.getFullYear() - now.getFullYear())
       };
       // Dispatch an event
       if(!this.options.elapse && this.totalSecsLeft === 0) {
