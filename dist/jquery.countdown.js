@@ -1,5 +1,5 @@
 /*!
- * The Final Countdown for jQuery v2.0.5 (http://hilios.github.io/jQuery.countdown/)
+ * The Final Countdown for jQuery v2.1.0 (http://hilios.github.io/jQuery.countdown/)
  * Copyright (c) 2015 Edson Hilios
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -55,6 +55,7 @@
     var DIRECTIVE_KEY_MAP = {
         Y: "years",
         m: "months",
+        n: "daysToMonth",
         w: "weeks",
         d: "days",
         D: "totalDays",
@@ -189,10 +190,11 @@
                 minutes: Math.floor(this.totalSecsLeft / 60) % 60,
                 hours: Math.floor(this.totalSecsLeft / 60 / 60) % 24,
                 days: Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
+                daysToMonth: Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
                 totalDays: Math.floor(this.totalSecsLeft / 60 / 60 / 24),
                 weeks: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
-                months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30),
-                years: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 365)
+                months: Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
+                years: Math.abs(this.finalDate.getFullYear() - now.getFullYear())
             };
             if (!this.options.elapse && this.totalSecsLeft === 0) {
                 this.stop();
