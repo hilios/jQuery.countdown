@@ -19,7 +19,7 @@
     }
   ],
   "main": [
-    "./dist/jquery.countdown.js"
+    "dist/jquery.countdown.js"
   ],
   "ignore": [
     "**/.*",
@@ -41,5 +41,8 @@
     "jquery-1.7": "jquery#~1.7",
     "jquery-1.10": "jquery#~1.10",
     "bootstrap": "~3"
-  }
+  },
+  "moduleType": [
+    "amd"
+  ]
 }
