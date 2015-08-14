@@ -35,6 +35,7 @@ test('event.offset object has {seconds, minutes, hours, days, ' +
     ok(event.offset.hasOwnProperty('minutes'));
     ok(event.offset.hasOwnProperty('hours'));
     ok(event.offset.hasOwnProperty('days'));
+    ok(event.offset.hasOwnProperty('daysToWeek'));
     ok(event.offset.hasOwnProperty('daysToMonth'));
     ok(event.offset.hasOwnProperty('totalDays'));
     ok(event.offset.hasOwnProperty('weeks'));
