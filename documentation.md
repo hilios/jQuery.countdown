@@ -156,7 +156,7 @@ A simple formatter that helps keep your code more semantic and avoid repetitive 
 It formats the offset date according to the directives in the given format string. The directive consists of a percent (`%`) character. Any text not listed as a directive will be passed through to the output string.
 
 ```javascript
-event.strftime('%W weeks %-D days %-H h %M min %S sec');
+event.strftime('%W weeks %-d days %-H h %M min %S sec');
 // => 1 week 2 days 3 h 04 min 05 sec
 ```
 
