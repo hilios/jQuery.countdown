@@ -126,7 +126,7 @@ Be aware that **ALL** events should be registered with the namespace `*.countdow
 Event object <a id="event-object"></a>
 ------------
 
-Most of the time you will be using the `event.strftime` function to render the countdown, the next section goes deeper in this subject. But you can access all raw values
+Most of the time you will be using the `event.strftime` function to render the countdown, the next section goes deeper in this subject. But you can access all raw values:
 
 ```javascript
 {
@@ -138,7 +138,8 @@ Most of the time you will be using the `event.strftime` function to render the c
         seconds:    '{int} Seconds left for the next minute',
         minutes:    '{int} Minutes left for the next hour',
         hours:      '{int} Hours left until next day',
-        days:       '{int} Days left until next week',
+        daysToWeek: '{int} Days left until next week'
+        daysToMonth:'{int} Days left until next month'
         totalDays:  '{int} Total amount of days left until final date',
         weeks:      '{int} Weeks left until the final date',
         months:     '{int} Months left until final date' ,
@@ -202,6 +203,11 @@ The formatter is also capable of handle pluralization through the bang `!` modif
       <td><code>%m</code></td>
       <td><code>%-m</code></td>
       <td>Monts left *</td>
+    </tr>
+    <tr>
+      <td><code>%n</code></td>
+      <td><code>%-n</code></td>
+      <td>Days left until the next complete month *</td>
     </tr>
     <tr>
       <td><code>%w</code></td>
