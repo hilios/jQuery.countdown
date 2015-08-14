@@ -7,9 +7,9 @@ To get started, check-it out: http://hilios.github.io/jQuery.countdown/
 
 The ultimate countdown plugin designed to fit in any coupon, auction site or product launch. Read our [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) and follow our [Examples](http://hilios.github.io/jQuery.countdown/examples.html) to see what suits your particular needs.
 
-#### [Download](https://github.com/hilios/jQuery.countdown/releases/download/2.0.5/jquery.countdown-2.0.5.zip) ####
+#### [Download](https://github.com/hilios/jQuery.countdown/releases/download/2.1.0/jquery.countdown-2.1.0.zip) ####
 
-[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.0.5/jquery.countdown-2.0.5.zip)
+[Click here to download the latest version](https://github.com/hilios/jQuery.countdown/releases/download/2.1.0/jquery.countdown-2.1.0.zip)
 
 If you want to clone the repo always use the files under [dist](https://github.com/hilios/jQuery.countdown/tree/master/dist) folder, they are optimized for production and development.
 
@@ -59,7 +59,12 @@ There are few ways to get started, from the most simple example to advanced, we 
 [Release notes](https://github.com/hilios/jQuery.countdown/releases)
 ---------------
 
-Current version is **2.0.5**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
+Current version is **2.1.0**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
+
+#### What's new in 2.1.0? ####
+
+ * Add proper offset for days left to a month and to a week;
+ * Fix bower amd install;
 
 #### What's new in 2.0.5? ####
 
@@ -96,7 +101,7 @@ Code coverage:
 File           |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
 ---------------|----------|----------|----------|----------|----------------|
  src/          |    98.39 |    90.32 |      100 |    98.39 |                |
-  countdown.js |    98.39 |    90.32 |      100 |    98.39 |          6,265 |
+  countdown.js |    98.39 |    90.32 |      100 |    98.39 |          6,269 |
 ---------------|----------|----------|----------|----------|----------------|
 All files      |    98.39 |    90.32 |      100 |    98.39 |                |
 ---------------|----------|----------|----------|----------|----------------|
@@ -112,6 +117,7 @@ Thanks for bug reporting and fixes:
 *   Roman Shterenzon (@romanbsd)
 *   Marios (@assiotis)
 *   Zane Yao (@yaoazhen)
+*   Ricardo Calvo (@ricardocalvo)
 
 ### License ###
 
