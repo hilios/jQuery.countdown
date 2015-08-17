@@ -51,3 +51,33 @@ test('allow the callback be setted uppon initialization (legacy ' +
   });
   $clock.tick(500);
 });
+
+test('event leaking and collision', function() {
+  var future = new Date().getTime() + 5000;
+  var clickHandler = sinon.spy();
+  var updateHandler = sinon.spy();
+
+  $dom.countdown(future)
+    .on('click', clickHandler)
+    .on('update.countdown', updateHandler);
+  $clock.tick(500);
+
+  ok(!clickHandler.called);
+  ok(updateHandler.called);
+
+  var event = updateHandler.lastCall.args[0];
+  ok(event.namespace === 'countdown');
+
+  $dom.trigger('click');
+  updateHandler.reset();
+
+  ok(clickHandler.called);
+  ok(!updateHandler.called);
+
+  // Trigger event without the namespace
+  $dom.trigger('update');
+  ok(updateHandler.called);
+
+  var event = updateHandler.lastCall.args[0];
+  ok(event.namespace === '');
+});
