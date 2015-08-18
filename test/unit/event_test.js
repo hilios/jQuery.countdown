@@ -53,6 +53,7 @@ test('allow the callback be setted uppon initialization (legacy ' +
 });
 
 test('event leaking and collision', function() {
+  var event;
   var future = new Date().getTime() + 5000;
   var clickHandler = sinon.spy();
   var updateHandler = sinon.spy();
@@ -65,7 +66,7 @@ test('event leaking and collision', function() {
   ok(!clickHandler.called);
   ok(updateHandler.called);
 
-  var event = updateHandler.lastCall.args[0];
+  event = updateHandler.lastCall.args[0];
   ok(event.namespace === 'countdown');
 
   $dom.trigger('click');
@@ -78,6 +79,6 @@ test('event leaking and collision', function() {
   $dom.trigger('update');
   ok(updateHandler.called);
 
-  var event = updateHandler.lastCall.args[0];
+  event = updateHandler.lastCall.args[0];
   ok(event.namespace === '');
 });
