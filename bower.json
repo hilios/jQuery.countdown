@@ -40,6 +40,7 @@
     "jquery-1.8": "jquery#~1.8",
     "jquery-1.7": "jquery#~1.7",
     "jquery-1.10": "jquery#~1.10",
+    "jquery-1.11": "jquery#~1.11",
     "bootstrap": "~3"
   },
   "moduleType": [

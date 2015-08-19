@@ -1,5 +1,6 @@
 {
   "jquery-1.10": ["test/vendor/jquery-1.10/jquery.js"],
+  "jquery-1.11": ["test/vendor/jquery-1.11/dist/jquery.js"],
   "jquery-1.7": ["test/vendor/jquery-1.7/jquery.js"],
   "jquery-1.8": ["test/vendor/jquery-1.8/jquery.js"],
   "jquery-1.9": ["test/vendor/jquery-1.9/jquery.js"],
