@@ -372,7 +372,7 @@ footer a:visited:hover {
   background-image: -ms-linear-gradient(45deg, #361752, #B31B67);
   background-image: -o-linear-gradient(45deg, #361752, #B31B67);
   color: white;
-  padding: 2em 0 4em;
+  padding: 2em 0 2em;
   font-size: 125%;
 }
 .home-welcome h1 {
@@ -646,4 +646,32 @@ footer a:visited:hover {
   .example-selector select {
     font-size: 1em;
   }
+}
+/**
+ * Carbon Ad
+ */
+.ad {
+  margin-bottom: 10px;
+}
+#carbonads {
+  color: #444;
+  font-size: 12px;
+  max-width: 400px;
+  min-height: 100px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  background-color: white;
+  margin: 0 auto;
+  line-height: inherit;
+}
+.carbon-img {
+  margin-right: 15px;
+  float: left;
+}
+.carbon-poweredby {
+  font-size: 75%;
+}
+.carbon-text {
+  display: block;
+  padding: 8px 0;
 }
