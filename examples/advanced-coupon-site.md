@@ -87,8 +87,8 @@ $('#clock').countdown('2020/10/10 12:34:56')
   $(this).html(event.strftime(format));
 })
 .on('finish.countdown', function(event) {
-  $(this).html('This offer has expired!');
-    .parent().addClass('disabled')
+  $(this).html('This offer has expired!')
+    .parent().addClass('disabled');
 
 });
 {% endhighlight %}
