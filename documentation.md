@@ -61,7 +61,7 @@ To start the countdown the only requirement is the `finalDate`, but you still ne
 The target date that you are seeking to countdown. This argument can be one of the following:
 
  * A native date object
- * The milliseconds
+ * The milliseconds from Epoch time
  * String formatted as following:
    - `YYYY/MM/DD`
    - `MM/DD/YYYY`
