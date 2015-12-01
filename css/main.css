@@ -172,11 +172,11 @@ main [class*="pure-u-"]:last-child article {
   height: 95px;
   width: 65px;
 
-  -webkit-perspective: 500px;
-  -moz-perspective: 500px;
-  -ms-perspective: 500px;
-  -o-perspective: 500px;
-  perspective: 500px;
+  -webkit-perspective: 479px;
+  -moz-perspective: 479px;
+  -ms-perspective: 479px;
+  -o-perspective: 479px;
+  perspective: 479px;
 
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
