@@ -27,5 +27,6 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "main": "src/countdown.js"
 }
