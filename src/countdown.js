@@ -125,7 +125,7 @@
     }
   }
   // The Final Countdown
-  var Countdown = function(el, finalDate, options) {
+  var Countdown = function(el, finalDate, options, optionsAfterFunction) {
     this.el       = el;
     this.$el      = $(el);
     this.interval = null;
@@ -144,6 +144,9 @@
         this.$el.on('update.countdown', options);
         this.$el.on('stoped.countdown', options);
         this.$el.on('finish.countdown', options);
+        if($.isPlainObject(optionsAfterFunction)){
+          this.options = $.extend({}, defaultOptions, optionsAfterFunction);
+        }
       } else {
         this.options = $.extend({}, defaultOptions, options);
       }
@@ -271,7 +274,12 @@
         }
       } else {
         // ... if not we create an instance
-        new Countdown(this, argumentsArray[0], argumentsArray[1]);
+        new Countdown(
+            this,
+            argumentsArray[0],
+            argumentsArray[1],
+            argumentsArray[2]
+        );
       }
     });
   };

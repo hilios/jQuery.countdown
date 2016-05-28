@@ -1,6 +1,6 @@
 /*!
  * The Final Countdown for jQuery v2.1.0 (http://hilios.github.io/jQuery.countdown/)
- * Copyright (c) 2015 Edson Hilios
+ * Copyright (c) 2016 Edson Hilios
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -112,7 +112,7 @@
             return plural;
         }
     }
-    var Countdown = function(el, finalDate, options) {
+    var Countdown = function(el, finalDate, options, optionsAfterFunction) {
         this.el = el;
         this.$el = $(el);
         this.interval = null;
@@ -126,6 +126,9 @@
                 this.$el.on("update.countdown", options);
                 this.$el.on("stoped.countdown", options);
                 this.$el.on("finish.countdown", options);
+                if ($.isPlainObject(optionsAfterFunction)) {
+                    this.options = $.extend({}, defaultOptions, optionsAfterFunction);
+                }
             } else {
                 this.options = $.extend({}, defaultOptions, options);
             }
@@ -228,7 +231,7 @@
                     $.error("Method %s does not exist on jQuery.countdown".replace(/\%s/gi, method));
                 }
             } else {
-                new Countdown(this, argumentsArray[0], argumentsArray[1]);
+                new Countdown(this, argumentsArray[0], argumentsArray[1], argumentsArray[2]);
             }
         });
     };
