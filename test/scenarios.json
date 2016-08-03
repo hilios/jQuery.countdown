@@ -6,6 +6,9 @@
   "jquery-1.9": ["test/vendor/jquery-1.9/jquery.js"],
   "jquery-2.0": ["test/vendor/jquery-2.0/jquery.js"],
   "jquery-2.1": ["test/vendor/jquery-2.1/dist/jquery.js"],
+  "jquery-2.2": ["test/vendor/jquery-2.2/dist/jquery.js"],
+  "jquery-3.0": ["test/vendor/jquery-3.0/dist/jquery.js"],
+  "jquery-3.1": ["test/vendor/jquery-3.1/dist/jquery.js"],
   "bootstrap": [
     "test/vendor/jquery-2.1/dist/jquery.js",
     "test/vendor/bootstrap/dist/js/bootstrap.js"
