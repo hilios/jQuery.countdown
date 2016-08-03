@@ -24,12 +24,12 @@ Very similar to the legacy example, but uses the callback style instead. Format 
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <div id="clock"></div>
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 $('#clock').countdown('2020/10/10').on('update.countdown', function(event) {
   var $this = $(this).html(event.strftime(''
     + '<span>%-w</span> week%!w '

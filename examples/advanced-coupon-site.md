@@ -66,7 +66,7 @@ This example handle multiple cases of the countdown, show `%-w` weeks and `%-d` 
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <div class="countdown">
   Limited Time Only!
   <span id="clock"></span>
@@ -74,7 +74,7 @@ This example handle multiple cases of the countdown, show `%-w` weeks and `%-d` 
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 $('#clock').countdown('2020/10/10 12:34:56')
 .on('update.countdown', function(event) {
   var format = '%H:%M:%S';

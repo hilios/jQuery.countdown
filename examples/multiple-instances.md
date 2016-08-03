@@ -34,7 +34,7 @@ Assign the countdown on several elements at the same time.
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <div data-countdown="2016/01/01"></div>
 <div data-countdown="2017/01/01"></div>
 <div data-countdown="2018/01/01"></div>
@@ -42,7 +42,7 @@ Assign the countdown on several elements at the same time.
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 $('[data-countdown]').each(function() {
   var $this = $(this), finalDate = $(this).data('countdown');
   $this.countdown(finalDate, function(event) {

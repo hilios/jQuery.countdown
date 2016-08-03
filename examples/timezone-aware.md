@@ -53,7 +53,7 @@ Use **MomentJS** to display a countdown accordingly to the selected timezone no 
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <!-- Include MomentJS library -->
 <script src="moment.js"></script>
 <script src="moment-timezone-with-data.js"></script>
@@ -62,7 +62,7 @@ Use **MomentJS** to display a countdown accordingly to the selected timezone no 
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 var nextYear = moment.tz("2015-01-01 00:00", "America/Sao_Paulo");
 
 $('#clock').countdown(nextYear.toDate(), function(event) {

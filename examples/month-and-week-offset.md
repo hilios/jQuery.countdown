@@ -30,7 +30,7 @@ Display the possibles days offsets `%n`, `%d` and `%D` regarging the months, wee
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <div id="wrapper">
   <div id="clock-a"></div>
   <div id="clock-b"></div>
@@ -39,7 +39,7 @@ Display the possibles days offsets `%n`, `%d` and `%D` regarging the months, wee
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 $('#wrapper').countdown('2020/10/10', function(event) {
   $('#clock-a').html(event.strftime('%w weeks and %d days'));
   $('#clock-b').html(event.strftime('%m months and %n days'));

@@ -19,12 +19,12 @@ Display a countdown calculating all remaining hours to the final date.
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <div id="clock"></div>
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 $('#clock').countdown("2020/10/10", function(event) {
   var totalHours = event.offset.totalDays * 24 + event.offset.hours;
   $(this).html(event.strftime(totalHours + ' hr %M min %S sec'));

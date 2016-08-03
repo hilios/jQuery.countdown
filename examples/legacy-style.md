@@ -23,12 +23,12 @@ Assign the callback uppon initialization, format the countdown `%w` weeks `%d` d
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <div id="clock"></div>
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 $('#clock').countdown('2020/10/10', function(event) {
   var $this = $(this).html(event.strftime(''
     + '<span>%w</span> weeks '

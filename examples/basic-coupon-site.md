@@ -19,12 +19,12 @@ This is the most common case to use the script, that mimic the countdown style i
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <span id="clock"></span>
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 $('#clock').countdown('2020/10/10', function(event) {
   $(this).html(event.strftime('%D days %H:%M:%S'));
 });

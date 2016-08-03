@@ -25,12 +25,12 @@ Configure countdown to continue after reaches its end, then the timer will start
 </script>
 
 ##### HTML:
-{% highlight html linenos %}
+{% highlight html %}
 <div id="clock"></div>
 {% endhighlight %}
 
 ##### JS:
-{% highlight js linenos %}
+{% highlight js %}
 var fiveSeconds = new Date().getTime() + 5000;
 $('#clock').countdown(fiveSeconds, {elapse: true})
 .on('update.countdown', function(event) {
