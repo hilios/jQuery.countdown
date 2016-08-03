@@ -1,6 +1,7 @@
 {
   "name": "countdown",
-  "version": "2.1.0",
+  "version": "2.2.0",
+  "main": "src/countdown.js",
   "description": "The Final Countdown for jQuery",
   "author": "Edson Hilios",
   "homepage": "http://hilios.github.io/jQuery.countdown/",
