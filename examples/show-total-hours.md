@@ -3,7 +3,7 @@ layout: content
 title:  Sum of total hours remaining
 category: examples
 ---
-Display a countdown calculating all remining hours to the final date.
+Display a countdown calculating all remaining hours to the final date.
 
 <div class="example-base">
   Open till ...

@@ -26,7 +26,7 @@ This example handle multiple cases of the countdown, show `%-w` weeks and `%-d` 
   var $clock = $('#clock')
     .on('update.countdown', function(event) {
       var format = '%H:%M:%S';
-      if(event.offset.days > 0) {
+      if(event.offset.totalDays > 0) {
         format = '%-d day%!d ' + format;
       }
       if(event.offset.weeks > 0) {
@@ -78,7 +78,7 @@ This example handle multiple cases of the countdown, show `%-w` weeks and `%-d` 
 $('#clock').countdown('2020/10/10 12:34:56')
 .on('update.countdown', function(event) {
   var format = '%H:%M:%S';
-  if(event.offset.days > 0) {
+  if(event.offset.totalDays > 0) {
     format = '%-d day%!d ' + format;
   }
   if(event.offset.weeks > 0) {
