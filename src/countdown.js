@@ -14,7 +14,8 @@
       matchers  = [],
       defaultOptions  = {
         precision: 100, // 0.1 seconds, used to update the DOM
-        elapse: false
+        elapse: false,
+        defer: false
       };
   // Miliseconds
   matchers.push(/^[0-9]*$/.source);
@@ -150,7 +151,11 @@
     }
     // Set the final date and start
     this.setFinalDate(finalDate);
-    this.start();
+    // Starts the countdown automatically unless it's defered,
+    // Issue #198
+    if (this.options.defer === false) {
+      this.start();
+    }
   };
   $.extend(Countdown.prototype, {
     start: function() {

@@ -157,3 +157,20 @@ test('continue after pass the final date', function() {
   var eventObject = callback.lastCall.args[0];
   ok(eventObject.elapsed === true);
 });
+
+test('defer the start with lazy initialization option', function() {
+  var callback = sinon.spy();
+  // Setup a different update rate precision
+  $dom.countdown('2020/10/20', {
+    lazy: false
+  }).on('update.countdown', callback);
+
+  // Should not start automatically
+  $clock.tick(500);
+  ok(!callback.called);
+
+  // Start the countdown
+  $dom.countdown('start');
+  $clock.tick(500);
+  ok(callback.called);
+});
