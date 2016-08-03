@@ -29,6 +29,7 @@ test('escaping percentage character %% ', function() {
 | %m            | %-m           | %!m           | Months left               |
 | %n            | %-n           | %!n           | Days left to a month      |
 | %w            | %-w           | %!w           | Weeks left                |
+| %W            | %-W           | %!W           | Weeks left to a month     |
 | %d            | %-d           | %!d           | Days left to a week       |
 | %H            | %-H           | %!H           | Hours left                |
 | %M            | %-M           | %!M           | Minutes left              |
@@ -42,16 +43,16 @@ test('escaping percentage character %% ', function() {
 
 test('all directives', function() {
   $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
-    ok(event.strftime('%Y %m %n %w %d %D %H %M %S %D %I %N %T')
-      .match(/^([0-9]{1,}\s?){13}$/) !== null);
+    ok(event.strftime('%Y %m %n %w %W %d %D %H %M %S %D %I %N %T')
+      .match(/^([0-9]{1,}\s?){14}$/) !== null);
   });
   $clock.tick(500);
 });
 
 test('blank-padded directives', function() {
   $dom.countdown('2020/11/10 09:08:07').on('update.countdown', function(event) {
-    ok(event.strftime('%-Y %-m %-n %-w %-d %-H %-M %-S %-D %-I %-N %-T')
-      .match(/^([0-9]{1,}\s?){13}$/) !== null);
+    ok(event.strftime('%-Y %-m %-n %-w %-W %-d %-H %-M %-S %-D %-I %-N %-T')
+      .match(/^([0-9]{1,}\s?){14}$/) !== null);
   });
   $clock.tick(500);
 });
