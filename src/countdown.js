@@ -122,10 +122,11 @@
         plural = format[1];
       }
     }
-    if(Math.abs(count) === 1) {
-      return singular;
-    } else {
+    // Fix #187
+    if(Math.abs(count) > 1) {
       return plural;
+    } else {
+      return singular;
     }
   }
   // The Final Countdown

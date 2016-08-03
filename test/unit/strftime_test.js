@@ -101,6 +101,15 @@ test('return the singular when given pair of arguments', function() {
   $clock.tick(500);
 });
 
+test('return the singular for zero (issue #187)', function() {
+  $dom.countdown(new Date().valueOf() + 1000)
+  .on('update.countdown', function(event) {
+    ok(event.offset.seconds === 1);
+    ok(event.strftime('%m %!m:min,minutes;') === '00 min');
+  });
+  $clock.tick(500);
+});
+
 test('return the correct plural even with odd looking (issue #70)', function() {
   $dom.countdown(new Date().valueOf() + 2 * 60 * 1000)
   .on('update.countdown', function(event) {
