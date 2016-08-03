@@ -39,7 +39,7 @@ Getting started
 
 ### Requirements ###
 
-Since version 2.0.0 we only support jQuery above **1.7** (including **2.0**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
+Since version 2.0.0 we only support jQuery above **1.7** (including **2.x** and **3.x**). For legacy **1.6** support please use the version [1.0.2](https://github.com/hilios/jQuery.countdown/releases/download/1.0.2/jquery.countdown-1.0.2.zip).
 
 ### [Documentation](http://hilios.github.io/jQuery.countdown/documentation.html) ###
 
