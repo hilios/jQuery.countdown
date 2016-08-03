@@ -58,10 +58,13 @@
     'n': 'daysToMonth',
     'w': 'weeks',
     'd': 'daysToWeek',
-    'D': 'totalDays',
     'H': 'hours',
     'M': 'minutes',
-    'S': 'seconds'
+    'S': 'seconds',
+    'D': 'totalDays',
+    'I': 'totalHours',
+    'N': 'totalMinutes',
+    'T': 'totalSeconds'
   };
   // Returns an escaped regexp from the string
   function escapedRegExp(str) {
@@ -228,10 +231,13 @@
         days        : Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
         daysToWeek  : Math.floor(this.totalSecsLeft / 60 / 60 / 24) % 7,
         daysToMonth : Math.floor(this.totalSecsLeft / 60 / 60 / 24 % 30.4368),
-        totalDays   : Math.floor(this.totalSecsLeft / 60 / 60 / 24),
         weeks       : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 7),
         months      : Math.floor(this.totalSecsLeft / 60 / 60 / 24 / 30.4368),
-        years       : Math.abs(this.finalDate.getFullYear() - now.getFullYear())
+        years       : Math.abs(this.finalDate.getFullYear()-now.getFullYear()),
+        totalDays   : Math.floor(this.totalSecsLeft / 60 / 60 / 24),
+        totalHours  : Math.floor(this.totalSecsLeft / 60 / 60),
+        totalMinutes: Math.floor(this.totalSecsLeft / 60),
+        totalSeconds: this.totalSecsLeft
       };
       // Dispatch an event
       if(!this.options.elapse && this.totalSecsLeft === 0) {
