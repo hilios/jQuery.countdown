@@ -162,7 +162,7 @@ test('defer the start with lazy initialization option', function() {
   var callback = sinon.spy();
   // Setup a different update rate precision
   $dom.countdown('2020/10/20', {
-    lazy: false
+    defer: true
   }).on('update.countdown', callback);
 
   // Should not start automatically
