@@ -3,7 +3,7 @@ nickname:       jQuery.countdown
 plugin_version: 2.1.0
 baseurl:        http://hilios.github.io/jQuery.countdown
 highlight:      true
-markdown:       redcarpet
+markdown:       kramdown
 redcarpet:
   extensions:
     - no_intra_emphasis
