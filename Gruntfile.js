@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       dest: './dist'
     },
     // project utils
-    pluginName: '<%= pkg.name %>',
+    pluginName: '<%= pkg.name.replace(/-/, ".") %>',
     license: grunt.file.read('LICENSE.md').split('\n').splice(3).join('\n'),
     banner: '/*!\n' +
             ' * <%= pkg.description %> v<%= pkg.version %> ' +
