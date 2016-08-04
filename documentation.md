@@ -215,14 +215,14 @@ The formatter is also capable of handle pluralization through the bang `!` modif
       <td>Weeks left</td>
     </tr>
     <tr>
+      <td><code>%W</code></td>
+      <td><code>%-W</code></td>
+      <td>Weeks left until the next complete month *</td>
+    </tr>
+    <tr>
       <td><code>%d</code></td>
       <td><code>%-d</code></td>
       <td>Days left (taking away weeks)</td>
-    </tr>
-    <tr>
-      <td><code>%D</code></td>
-      <td><code>%-D</code></td>
-      <td>Total amount of days left</td>
     </tr>
     <tr>
       <td><code>%H</code></td>
@@ -241,7 +241,42 @@ The formatter is also capable of handle pluralization through the bang `!` modif
     </tr>
   </tbody>
 </table>
-<small class="text-center">* Due to their non linear constrains the years and months calculation are not precise and it's pretending to use as a approximation or not use at all.</small>
+<small class="text-center">* Due to their non linear constrains the calculation does not have precision and it's pretending to be used as a approximation or not use at all.</small>
+
+There are another set of directives that returns the full count of the time component till the end of the countdown:
+
+<table class="pure-table pure-table-horizontal">
+  <thead>
+    <tr>
+      <th>Directive</th>
+      <th>Blank-padded</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>%D</code></td>
+      <td><code>%-D</code></td>
+      <td>Total count of days till the end</td>
+    </tr>
+    <tr>
+      <td><code>%I</code></td>
+      <td><code>%-I</code></td>
+      <td>Total count of hours thill the end</td>
+    </tr>
+    <tr>
+      <td><code>%N</code></td>
+      <td><code>%-N</code></td>
+      <td>Total count of minutes till the end</td>
+    </tr>
+    <tr>
+      <td><code>%T</code></td>
+      <td><code>%-T</code></td>
+      <td>Total count of seconds till the end</td>
+    </tr>
+  </tbody>
+</table>
+
 
 #### Pluralization #####
 
