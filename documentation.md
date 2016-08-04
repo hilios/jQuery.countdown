@@ -83,7 +83,8 @@ The plugin accepts some configuration passing by an object has the function seco
 ```javascript
 $('div#clock').countdown(finalDate, {
   elapse:     '{bool} Allow to continue after finishes',
-  precision:  '{int} The update rate in milliseconds'
+  precision:  '{int} The update rate in milliseconds',
+  defer:      '{bool} Deferred initialization mode'
 })
 ```
 
@@ -105,6 +106,21 @@ $('div#clock').countdown(finalDate, {elapse: true})
 ```
 
 **Be aware** that no `finish` event will be dispatched at this mode!
+
+### Deferred initialization
+
+The deferred initialization mode allows you to register the callback before the countdown actually starts, this is useful when one wants to render the proper HTML the exact time the countdown starts, (i.e. when the countdown are really short time <= 60s).
+
+Just be aware that the developer **MUST** call the `start` method manually to begin the countdown:
+
+```javascript
+// It will render correctly since the start of the plugin.
+$('div#clock').countdown(finalDate, {defer: })
+  .on('update.countdown', function() {
+    // render something
+  })
+  .countdown('start');
+```
 
 Events <a id="events"></a>
 ------
