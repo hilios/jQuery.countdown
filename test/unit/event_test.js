@@ -37,9 +37,13 @@ test('event.offset object has {seconds, minutes, hours, days, ' +
     ok(event.offset.hasOwnProperty('days'));
     ok(event.offset.hasOwnProperty('daysToWeek'));
     ok(event.offset.hasOwnProperty('daysToMonth'));
-    ok(event.offset.hasOwnProperty('totalDays'));
     ok(event.offset.hasOwnProperty('weeks'));
+    ok(event.offset.hasOwnProperty('weeksToMonth'));
     ok(event.offset.hasOwnProperty('years'));
+    ok(event.offset.hasOwnProperty('totalDays'));
+    ok(event.offset.hasOwnProperty('totalHours'));
+    ok(event.offset.hasOwnProperty('totalMinutes'));
+    ok(event.offset.hasOwnProperty('totalSeconds'));
   });
   $clock.tick(500);
 });

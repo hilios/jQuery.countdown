@@ -14,7 +14,15 @@ test('time offset calculation', function() {
     ok(event.offset.hours     === 3);
     ok(event.offset.minutes   === 4);
     ok(event.offset.seconds   === 5);
-    ok(event.offset.totalDays === 9);
+    // Offset values
+    ok(event.offset.daysToWeek    === 2);
+    ok(event.offset.daysToMonth   === 9);
+    ok(event.offset.weeksToMonth  === 1);
+    // Test total count
+    ok(event.offset.totalDays     === 9);
+    ok(event.offset.totalHours    === 9 * 24 + 3);
+    ok(event.offset.totalMinutes  === 9 * 24 * 60 + 3 * 60 + 4);
+    ok(event.offset.totalSeconds  === (9 * 24 * 60 + 3 * 60 + 4) * 60 + 5);
   });
 
   $clock.tick(500);
