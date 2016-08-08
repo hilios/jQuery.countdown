@@ -34,7 +34,6 @@ npm install --save jquery-countdown
 Require the script:
 
 ```js
-```
 require('jquery-countdown');
 ```
 
@@ -86,12 +85,6 @@ Current version is **2.2.0**, to follow our change log please visit the [release
  * Add proper offset for days left to a month and to a week;
  * Fix bower amd install;
 
-#### What's new in 2.0.5? ####
-
- * Allow precision controls through an options object;
- * Allow to continue after countdown finishes;
- * Don't dispatch events when nothing changes;
-
 Contributing
 ------------
 
@@ -105,7 +98,7 @@ grunt build # Generate the release files (dev, min and zip)
 grunt       # Watch for updates than test and build
 ```
 
-This plugin is tested with [QUnit](http://qunitjs.com/), under jQuery 1.7 up to 2.1, Bootstrap 3.0 and RequireJS.
+This plugin is tested with [QUnit](http://qunitjs.com/), under jQuery 1.7 up to 3.1, Bootstrap 3.0 and RequireJS.
 
 The functional tests made against:
 
@@ -120,10 +113,10 @@ Code coverage:
 ---------------|----------|----------|----------|----------|----------------|
 File           |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
 ---------------|----------|----------|----------|----------|----------------|
- src/          |    98.39 |    90.32 |      100 |    98.39 |                |
-  countdown.js |    98.39 |    90.32 |      100 |    98.39 |          6,269 |
+ src/          |     98.4 |    90.63 |      100 |     98.4 |                |
+  countdown.js |     98.4 |    90.63 |      100 |     98.4 |          6,283 |
 ---------------|----------|----------|----------|----------|----------------|
-All files      |    98.39 |    90.32 |      100 |    98.39 |                |
+All files      |     98.4 |    90.63 |      100 |     98.4 |                |
 ---------------|----------|----------|----------|----------|----------------|
 ```
 
