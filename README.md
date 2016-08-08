@@ -25,6 +25,19 @@ Add a `script` to your html:
 <script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
 ```
 
+#### Install via NPM
+
+```
+npm install --save jquery-countdown
+```
+
+Require the script:
+
+```js
+```
+require('jquery-countdown');
+```
+
 Getting started
 ---------------
 
@@ -59,7 +72,14 @@ There are few ways to get started, from the most simple example to advanced, we 
 [Release notes](https://github.com/hilios/jQuery.countdown/releases)
 ---------------
 
-Current version is **2.1.0**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
+Current version is **2.2.0**, to follow our change log please visit the [release notes](https://github.com/hilios/jQuery.countdown/releases).
+
+#### What's new in 2.2.0? ####
+
+ * Total count for hours `%I`, minutes `%N` and seconds `%T`;
+ * Count to weeks left to complete a month `%W`;
+ * Deferred initialization, allows to control the exact start moment;
+ * Fix pluralization bug when return is zero;
 
 #### What's new in 2.1.0? ####
 
