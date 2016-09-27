@@ -223,7 +223,7 @@ The formatter is also capable of handle pluralization through the bang `!` modif
     <tr>
       <td><code>%m</code></td>
       <td><code>%-m</code></td>
-      <td>Monts left *</td>
+      <td>Months left *</td>
     </tr>
     <tr>
       <td><code>%n</code></td>
