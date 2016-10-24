@@ -138,6 +138,12 @@
     this.offset   = {};
     this.options  = $.extend({}, defaultOptions);
     // console.log(this.options);
+    // This helper variable is necessary to mimick the previous check for an
+    // event listener on this.$el. Because of the event loop there might not
+    // be a registered event listener during the first tick. In order to work
+    // as expected a second tick is necessary, so that the events can be fired
+    // and handled properly.
+    this.firstTick = true;
     // Register this instance
     this.instanceNumber = instances.length;
     instances.push(this);
@@ -206,8 +212,7 @@
         this.remove();
         return;
       }
-      var hasEventsAttached = $._data(this.el, 'events') !== undefined,
-          now               = new Date(),
+      var now = new Date(),
           newTotalSecsLeft;
       // Create an offset date object
       newTotalSecsLeft = this.finalDate.getTime() - now.getTime(); // Millisecs
@@ -217,8 +222,9 @@
       newTotalSecsLeft = !this.options.elapse && newTotalSecsLeft < 0 ? 0 :
         Math.abs(newTotalSecsLeft);
       // Do not proceed to calculation if the seconds have not changed or
-      // does not any event attached
-      if (this.totalSecsLeft === newTotalSecsLeft || !hasEventsAttached) {
+      // during the first tick
+      if (this.totalSecsLeft === newTotalSecsLeft || this.firstTick) {
+        this.firstTick = false;
         return;
       } else {
         this.totalSecsLeft = newTotalSecsLeft;
