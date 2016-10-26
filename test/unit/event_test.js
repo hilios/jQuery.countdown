@@ -86,3 +86,111 @@ test('event leaking and collision', function() {
   event = updateHandler.lastCall.args[0];
   ok(event.namespace === '');
 });
+
+test('event bubbling with event listeners registered after ' +
+     'invocation', function() {
+  var $doc = $(document),
+      event,
+      future = new Date().getTime() + 5000,
+      updateHandler = sinon.spy(),
+      finishHandler = sinon.spy();
+
+  $dom.countdown(future);
+
+  $doc
+    .on('update.countdown', updateHandler)
+    .on('finish.countdown', finishHandler);
+  $clock.tick(500);
+
+  ok(updateHandler.called);
+
+  event = updateHandler.lastCall.args[0];
+  ok(event.namespace === 'countdown');
+  ok(event.type === 'update');
+  ok(!event.elapsed);
+
+  $clock.tick(5000);
+  ok(updateHandler.called);
+
+  event = finishHandler.lastCall.args[0];
+  ok(event.namespace === 'countdown');
+  ok(event.type === 'finish');
+  ok(event.elapsed);
+
+  // cleanup
+  $doc = null;
+});
+
+test('event bubbling with event listeners registered before ' +
+     'invocation', function() {
+  var $doc = $(document),
+      event,
+      future = new Date().getTime() + 5000,
+      updateHandler = sinon.spy(),
+      finishHandler = sinon.spy();
+
+  $doc
+    .on('update.countdown', updateHandler)
+    .on('finish.countdown', finishHandler);
+
+  $dom.countdown(future);
+  $clock.tick(500);
+
+  ok(updateHandler.called);
+
+  event = updateHandler.lastCall.args[0];
+  ok(event.namespace === 'countdown');
+  ok(event.type === 'update');
+  ok(!event.elapsed);
+
+  $clock.tick(5000);
+  ok(updateHandler.called);
+
+  event = finishHandler.lastCall.args[0];
+  ok(event.namespace === 'countdown');
+  ok(event.type === 'finish');
+  ok(event.elapsed);
+
+  // cleanup
+  $doc = null;
+});
+
+test('event listeners on parent and deferred invocation', function() {
+  var $doc = $(document),
+      event,
+      future = new Date().getTime() + 5000,
+      updateHandler = sinon.spy(),
+      finishHandler = sinon.spy();
+
+  $dom.countdown(future, {defer: true});
+
+  $doc
+    .on('update.countdown', updateHandler)
+    .on('finish.countdown', finishHandler);
+
+  $clock.tick(500);
+
+  ok(!updateHandler.called);
+  ok(!finishHandler.called);
+
+  $dom.countdown('start');
+  $clock.tick(500);
+
+  ok(updateHandler.called);
+
+  event = updateHandler.lastCall.args[0];
+  ok(event.namespace === 'countdown');
+  ok(event.type === 'update');
+  ok(!event.elapsed);
+
+  $clock.tick(5000);
+  ok(updateHandler.called);
+
+  event = finishHandler.lastCall.args[0];
+  ok(event.namespace === 'countdown');
+  ok(event.type === 'finish');
+  ok(event.elapsed);
+
+  // cleanup
+  $doc = null;
+});
