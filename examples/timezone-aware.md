@@ -73,8 +73,8 @@ $('#clock').countdown(nextYear.toDate(), function(event) {
 
 ## Feature read
 
-- [MomentJS Documentation](http://momentjs.com/docs/)
-- [Moment Timezone Documentation](http://momentjs.com/timezone/docs/)
+- <a href="http://momentjs.com/docs/" target="_blank">MomentJS Documentation</a>
+- <a href="http://momentjs.com/timezone/docs/" target="_blank">Moment Timezone Documentation</a>
 
 
 ## Why use MomentJS
