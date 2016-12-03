@@ -73,8 +73,8 @@ $('#clock').countdown(nextYear.toDate(), function(event) {
 
 ## Feature read
 
-- [MomentJS Documentation](http://momentjs.com/docs/)
-- [Moment Timezone Documentation](http://momentjs.com/timezone/docs/)
+- [MomentJS Documentation](http://momentjs.com/docs/){:target="_blank"}
+- [Moment Timezone Documentation](http://momentjs.com/timezone/docs/){:target="_blank"}
 
 
 ## Why use MomentJS
@@ -83,9 +83,9 @@ The JavaScript `Date` object has support for timezones, but by default are **nai
 
 > The JavaScript Date object supports a number of UTC (universal) methods, as well as local time methods. UTC, also known as Greenwich Mean Time (GMT), refers to the time as set by the World Time Standard. **The local time is the time known to the computer where JavaScript is executed.**
 >
-> – From: [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date)
+> – From: [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date){:target="_blank"}
 
-[MomentJS](http://momentjs.com/) is a great piece of open-source project, is stable, well maintained and have a great support to manage and convert the timezone aware `Date` objects. Is good to remember that it's a best practice to always store and retreive dates from the server in the UTC.
+[MomentJS](http://momentjs.com/){:target="_blank"} is a great piece of open-source project, is stable, well maintained and have a great support to manage and convert the timezone aware `Date` objects. Is good to remember that it's a best practice to always store and retreive dates from the server in the UTC.
 
 From the beginning, this project aimed to create an easy to use and customizable **countdown** plugin, people often have a hard time do disassociate the timezone problem from the former because they look the same but they are not.
 
