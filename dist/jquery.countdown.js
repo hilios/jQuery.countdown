@@ -111,7 +111,7 @@
                 plural = format[1];
             }
         }
-        if (Math.abs(count) > 1) {
+        if (Math.abs(count) !== 1) {
             return plural;
         } else {
             return singular;
