@@ -131,6 +131,7 @@ Thanks for bug reporting and fixes:
 *   Marios (@assiotis)
 *   Zane Yao (@yaoazhen)
 *   Ricardo Calvo (@ricardocalvo)
+*   Daniel Z. (@nietonfir)
 
 ### License ###
 
