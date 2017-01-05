@@ -27,6 +27,8 @@
     "requirejs": "~2.1"
   },
   "scripts": {
-    "test": "grunt test"
-  }
+    "test": "grunt test",
+    "prepublish": "grunt build"
+  },
+  "main": "dist/countdown.js"
 }
