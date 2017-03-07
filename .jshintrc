@@ -35,7 +35,7 @@
     "deepEqual": false,
     "equal": false,
     "expect": false,
-    "module": false,
+    "module": true,
     "notDeepEqual": false,
     "notEqual": false,
     "notStrictEqual": false,
