@@ -285,7 +285,7 @@
           // Allow plugin to restart after finished
           // Fix issue #38 (thanks to @yaoazhen)
 	  if (argumentsArray[1]) {
-	    $.extend(instance.options, argumentsArray[1])
+	    $.extend(instance.options, argumentsArray[1]);
 	    if (instance.options.defer === false)
 	      instance.start();
 	  }
