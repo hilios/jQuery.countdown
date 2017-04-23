@@ -154,7 +154,7 @@
       // Register the callbacks when supplied
       if(typeof options === 'function') {
         this.$el.on('update.countdown', options);
-        this.$el.on('stoped.countdown', options);
+        this.$el.on('stopped.countdown', options);
         this.$el.on('finish.countdown', options);
       } else {
         this.options = $.extend({}, defaultOptions, options);
@@ -182,7 +182,7 @@
     stop: function() {
       clearInterval(this.interval);
       this.interval = null;
-      this.dispatchEvent('stoped');
+      this.dispatchEvent('stopped');
     },
     toggle: function() {
       if (this.interval) {
