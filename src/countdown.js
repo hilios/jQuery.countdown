@@ -124,10 +124,10 @@
       }
     }
     // Fix #187
-    if(Math.abs(count) > 1) {
-      return plural;
-    } else {
+    if(Math.abs(count) === 1) {
       return singular;
+    } else {
+      return plural;
     }
   }
   // The Final Countdown
