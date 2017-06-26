@@ -124,7 +124,7 @@
       }
     }
     // Fix #187
-    if(Math.abs(count) == 1) {
+    if(Math.abs(count) === 1) {
       return singular;
     } else {
       return plural;
