@@ -1,6 +1,6 @@
 {
   "name": "jquery-countdown",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "main": "dist/jquery.countdown.js",
   "description": "The Final Countdown for jQuery",
   "author": "Edson Hilios",

@@ -1,6 +1,6 @@
 /*!
- * The Final Countdown for jQuery v2.2.0 (http://hilios.github.io/jQuery.countdown/)
- * Copyright (c) 2016 Edson Hilios
+ * The Final Countdown for jQuery v2.2.1 (http://hilios.github.io/jQuery.countdown/)
+ * Copyright (c) 2017 Edson Hilios
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -166,6 +166,11 @@
         },
         pause: function() {
             this.stop();
+            this.diferenceDate = this.finalDate.getTime() - new Date().getTime();
+        },
+        restart: function() {
+            this.finalDate = new Date(new Date().getTime() + this.diferenceDate);
+            this.resume();
         },
         resume: function() {
             this.start();
