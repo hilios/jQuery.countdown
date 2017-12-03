@@ -1,6 +1,6 @@
 /*!
  * The Final Countdown for jQuery v2.2.0 (http://hilios.github.io/jQuery.countdown/)
- * Copyright (c) 2016 Edson Hilios
+ * Copyright (c) 2017 Edson Hilios
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -31,7 +31,8 @@
     var instances = [], matchers = [], defaultOptions = {
         precision: 100,
         elapse: false,
-        defer: false
+        defer: false,
+        start: new Date()
     };
     matchers.push(/^[0-9]*$/.source);
     matchers.push(/([0-9]{1,2}\/){2}[0-9]{4}( [0-9]{1,2}(:[0-9]{2}){2})?/.source);
@@ -137,6 +138,7 @@
             }
         }
         this.setFinalDate(finalDate);
+        this.setStartDate(this.options.start);
         if (this.options.defer === false) {
             this.start();
         }
@@ -178,12 +180,16 @@
         setFinalDate: function(value) {
             this.finalDate = parseDateString(value);
         },
+        setStartDate: function(value) {
+            this.startDate = parseDateString(value);
+        },
         update: function() {
             if (this.$el.closest("html").length === 0) {
                 this.remove();
                 return;
             }
-            var now = new Date(), newTotalSecsLeft;
+            this.startDate.setTime(this.startDate.getTime() + this.options.precision);
+            var now = this.startDate, newTotalSecsLeft;
             newTotalSecsLeft = this.finalDate.getTime() - now.getTime();
             newTotalSecsLeft = Math.ceil(newTotalSecsLeft / 1e3);
             newTotalSecsLeft = !this.options.elapse && newTotalSecsLeft < 0 ? 0 : Math.abs(newTotalSecsLeft);

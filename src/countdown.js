@@ -15,7 +15,8 @@
       defaultOptions  = {
         precision: 100, // 0.1 seconds, used to update the DOM
         elapse: false,
-        defer: false
+        defer: false,
+        start: new Date() // if not set starts from now
       };
   // Miliseconds
   matchers.push(/^[0-9]*$/.source);
@@ -160,8 +161,10 @@
         this.options = $.extend({}, defaultOptions, options);
       }
     }
-    // Set the final date and start
+    // Set the final date
     this.setFinalDate(finalDate);
+    // Set the start date
+    this.setStartDate(this.options.start);
     // Starts the countdown automatically unless it's defered,
     // Issue #198
     if (this.options.defer === false) {
@@ -206,13 +209,18 @@
     setFinalDate: function(value) {
       this.finalDate = parseDateString(value); // Cast the given date
     },
+    setStartDate: function(value) {
+      this.startDate = parseDateString(value); // Cast the given date
+    },
     update: function() {
       // Stop if dom is not in the html (Thanks to @dleavitt)
       if(this.$el.closest('html').length === 0) {
         this.remove();
         return;
       }
-      var now = new Date(),
+      // Move start date by one step
+      this.startDate.setTime(this.startDate.getTime() + this.options.precision);
+      var now = this.startDate,
           newTotalSecsLeft;
       // Create an offset date object
       newTotalSecsLeft = this.finalDate.getTime() - now.getTime(); // Millisecs
