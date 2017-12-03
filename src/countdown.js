@@ -218,6 +218,8 @@
         this.remove();
         return;
       }
+      // Move start date by one step
+      this.startDate.setTime(this.startDate.getTime() + this.options.precision);
       var now = this.startDate,
           newTotalSecsLeft;
       // Create an offset date object
@@ -227,8 +229,6 @@
       // If is not have to elapse set the finish
       newTotalSecsLeft = !this.options.elapse && newTotalSecsLeft < 0 ? 0 :
         Math.abs(newTotalSecsLeft);
-      // Move start date by one step
-      this.startDate.setTime(this.startDate.getTime() + this.options.precision);
       // Do not proceed to calculation if the seconds have not changed or
       // during the first tick
       if (this.totalSecsLeft === newTotalSecsLeft || this.firstTick) {

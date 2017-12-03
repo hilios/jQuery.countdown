@@ -188,11 +188,11 @@
                 this.remove();
                 return;
             }
+            this.startDate.setTime(this.startDate.getTime() + this.options.precision);
             var now = this.startDate, newTotalSecsLeft;
             newTotalSecsLeft = this.finalDate.getTime() - now.getTime();
             newTotalSecsLeft = Math.ceil(newTotalSecsLeft / 1e3);
             newTotalSecsLeft = !this.options.elapse && newTotalSecsLeft < 0 ? 0 : Math.abs(newTotalSecsLeft);
-            this.startDate.setTime(this.startDate.getTime() + this.options.precision);
             if (this.totalSecsLeft === newTotalSecsLeft || this.firstTick) {
                 this.firstTick = false;
                 return;
