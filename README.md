@@ -95,7 +95,7 @@ bower install
 npm install
 grunt test  # Lint code and run test suite
 grunt build # Generate the release files (dev, min and zip)
-grunt       # Watch for updates than test and build
+grunt       # Watch for updates then test and build
 ```
 
 This plugin is tested with [QUnit](http://qunitjs.com/), under jQuery 1.7 up to 3.1, Bootstrap 3.0 and RequireJS.
